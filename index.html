@@ -41,13 +41,15 @@ nav button[aria-selected=true]{background:var(--rose2);border-color:var(--rose2)
 .sq{display:inline-block;border:1px solid var(--ink);padding:0 1px;border-radius:2px;margin:0 1px;color:var(--red)}
 .pbox{background:linear-gradient(155deg,var(--mp) 0%,var(--hero2) 100%);border-radius:26px;padding:18px 18px 14px;margin-top:12px;box-shadow:0 18px 36px -20px rgba(154,123,184,.9)}
 .ptitle{font:600 30px/1.1 var(--serif);color:var(--ink);padding-bottom:10px;border-bottom:1.5px solid rgba(154,123,184,.5);margin-bottom:2px}
-.ptitle small{font:400 13px system-ui,sans-serif;color:var(--mut)}
+.ptitle small{display:block;margin-top:4px;font:400 13px system-ui,sans-serif;color:var(--mut)}
 .pr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--mm)}
 .ptitle+.pr{border-top:0}
 .pl .pv{display:block;font:600 26px/1.1 var(--serif);color:var(--ink)}
 .plab{display:block;font-size:12px;color:var(--mut);line-height:1.25;margin-top:2px}
 .pv3,.lgd{display:flex;justify-content:space-between;gap:4px;font-size:13px;font-weight:700;color:var(--ink)}
 .pv3 span:nth-child(2),.lgd span:nth-child(2){text-align:center}.pv3 span:last-child,.lgd span:last-child{text-align:right}
+.pv3{display:grid;grid-template-columns:repeat(3,1fr)}
+.pv3 span{white-space:nowrap}
 .lgd{font-size:10px;font-weight:400;color:var(--mut);line-height:1.2}
 .trk{position:relative;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--mm),var(--m));margin:9px 6px 2px}
 .trk i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--m)}
@@ -57,6 +59,13 @@ nav button[aria-selected=true]{background:var(--rose2);border-color:var(--rose2)
 .sr{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:15px}
 .sr span{color:var(--mut)}
 .sr b{text-align:right;font-weight:600}
+details.more{margin-top:16px}
+details.more>summary{list-style:none;cursor:pointer;padding:14px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-weight:600;text-align:center;box-shadow:0 8px 22px -14px rgba(217,102,122,.5)}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary small{font-weight:400;color:var(--mut)}
+details.more>summary::after{content:' ▾'}
+details.more[open]>summary::after{content:' ▴'}
+.xbtn{display:block;margin:10px auto 0;padding:9px 20px;border-radius:999px;border:1.5px solid var(--m);background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:600}
 .leg{margin-top:18px}
 .leg h2{font-size:22px;margin-bottom:6px}
 .lgi{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
@@ -160,6 +169,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <div class="sec"><h3>♥ Relations</h3>
 <div class="opts" id="rel"></div>
 </div>
+<details class="more"><summary>Plus d’options <small>(repères du graphique, notes)</small></summary>
 <div class="sec"><h3>✨ Repères pour le graphique</h3>
 <div class="opts" id="rep"></div>
 <div id="repinfo"></div>
@@ -168,6 +178,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <div class="sec"><h3>📝 Notes</h3>
 <textarea id="nt" rows="2"></textarea>
 </div>
+</details>
 </section>
 <section id="graph" hidden>
 <label for="cyc">Cycle</label>
@@ -206,7 +217,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <p class="note">L’appli suppose que l’ovulation peut avoir lieu entre 10 et 17 jours avant la fin du cycle. C’est une plage large, choisie par prudence, parce que le moment de l’ovulation varie d’un cycle à l’autre. Les spermatozoïdes peuvent survivre jusqu’à 5 jours dans les voies génitales, notamment dans la glaire du col de l’utérus : on ajoute donc 5 jours avant la première ovulation possible. La période fertile (bande jaune) va ainsi du jour (durée − 22) au jour (durée − 10). Ce sont des estimations : la vraie période fertile peut être plus courte ou décalée.</p>
 <p class="note">Référence : A. J. Wilcox, C. R. Weinberg et D. D. Baird, New England Journal of Medicine, 1995, 333(23):1517-1521.</p></div>
 <div class="card"><h2>À savoir</h2>
-<p class="note">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel : ses estimations ne remplacent ni un avis médical ni les règles de ta méthode. En cas de doute, consulte une professionnelle de la santé ou ton instructrice.</p></div>
+<p class="note">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel : ses estimations ne remplacent ni un avis médical ni les règles de ta méthode. En cas de doute, consulte une professionnelle de la santé ou ton instructrice.</p><p class="note" id="gcnote" hidden>Hovie compte seulement le nombre de visites, avec GoatCounter, sans témoins (cookies) et sans données personnelles. Tes données de cycle ne quittent jamais ton téléphone.</p></div>
 <div class="card">
 <h2>Sauvegarde</h2>
 <p class="note">Tes données restent sur cet appareil seulement. Exporte-les régulièrement, surtout avant de changer de téléphone.</p>
@@ -344,14 +355,15 @@ const offLH=gl.length?mean(gl.map(c=>c.L-c.tpN)):null,offObs=go.length?mean(go.m
 cyc.forEach(c=>{if(c.bad){c.eo=null;return}if(c.ov){c.eo={d:c.ov,auto:false};return}if(c.tp){c.eo={d:addDays(c.tp,1),auto:true,lh:true};return}if(!c.done&&offLH!==null){const L2=c.L!=null?c.L:Math.round(A);c.eo={d:addDays(c.s,Math.round(L2-offLH)),auto:true,lh:true,proj:true};return}const Lx=c.L!=null?c.L:(A!==null?Math.round(A):null);c.eo=Lx!=null&&Lx>=15?{d:addDays(c.s,Lx-15),auto:true}:null});
 return{cyc,A,nBad:rl.filter(x=>x<16).length,offLH,offObs,Dmax,nLH:gl.length,nObs:go.length,ml:mlAvg,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
 function locate(M,d){let r=-1;for(let i=0;i<M.cyc.length;i++){if(M.cyc[i].s<=d)r=i;else break}return r}
+let FRX=false;
 function frame(M,c,dayN){
 let h='<div class="pbox"><div class="ptitle">Jour '+dayN+' du cycle <small>'+(c.pred?'prévu, début le ':'commencé le ')+fmt(c.s)+'</small></div>';
 if(c.bad)return h+'<p class="note" style="margin:8px 0 0">Ce cycle dure moins de 16 jours : il n’est pas calculé.</p></div>';
 if(c.done)return h+'<p class="note" style="margin:8px 0 0">Ce cycle est terminé : les repères s’affichent seulement pour le cycle en cours.</p></div>';
 if(M.A===null)return h+'<p class="note" style="margin:8px 0 0">Les repères apparaîtront après ton premier cycle complet de 16 jours ou plus (il faut deux débuts de règles).'+(M.nBad?' '+M.nBad+' cycle'+(M.nBad>1?'s':'')+' de moins de 16 jours ignoré'+(M.nBad>1?'s':'')+'.':'')+'</p></div>';
-const sc=[M.Lmin,Math.round(M.A),M.Lmax],A=M.A,v3=v=>`<div class="pv3"><span>${v[0]}</span><span>${v[1]}</span><span>${v[2]}</span></div><div class="trk"><i></i><i></i><i></i></div>`;
+const sc=[M.Lmin,Math.round(M.A),M.Lmax],A=M.A,v3=v=>{v=v.slice();if(v[2]==='en retard')v=v.map(x=>x==='passée'?'':x);const wd=v[0];if(wd==='terminée'||wd==='passée'){let k=0;while(k<3&&v[k]===wd)k++;for(let i=0;i<k-1;i++)v[i]=''}return `<div class="pv3"><span>${v[0]}</span><span>${v[1]}</span><span>${v[2]}</span></div><div class="trk"><i></i><i></i><i></i></div>`};
 const box=(big,sub,bar)=>`<div class="pr"><div class="pl"><b class="pv">${big}</b><span class="plab">${sub}</span></div><div class="pb">${bar}</div></div>`;
-h+=box(...(()=>{const v=sc.map((L,i)=>{const n=L+1-dayN;return n>0?n+' j':(n===0?'aujourd’hui':(i===2?'en retard':'passée'))}),late=dayN>sc[2]+1;return[late?'en retard':v[1],late?'règles : '+(dayN-sc[2]-1)+' j de plus que ton cycle le plus long':'avant les règles',v3(v)]})());
+const rReg=box(...(()=>{const v=sc.map((L,i)=>{const n=L+1-dayN;return n>0?n+' j':(n===0?'aujourd’hui':(i===2?'en retard':'passée'))}),late=dayN>sc[2]+1;return[late?'en retard':v[1],late?'règles : '+(dayN-sc[2]-1)+' j de plus que ton cycle le plus long':'avant les règles',v3(v)]})());
 const row=(lab,labIn,ws,act,one)=>{const w=act||ws[1],st=dayN<w[0]?0:(dayN<=w[1]?1:2),S=act?[w,w,w]:(ws||[null,w,null]);
 const left=x=>x[1]-dayN>0?(x[1]-dayN)+' j':(one?'aujourd’hui':'dernier jour');
 const v=st===0?S.map(x=>x?(dayN<x[0]?(x[0]-dayN)+' j':(dayN<=x[1]?'en cours':'passée')):'—'):S.map(x=>x?(dayN<=x[1]?left(x):(one?'passée':'terminée')):'—');
@@ -367,8 +379,9 @@ const ovW=M.offLH!==null?sc.map(L=>{const f=Math.round(L-M.offLH);return[f,f+2]}
 const lhOv=M.offLH!==null||c.tpN,rOv=row('avant l’ovulation','avant la fin des 3 jours d’ovulation',ovW,c.tpN?[c.tpN,c.tpN+2]:null,false);
 const ooAct=c.ovN?[c.ovN,c.ovN]:null,ooW=M.offObs!==null?sc.map(L=>{const o=Math.round(L-M.offObs);return[o,o]}):null;
 let rOO='';if(ooW||ooAct)rOO=row('avant l’ovulation observée','ovulation observée',ooW,ooAct,true);
-h+=rObs+rOO+rLH+(lhOv?rOv:'')+rCal+(lhOv?'':rOv);
-h+='<div class="pr"><div></div><div class="pb"><div class="lgd"><span>le cycle le plus court</span><span>moyenne</span><span>le plus long cycle</span></div></div></div>';
+const rows=[rReg,rObs,rOO,rLH,lhOv?rOv:'',rCal,lhOv?'':rOv].filter(Boolean),lg='<div class="pr"><div></div><div class="pb"><div class="lgd"><span>le cycle le plus court</span><span>moyenne</span><span>le plus long cycle</span></div></div></div>';
+h+=rows.slice(0,3).join('')+lg;
+if(rows.length>3)h+='<div class="xtra"'+(FRX?'':' hidden')+'>'+rows.slice(3).join('')+lg+'</div><button class="xbtn" type="button">'+(FRX?'Voir moins ▴':'Voir tout ▾')+'</button>';
 h+='<p class="note" style="margin:6px 0 0">La moyenne n’est qu’un repère : ton cycle peut tomber n’importe où entre les deux, ou même en dehors. Quand la date est connue (test positif ou ovulation notée), les trois valeurs sont identiques.'+(M.Lmin===M.Lmax?' Pour l’instant, tu as un seul cycle terminé : il n’y a pas encore de fourchette.':'')+'</p>';
 return h+'</div>'}
 function status(d){const M=model();let ci=locate(M,d),lr=-1;M.cyc.forEach((x,i)=>{if(!x.pred)lr=i});if(ci>=0&&M.cyc[ci].pred)ci=lr;const c=ci>=0?M.cyc[ci]:null;let b='';
@@ -472,6 +485,9 @@ $('imp').onchange=ev=>{const f=ev.target.files[0];if(!f)return;const r=new FileR
 $('wipe').onclick=()=>{if(confirm('Effacer toutes tes données ? Cette action est définitive.')&&confirm('Vraiment tout effacer ?')){D={v:2,e:{}};save();load($('date').value);toast('Données effacées')}};
 $('date').value=iso(new Date());load($('date').value);
 ['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+const GC='';
+if(GC){const g=document.createElement('script');g.async=true;g.src='https://gc.zgo.at/count.js';g.dataset.goatcounter='https://'+GC+'.goatcounter.com/count';document.head.appendChild(g);const gn=document.getElementById('gcnote');if(gn)gn.hidden=false}
+$('cd').addEventListener('click',ev=>{if(ev.target.closest('.xbtn')){FRX=!FRX;status($('date').value)}});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
