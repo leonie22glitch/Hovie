@@ -269,6 +269,8 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <button class="btn" id="exp">Exporter mes données</button>
 <button class="btn alt" id="impb">Importer un fichier</button>
 <input type="file" id="imp" accept="application/json,.json" hidden>
+<button class="btn alt" id="mrgb">Ajouter un fichier (sans rien effacer)</button>
+<input type="file" id="mrg" accept="application/json,.json" hidden>
 <button class="btn del" id="wipe" style="margin-top:14px">Tout effacer</button>
 </div>
 </section>
@@ -348,14 +350,14 @@ h+=card('Jour d’ovulation observé, en moyenne','jour '+Math.round(O),`Sur ${o
 h+=card('Début de période fertile moyen (observé)','jour '+(Math.round(O)-5),'Jour d’ovulation moyen − 5 jours.');
 h+=card('Fin de période fertile moyenne (observée)','jour '+(Math.round(O)+1),'Jour d’ovulation moyen + 1 jour, comme la bande rose du graphique.')}
 else h+=card('Jour d’ovulation observé, en moyenne','—','Place le repère « Ovulation » dans au moins un cycle.');
-h+=card('Début de la période fertile','jour '+Math.max(1,Math.floor(A-22)),'Durée moyenne − 17 jours (première ovulation possible) − 5 jours (survie des spermatozoïdes), arrondi vers le bas par prudence.');
-h+=card('Fin de la période fertile','jour '+Math.ceil(A-10),'Durée moyenne − 10 jours, arrondi vers le haut par prudence.');
+h+=card('Début de la période fertile','jour '+Math.max(1,(Math.round(A)-22)),'Durée moyenne − 17 jours (première ovulation possible) − 5 jours (survie des spermatozoïdes), calculé avec la durée moyenne arrondie.');
+h+=card('Fin de la période fertile','jour '+(Math.round(A)-10),'Durée moyenne arrondie − 10 jours.');
 const mn=cl.reduce((m,x)=>x.L<=m.L?x:m),mx=cl.reduce((m,x)=>x.L>=m.L?x:m);
 const fw=x=>{const a=Math.max(1,x.L-22),b=x.L-10;return `Cycle du ${fmt(x.s)} : la période fertile était du jour ${a} au jour ${b} (du ${fmt(addDays(x.s,a-1))} au ${fmt(addDays(x.s,b-1))})`};
 h+=card('Cycle le plus court',mn.L+' jours',fw(mn));
 h+=card('Cycle le plus long',mx.L+' jours',fw(mx));
-if(cs.length){const c=cs[cs.length-1],a=Math.max(1,Math.floor(A-22)),b=Math.ceil(A-10);
-h+=card('Ton cycle actuel, commencé le '+fmt(c.s),'du '+fmt(addDays(c.s,a-1))+' au '+fmt(addDays(c.s,b-1)),'Dates arrondies par prudence : début vers le bas, fin vers le haut.')}}
+if(cs.length){const c=cs[cs.length-1],a=Math.max(1,(Math.round(A)-22)),b=(Math.round(A)-10);
+h+=card('Ton cycle actuel, commencé le '+fmt(c.s),'du '+fmt(addDays(c.s,a-1))+' au '+fmt(addDays(c.s,b-1)),'Calculé avec la durée moyenne arrondie.')}}
 B.innerHTML=h}
 function summ(){const cs=cycles(),B=$('sumbody');let h='';
 const row=(l,v)=>`<div class="sr"><span>${l}</span><b>${v}</b></div>`;
@@ -401,7 +403,7 @@ const offLH=gl.length?mean(gl.map(c=>c.L-c.tpN)):null,offObs=go.length?mean(go.m
 cyc.forEach(c=>{if(c.bad){c.eo=null;return}if(c.ov){c.eo={d:c.ov,auto:false,lo:0,hi:0};return}if(c.tp){c.eo={d:addDays(c.tp,1),auto:true,lh:true,lo:-1,hi:1};return}if(!c.done&&lhS){c.eo={d:addDays(c.s,lhS.avg),auto:true,lh:true,proj:true,lo:-1,hi:1};return}const Lx=c.L!=null?c.L:(A!==null?Math.round(A):null);c.eo=Lx!=null&&Lx>=16?{d:addDays(c.s,Lx-14),auto:true,lo:-2,hi:2}:null});
 return{cyc,A,lhS,obS,nBad:rl.filter(x=>x<16).length,offLH,offObs,Dmax,nLH:gl.length,nObs:go.length,ml:mlAvg,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
 function locate(M,d){let r=-1;for(let i=0;i<M.cyc.length;i++){if(M.cyc[i].s<=d)r=i;else break}return r}
-let FRX=false;
+let FRX=false,TIPO=false;
 function frame(M,c,dayN){
 const eoP=c.bad?null:c.eo,nP=eoP?dayN-(diff(c.s,eoP.d)+1):null,postT=eoP&&nP>eoP.hi?'<small>Jour post-ovulation : '+(nP-eoP.hi)+(eoP.auto?' (ovulation estimée)':'')+'</small>':'';
 let h='<div class="pbox"><div class="ptitle">Jour '+dayN+' du cycle'+postT+'<small>'+(c.pred?'prévu, début le ':'commencé le ')+fmt(c.s)+'</small></div>';
@@ -410,29 +412,29 @@ if(c.done)return h+'<p class="note" style="margin:8px 0 0">Ce cycle est terminé
 if(M.A===null)return h+'<p class="note" style="margin:8px 0 0">Les repères apparaîtront après ton premier cycle complet de 16 jours ou plus (il faut deux débuts de règles).'+(M.nBad?' '+M.nBad+' cycle'+(M.nBad>1?'s':'')+' de moins de 16 jours ignoré'+(M.nBad>1?'s':'')+'.':'')+'</p></div>';
 const sc=[M.Lmin,Math.round(M.A),M.Lmax],A=M.A,v3=v=>{v=v.slice();if(v[2]==='en retard')v=v.map(x=>x==='passée'?'':x);const wd=v[0];if(wd==='terminée'||wd==='passée'){let k=0;while(k<3&&v[k]===wd)k++;for(let i=0;i<k-1;i++)v[i]=''}return `<div class="pv3"><span>${v[0]}</span><span>${v[1]}</span><span>${v[2]}</span></div><div class="trk"><i></i><i></i><i></i></div>`};
 const box=(big,sub,bar)=>`<div class="pr"><div class="pl"><b class="pv">${big}</b><span class="plab">${sub}</span></div><div class="pb">${bar}</div></div>`;
-const LC='<div class="lgd"><span>le cycle le plus court</span><span>moyenne</span><span>le plus long cycle</span></div>',LR='<div class="lgd"><span>le plus tôt</span><span>moyenne</span><span>le plus tard</span></div>',LS='<div class="lgd" style="display:block;text-align:center">pas encore assez de cycles pour une fourchette</div>';
+const LC=`<div class="lgd"><span>le cycle le plus court<br>${sc[0]} jours</span><span>moyenne<br>${sc[1]} jours</span><span>le plus long cycle<br>${sc[2]} jours</span></div>`,LRf=(ev,pre)=>ev?`<div class="lgd"><span>le plus tôt<br>${pre}${ev[0]}</span><span>moyenne<br>${pre}${ev[1]}</span><span>le plus tard<br>${pre}${ev[2]}</span></div>`:'',LR='<div class="lgd"><span>le plus tôt</span><span>moyenne</span><span>le plus tard</span></div>',LS='<div class="lgd" style="display:block;text-align:center">pas encore assez de cycles pour une fourchette</div>';
 const rReg=box(...(()=>{const v=sc.map((L,i)=>{const n=L+1-dayN;return n>0?n+' j':(n===0?'aujourd’hui':(i===2?'en retard':'passée'))}),late=dayN>sc[2]+1;return[late?'en retard':v[1],late?'règles : '+(dayN-sc[2]-1)+' j de plus que ton cycle le plus long':'avant les règles',v3(v)+LC]})());
-const row=(lab,labIn,ws,act,one,real,n)=>{const w=act||ws[1],st=dayN<w[0]?0:(dayN<=w[1]?1:2),single=real&&!act&&n<2,S=act?[w,w,w]:(single?[null,w,null]:(ws||[null,w,null]));
+const row=(lab,labIn,ws,act,one,real,n,ev,evl)=>{const w=act||ws[1],st=dayN<w[0]?0:(dayN<=w[1]?1:2),single=real&&!act&&n<2,S=act?[w,w,w]:(single?[null,w,null]:(ws||[null,w,null]));
 const late=real&&!act&&dayN>(single?w[1]:ws[2][1]);
 const left=x=>x[1]-dayN>0?(x[1]-dayN)+' j':(one?'aujourd’hui':'dernier jour');
 let v=st===0?S.map(x=>x?(dayN<x[0]?(x[0]-dayN)+' j':(dayN<=x[1]?'en cours':'passée')):'—'):S.map(x=>x?(dayN<=x[1]?left(x):(one?'passée':'terminée')):'—');
 if(late)v=['','','plus tard'];
 const big=late?'plus tard':(st===0?(act?(w[0]-dayN)+' j':v[1]):(st===1?left(w):(one?'passée':'terminée')));
-return box(big,late?'que d’habitude : '+lab.replace(/^avant /,''):(st===0?lab:labIn),v3(v)+(real?(single?LS:LR):LC))};
+return box(big,late?'que d’habitude : '+lab.replace(/^avant /,''):(st===0?lab:labIn),v3(v)+(real?(single?LS:(LRf(ev,evl)||LR)):LC))};
 const cl=a=>[Math.max(1,a[0]),a[1]],lS=M.lhS,oS=M.obS,tri=S=>[S.min,S.avg,S.max];
-const rCal=row('avant la période fertile','avant la fin de la période fertile',[cl([sc[0]-22,sc[0]-10]),cl([Math.floor(A-22),Math.ceil(A-10)]),cl([sc[2]-22,sc[2]-10])],null,false,false,0);
+const rCal=row('avant la période fertile','avant la fin de la période fertile',[cl([sc[0]-22,sc[0]-10]),cl([(Math.round(A)-22),(Math.round(A)-10)]),cl([sc[2]-22,sc[2]-10])],null,false,false,0);
 const lhAct=c.tpN?cl([c.tpN-5,c.tpN+2]):null,lhW=lS?tri(lS).map(f=>cl([f-5,f+2])):null;
-let rLH='';if(lhW||lhAct)rLH=row('avant la période fertile LH','avant la fin de la période fertile LH',lhW,lhAct,false,true,lS?lS.n:1);
+let rLH='';if(lhW||lhAct)rLH=row('avant la période fertile LH','avant la fin de la période fertile LH',lhW,lhAct,false,true,lS?lS.n:1,lS?tri(lS):null,'test au jour ');
 const obAct=c.ovN?cl([c.ovN-5,c.ovN+1]):null,obW=oS?tri(oS).map(o=>cl([o-5,o+1])):null;
-let rObs='';if(obW||obAct)rObs=row('avant la période fertile observée','avant la fin de la période fertile observée',obW,obAct,false,true,oS?oS.n:1);
+let rObs='';if(obW||obAct)rObs=row('avant la période fertile observée','avant la fin de la période fertile observée',obW,obAct,false,true,oS?oS.n:1,oS?tri(oS):null,'ovulation au jour ');
 const ovW=lS?tri(lS).map(f=>[f,f+2]):sc.map(L=>[L-15,L-11]);
-const lhOv=lS||c.tpN,rOv=row('avant l’ovulation','avant la fin des '+(lhOv?3:5)+' jours d’ovulation',ovW,c.tpN?[c.tpN,c.tpN+2]:null,false,!!lS,lS?lS.n:0);
+const lhOv=lS||c.tpN,rOv=row('avant l’ovulation','avant la fin des '+(lhOv?3:5)+' jours d’ovulation',ovW,c.tpN?[c.tpN,c.tpN+2]:null,false,!!lS,lS?lS.n:0,lS?tri(lS):null,'test au jour ');
 const ooAct=c.ovN?[c.ovN,c.ovN]:null,ooW=oS?tri(oS).map(o=>[o,o]):null;
-let rOO='';if(ooW||ooAct)rOO=row('avant l’ovulation observée','ovulation observée',ooW,ooAct,true,true,oS?oS.n:1);
+let rOO='';if(ooW||ooAct)rOO=row('avant l’ovulation observée','ovulation observée',ooW,ooAct,true,true,oS?oS.n:1,oS?tri(oS):null,'ovulation au jour ');
 const rows=[rReg,rObs,rOO,rLH,lhOv?rOv:'',rCal,lhOv?'':rOv].filter(Boolean);
 h+=rows.slice(0,3).join('');
 if(rows.length>3)h+='<div class="xtra"'+(FRX?'':' hidden')+'>'+rows.slice(3).join('')+'</div><button class="xbtn" type="button">'+(FRX?'Voir moins ▴':'Voir tout ▾')+'</button>';
-h+='<p class="note" style="margin:6px 0 0">La moyenne n’est qu’un repère : ton cycle peut tomber n’importe où entre les deux, ou même en dehors. Pour les lignes LH et observée, « le plus tôt », « la moyenne » et « le plus tard » sont tes vrais jours de test ou d’ovulation des cycles précédents. Quand la date est connue (test positif ou ovulation notée), les trois valeurs sont identiques.</p>';
+h+='<details class="tips"'+(TIPO?' open':'')+'><summary>Comment lire ces chiffres ?</summary><p class="note" style="margin:4px 0 0">La moyenne n’est qu’un repère : ton cycle peut tomber n’importe où entre les deux, ou même en dehors. Pour les lignes LH et observée, « le plus tôt », « la moyenne » et « le plus tard » sont tes vrais jours de test ou d’ovulation des cycles précédents. Quand la date est connue (test positif ou ovulation notée), les trois valeurs sont identiques.</p></details>';
 return h+'</div>'}
 function status(d){const M=model();let ci=locate(M,d),lr=-1;M.cyc.forEach((x,i)=>{if(!x.pred)lr=i});if(ci>=0&&M.cyc[ci].pred)ci=lr;const c=ci>=0?M.cyc[ci]:null;let b='';
 const bn=(bg,t)=>`<div class="bn" style="background:${bg}">${t}</div>`;$('pbox').innerHTML='';
@@ -458,7 +460,7 @@ let h=['L','M','M','J','V','S','D'].map(x=>`<div class="cw">${x}</div>`).join(''
 for(let i=0;i<lead;i++)h+='<div></div>';
 for(let n=1;n<=dim;n++){const d=iso(new Date(CM.y,CM.m,n)),e=D.e[d]||{},ci=locate(M,d),c=ci>=0?M.cyc[ci]:null;let cls='cc',ov='',cdv='',dot='';
 if(c){const dayN=diff(c.s,d)+1;cdv=dayN;let w=null;
-if(c.bad)w=null;else if(c.done)w=[c.L-22,c.L-10,c.L-18];else if(M.A!==null){const a0=Math.floor(M.A-22);w=[a0,Math.ceil(M.A-10),a0+4]}
+if(c.bad)w=null;else if(c.done)w=[c.L-22,c.L-10,c.L-18];else if(M.A!==null){const a0=(Math.round(M.A)-22);w=[a0,(Math.round(M.A)-10),a0+4]}
 const dsc=c.ov||c.tp||(!c.done&&(M.offLH!==null||M.offObs!==null));
 if(w&&dayN>=w[0]&&dayN<=w[1])ov+='<i style="background:rgba(242,194,48,'+(dsc?(dayN<=w[2]?.05:.13):(dayN<=w[2]?.16:.36))+')"></i>';
 if(c.eo){const od=diff(c.s,c.eo.d)+1;if(c.eo.auto){if(dayN>=od+c.eo.lo&&dayN<=od+c.eo.hi)ov+='<i style="background:rgba(240,140,40,.45)"></i>';if(c.eo.lh&&dayN>=od-6&&dayN<=od-2)ov+='<i style="background:rgba(240,140,40,.16)"></i>'}else{if(dayN>=od-5&&dayN<=od+1)ov+='<i style="background:rgba(224,86,154,'+(dayN<od?.14:.32)+')"></i>';if(dayN===od){dot='<span class="od"></span>';ov+='<i style="background:rgba(240,140,40,.45)"></i>'}}}
@@ -509,7 +511,7 @@ const mp=days.filter(x=>x.e&&x.e.m!=null).map(x=>({i:x.i,y:yM(x.e.m)}));
 const cp=days.map(x=>({i:x.i,v:colScore(x.e)})).filter(q=>q.v!==null).map(q=>({i:q.i,y:yC(q.v)}));
 const disc=!!(mc&&(mc.ov||mc.tp))||(ci===cs.length-1&&(M.offLH!==null||M.offObs!==null));
 const band=(col,a,b,pale,op,pop=.14)=>{for(let d=Math.max(1,a);d<=Math.min(N,b);d++)s+=`<rect x="${X(d-1)-cw/2}" y="${T0}" width="${cw}" height="${C1-T0}" fill="${col}" fill-opacity="${d<=pale?pop:op}"/>`};
-if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16)band('#F2C230',Lc-22,Lc-10,Lc-18,disc?.1:.32,disc?.04:.14)}else if(M.A!==null){const a0=Math.floor(M.A-22);band('#F2C230',a0,Math.ceil(M.A-10),a0+4,disc?.1:.32,disc?.04:.14)}
+if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16)band('#F2C230',Lc-22,Lc-10,Lc-18,disc?.1:.32,disc?.04:.14)}else if(M.A!==null){const a0=(Math.round(M.A)-22);band('#F2C230',a0,(Math.round(M.A)-10),a0+4,disc?.1:.32,disc?.04:.14)}
 if(od){if(eo.auto){band('#F08C28',od+eo.lo,od+eo.hi,0,.4);if(eo.lh)band('#F08C28',od-6,od-2,od-2,.4)}else{band('#E0569A',od-5,od+1,od-1,.3);band('#F08C28',od,od,0,.4)}}
 {const td=days.filter(x=>x.e&&x.e.tp).map(x=>x.i);let k=0;while(k<td.length){let m=k;while(m+1<td.length&&td[m+1]===td[m]+1)m++;const x0=X(td[k])-9,x1=X(td[m])+9,cx=(x0+x1)/2,ay=C1-(C1-T0)*.6;s+=`<polygon points="${x0},${C1} ${cx},${ay} ${x1},${C1}" fill="var(--tq)" fill-opacity=".4" stroke="var(--tq)" stroke-width="1.5"/><text x="${cx}" y="${ay-4}" text-anchor="middle" fill="var(--tq)" font-weight="600">Test +</text>`;k=m+1}}
 const pk=days.filter(x=>x.e&&x.e.m===5).pop();
@@ -528,6 +530,8 @@ $('vw').onclick=()=>{VIEW=VIEW==='comb'?'sep':'comb';try{localStorage.setItem('s
 $('chart').addEventListener('click',ev=>{const sv=ev.target.closest('svg');if(!sv||!CH)return;const x=ev.clientX-sv.getBoundingClientRect().left,i=Math.floor((x-CH.L)/CH.cw);if(i<0||i>=CH.N)return;const d=addDays(CH.c.s,i);if(d>CH.c.end)return;goto(d);document.querySelector('nav button[data-t=jour]').click();window.scrollTo(0,0)});
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));['jour','graph','cal','stats','sum','data'].forEach(id=>$(id).hidden=id!==b.dataset.t);if(b.dataset.t==='graph')chart();if(b.dataset.t==='stats')stats();if(b.dataset.t==='cal')cal();if(b.dataset.t==='sum')summ()});
 $('exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(D)],{type:'application/json'}));a.download='suivi-cycle-'+iso(new Date())+'.json';a.click();toast('Export prêt')};
+$('mrgb').onclick=()=>$('mrg').click();
+$('mrg').onchange=ev=>{const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=migrate(JSON.parse(r.result));if(!o||typeof o.e!=='object')throw 0;const n=Object.keys(o.e).length;if(confirm('Ajouter les '+n+' jours de ce fichier à tes données ? Rien n’est effacé. Si un même jour a déjà le même champ, la valeur du fichier est gardée.')){Object.keys(o.e).forEach(k=>{D.e[k]=Object.assign({},D.e[k]||{},o.e[k])});save();load($('date').value);toast('Données ajoutées')}}catch(_){alert('Ce fichier n’est pas une sauvegarde valide.')}};r.readAsText(f);ev.target.value=''};
 $('impb').onclick=()=>$('imp').click();
 $('imp').onchange=ev=>{const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||typeof o.e!=='object')throw 0;if(confirm('Remplacer toutes les données actuelles par ce fichier ?')){D=migrate(o);save();load($('date').value);toast('Données importées')}}catch(_){alert('Ce fichier n’est pas une sauvegarde valide.')}};r.readAsText(f);ev.target.value=''};
 $('wipe').onclick=()=>{if(confirm('Effacer toutes tes données ? Cette action est définitive.')&&confirm('Vraiment tout effacer ?')){D={v:2,e:{}};save();load($('date').value);toast('Données effacées')}};
@@ -535,7 +539,7 @@ $('date').value=iso(new Date());load($('date').value);
 ['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
 const GC='';
 if(GC){const g=document.createElement('script');g.async=true;g.src='https://gc.zgo.at/count.js';g.dataset.goatcounter='https://'+GC+'.goatcounter.com/count';document.head.appendChild(g);const gn=document.getElementById('gcnote');if(gn)gn.hidden=false}
-$('cd').addEventListener('click',ev=>{if(ev.target.closest('.xbtn')){FRX=!FRX;status($('date').value)}});
+$('cd').addEventListener('click',ev=>{if(ev.target.closest('.xbtn')){FRX=!FRX;status($('date').value)}const sm=ev.target.closest('summary');if(sm&&sm.parentNode.classList.contains('tips'))TIPO=!sm.parentNode.open});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
