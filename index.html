@@ -12,19 +12,20 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <style>
-:root{--ink:#2B2233;--paper:#F7F6FA;--card:#fff;--line:#DDD9E6;--mut:#6F6780;--temp:#1F6F8B;--muc:#B0417A;--red:#C23B3B;--col:#8A6A1F;--g:#5E9C6E;--gp:#E3F0E5;--gm:#B5D8BC;--b:#5B91BF;--bp:#E2EDF7;--bm:#A9CBE8;--m:#9A7BB8;--mp:#EEE7F4;--mm:#D0BDE3;--o:#E08A2E;--op:#FBEBD6;--om:#F5C48A;--tq:#1B9C9A;--tqp:#E0F4F3;--tqm:#A8E0DD;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#EEE9F5;--paper:#1D1825;--card:#2A2334;--line:#443C52;--mut:#A69DB8;--temp:#5FB4D1;--muc:#E07AB0;--red:#E86A6A;--col:#E3B25C;--g:#8FCB9F;--gp:#243A2B;--gm:#3F6B4D;--b:#8DBFE8;--bp:#22364A;--bm:#3E6A91;--m:#C0A2DE;--mp:#352C47;--mm:#5E4B80;--o:#F0A860;--op:#47321C;--om:#7A5424;--tq:#55D0CC;--tqp:#1E3A3A;--tqm:#2F6B69}}
+:root{--serif:"Didot","Bodoni 72","Bodoni MT","Playfair Display","Iowan Old Style",Georgia,serif;--rose:#F9ADB1;--rose2:#D9667A;--hero2:#FCE6EB;--ink:#3B2431;--paper:#FFF5F4;--card:#fff;--line:#F1D5D8;--mut:#7C6470;--temp:#1F6F8B;--muc:#B0417A;--red:#C23B3B;--col:#8A6A1F;--g:#5E9C6E;--gp:#E3F0E5;--gm:#B5D8BC;--b:#5B91BF;--bp:#E2EDF7;--bm:#A9CBE8;--m:#9A7BB8;--mp:#EEE7F4;--mm:#D0BDE3;--o:#E08A2E;--op:#FBEBD6;--om:#F5C48A;--tq:#1B9C9A;--tqp:#E0F4F3;--tqm:#A8E0DD;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--rose2:#E58A9B;--hero2:#40283A;--ink:#FBEFF2;--paper:#201519;--card:#2D1F26;--line:#4A3540;--mut:#C2A9B3;--temp:#5FB4D1;--muc:#E07AB0;--red:#E86A6A;--col:#E3B25C;--g:#8FCB9F;--gp:#243A2B;--gm:#3F6B4D;--b:#8DBFE8;--bp:#22364A;--bm:#3E6A91;--m:#C0A2DE;--mp:#352C47;--mm:#5E4B80;--o:#F0A860;--op:#47321C;--om:#7A5424;--tq:#55D0CC;--tqp:#1E3A3A;--tqm:#2F6B69}}
 *{box-sizing:inherit}
 html,body{margin:0}
-body{background:var(--paper);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:40px}
-h1,h2{font-family:"Iowan Old Style",Georgia,serif;font-weight:600;margin:0}
-h1{font-size:24px}h2{font-size:18px;margin-bottom:8px}
-header{padding:16px 16px 8px}
-nav{display:flex;gap:6px;padding:0 16px 12px}
-nav button{flex:1;padding:10px 2px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;font:inherit}
-nav button[aria-selected=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-nav button{font-size:14px;flex:1 1 28%}
-nav{flex-wrap:wrap}
+body{background:var(--paper);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:48px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0}
+h2{font-size:20px;margin-bottom:8px}
+.hd{display:flex;align-items:center;gap:14px;padding:18px 18px 10px;background:linear-gradient(180deg,rgba(249,173,177,.38),rgba(249,173,177,0))}
+.hd img{width:50px;height:50px;border-radius:16px;box-shadow:0 8px 18px -8px rgba(217,102,122,.8)}
+.hd h1{font-size:34px;line-height:1;letter-spacing:.01em}
+.hd .tag{font-size:13px;color:var(--mut);margin-top:3px}
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:6px 16px 14px}
+nav button{flex:1 1 28%;padding:10px 4px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;font:inherit;font-size:14px}
+nav button[aria-selected=true]{background:var(--rose2);border-color:var(--rose2);color:#fff;font-weight:600;box-shadow:0 8px 16px -10px var(--rose2)}
 .cg{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .cw{font-size:11px;color:var(--mut);text-align:center;padding:2px 0}
 .cc{position:relative;aspect-ratio:1/1.1;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:0;color:var(--ink);font:inherit;overflow:hidden;display:block;text-align:center;min-width:0}
@@ -37,12 +38,12 @@ nav{flex-wrap:wrap}
 .cc.pred{border:1px dashed var(--red)}
 .cc .od{position:absolute;top:3px;right:3px;width:8px;height:8px;border-radius:50%;background:var(--o)}
 .sq{display:inline-block;border:1px solid var(--ink);padding:0 1px;border-radius:2px;margin:0 1px;color:var(--red)}
-.pbox{background:var(--mp);border:2px solid var(--m);border-radius:16px;padding:12px 14px;margin-top:8px}
-.ptitle{font:600 22px/1.2 'Iowan Old Style',Georgia,serif;color:var(--ink);padding-bottom:6px;border-bottom:2px solid var(--m);margin-bottom:2px}
+.pbox{background:linear-gradient(155deg,var(--mp) 0%,var(--hero2) 100%);border-radius:26px;padding:18px 18px 14px;margin-top:12px;box-shadow:0 18px 36px -20px rgba(154,123,184,.9)}
+.ptitle{font:600 30px/1.1 var(--serif);color:var(--ink);padding-bottom:10px;border-bottom:1.5px solid rgba(154,123,184,.5);margin-bottom:2px}
 .ptitle small{font:400 13px system-ui,sans-serif;color:var(--mut)}
 .pr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--mm)}
 .ptitle+.pr{border-top:0}
-.pl .pv{display:block;font:600 22px/1.1 'Iowan Old Style',Georgia,serif;color:var(--ink)}
+.pl .pv{display:block;font:600 26px/1.1 var(--serif);color:var(--ink)}
 .plab{display:block;font-size:12px;color:var(--mut);line-height:1.25;margin-top:2px}
 .pv3,.lgd{display:flex;justify-content:space-between;gap:4px;font-size:13px;font-weight:700;color:var(--ink)}
 .pv3 span:nth-child(2),.lgd span:nth-child(2){text-align:center}.pv3 span:last-child,.lgd span:last-child{text-align:right}
@@ -51,20 +52,34 @@ nav{flex-wrap:wrap}
 .trk i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--m)}
 .trk i:nth-child(1){left:-6px}.trk i:nth-child(2){left:calc(50% - 6px);border-color:var(--ink)}.trk i:nth-child(3){right:-6px}
 .pn2{display:flex;justify-content:space-between;font-size:10px;color:var(--mut);margin-top:6px}
-.cdn{font:600 22px/1.2 'Iowan Old Style',Georgia,serif;color:var(--ink)}
+.cdn{font:600 22px/1.2 var(--serif);color:var(--ink)}
 .sr{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:15px}
 .sr span{color:var(--mut)}
 .sr b{text-align:right;font-weight:600}
-.bn{margin-top:8px;padding:8px 10px;border-radius:8px;font-size:15px;font-weight:600}
+.leg{margin-top:18px}
+.leg h2{font-size:22px;margin-bottom:6px}
+.lgi{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
+.lgi .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 34px;box-sizing:border-box}
+.lgi b{display:block;font-size:15px;line-height:1.3}
+.lgi p{margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--mut)}
+.bn{margin-top:10px;padding:11px 14px;border-radius:16px;font-size:15px;line-height:1.35;font-weight:600}
 .sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;border:1px solid var(--line)}
-.stat{font:600 22px/1.2 'Iowan Old Style',Georgia,serif;margin:2px 0}
+.stat{font:600 22px/1.2 var(--serif);margin:2px 0}
 main{padding:0 16px;max-width:640px;margin:auto}
 section[hidden]{display:none}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
-label{display:block;font-size:14px;color:var(--mut);margin:10px 0 4px}
-input[type=date],input[type=number],select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit}
-.opts{display:flex;flex-wrap:wrap;gap:6px}
-.opts button{padding:9px 11px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;font:inherit;font-size:15px;text-align:left}
+.card{background:var(--card);border:1px solid rgba(249,173,177,.3);border-radius:24px;padding:18px;margin-bottom:12px;box-shadow:0 10px 30px -16px rgba(217,102,122,.45)}
+.sec{background:var(--card);border:1px solid rgba(249,173,177,.28);border-left:5px solid var(--rose);border-radius:22px;padding:16px 16px 18px;margin-top:14px;box-shadow:0 10px 28px -16px rgba(217,102,122,.4)}
+.sec h3{font-size:22px;line-height:1.2;margin:0 0 6px}
+.s-g{border-left-color:var(--g);background:linear-gradient(180deg,var(--gp),var(--card) 75%)}
+.s-b{border-left-color:var(--b);background:linear-gradient(180deg,var(--bp),var(--card) 75%)}
+.s-m{border-left-color:var(--m);background:linear-gradient(180deg,var(--mp),var(--card) 75%)}
+.s-t{border-left-color:var(--tq);background:linear-gradient(180deg,var(--tqp),var(--card) 75%)}
+.sec label:first-of-type{margin-top:6px}
+label{display:block;font-size:14px;font-weight:600;color:var(--mut);margin:14px 0 6px}
+input[type=date],input[type=number],select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;font-size:16px}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 22px}
+.opts{display:flex;flex-wrap:wrap;gap:9px}
+.opts button{padding:11px 16px;min-height:44px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;font:inherit;font-size:15px;text-align:left}
 .opts button[aria-pressed=true]{background:var(--muc);border-color:var(--muc);color:#fff}
 #muc button,#mw button{border-color:var(--b);background:var(--bp)}
 #muc button[aria-pressed=true],#mw button[aria-pressed=true]{background:var(--bm);border-color:var(--b);color:var(--ink);font-weight:600}
@@ -78,22 +93,23 @@ input[type=date],input[type=number],select,textarea{width:100%;padding:10px;bord
 #ltest button[aria-pressed=true]{background:var(--tqm);border-color:var(--tq);color:var(--ink);font-weight:600}
 #temp{border-color:var(--g);background:var(--gp)}
 #cp,#cd2,#co{border-color:var(--m);background:var(--mp)}
-.chk{display:flex;align-items:center;gap:8px;margin:6px 0;color:var(--ink);font-size:15px}
+.chk{display:flex;align-items:center;gap:12px;margin:2px 0;padding:9px 0;color:var(--ink);font-size:15px;line-height:1.3}
 .row{display:flex;gap:8px}.row>*{flex:1}
-.row>.nb{flex:0 0 52px;padding:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;font:inherit;font-size:20px}
-.btn{padding:12px;border-radius:10px;border:0;background:var(--temp);color:#fff;font:inherit;font-weight:600;width:100%;margin-top:14px}
+.row>.nb{flex:0 0 52px;padding:10px;border:1.5px solid var(--line);background:var(--card);color:var(--rose2);border-radius:50%;font:inherit;font-size:24px;line-height:1}
+.btn{padding:12px;border-radius:999px;border:0;background:var(--rose2);color:#fff;font:inherit;font-weight:600;width:100%;margin-top:14px}
 .btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line);margin-top:8px}
 .btn.del{background:transparent;color:var(--red);border:1px solid var(--red)}
 .day{color:var(--mut);font-size:14px;margin-top:2px}
 .scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
 .note{font-size:13px;color:var(--mut)}
+#dlab{font:italic 400 19px/1.3 var(--serif);text-align:center;color:var(--ink);margin:10px 0 2px}
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none}
 #toast.on{opacity:1}
 :focus-visible{outline:3px solid var(--temp);outline-offset:2px}
 </style>
 </head>
 <body>
-<header><h1>Hovie</h1><div class="day" id="sub"></div></header>
+<header class="hd"><img src="icon-192.png" alt="" width="50" height="50"><div><h1>Hovie</h1><div class="tag">suivi du cycle</div></div><div id="sub" hidden></div></header>
 <nav role="tablist">
 <button role="tab" aria-selected="true" data-t="jour">Saisie</button>
 <button role="tab" aria-selected="false" data-t="graph">Graphique</button>
@@ -112,7 +128,9 @@ input[type=date],input[type=number],select,textarea{width:100%;padding:10px;bord
 <div class="day" id="cd"></div>
 <div id="pbox"></div>
 <div id="st2"></div>
-<label for="temp">Température au réveil (°C)</label>
+</div>
+<div class="sec s-g"><h3>🌡️ Température</h3>
+<label for="temp">Au réveil (°C)</label>
 <input type="number" id="temp" step="0.01" min="34" max="40" inputmode="decimal" placeholder="36.45">
 <label>Perturbations de la veille <small>(par exemple de l’alcool la veille). Si tu en coches une, la température de ce jour n’est pas comptée dans la courbe du graphique.</small></label>
 <div class="chk"><input type="checkbox" class="pt" id="p1" value="nuit"><label for="p1" style="margin:0;color:var(--ink)">Nuit courte ou agitée</label></div>
@@ -120,26 +138,33 @@ input[type=date],input[type=number],select,textarea{width:100%;padding:10px;bord
 <div class="chk"><input type="checkbox" class="pt" id="p3" value="alcool"><label for="p3" style="margin:0;color:var(--ink)">Alcool</label></div>
 <div class="chk"><input type="checkbox" class="pt" id="p4" value="maladie"><label for="p4" style="margin:0;color:var(--ink)">Maladie ou fièvre</label></div>
 <div class="chk"><input type="checkbox" class="pt" id="p5" value="heure"><label for="p5" style="margin:0;color:var(--ink)">Heure de lever différente</label></div>
-<label>Glaire</label>
+</div>
+<div class="sec s-b"><h3>💧 Glaire</h3>
 <div class="opts" id="muc"></div>
 <div class="opts w" id="mw" style="margin-top:6px"></div>
 <div class="chk"><input type="checkbox" id="sp"><label for="sp" style="margin:0;color:var(--ink)">Spotting (saignement léger hors règles)</label></div>
 <div class="chk"><input type="checkbox" id="gj"><label for="gj" style="margin:0;color:var(--ink)">Glaire gélatineuse (claire, compacte, translucide, type jello, qui ne colle pas). Non comptée dans le graphique.</label></div>
-<label>Test d’ovulation</label>
+</div>
+<div class="sec s-t"><h3>🧪 Test d’ovulation</h3>
 <div class="opts" id="ltest"></div>
-<label>Col</label>
+<p class="note" style="margin:10px 0 0">N’hésite pas à faire un test chaque jour : tu verras la ligne du test devenir de plus en plus foncée. Avec une bandelette, le test est positif quand la ligne du test est aussi foncée ou plus foncée que la ligne de contrôle (avec un test numérique, l’écran affiche le résultat). Tester chaque jour réduit aussi le risque de manquer la fenêtre de la LH.</p>
+</div>
+<div class="sec s-m"><h3>🌸 Col</h3>
 <div class="row">
 <select id="cp" aria-label="Position du col"><option value="">Position</option><option value="B">Bas</option><option value="M">Moyen</option><option value="H">Haut</option></select>
 <select id="cd2" aria-label="Dureté du col"><option value="">Dureté</option><option value="F">Ferme</option><option value="S">Mou</option></select>
 <select id="co" aria-label="Ouverture du col"><option value="">Ouverture</option><option value="F">Fermé</option><option value="O">Ouvert</option></select>
 </div>
-<label>Relations</label>
+</div>
+<div class="sec"><h3>♥ Relations</h3>
 <div class="opts" id="rel"></div>
-<label>Repères pour le graphique</label>
+</div>
+<div class="sec"><h3>✨ Repères pour le graphique</h3>
 <div class="opts" id="rep"></div>
 <div id="repinfo"></div>
 <p class="note">Les repères de température et l’ovulation ne se placent que sur un seul jour par cycle ; les lignes horizontale et verticale peuvent être placées sur autant de jours que tu veux. La ligne de température utilise la température de ce jour.</p>
-<label for="nt">Notes</label>
+</div>
+<div class="sec"><h3>📝 Notes</h3>
 <textarea id="nt" rows="2"></textarea>
 </div>
 </section>
@@ -150,12 +175,12 @@ input[type=date],input[type=number],select,textarea{width:100%;padding:10px;bord
 <div class="scroll" style="margin-top:10px"><div id="chart"></div></div>
 <h2 style="margin:14px 0 6px">Vue d’ensemble</h2>
 <div class="card" style="padding:8px"><div id="mini"></div></div>
-<p class="note">La température, la glaire et le col sont tracés ici (le col apparaît quand position, dureté et ouverture sont toutes remplies). Touche un jour du graphique pour ouvrir sa fiche et le modifier. Vert : température, bleu : glaire, mauve : col (en vue combinée, l’échelle de la glaire est à droite). Une barre rouge marque un spotting. Un petit rectangle bleu en pointillé marque une glaire gélatineuse (claire, compacte, type jello) : elle n’est pas comptée dans la courbe de glaire. Les petits pointillés noirs sont tes repères personnels : ligne horizontale à la température du jour, ligne verticale sur le jour choisi. Un cercle vide marque un jour perturbé : il est affiché, mais la courbe de température ne passe pas par lui. Les courbes sont reliées même quand il manque un jour : le segment est alors en pointillé. <span style="background:#F2C230;opacity:.6;padding:0 8px;border-radius:3px">&nbsp;</span> Bande jaune : période fertile (durée − 22 jours jusqu’à durée − 10 jours). Pendant le cycle, elle est anticipée avec la durée moyenne de tes cycles. Quand le cycle est terminé, elle est corrigée avec sa vraie durée. <span style="background:#E0569A;opacity:.5;padding:0 8px;border-radius:3px">&nbsp;</span> Bande rose : période fertile observée, du 5e jour avant l’ovulation au jour suivant. Elle apparaît seulement si tu places toi-même le repère « Ovulation ». <span style="background:#F08C28;opacity:.6;padding:0 8px;border-radius:3px">&nbsp;</span> Orange pâle : les 4 jours avant le premier test d’ovulation positif (durée de vie des spermatozoïdes) ; avec les 3 jours d’ovulation, ça forme la période fertile LH, projetée sur les cycles à venir avec la moyenne de tes cycles avec tests. Bande orange : l’ovulation. Si tu la places toi-même, elle couvre 1 jour. Sinon, elle est estimée sur 3 jours : durée du cycle − 14 jours, plus ou moins 1 jour (avec la durée réelle du cycle une fois terminé, avec la durée moyenne pour le cycle en cours). Si tu as noté un test d’ovulation positif, les 3 jours commencent au premier jour du test. Les 5 premiers jours des bandes jaune et rose, plus pâles, correspondent à la durée de vie des spermatozoïdes. <span style="background:var(--b);display:inline-block;width:3px;height:14px;vertical-align:middle"></span> Ligne bleue : le dernier jour de glaire blanc d’œuf du cycle, placée automatiquement par l’appli. Pic turquoise : test d’ovulation positif (un seul pic large quand plusieurs jours se suivent). <svg width="20" height="20" viewBox="-10 -10 20 20" style="vertical-align:middle" aria-hidden="true"><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" fill="var(--red)"/></svg> Relation non protégée. <svg width="20" height="20" viewBox="-10 -10 20 20" style="vertical-align:middle" aria-hidden="true"><rect x="-9" y="-9" width="18" height="18" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6"/><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" transform="scale(.62)" fill="var(--red)"/></svg> Relation protégée. Les phases infertiles ne sont pas encore calculées : elles viendront avec les règles de la méthode.</p>
+<div class="leg"><h2>Comment lire le graphique</h2><p class="note" style="margin:0 0 6px">Touche un jour du graphique pour ouvrir sa fiche et le modifier. Voici ce que chaque élément veut dire.</p><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--g)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--g)"/><circle cx="19" cy="17" r="2.6" fill="var(--g)"/></svg></span><div><b>Température</b><p>Ta température au réveil, jour après jour. Les points sont reliés entre eux. S’il manque un jour, le segment qui le traverse est en pointillé.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="6" fill="var(--card)" stroke="var(--g)" stroke-width="2.6"/></svg></span><div><b>Jour perturbé</b><p>Un jour où tu as coché une perturbation de la veille (alcool, nuit courte, stress…). Le cercle vide est à la vraie hauteur de la température, mais la courbe ne passe pas par lui : cette température n’est pas comptée.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--b)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--b)"/><circle cx="19" cy="17" r="2.6" fill="var(--b)"/></svg></span><div><b>Glaire</b><p>Ta glaire, de « Règles » en bas jusqu’à « Blanc d’œuf » en haut. En vue combinée, l’échelle est écrite à droite du graphique.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--m)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--m)"/><circle cx="19" cy="17" r="2.6" fill="var(--m)"/></svg></span><div><b>Col</b><p>La position, la dureté et l’ouverture du col, combinées : tout en bas quand il est bas, ferme et fermé, tout en haut quand il est haut, mou et ouvert. Il apparaît seulement les jours où les trois choix sont remplis.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="5" y="19" width="20" height="6" rx="2" fill="var(--red)" opacity=".6"/></svg></span><div><b>Spotting</b><p>Une petite barre rouge au bas du graphique les jours où tu as noté un saignement léger hors règles.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="6" y="11" width="18" height="9" rx="3" fill="none" stroke="var(--b)" stroke-width="2" stroke-dasharray="3 2"/></svg></span><div><b>Glaire gélatineuse</b><p>Un petit rectangle bleu en pointillé marque les jours de glaire claire, compacte et translucide (type jello). Elle n’est pas comptée dans la courbe de glaire.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(242,194,48,.5);"></span><div><b>Bande jaune : période fertile</b><p>Du jour (durée − 22) au jour (durée − 10). Pendant le cycle, elle est anticipée avec la durée moyenne de tes cycles ; une fois le cycle terminé, elle est corrigée avec sa vraie durée. Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes. Elle devient plus discrète quand tu notes ton ovulation ou que tu utilises les tests LH.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(224,86,154,.45);"></span><div><b>Bande rose : période fertile observée</b><p>Du 5e jour avant l’ovulation jusqu’au jour qui suit. Elle apparaît seulement si tu places toi-même le repère « Ovulation ». Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.6);"></span><div><b>Bande orange : ovulation</b><p>Si tu la places toi-même, elle couvre 1 jour. Sinon, elle est estimée sur 3 jours : durée du cycle − 14 jours, plus ou moins 1 jour (avec la vraie durée du cycle une fois terminé, avec la durée moyenne pour le cycle en cours). Avec un test d’ovulation positif, les 3 jours commencent au premier jour du test.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.2);"></span><div><b>Orange pâle : période fertile LH</b><p>Les 5 jours avant le premier test d’ovulation positif (durée de vie des spermatozoïdes), suivis des 3 jours d’ovulation en orange. Pour les cycles à venir, elle est projetée avec la moyenne de tes cycles avec tests.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="13" y="3" width="4" height="24" rx="2" fill="var(--b)" opacity=".8"/></svg></span><div><b>Ligne bleue : pic de glaire</b><p>Le dernier jour de glaire « Blanc d’œuf » du cycle. L’appli la place automatiquement.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><polygon points="5,26 15,6 25,26" fill="var(--tq)" fill-opacity=".45" stroke="var(--tq)" stroke-width="1.6"/></svg></span><div><b>Pic turquoise : test d’ovulation positif</b><p>Si plusieurs jours de suite sont positifs, ils forment un seul grand pic.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><line x1="3" y1="10" x2="27" y2="10" stroke="var(--g)" stroke-width="2" stroke-dasharray="4 3"/><line x1="3" y1="20" x2="27" y2="20" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="2 4"/></svg></span><div><b>Tes repères</b><p>Les lignes « plus haute des basses » (ligne verte en pointillé, avec une deuxième ligne 0,2 °C plus haut), les gros points numérotés « Température haute 1, 2 et 3 », et tes lignes horizontale et verticale en petits pointillés noirs. Tu les places depuis la fiche du jour.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" fill="var(--red)"/></g></svg></span><div><b>Cœur : relation non protégée</b><p>Un cœur rouge au bas du graphique, au jour de la relation.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><rect x="-9" y="-9" width="18" height="18" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6"/><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" transform="scale(.62)" fill="var(--red)"/></g></svg></span><div><b>Cœur dans un carré : relation protégée</b><p>Un cœur rouge entouré d’un carré. Si les deux ont lieu le même jour, ils s’affichent côte à côte.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><text x="15" y="15" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">12</text><text x="15" y="26" text-anchor="middle" font-size="9" fill="var(--mut)">3</text></svg></span><div><b>Jour du cycle et date</b><p>Sous le graphique, le gros chiffre est le jour du cycle et le petit chiffre est la date.</p></div></div><p class="note" style="margin-top:8px">Les phases infertiles ne sont pas encore calculées : elles viendront avec les règles de la méthode.</p></div>
 </section>
 <section id="cal" hidden>
 <div class="row" style="align-items:center;margin-bottom:8px"><button class="nb" id="cpm" aria-label="Mois précédent">‹</button><h2 id="cmt" style="text-align:center;margin:0"></h2><button class="nb" id="cnm" aria-label="Mois suivant">›</button></div>
 <div class="cg" id="cgrid"></div>
-<p class="note" style="margin-top:10px"><span class="sw" style="background:rgba(242,194,48,.5)"></span> Période fertile : pour un cycle terminé, du jour (durée − 22) au jour (durée − 10) ; pour le cycle en cours et les cycles prévus, calculée avec la durée moyenne. <span class="sw" style="background:rgba(224,86,154,.45)"></span> Période fertile observée (ovulation − 5 jours à + 1 jour), seulement si tu as placé toi-même l’ovulation, et le jour d’ovulation lui-même en <span class="sw" style="background:rgba(240,140,40,.55)"></span> orange. L’orange pâle (4 jours) précède l’orange des 3 jours d’ovulation quand tu utilises les tests LH : c’est la période fertile LH. L’orange couvre 3 jours quand l’ovulation est estimée (durée − 14 jours, plus ou moins 1 jour), seulement si tu ne la places pas toi-même. Avec un test d’ovulation positif, les 3 jours commencent au premier jour du test. <span class="sw" style="background:rgba(215,25,32,.7)"></span> Règles. Bordure pointillée : début de cycle prévu (durée moyenne arrondie). Les cycles futurs sont des estimations. Le petit chiffre est la date, le gros chiffre est le jour du cycle. <span class="sw" style="background:rgba(60,130,200,.5)"></span> Bleu : dernier jour de glaire blanc d’œuf du cycle, seulement si tu places toi-même l’ovulation. Touche un jour pour ouvrir sa fiche.</p>
+<div class="leg"><h2>Comment lire le calendrier</h2><p class="note" style="margin:0 0 6px">Touche un jour pour ouvrir sa fiche. Voici ce que chaque couleur veut dire.</p><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><text x="15" y="17" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">12</text><text x="6" y="9" font-size="8" fill="var(--mut)">3</text></svg></span><div><b>Gros chiffre et petit chiffre</b><p>Le gros chiffre est le jour du cycle. Le petit chiffre, dans le coin, est la date du mois.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(242,194,48,.5);"></span><div><b>Jaune : période fertile</b><p>Pour un cycle terminé, du jour (durée − 22) au jour (durée − 10). Pour le cycle en cours et les cycles prévus, elle est calculée avec la durée moyenne. Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes. Elle est plus discrète si tu utilises ton ovulation notée ou les tests LH.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(224,86,154,.45);"></span><div><b>Rose : période fertile observée</b><p>Du 5e jour avant l’ovulation jusqu’au jour qui suit, seulement si tu as placé toi-même l’ovulation.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.6);"></span><div><b>Orange : ovulation</b><p>Le jour d’ovulation que tu as placé, avec un petit point orange. Si tu ne l’as pas placée, elle est estimée sur 3 jours (durée − 14 jours, plus ou moins 1 jour). Avec un test d’ovulation positif, les 3 jours commencent au premier jour du test.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.2);"></span><div><b>Orange pâle : période fertile LH</b><p>Les 5 jours avant le premier test d’ovulation positif, suivis des 3 jours d’ovulation en orange. Elle est projetée sur les cycles à venir avec la moyenne de tes cycles avec tests.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(215,25,32,.7);"></span><div><b>Rouge : règles</b><p>Les jours où tu as noté « Règles ».</p></div></div><div class="lgi"><span class="ic" style="background:transparent;border:2px dashed var(--red)"></span><div><b>Bordure pointillée : début de cycle prévu</b><p>Le premier jour du prochain cycle, estimé avec la durée moyenne de tes cycles (arrondie). Les cycles futurs sont des estimations.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(60,130,200,.5);"></span><div><b>Bleu : dernier jour de belle glaire</b><p>Le dernier jour de glaire « Blanc d’œuf » du cycle, seulement si tu places toi-même l’ovulation.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" fill="var(--red)"/></g></svg></span><div><b>Cœurs : relations</b><p>Un cœur pour une relation non protégée, un cœur dans un carré pour une relation protégée.</p></div></div><div class="lgi"><span class="ic" style="background:transparent;border:2px solid var(--temp)"></span><div><b>Contour bleu : aujourd’hui</b><p>La date du jour.</p></div></div></div>
 </section>
 <section id="stats" hidden>
 <div id="statbody"></div>
@@ -166,14 +191,12 @@ input[type=date],input[type=number],select,textarea{width:100%;padding:10px;bord
 <p class="note">Un résumé s’ajoute ici quand un cycle est terminé, c’est-à-dire quand les règles suivantes ont commencé. Les cycles de moins de 16 jours ne sont pas calculés. Les jours sont comptés à partir du jour 1 du cycle.</p>
 </section>
 <section id="data" hidden>
-<div class="card">
-<h2>Sauvegarde</h2>
-<p class="note">Tes données restent sur cet appareil seulement. Exporte-les régulièrement, surtout avant de changer de téléphone.</p>
-<button class="btn" id="exp">Exporter mes données</button>
-<button class="btn alt" id="impb">Importer un fichier</button>
-<input type="file" id="imp" accept="application/json,.json" hidden>
-<button class="btn del" id="wipe" style="margin-top:14px">Tout effacer</button>
-</div>
+<div class="card"><h2>Quand l’ovulation survient-elle ?</h2>
+<p class="note">Même quand la durée du cycle est connue, le jour de l’ovulation varie beaucoup d’une personne et d’un cycle à l’autre. Dans une étude de 75 981 cycles (32 595 femmes qui utilisaient un test d’ovulation), pour les cycles de 28 jours, l’ovulation a eu lieu le plus souvent au jour 15 (27 %), puis au jour 16 (21 %) et au jour 14 (20 %). Les jours d’ovulation observés s’étalaient sur 10 jours.</p>
+<p class="note">Un résumé présenté au congrès ISGE en 2018 rapporte aussi, pour un cycle de 28 jours, une ovulation possible dès le jour 11 et jusqu’au jour 20. C’est pourquoi l’appli estime l’ovulation sur 3 jours et affiche une période fertile plus large : le calendrier seul ne permet pas de prédire le jour exact.</p>
+<p class="note">Ces données viennent de femmes qui essaient de concevoir, et la première étude a été financée par le fabricant du test utilisé. Les pourcentages ne s’appliquent donc pas forcément à toutes les personnes.</p>
+<p class="note"><b>Si tu utilises surtout le calendrier, retiens que ton ovulation peut tomber plusieurs jours avant ou après la date estimée.</b></p>
+<p class="note">Références : I. Soumpasis, B. Grace et S. Johnson, Human Reproduction Open, 2020, hoaa011 (doi 10.1093/hropen/hoaa011) ; résumé du congrès ISGE 2018.</p></div>
 <div class="card"><h2>Pourquoi 3 jours pour l’ovulation ?</h2>
 <p class="note">Même avec un test d’ovulation positif, on ne peut pas savoir avec certitude quel jour exact l’ovulation a lieu. Dans les études, elle survient le plus souvent dans les 1 à 2 jours qui suivent le pic de LH, mais le moment varie d’un cycle à l’autre et d’une personne à l’autre. L’appli montre donc 3 jours plutôt qu’un seul. Sans test positif, elle fait la même chose autour du jour estimé avec la durée du cycle (durée − 14 jours, plus ou moins 1 jour). Ce sont des estimations, pas une certitude.</p>
 <p class="note">Pour l’estimation sans test : on suppose environ 14 jours entre l’ovulation et les règles suivantes (la phase d’après l’ovulation est souvent comptée à 13 ou 14 jours). Cette durée n’est pas fixe et varie d’une personne à l’autre et d’un cycle à l’autre, alors l’appli ajoute 1 jour de chaque côté : durée − 15 à durée − 13. La plus grande variation vient surtout de la première partie du cycle, avant l’ovulation, donc l’estimation peut quand même être décalée de plusieurs jours.</p>
@@ -183,6 +206,14 @@ input[type=date],input[type=number],select,textarea{width:100%;padding:10px;bord
 <p class="note">Référence : A. J. Wilcox, C. R. Weinberg et D. D. Baird, New England Journal of Medicine, 1995, 333(23):1517-1521.</p></div>
 <div class="card"><h2>À savoir</h2>
 <p class="note">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel : ses estimations ne remplacent ni un avis médical ni les règles de ta méthode. En cas de doute, consulte une professionnelle de la santé ou ton instructrice.</p></div>
+<div class="card">
+<h2>Sauvegarde</h2>
+<p class="note">Tes données restent sur cet appareil seulement. Exporte-les régulièrement, surtout avant de changer de téléphone.</p>
+<button class="btn" id="exp">Exporter mes données</button>
+<button class="btn alt" id="impb">Importer un fichier</button>
+<input type="file" id="imp" accept="application/json,.json" hidden>
+<button class="btn del" id="wipe" style="margin-top:14px">Tout effacer</button>
+</div>
 </section>
 <footer class="note" style="margin:18px 0 6px;text-align:center">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel.</footer>
 </main>
@@ -310,12 +341,13 @@ cyc.forEach(c=>{c.tpN=c.tp&&!c.bad?diff(c.s,c.tp)+1:null;c.ovN=c.ov&&!c.bad?diff
 const gl=cyc.filter(c=>c.done&&!c.bad&&c.tpN),go=cyc.filter(c=>c.done&&!c.bad&&c.ovN);
 const offLH=gl.length?mean(gl.map(c=>c.L-c.tpN)):null,offObs=go.length?mean(go.map(c=>c.L-c.ovN)):null,Dmax=gl.length?Math.max(...gl.map(c=>c.L-(c.tpN+2))):null;
 cyc.forEach(c=>{if(c.bad){c.eo=null;return}if(c.ov){c.eo={d:c.ov,auto:false};return}if(c.tp){c.eo={d:addDays(c.tp,1),auto:true,lh:true};return}if(!c.done&&offLH!==null){const L2=c.L!=null?c.L:Math.round(A);c.eo={d:addDays(c.s,Math.round(L2-offLH)),auto:true,lh:true,proj:true};return}const Lx=c.L!=null?c.L:(A!==null?Math.round(A):null);c.eo=Lx!=null&&Lx>=15?{d:addDays(c.s,Lx-15),auto:true}:null});
-return{cyc,A,offLH,offObs,Dmax,nLH:gl.length,nObs:go.length,ml:mlAvg,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
+return{cyc,A,nBad:rl.filter(x=>x<16).length,offLH,offObs,Dmax,nLH:gl.length,nObs:go.length,ml:mlAvg,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
 function locate(M,d){let r=-1;for(let i=0;i<M.cyc.length;i++){if(M.cyc[i].s<=d)r=i;else break}return r}
 function frame(M,c,dayN){
 let h='<div class="pbox"><div class="ptitle">Jour '+dayN+' du cycle <small>'+(c.pred?'prévu, début le ':'commencé le ')+fmt(c.s)+'</small></div>';
-if(c.done||c.bad)return h+'</div>';
-if(M.A===null)return h+'<p class="note" style="margin:8px 0 0">Les repères apparaîtront après ton premier cycle complet.</p></div>';
+if(c.bad)return h+'<p class="note" style="margin:8px 0 0">Ce cycle dure moins de 16 jours : il n’est pas calculé.</p></div>';
+if(c.done)return h+'<p class="note" style="margin:8px 0 0">Ce cycle est terminé : les repères s’affichent seulement pour le cycle en cours.</p></div>';
+if(M.A===null)return h+'<p class="note" style="margin:8px 0 0">Les repères apparaîtront après ton premier cycle complet de 16 jours ou plus (il faut deux débuts de règles).'+(M.nBad?' '+M.nBad+' cycle'+(M.nBad>1?'s':'')+' de moins de 16 jours ignoré'+(M.nBad>1?'s':'')+'.':'')+'</p></div>';
 const sc=[M.Lmin,Math.round(M.A),M.Lmax],A=M.A,v3=v=>`<div class="pv3"><span>${v[0]}</span><span>${v[1]}</span><span>${v[2]}</span></div><div class="trk"><i></i><i></i><i></i></div>`;
 const box=(big,sub,bar)=>`<div class="pr"><div class="pl"><b class="pv">${big}</b><span class="plab">${sub}</span></div><div class="pb">${bar}</div></div>`;
 h+=box(...(()=>{const v=sc.map(L=>{const n=L+1-dayN;return n>0?n+' j':(n===0?'aujourd’hui':'en retard')});return[v[1],'avant les règles',v3(v)]})());
@@ -325,15 +357,16 @@ if(st===1){if(one)return box('aujourd’hui',labIn,'');const left=w[1]-dayN,pct=
 return box(left>0?left+' j':'dernier jour',labIn,`<div class="trk"><i style="left:calc(${pct}% - 6px);border-color:var(--ink)"></i></div><div class="pn2"><span>début</span><span>fin</span></div>`)}
 return box(one?'passée':'terminée',labIn,'')};
 const cl=a=>[Math.max(1,a[0]),a[1]];
-h+=row('avant la période fertile','avant la fin de la période fertile',[cl([sc[0]-22,sc[0]-10]),cl([Math.floor(A-22),Math.ceil(A-10)]),cl([sc[2]-22,sc[2]-10])],null,false);
-const lhAct=c.tpN?cl([c.tpN-4,c.tpN+2]):null,lhW=M.offLH!==null?sc.map(L=>{const f=Math.round(L-M.offLH);return cl([f-4,f+2])}):null;
-if(lhW||lhAct)h+=row('avant la période fertile LH','avant la fin de la période fertile LH',lhW||[lhAct,lhAct,lhAct],lhAct,false);
+const rCal=row('avant la période fertile','avant la fin de la période fertile',[cl([sc[0]-22,sc[0]-10]),cl([Math.floor(A-22),Math.ceil(A-10)]),cl([sc[2]-22,sc[2]-10])],null,false);
+const lhAct=c.tpN?cl([c.tpN-5,c.tpN+2]):null,lhW=M.offLH!==null?sc.map(L=>{const f=Math.round(L-M.offLH);return cl([f-5,f+2])}):null;
+let rLH='';if(lhW||lhAct)rLH=row('avant la période fertile LH','avant la fin de la période fertile LH',lhW||[lhAct,lhAct,lhAct],lhAct,false);
 const obAct=c.ovN?cl([c.ovN-5,c.ovN+1]):null,obW=M.offObs!==null?sc.map(L=>{const o=Math.round(L-M.offObs);return cl([o-5,o+1])}):null;
-if(obW||obAct)h+=row('avant la période fertile observée','avant la fin de la période fertile observée',obW||[obAct,obAct,obAct],obAct,false);
+let rObs='';if(obW||obAct)rObs=row('avant la période fertile observée','avant la fin de la période fertile observée',obW||[obAct,obAct,obAct],obAct,false);
 const ovW=M.offLH!==null?sc.map(L=>{const f=Math.round(L-M.offLH);return[f,f+2]}):sc.map(L=>[L-15,L-13]);
-h+=row('avant l’ovulation','avant la fin des 3 jours d’ovulation',ovW,c.tpN?[c.tpN,c.tpN+2]:null,false);
+const lhOv=M.offLH!==null||c.tpN,rOv=row('avant l’ovulation','avant la fin des 3 jours d’ovulation',ovW,c.tpN?[c.tpN,c.tpN+2]:null,false);
 const ooAct=c.ovN?[c.ovN,c.ovN]:null,ooW=M.offObs!==null?sc.map(L=>{const o=Math.round(L-M.offObs);return[o,o]}):null;
-if(ooW||ooAct)h+=row('avant l’ovulation observée','ovulation observée',ooW||[ooAct,ooAct,ooAct],ooAct,true);
+let rOO='';if(ooW||ooAct)rOO=row('avant l’ovulation observée','ovulation observée',ooW||[ooAct,ooAct,ooAct],ooAct,true);
+h+=rObs+rOO+rLH+(lhOv?rOv:'')+rCal+(lhOv?'':rOv);
 h+='<div class="pr"><div></div><div class="pb"><div class="lgd"><span>le cycle le plus court</span><span>moyenne</span><span>le plus long cycle</span></div></div></div>';
 h+='<p class="note" style="margin:6px 0 0">La moyenne n’est qu’un repère : ton cycle peut tomber n’importe où entre les deux, ou même en dehors.'+(M.Lmin===M.Lmax?' Pour l’instant, tu as un seul cycle terminé : il n’y a pas encore de fourchette.':'')+'</p>';
 return h+'</div>'}
@@ -349,7 +382,6 @@ const post=eo&&n>(eo.auto?1:0),a=Math.max(1,Math.floor((c.A||0)-22)),z=Math.ceil
 if(post)b+=bn('rgba(224,86,154,.2)','Jour post-ovulation : '+n+es);
 else if(eo&&eo.auto&&Math.abs(n)<=1)b+=bn('rgba(240,140,40,.28)','Ovulation probable : jours '+(od-1)+' à '+(od+1)+(eo.lh?(eo.proj?' (estimée avec la moyenne de tes tests d’ovulation)':' (estimée à partir de ton test d’ovulation positif)'):' (estimée avec la moyenne des cycles)'));
 else if(eo&&n===0)b+=bn('rgba(240,140,40,.28)','Jour d’ovulation');
-if(!post&&c.A!==null&&dayN>=a&&dayN<=z)b+=bn('rgba(242,194,48,.28)','Période fertile selon la moyenne de tes autres cycles (jours '+a+' à '+z+')');
 let lhA=false;
 if(!c.done&&!c.pred&&c.tpN&&M.nLH>=2&&M.Dmax!==null&&dayN-(c.tpN+2)>=M.Dmax+1){lhA=true;b+=bn('rgba(215,25,32,.14)','🧪 Fais un test de grossesse : tu dépasses maintenant la plus longue durée observée après l’ovulation dans tes cycles avec tests positifs.')}
 if(!lhA&&eo&&n>=17&&!c.pred)b+=bn('rgba(215,25,32,.14)','🧪 '+n+' jours après l’ovulation : pense à faire un test de grossesse.')}
@@ -364,8 +396,9 @@ for(let i=0;i<lead;i++)h+='<div></div>';
 for(let n=1;n<=dim;n++){const d=iso(new Date(CM.y,CM.m,n)),e=D.e[d]||{},ci=locate(M,d),c=ci>=0?M.cyc[ci]:null;let cls='cc',ov='',cdv='',dot='';
 if(c){const dayN=diff(c.s,d)+1;cdv=dayN;let w=null;
 if(c.bad)w=null;else if(c.done)w=[c.L-22,c.L-10,c.L-18];else if(M.A!==null){const a0=Math.floor(M.A-22);w=[a0,Math.ceil(M.A-10),a0+4]}
-if(w&&dayN>=w[0]&&dayN<=w[1])ov+='<i style="background:rgba(242,194,48,'+(dayN<=w[2]?.16:.36)+')"></i>';
-if(c.eo){const od=diff(c.s,c.eo.d)+1;if(c.eo.auto){if(Math.abs(dayN-od)<=1)ov+='<i style="background:rgba(240,140,40,.45)"></i>';if(c.eo.lh&&dayN>=od-5&&dayN<=od-2)ov+='<i style="background:rgba(240,140,40,.16)"></i>'}else{if(dayN>=od-5&&dayN<=od+1)ov+='<i style="background:rgba(224,86,154,'+(dayN<od?.14:.32)+')"></i>';if(dayN===od){dot='<span class="od"></span>';ov+='<i style="background:rgba(240,140,40,.45)"></i>'}}}
+const dsc=c.ov||c.tp||(!c.done&&(M.offLH!==null||M.offObs!==null));
+if(w&&dayN>=w[0]&&dayN<=w[1])ov+='<i style="background:rgba(242,194,48,'+(dsc?(dayN<=w[2]?.05:.13):(dayN<=w[2]?.16:.36))+')"></i>';
+if(c.eo){const od=diff(c.s,c.eo.d)+1;if(c.eo.auto){if(Math.abs(dayN-od)<=1)ov+='<i style="background:rgba(240,140,40,.45)"></i>';if(c.eo.lh&&dayN>=od-6&&dayN<=od-2)ov+='<i style="background:rgba(240,140,40,.16)"></i>'}else{if(dayN>=od-5&&dayN<=od+1)ov+='<i style="background:rgba(224,86,154,'+(dayN<od?.14:.32)+')"></i>';if(dayN===od){dot='<span class="od"></span>';ov+='<i style="background:rgba(240,140,40,.45)"></i>'}}}
 if(c.pk===d&&c.ov)ov+='<i style="background:rgba(60,130,200,.5)"></i>';
 if(e.m===0)ov+='<i style="background:rgba(215,25,32,.7)"></i>';
 if(dayN===1&&c.pred)cls+=' pred'}
@@ -411,9 +444,10 @@ const line=(pts,col)=>{let o='';for(let k=1;k<pts.length;k++){const a=pts[k-1],b
 const tp=days.filter(x=>x.e&&x.e.t!=null).map(x=>({i:x.i,y:yT(x.e.t),e:x.e}));
 const mp=days.filter(x=>x.e&&x.e.m!=null).map(x=>({i:x.i,y:yM(x.e.m)}));
 const cp=days.map(x=>({i:x.i,v:colScore(x.e)})).filter(q=>q.v!==null).map(q=>({i:q.i,y:yC(q.v)}));
-const band=(col,a,b,pale,op)=>{for(let d=Math.max(1,a);d<=Math.min(N,b);d++)s+=`<rect x="${X(d-1)-cw/2}" y="${T0}" width="${cw}" height="${C1-T0}" fill="${col}" fill-opacity="${d<=pale?.14:op}"/>`};
-if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16)band('#F2C230',Lc-22,Lc-10,Lc-18,.32)}else if(M.A!==null){const a0=Math.floor(M.A-22);band('#F2C230',a0,Math.ceil(M.A-10),a0+4,.32)}
-if(od){if(eo.auto){band('#F08C28',od-1,od+1,0,.4);if(eo.lh)band('#F08C28',od-5,od-2,od-2,.4)}else{band('#E0569A',od-5,od+1,od-1,.3);band('#F08C28',od,od,0,.4)}}
+const disc=!!(mc&&(mc.ov||mc.tp))||(ci===cs.length-1&&(M.offLH!==null||M.offObs!==null));
+const band=(col,a,b,pale,op,pop=.14)=>{for(let d=Math.max(1,a);d<=Math.min(N,b);d++)s+=`<rect x="${X(d-1)-cw/2}" y="${T0}" width="${cw}" height="${C1-T0}" fill="${col}" fill-opacity="${d<=pale?pop:op}"/>`};
+if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16)band('#F2C230',Lc-22,Lc-10,Lc-18,disc?.1:.32,disc?.04:.14)}else if(M.A!==null){const a0=Math.floor(M.A-22);band('#F2C230',a0,Math.ceil(M.A-10),a0+4,disc?.1:.32,disc?.04:.14)}
+if(od){if(eo.auto){band('#F08C28',od-1,od+1,0,.4);if(eo.lh)band('#F08C28',od-6,od-2,od-2,.4)}else{band('#E0569A',od-5,od+1,od-1,.3);band('#F08C28',od,od,0,.4)}}
 {const td=days.filter(x=>x.e&&x.e.tp).map(x=>x.i);let k=0;while(k<td.length){let m=k;while(m+1<td.length&&td[m+1]===td[m]+1)m++;const x0=X(td[k])-9,x1=X(td[m])+9,cx=(x0+x1)/2,ay=C1-(C1-T0)*.6;s+=`<polygon points="${x0},${C1} ${cx},${ay} ${x1},${C1}" fill="var(--tq)" fill-opacity=".4" stroke="var(--tq)" stroke-width="1.5"/><text x="${cx}" y="${ay-4}" text-anchor="middle" fill="var(--tq)" font-weight="600">Test +</text>`;k=m+1}}
 const pk=days.filter(x=>x.e&&x.e.m===5).pop();
 if(pk){const x=X(pk.i);s+=`<line x1="${x}" x2="${x}" y1="${T0}" y2="${C1}" stroke="var(--b)" stroke-width="3" stroke-opacity=".75"/><text x="${x}" y="${T0-4}" text-anchor="middle" fill="var(--b)" font-weight="600">Pic de glaire</text>`}
