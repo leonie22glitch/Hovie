@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
+<meta name="hovie-version" content="2026-10-04-1">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -115,6 +116,13 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 #wsb::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
 #wsb[aria-checked=true]{background:var(--s)}
 #wsb[aria-checked=true]::after{left:25px}
+#upd{position:fixed;left:10px;right:10px;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:80;background:#3B2431;color:#fff;border-radius:22px;padding:14px 16px;box-shadow:0 8px 26px rgba(0,0,0,.32)}
+#upd[hidden]{display:none}
+#upd b{display:block;font-size:16px;margin-bottom:2px}
+#upd p{margin:0 0 12px;font-size:13.5px;color:#EBDCE0;line-height:1.35}
+#upd .ub{display:flex;align-items:center;gap:14px}
+#updy{flex:1;min-height:46px;border:0;border-radius:23px;background:var(--rose);color:#3B2431;font:inherit;font-size:16px;font-weight:700}
+#updn{border:0;background:transparent;color:#C9B3BA;font:inherit;font-size:14px;padding:12px 6px}
 #ltest button{border-color:var(--tq);background:var(--tqp)}
 #ltest button[aria-pressed=true]{background:var(--tqm);border-color:var(--tq);color:var(--ink);font-weight:600}
 #muc{display:grid;grid-template-columns:1fr 1fr;gap:6px}
@@ -313,9 +321,12 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <input type="file" id="mrg" accept="application/json,.json" hidden>
 <button class="btn del" id="wipe" style="margin-top:14px">Tout effacer</button>
 </div>
+<p class="note" id="vers" style="text-align:center;margin:16px 0 6px"></p>
+<div style="text-align:center"><button class="btn alt" id="chkupd" style="width:auto;padding:8px 20px">Chercher une mise à jour</button></div>
 </section>
 <footer class="note" style="margin:18px 0 6px;text-align:center">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel.</footer>
 </main>
+<div id="upd" role="alert" hidden><b>Nouvelle version disponible</b><p>Mettre à jour maintenant ? Ça prend environ 2 secondes et tes données sont gardées.</p><div class="ub"><button type="button" id="updy">Oui, mettre à jour</button><button type="button" id="updn">Non</button></div></div>
 <div id="toast" role="status"></div>
 <script>
 const KEY='suivi-cycle-v1';
@@ -593,6 +604,19 @@ $('date').value=iso(new Date());load($('date').value);
 const GC='';
 if(GC){const g=document.createElement('script');g.async=true;g.src='https://gc.zgo.at/count.js';g.dataset.goatcounter='https://'+GC+'.goatcounter.com/count';document.head.appendChild(g);const gn=document.getElementById('gcnote');if(gn)gn.hidden=false}
 $('cd').addEventListener('click',ev=>{if(ev.target.closest('.xbtn')){FRX=!FRX;status($('date').value)}const sm=ev.target.closest('summary');if(sm&&sm.parentNode.classList.contains('tips'))TIPO=!sm.parentNode.open});
+const VER=(document.querySelector('meta[name=hovie-version]')||{}).content||'';
+let updBusy=false,updNew='',updNo='';
+let doReload=()=>location.reload();
+async function checkUpd(manual){if(updBusy)return;if(!navigator.onLine){if(manual)toast('Pas de connexion internet');return}updBusy=true;
+try{const r=await fetch('index.html',{cache:'no-store'});if(!r.ok)throw 0;const t=await r.text(),m=t.match(/<meta name="hovie-version" content="([^"]+)"/);
+if(m&&m[1]!==VER){updNew=m[1];if(manual||updNew!==updNo)$('upd').hidden=false}else if(manual)toast('Tu as la dernière version ✓')}
+catch(_){if(manual)toast('Impossible de vérifier pour l’instant')}finally{updBusy=false}}
+$('updy').onclick=()=>{$('updy').textContent='Mise à jour…';$('updy').disabled=true;doReload()};
+$('updn').onclick=()=>{updNo=updNew;$('upd').hidden=true};
+$('chkupd').onclick=()=>checkUpd(true);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpd()});
+setInterval(()=>{if(!document.hidden)checkUpd()},600000);setTimeout(checkUpd,4000);
+(()=>{const m=VER.match(/^(\d{4})-(\d{2})-(\d{2})/);$('vers').textContent=m?'Version du '+new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'}):''})();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
