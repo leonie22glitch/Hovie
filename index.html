@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-04-1">
+<meta name="hovie-version" content="2026-10-04-9">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -13,8 +13,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <style>
-:root{--serif:"Didot","Bodoni 72","Bodoni MT","Playfair Display","Iowan Old Style",Georgia,serif;--rose:#F9ADB1;--rose2:#D9667A;--hero2:#FCE6EB;--ink:#3B2431;--paper:#FFF5F4;--card:#fff;--line:#F1D5D8;--mut:#7C6470;--temp:#1F6F8B;--muc:#B0417A;--red:#C23B3B;--col:#8A6A1F;--g:#5E9C6E;--gp:#E3F0E5;--gm:#B5D8BC;--b:#5B91BF;--bp:#E2EDF7;--bm:#A9CBE8;--m:#9A7BB8;--mp:#EEE7F4;--mm:#D0BDE3;--o:#E08A2E;--op:#FBEBD6;--om:#F5C48A;--tq:#1B9C9A;--tqp:#E0F4F3;--tqm:#A8E0DD;--s:#A8B52A;--sp:#F3F6D4;--sm:#DDE58A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--rose2:#E58A9B;--hero2:#40283A;--ink:#FBEFF2;--paper:#201519;--card:#2D1F26;--line:#4A3540;--mut:#C2A9B3;--temp:#5FB4D1;--muc:#E07AB0;--red:#E86A6A;--col:#E3B25C;--g:#8FCB9F;--gp:#243A2B;--gm:#3F6B4D;--b:#8DBFE8;--bp:#22364A;--bm:#3E6A91;--m:#C0A2DE;--mp:#352C47;--mm:#5E4B80;--o:#F0A860;--op:#47321C;--om:#7A5424;--tq:#55D0CC;--tqp:#1E3A3A;--tqm:#2F6B69;--s:#C6D45E;--sp:#2F3318;--sm:#5A6320}}
+:root{--serif:"Didot","Bodoni 72","Bodoni MT","Playfair Display","Iowan Old Style",Georgia,serif;--rose:#F9ADB1;--rose2:#D9667A;--hero2:#FCE6EB;--ink:#3B2431;--paper:#FFF5F4;--card:#fff;--line:#F1D5D8;--mut:#7C6470;--temp:#1F6F8B;--muc:#B0417A;--red:#C23B3B;--col:#8A6A1F;--g:#5E9C6E;--gp:#E3F0E5;--gm:#B5D8BC;--b:#5B91BF;--bp:#E2EDF7;--bm:#A9CBE8;--m:#9A7BB8;--mp:#EEE7F4;--mm:#D0BDE3;--o:#E08A2E;--op:#FBEBD6;--om:#F5C48A;--tq:#1B9C9A;--tqp:#E0F4F3;--tqm:#A8E0DD;--s:#A8B52A;--sp:#F3F6D4;--sm:#DDE58A;--avf:#F4F1F8;--avs:#D9D0E7;--avc:#6F5F8F;--bdf:#FFF3F3;--bds:#F4D5D8;--bdc:#C98089;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--rose2:#E58A9B;--hero2:#40283A;--ink:#FBEFF2;--paper:#201519;--card:#2D1F26;--line:#4A3540;--mut:#C2A9B3;--temp:#5FB4D1;--muc:#E07AB0;--red:#E86A6A;--col:#E3B25C;--g:#8FCB9F;--gp:#243A2B;--gm:#3F6B4D;--b:#8DBFE8;--bp:#22364A;--bm:#3E6A91;--m:#C0A2DE;--mp:#352C47;--mm:#5E4B80;--o:#F0A860;--op:#47321C;--om:#7A5424;--tq:#55D0CC;--tqp:#1E3A3A;--tqm:#2F6B69;--s:#C6D45E;--sp:#2F3318;--sm:#5A6320;--avf:#2A2536;--avs:#463E5C;--avc:#B9A8DA;--bdf:#33262A;--bds:#5A3A40;--bdc:#E3A3AC}}
 *{box-sizing:inherit}
 html,body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}
 html,body{margin:0}
@@ -123,6 +123,29 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 #upd .ub{display:flex;align-items:center;gap:14px}
 #updy{flex:1;min-height:46px;border:0;border-radius:23px;background:var(--rose);color:#3B2431;font:inherit;font-size:16px;font-weight:700}
 #updn{border:0;background:transparent;color:#C9B3BA;font:inherit;font-size:14px;padding:12px 6px}
+.bd{display:flex;align-items:center;gap:10px;background:var(--bdf)!important;border:1px solid var(--bds)}
+.bdi{flex:0 0 26px;height:26px;border-radius:50%;background:var(--bds);color:var(--bdc);text-align:center;line-height:26px;font-size:14px}
+.avb{display:flex;gap:10px;background:var(--avf);border:1px solid var(--avs);border-radius:16px;padding:12px 12px 10px;margin:0 0 8px}
+.avi{flex:0 0 22px;height:22px;border-radius:50%;background:var(--avs);color:var(--avc);font:700 13px Georgia,serif;text-align:center;line-height:22px;margin-top:1px}
+.avt{flex:1;min-width:0}
+.avp{margin:0 0 6px;font-size:14.5px;line-height:1.35}
+.avb .tips{margin:0}
+.avb .tips summary{color:var(--avc);font-weight:700;font-size:12.5px}
+.avf{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;font-size:11.5px;color:var(--mut)}
+.avm{flex:0 0 auto;border:1px solid var(--avs);background:var(--card);color:var(--mut);border-radius:12px;font:inherit;font-size:12px;padding:5px 12px}
+.avmore{margin:0 0 8px;text-align:center}
+.avr{border-top:1px solid var(--line);padding:12px 0 6px}
+.avbig{font-size:20px;font-weight:700;color:var(--avc);margin:2px 0}
+.avs{font-size:13px}
+.dots{display:flex;gap:7px;margin:8px 0}
+.dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--avc);box-sizing:border-box}
+.dot.on{background:var(--avc)}
+.ref{color:var(--avc)}
+.avsw{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+#avsw{position:relative;width:48px;height:26px;border-radius:13px;border:0;background:#D9CED2;padding:0}
+#avsw::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
+#avsw[aria-checked=true]{background:var(--s)}
+#avsw[aria-checked=true]::after{left:25px}
 #ltest button{border-color:var(--tq);background:var(--tqp)}
 #ltest button[aria-pressed=true]{background:var(--tqm);border-color:var(--tq);color:var(--ink);font-weight:600}
 #muc{display:grid;grid-template-columns:1fr 1fr;gap:6px}
@@ -166,6 +189,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 </nav>
 <main>
 <section id="jour">
+<div id="avis"></div>
 <div class="card">
 <label for="date">Date</label>
 <div class="row"><button class="nb" id="prev" aria-label="Jour précédent">‹</button><input type="date" id="date"><button class="nb" id="next" aria-label="Jour suivant">›</button></div>
@@ -286,6 +310,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <p class="note">Un résumé s’ajoute ici quand un cycle est terminé, c’est-à-dire quand les règles suivantes ont commencé. Les cycles de moins de 16 jours ne sont pas calculés. Les jours sont comptés à partir du jour 1 du cycle.</p>
 </section>
 <section id="data" hidden>
+<div class="card" id="avl"></div>
 <div class="card"><h2>Quand l’ovulation survient-elle ?</h2>
 <p class="note">Même quand la durée du cycle est connue, le jour de l’ovulation varie beaucoup d’une personne et d’un cycle à l’autre. Dans une étude de 75 981 cycles (32 595 femmes qui utilisaient un test d’ovulation), pour les cycles de 28 jours, l’ovulation a eu lieu le plus souvent au jour 15 (27 %), puis au jour 16 (21 %) et au jour 14 (20 %). Les jours d’ovulation observés s’étalaient sur 10 jours.</p>
 <p class="note">Un résumé présenté au congrès ISGE en 2018 rapporte aussi, pour un cycle de 28 jours, une ovulation possible dès le jour 11 et jusqu’au jour 20. C’est pourquoi l’appli estime l’ovulation sur 3 à 5 jours et affiche une période fertile plus large : le calendrier seul ne permet pas de prédire le jour exact.</p>
@@ -429,7 +454,7 @@ h+=`<div class="card">${title}`
 +row('Durée',L+' jours')
 +row('Règles',reg.length?`${reg.length} jour${reg.length>1?'s':''} notés, jours ${dn(reg[0])} à ${dn(reg[reg.length-1])}`:'non notées')
 +row('Ovulation observée',ov?`jour ${dn(ov)} (${fmt(ov)})`:'non placée')
-+row('Jours entre l’ovulation et la fin du cycle',(ov||tpf)?(()=>{const f=ov?dn(ov):dn(tpf),N=L-f;return N+' jours'+(N>=18?' (phase lutéale longue)':(N<=10?' (phase lutéale courte)':''))})():'—')
++row('Jours entre l’ovulation et la fin du cycle',(ov||tpf)?(()=>{const f=ov?dn(ov):dn(tpf),N=L-f;return N+' jours'+(N>=17?' (phase lutéale longue)':(N<=10?' (phase lutéale courte)':''))})():'—')
 +row('Ovulation selon le calendrier',`jours ${L-15} à ${L-11} (du ${fmt(addDays(c.s,L-16))} au ${fmt(addDays(c.s,L-12))})`)
 +row('Période fertile',rg(L-22,L-10))
 +row('Période fertile observée',ov?rg(dn(ov)-5,dn(ov)+1):'—')
@@ -453,11 +478,12 @@ const mls=cyc.filter(x=>x.done&&!x.bad).map(x=>x.ml),mlAvg=mls.length?Math.round
 if(n&&A!==null){const step=Math.round(A),tm=addDays(iso(new Date()),1);let s=addDays(cs[n-1].s,step);if(s<tm)s=tm;
 for(let k=0;k<14;k++){cyc.push({s,done:false,pred:true,L:step,ov:null,A,ml:mlAvg});s=addDays(s,step)}}
 cyc.forEach(c=>{c.tpN=c.tp&&!c.bad?diff(c.s,c.tp)+1:null;c.ovN=c.ov&&!c.bad?diff(c.s,c.ov)+1:null});
-const gl=cyc.filter(c=>c.done&&!c.bad&&c.tpN),go=cyc.filter(c=>c.done&&!c.bad&&c.ovN);
+const rec3=cyc.filter(c=>c.done&&!c.bad).slice(-3),lhOff=rec3.length===3&&rec3.every(c=>!c.tpN),obOff=rec3.length===3&&rec3.every(c=>!c.ovN);
+const gl=lhOff?[]:cyc.filter(c=>c.done&&!c.bad&&c.tpN),go=obOff?[]:cyc.filter(c=>c.done&&!c.bad&&c.ovN);
 const stt=a=>a.length?{n:a.length,min:Math.min(...a),avg:Math.round(mean(a)),max:Math.max(...a)}:null,lhS=stt(gl.map(c=>c.tpN)),obS=stt(go.map(c=>c.ovN));
-const offLH=gl.length?mean(gl.map(c=>c.L-c.tpN)):null,offObs=go.length?mean(go.map(c=>c.L-c.ovN)):null,Dmax=gl.length?Math.max(...gl.map(c=>c.L-(c.tpN+2))):null;
+const offLH=gl.length?mean(gl.map(c=>c.L-c.tpN)):null,offObs=go.length?mean(go.map(c=>c.L-c.ovN)):null,Dmax=gl.length?Math.max(...gl.map(c=>c.L-(c.tpN+2))):null,Dobs=go.length?Math.max(...go.map(c=>c.L-c.ovN)):null;
 cyc.forEach(c=>{if(c.bad){c.eo=null;return}if(c.ov){c.eo={d:c.ov,auto:false,lo:0,hi:0};return}if(c.tp){c.eo={d:addDays(c.tp,1),auto:true,lh:true,lo:-1,hi:1};return}if(!c.done&&lhS){c.eo={d:addDays(c.s,lhS.avg),auto:true,lh:true,proj:true,lo:-1,hi:1};return}const Lx=c.L!=null?c.L:(A!==null?Math.round(A):null);c.eo=Lx!=null&&Lx>=16?{d:addDays(c.s,Lx-14),auto:true,lo:-2,hi:2}:null});
-return{cyc,A,lhS,obS,nBad:rl.filter(x=>x<16).length,offLH,offObs,Dmax,nLH:gl.length,nObs:go.length,ml:mlAvg,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
+return{cyc,A,lhS,obS,nBad:rl.filter(x=>x<16).length,offLH,offObs,Dmax,Dobs,nLH:gl.length,nObs:go.length,ml:mlAvg,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
 function locate(M,d){let r=-1;for(let i=0;i<M.cyc.length;i++){if(M.cyc[i].s<=d)r=i;else break}return r}
 let FRX=false,TIPO=false;
 function frame(M,c,dayN){
@@ -493,8 +519,65 @@ h+=rows.slice(0,3).join('');
 if(rows.length>3)h+='<div class="xtra"'+(FRX?'':' hidden')+'>'+rows.slice(3).join('')+'</div><button class="xbtn" type="button">'+(FRX?'Voir moins ▴':'Voir tout ▾')+'</button>';
 h+='<details class="tips"'+(TIPO?' open':'')+'><summary>Comment lire ces chiffres ?</summary><p class="note" style="margin:4px 0 0">La moyenne n’est qu’un repère : ton cycle peut tomber n’importe où entre les deux, ou même en dehors. Pour les lignes LH et observée, « le plus tôt », « la moyenne » et « le plus tard » sont tes vrais jours de test ou d’ovulation des cycles précédents. Quand la date est connue (test positif ou ovulation notée), les trois valeurs sont identiques.</p></details>';
 return h+'</div>'}
-function status(d){const M=model();let ci=locate(M,d),lr=-1;M.cyc.forEach((x,i)=>{if(!x.pred)lr=i});if(ci>=0&&M.cyc[ci].pred)ci=lr;const c=ci>=0?M.cyc[ci]:null;let b='';
-const bn=(bg,t)=>`<div class="bn" style="background:${bg}">${t}</div>`;$('pbox').innerHTML='';
+const AVD={
+cl:{why:'Un cycle dure habituellement entre 24 et 38 jours. Ces plages viennent de moyennes de population : un seul cycle plus long ou plus court est courant. Ce bandeau apparaît quand ton cycle actuel dépasse 38 jours, ou quand tes 3 derniers cycles sortent de cette plage.',src:'Source : FIGO, 2018.'},
+va:{why:'L’écart entre ton cycle le plus court et le plus long est habituellement de 7 à 9 jours ou moins. Hovie utilise 10 jours ou plus, parce qu’il ne connaît pas ton âge : le seuil est de 8 jours entre 26 et 41 ans. Le bandeau compare tes 6 derniers cycles.',src:'Source : FIGO, 2018.'},
+rg:{why:'Des règles de 8 jours ou moins sont considérées comme habituelles. Ce bandeau apparaît quand tes règles dépassent 8 jours ce cycle-ci, ou 3 cycles de suite.',src:'Source : FIGO, 2018.'},
+am:{why:'Une absence de règles de plus de 3 mois chez une personne aux cycles habituellement réguliers est un cas qu’on évalue. Pour des cycles habituellement irréguliers, le repère est de 6 mois ; Hovie utilise 3 mois pour tout le monde.',src:'Source : ASRM, évaluation de l’aménorrhée.'},
+sp:{why:'Un petit saignement autour de l’ovulation peut être normal. Ce repère est une règle de Hovie, pas un seuil des lignes directrices : il compte 3 jours ou plus de spotting dans un même cycle, hors de tes règles, pas forcément de suite.',src:'Règle de Hovie ; FIGO, 2018 (saignements entre les règles).'},
+ll:{why:'Une phase lutéale dure en moyenne environ 13 jours (12,8 jours, avec un écart-type de 1,9 jour dans l’étude de Fehring). 17 jours ou plus est nettement au-delà. Elle est comptée du jour d’ovulation noté (ou du premier test positif) à la fin du cycle : un jour d’ovulation placé trop tôt peut donc allonger la mesure.',src:'Source : Fehring et collègues, 2006 ; seuil de 17 jours choisi par Hovie.'},
+lu:{why:'Une phase lutéale de 10 jours ou moins est parfois relevée par les médecins, mais elle existe aussi chez des femmes fertiles aux cycles normaux. Elle est comptée du jour d’ovulation noté (ou du premier test positif) à la fin du cycle.',src:'Source : ASRM, 2021.'}};
+let AVS={on:true,hid:{}},AVO={};
+try{const t=JSON.parse(localStorage.getItem('suivi-avis')||'null');if(t&&typeof t==='object'){AVS.on=t.on!==false;AVS.hid=(t.hid&&typeof t.hid==='object')?t.hid:{}}}catch(_){}
+const saveAvs=()=>{try{localStorage.setItem('suivi-avis',JSON.stringify(AVS))}catch(_){}};
+function avisUpdate(M){
+const real=M.cyc.filter(c=>!c.pred),n=real.length,td=iso(new Date()),ks=Object.keys(D.e).sort(),last=ks[ks.length-1]||td;
+const info=real.map((c,i)=>{const end=i+1<n?addDays(real[i+1].s,-1):last;let sp=0;ks.forEach(k=>{if(k>=c.s&&k<=end){const e=D.e[k];if(e.sp&&e.m!==0)sp++}});return{c,sp}});
+const cur=n?info[n-1]:null,done=info.filter(x=>x.c.done&&!x.c.bad),r3=done.slice(-3),r6=done.slice(-6),w8=done.slice(-8),N=w8.length;
+const dayN=cur?diff(cur.c.s,td)+1:0,lut=x=>{const f=x.c.ovN||x.c.tpN;return f?x.c.L-f:null};
+const B=[];
+if(cur&&dayN>90)B.push({id:'am',t:'Tes dernières règles datent de plus de 3 mois.'});
+if(cur&&dayN>38)B.push({id:'cl',t:'Ton cycle actuel dure plus de 38 jours (jour '+dayN+').'});
+if(r3.length===3){const L=r3.map(x=>x.c.L);if(L.every(v=>v>38))B.push({id:'cl',t:'Tes 3 derniers cycles ont duré plus de 38 jours.'});else if(L.every(v=>v<24))B.push({id:'cl',t:'Tes 3 derniers cycles ont duré moins de 24 jours.'});else if(L.every(v=>v>38||v<24))B.push({id:'cl',t:'Tes 3 derniers cycles ont duré moins de 24 jours ou plus de 38 jours.'})}
+if(cur&&cur.c.ml>=9){const l0=addDays(cur.c.s,cur.c.ml-1);B.push({id:'rg',t:diff(l0,td)<=1?'Tes règles durent depuis plus de 8 jours.':'Tes règles de ce cycle ont duré plus de 8 jours.'})}
+if(r3.length===3&&r3.every(x=>x.c.ml>=9))B.push({id:'rg',t:'Tes règles ont duré plus de 8 jours 3 cycles de suite.'});
+if(cur&&cur.sp>=3)B.push({id:'sp',t:'Tu as noté 3 jours de spotting ou plus ce cycle-ci, hors de tes règles.'});
+if(r3.length===3&&r3.every(x=>x.sp>=3))B.push({id:'sp',t:'Tu as noté 3 jours de spotting ou plus, hors de tes règles, 3 cycles de suite.'});
+if(r6.length===6){const L=r6.map(x=>x.c.L),mn=Math.min(...L),mx=Math.max(...L);if(mx-mn>=10)B.push({id:'va',t:'Tes 6 derniers cycles varient de '+mn+' à '+mx+' jours.'})}
+if(done.length){const x=done[done.length-1],v=lut(x);if(x===info[n-2]&&v!==null&&v<=10)B.push({id:'lu',t:'Ta dernière phase lutéale a duré '+v+' jours.'});if(x===info[n-2]&&v!==null&&v>=17)B.push({id:'ll',t:'Ta dernière phase lutéale a duré '+v+' jours.'})}
+if(r3.length===3){const V=r3.map(lut);if(V.every(v=>v!==null&&v<=10))B.push({id:'lu',t:'Tes 3 dernières phases lutéales ont duré 10 jours ou moins.'});if(V.every(v=>v!==null&&v>=17))B.push({id:'ll',t:'Tes 3 dernières phases lutéales ont duré 17 jours ou plus.'})}
+const ord=['am','cl','rg','sp','va','lu','ll'];B.sort((a,b)=>ord.indexOf(a.id)-ord.indexOf(b.id));
+const vis=AVS.on?B.filter(b=>!AVS.hid[b.id]):[],show=vis.slice(0,3),more=vis.length-show.length;
+$('avis').innerHTML=show.map(b=>{const k='b'+b.id+b.t;return `<div class="avb"><span class="avi" aria-hidden="true">i</span><div class="avt"><p class="avp">${b.t}</p><details class="tips" data-k="${k}"${AVO[k]?' open':''}><summary>Pourquoi ce bandeau ?</summary><p class="note">${AVD[b.id].why}</p><p class="note">${AVD[b.id].src}</p></details><div class="avf"><span>Tu pourras le retrouver dans Données.</span><button type="button" class="avm" data-id="${b.id}">Masquer</button></div></div></div>`}).join('')+(more>0?`<p class="note avmore">${more} autre${more>1?'s':''} repère${more>1?'s':''} dans Données.</p>`:'');
+// ----- liste « À mentionner à ton médecin » : seulement ce qui appartient à la personne
+const T=[],pl=(x,w)=>x+' '+w+(x>1?'s':''),cyc=(x)=>pl(x,'cycle')+' sur '+N;
+const L8=w8.map(x=>x.c.L),lg=L8.filter(v=>v>38).length,sh=L8.filter(v=>v<24).length;
+const durs='Durées : '+L8.join(', ')+' jours';
+if(lg>=2)T.push({title:'Durée des cycles',big:cyc(lg),sub:'plus longs que 38 jours ('+(N-lg)+' sans)',dots:L8.map(v=>v>38),vals:durs+(dayN>38?' ; cycle actuel : jour '+dayN:''),ref:'Référence : 24 à 38 jours'});
+else if(cur&&dayN>38)T.push({title:'Durée des cycles',big:'Cycle actuel : jour '+dayN,sub:'plus long que 38 jours',vals:N?'Cycles terminés : '+L8.join(', ')+' jours':'',ref:'Référence : 24 à 38 jours'});
+if(sh>=2)T.push({title:'Durée des cycles',big:cyc(sh),sub:'plus courts que 24 jours ('+(N-sh)+' sans)',dots:L8.map(v=>v<24),vals:durs,ref:'Référence : 24 à 38 jours'});
+if(r6.length===6){const L=r6.map(x=>x.c.L),mn=Math.min(...L),mx=Math.max(...L);if(mx-mn>=10)T.push({title:'Écart entre tes cycles',big:(mx-mn)+' jours d’écart',sub:'de '+mn+' à '+mx+' jours (sur tes '+r6.length+' derniers cycles)',vals:'Durées : '+L.join(', ')+' jours',ref:'Référence : 7 à 9 jours d’écart ou moins'})}
+const M8=w8.map(x=>x.c.ml),rgN=M8.filter(v=>v>=9).length,fm=v=>v>=10?'10 ou plus':v;
+if(rgN>=2)T.push({title:'Durée des règles',big:cyc(rgN),sub:'de plus de 8 jours ('+(N-rgN)+' sans)',dots:M8.map(v=>v>=9),vals:'Durées : '+M8.map(fm).join(', ')+' jours',ref:'Référence : 8 jours ou moins'});
+else if(cur&&cur.c.ml>=9)T.push({title:'Durée des règles',big:'Cycle actuel',sub:'règles de plus de 8 jours',vals:N?'Cycles terminés : '+M8.map(fm).join(', ')+' jours':'',ref:'Référence : 8 jours ou moins'});
+const S8=w8.map(x=>x.sp),spN=S8.filter(v=>v>=3).length;
+if(spN>=2)T.push({title:'Spotting hors des règles',big:cyc(spN),sub:'avec 3 jours ou plus ('+(N-spN)+' sans)',dots:S8.map(v=>v>=3),vals:'Jours de spotting : '+S8.join(', '),ref:'Repère de Hovie : 3 jours ou plus'});
+else if(cur&&cur.sp>=3)T.push({title:'Spotting hors des règles',big:'Cycle actuel',sub:cur.sp+' jours de spotting hors des règles',vals:N?'Cycles terminés : '+S8.join(', ')+' jours':'',ref:'Repère de Hovie : 3 jours ou plus'});
+const LU=w8.map(lut).filter(v=>v!==null),luN=LU.filter(v=>v<=10).length;
+if(luN>=2)T.push({title:'Phase lutéale courte',big:pl(luN,'cycle')+' sur '+LU.length,sub:'avec 10 jours ou moins ('+(LU.length-luN)+' sans)',dots:LU.map(v=>v<=10),vals:'Phases lutéales : '+LU.join(', ')+' jours',ref:'Repère : 10 jours ou moins'});
+const llN=LU.filter(v=>v>=17).length;
+if(llN>=2)T.push({title:'Phase lutéale longue',big:pl(llN,'cycle')+' sur '+LU.length,sub:'avec 17 jours ou plus ('+(LU.length-llN)+' sans)',dots:LU.map(v=>v>=17),vals:'Phases lutéales : '+LU.join(', ')+' jours',ref:'Repère de Hovie : 17 jours ou plus'});
+if(cur&&dayN>90)T.push({title:'Dernières règles',big:'il y a '+(dayN-1)+' jours',sub:'commencées le '+fmt(cur.c.s),ref:'Référence : plus de 3 mois sans règles'});
+const kl='lst';let h='<h2>À mentionner à ton médecin</h2><p class="note">Seulement ce qui apparaît dans tes derniers cycles (8 au plus). Ce n’est pas un diagnostic.</p>';
+if(!T.length)h+='<p class="note">Aucun de ces repères n’est présent dans tes données pour l’instant.</p>';
+T.forEach(t=>{h+=`<div class="avr"><b>${t.title}</b><div class="avbig">${t.big}</div><div class="avs">${t.sub}</div>`+(t.dots?`<div class="dots">${t.dots.map(d=>`<i class="dot${d?' on':''}"></i>`).join('')}</div>`:'')+(t.vals?`<p class="note" style="margin:4px 0 0">${t.vals}</p>`:'')+`<p class="note ref" style="margin:2px 0 0">${t.ref}</p></div>`});
+h+=`<details class="tips" data-k="${kl}"${AVO[kl]?' open':''}><summary>Pourquoi ces repères ?</summary><p class="note">Les plages de référence viennent de moyennes de population : un seul cycle en dehors est courant. Durée et écart des cycles, durée des règles : FIGO, 2018. Absence de règles de plus de 3 mois : ASRM. Phase lutéale de 10 jours ou moins : ASRM, 2021, qui précise qu’elle existe aussi chez des femmes fertiles aux cycles normaux. Phase lutéale de 17 jours ou plus : seuil de Hovie, d’après Fehring, 2006. Le repère du spotting (3 jours ou plus dans un cycle, hors des règles) est une règle de Hovie.</p></details>`;
+h+=`<div class="avsw"><b>Bandeaux d’information</b><button type="button" id="avsw" role="switch" aria-checked="${AVS.on}" aria-label="Afficher les bandeaux d’information"></button></div><p class="note" style="margin:6px 0 0">Même masqués, ces repères restent ici.</p>`+(Object.keys(AVS.hid).length?'<button class="btn alt" id="avreset" style="width:auto;padding:8px 16px;margin-top:10px">Réafficher les bandeaux masqués</button>':'');
+$('avl').innerHTML=h}
+$('avis').addEventListener('click',ev=>{const b=ev.target.closest('.avm');if(b){AVS.hid[b.dataset.id]=true;saveAvs();avisUpdate(model());return}const sm=ev.target.closest('summary');if(sm){const dt=sm.parentNode;AVO[dt.dataset.k]=!dt.open}});
+$('avl').addEventListener('click',ev=>{if(ev.target.closest('#avsw')){AVS.on=!AVS.on;saveAvs();avisUpdate(model());return}if(ev.target.closest('#avreset')){AVS.hid={};saveAvs();avisUpdate(model());return}const sm=ev.target.closest('summary');if(sm){const dt=sm.parentNode;AVO[dt.dataset.k]=!dt.open}});
+function status(d){const M=model();avisUpdate(M);let ci=locate(M,d),lr=-1;M.cyc.forEach((x,i)=>{if(!x.pred)lr=i});if(ci>=0&&M.cyc[ci].pred)ci=lr;const c=ci>=0?M.cyc[ci]:null;let b='';
+const bn=(bg,t)=>`<div class="bn" style="background:${bg}">${t}</div>`,bd=(ic,t)=>`<div class="bn bd"><span class="bdi" aria-hidden="true">${ic}</span><span>${t}</span></div>`;$('pbox').innerHTML='';
 if(!c){$('cd').className='';$('cd').innerHTML='<div class="pbox"><div class="ptitle">Aucun cycle commencé</div><p class="note" style="margin:8px 0 0">Choisis « Règles » le premier jour du cycle.</p></div>';$('st2').innerHTML='';return}
 const dayN=diff(c.s,d)+1;$('cd').className='';$('cd').innerHTML=frame(M,c,dayN);
 const e0=D.e[d]||{},e1=D.e[addDays(d,-1)]||{};
@@ -503,11 +586,13 @@ if(e0.m===4||e1.m===4)b+=bn('rgba(91,145,191,.16)','Montée de la glaire 💦');
 if(!c.bad){const eo=c.eo,n=eo?diff(eo.d,d):null,es=eo&&eo.auto?' (ovulation estimée)':'';
 const post=eo&&n>eo.hi,a=Math.max(1,Math.floor((c.A||0)-22)),z=Math.ceil((c.A||0)-10),od=eo?diff(c.s,eo.d)+1:0;
 if(eo&&n>=eo.lo&&n<=eo.hi)b+=bn('rgba(240,140,40,.28)','Jour d’ovulation'+(eo.auto?' estimé':''));
-let lhA=false;
-if(!c.done&&!c.pred&&c.tpN&&M.nLH>=2&&M.Dmax!==null&&dayN-(c.tpN+2)>=M.Dmax+1){lhA=true;b+=bn('rgba(215,25,32,.14)','🧪 Fais un test de grossesse : tu dépasses maintenant la plus longue durée observée après l’ovulation dans tes cycles avec tests positifs.')}
-if(!lhA&&eo&&n-eo.hi>=17&&!c.pred)b+=bn('rgba(215,25,32,.14)','🧪 '+(n-eo.hi)+' jours après l’ovulation : pense à faire un test de grossesse.')}
-if(c.done&&!c.bad){const f=c.ovN||c.tpN;if(f){const N=c.L-f;if(N>=18)b=bn('rgba(215,25,32,.12)','Phase lutéale longue : '+N+' jours')+b;else if(N<=10)b=bn('rgba(215,25,32,.12)','Phase lutéale courte : '+N+' jours')+b}}
-if(!c.done&&!c.pred&&M.A!==null&&dayN>M.Lmax+1)b=bn('rgba(215,25,32,.12)','Règles en retard : ton cycle dure déjà '+dayN+' jours, soit plus que ton cycle le plus long ('+M.Lmax+' jours).')+b;
+let sup=false;
+if(!c.done&&!c.pred){
+if(c.ov&&c.ovN&&M.nObs>=2&&M.Dobs!==null){sup=true;if(dayN-c.ovN>=M.Dobs+1&&dayN-c.ovN>=10)b+=bd('🌸','Fais un test de grossesse : tu dépasses maintenant la plus longue durée observée après l’ovulation dans tes cycles où tu as noté ton ovulation.')}
+else if(!c.ov&&c.tpN&&M.nLH>=2&&M.Dmax!==null){sup=true;if(dayN-(c.tpN+2)>=M.Dmax+1&&dayN-c.tpN>=10)b+=bd('🌸','Fais un test de grossesse : tu dépasses maintenant la plus longue durée observée après l’ovulation dans tes cycles avec tests positifs.')}}
+if(!sup&&eo&&n-eo.hi>=17&&!c.pred)b+=bd('🌸','Pense à faire un test de grossesse : '+(n-eo.hi)+' jours après l’ovulation '+(c.ov?'notée.':(c.tp?'d’après tes tests LH.':'estimée.'))+(M.Lmax!==null&&dayN<=M.Lmax?' Par contre, ton cycle le plus long était de '+M.Lmax+' jours. Donc cela peut rester dans ta norme.':''))}
+if(c.done&&!c.bad){const f=c.ovN||c.tpN;if(f){const N=c.L-f;if(N>=17)b=bd('♡','Phase lutéale longue : '+N+' jours')+b;else if(N<=10)b=bd('♡','Phase lutéale courte : '+N+' jours')+b}}
+if(!c.done&&!c.pred&&M.A!==null&&dayN>M.Lmax+1)b=bd('♡','Règles en retard : ton cycle dure déjà '+dayN+' jours. Ton cycle le plus long était de '+M.Lmax+' jours.')+b;
 $('st2').innerHTML=b}
 let CM=null;
 function cal(){if(!CM){const t=new Date();CM={y:t.getFullYear(),m:t.getMonth()}}
