@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-04-9">
+<meta name="hovie-version" content="2026-10-05-1556">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -701,7 +701,7 @@ $('updn').onclick=()=>{updNo=updNew;$('upd').hidden=true};
 $('chkupd').onclick=()=>checkUpd(true);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpd()});
 setInterval(()=>{if(!document.hidden)checkUpd()},600000);setTimeout(checkUpd,4000);
-(()=>{const m=VER.match(/^(\d{4})-(\d{2})-(\d{2})/);$('vers').textContent=m?'Version du '+new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'}):''})();
+(()=>{const m=VER.match(/^(\d{4})-(\d{2})-(\d{2})(?:-(\d{2})(\d{2}))?/);$('vers').textContent=m?'Version du '+new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'})+(m[4]?', '+m[4]+' h '+m[5]:''):''})();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
