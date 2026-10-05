@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-05-1556">
+<meta name="hovie-version" content="2026-10-05-1612">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -346,7 +346,8 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <input type="file" id="mrg" accept="application/json,.json" hidden>
 <button class="btn del" id="wipe" style="margin-top:14px">Tout effacer</button>
 </div>
-<p class="note" id="vers" style="text-align:center;margin:16px 0 6px"></p>
+<p class="note" id="vers" style="text-align:center;margin:16px 0 2px"></p>
+<p class="note" id="vchk" style="text-align:center;margin:0 0 8px"></p>
 <div style="text-align:center"><button class="btn alt" id="chkupd" style="width:auto;padding:8px 20px">Chercher une mise à jour</button></div>
 </section>
 <footer class="note" style="margin:18px 0 6px;text-align:center">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel.</footer>
@@ -692,15 +693,19 @@ $('cd').addEventListener('click',ev=>{if(ev.target.closest('.xbtn')){FRX=!FRX;st
 const VER=(document.querySelector('meta[name=hovie-version]')||{}).content||'';
 let updBusy=false,updNew='',updNo='';
 let doReload=()=>location.reload();
-async function checkUpd(manual){if(updBusy)return;if(!navigator.onLine){if(manual)toast('Pas de connexion internet');return}updBusy=true;
-try{const r=await fetch('index.html',{cache:'no-store'});if(!r.ok)throw 0;const t=await r.text(),m=t.match(/<meta name="hovie-version" content="([^"]+)"/);
-if(m&&m[1]!==VER){updNew=m[1];if(manual||updNew!==updNo)$('upd').hidden=false}else if(manual)toast('Tu as la dernière version ✓')}
-catch(_){if(manual)toast('Impossible de vérifier pour l’instant')}finally{updBusy=false}}
+const hm=()=>{const t=new Date();return String(t.getHours()).padStart(2,'0')+' h '+String(t.getMinutes()).padStart(2,'0')};
+const setChk=t=>{const e=$('vchk');if(e)e.textContent=t};
+async function checkUpd(manual){if(updBusy)return;if(!navigator.onLine){setChk('Dernière vérification : '+hm()+' (pas de connexion)');if(manual)toast('Pas de connexion internet');return}updBusy=true;
+const u='index.html?chk='+Date.now();
+try{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw 0;const t=await r.text(),m=t.match(/<meta name="hovie-version" content="([^"]+)"/);
+if(m&&m[1]!==VER){updNew=m[1];setChk('Dernière vérification : '+hm()+' (nouvelle version disponible)');if(manual||updNew!==updNo)$('upd').hidden=false}else{setChk('Dernière vérification : '+hm()+' (à jour)');if(manual)toast('Tu as la dernière version ✓')}}
+catch(_){setChk('Dernière vérification : '+hm()+' (impossible de vérifier)');if(manual)toast('Impossible de vérifier pour l’instant')}finally{updBusy=false;setTimeout(()=>{try{caches.keys().then(ks=>ks.forEach(k=>caches.open(k).then(c=>c.delete(u))))}catch(_){}},2500)}}
 $('updy').onclick=()=>{$('updy').textContent='Mise à jour…';$('updy').disabled=true;doReload()};
 $('updn').onclick=()=>{updNo=updNew;$('upd').hidden=true};
 $('chkupd').onclick=()=>checkUpd(true);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpd()});
-setInterval(()=>{if(!document.hidden)checkUpd()},600000);setTimeout(checkUpd,4000);
+window.addEventListener('pageshow',()=>checkUpd());window.addEventListener('focus',()=>checkUpd());window.addEventListener('online',()=>checkUpd());
+setInterval(()=>{if(!document.hidden)checkUpd()},300000);setTimeout(checkUpd,3000);
 (()=>{const m=VER.match(/^(\d{4})-(\d{2})-(\d{2})(?:-(\d{2})(\d{2}))?/);$('vers').textContent=m?'Version du '+new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'})+(m[4]?', '+m[4]+' h '+m[5]:''):''})();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
