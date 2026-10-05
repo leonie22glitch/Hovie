@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-05-1612">
+<meta name="hovie-version" content="2026-10-05-1738">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -335,7 +335,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <p class="note">L’appli suppose que l’ovulation peut avoir lieu entre 10 et 17 jours avant la fin du cycle. C’est une plage large, choisie par prudence, parce que le moment de l’ovulation varie d’un cycle à l’autre. Les spermatozoïdes peuvent survivre jusqu’à 5 jours dans les voies génitales, notamment dans la glaire du col de l’utérus : on ajoute donc 5 jours avant la première ovulation possible. La période fertile (bande jaune) va ainsi du jour (durée − 22) au jour (durée − 10). Ce sont des estimations : la vraie période fertile peut être plus courte ou décalée.</p>
 <p class="note">Référence : A. J. Wilcox, C. R. Weinberg et D. D. Baird, New England Journal of Medicine, 1995, 333(23):1517-1521.</p></div>
 <div class="card"><h2>À savoir</h2>
-<p class="note">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel : ses estimations ne remplacent ni un avis médical ni les règles de ta méthode. En cas de doute, consulte une professionnelle de la santé ou ton instructrice.</p><p class="note" id="gcnote" hidden>Hovie compte seulement le nombre de visites, avec GoatCounter, sans témoins (cookies) et sans données personnelles. Tes données de cycle ne quittent jamais ton téléphone.</p></div>
+<p class="note">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel : ses estimations ne remplacent ni un avis médical ni les règles de ta méthode. En cas de doute, consulte une professionnelle de la santé ou ton instructrice.</p><p class="note">Hovie t’aide à voir comment ton cycle varie. Il ne pose pas de diagnostic et ne propose pas de causes : la même variation peut avoir de nombreuses explications, et seule une professionnelle de la santé peut les explorer avec toi.</p><p class="note" id="gcnote" hidden>Hovie compte seulement le nombre de visites, avec GoatCounter, sans témoins (cookies) et sans données personnelles. Tes données de cycle ne quittent jamais ton téléphone.</p></div>
 <div class="card">
 <h2>Sauvegarde</h2>
 <p class="note">Tes données restent sur cet appareil seulement. Exporte-les régulièrement, surtout avant de changer de téléphone.</p>
@@ -569,7 +569,7 @@ if(luN>=2)T.push({title:'Phase lutéale courte',big:pl(luN,'cycle')+' sur '+LU.l
 const llN=LU.filter(v=>v>=17).length;
 if(llN>=2)T.push({title:'Phase lutéale longue',big:pl(llN,'cycle')+' sur '+LU.length,sub:'avec 17 jours ou plus ('+(LU.length-llN)+' sans)',dots:LU.map(v=>v>=17),vals:'Phases lutéales : '+LU.join(', ')+' jours',ref:'Repère de Hovie : 17 jours ou plus'});
 if(cur&&dayN>90)T.push({title:'Dernières règles',big:'il y a '+(dayN-1)+' jours',sub:'commencées le '+fmt(cur.c.s),ref:'Référence : plus de 3 mois sans règles'});
-const kl='lst';let h='<h2>À mentionner à ton médecin</h2><p class="note">Seulement ce qui apparaît dans tes derniers cycles (8 au plus). Ce n’est pas un diagnostic.</p>';
+const kl='lst';let h='<h2>À mentionner à ton médecin</h2><p class="note">Seulement ce qui apparaît dans tes derniers cycles (8 au plus). Hovie t’aide à voir comment ton cycle varie. Il ne pose pas de diagnostic et ne propose pas de causes : la même variation peut avoir de nombreuses explications, et seule une professionnelle de la santé peut les explorer avec toi.</p>';
 if(!T.length)h+='<p class="note">Aucun de ces repères n’est présent dans tes données pour l’instant.</p>';
 T.forEach(t=>{h+=`<div class="avr"><b>${t.title}</b><div class="avbig">${t.big}</div><div class="avs">${t.sub}</div>`+(t.dots?`<div class="dots">${t.dots.map(d=>`<i class="dot${d?' on':''}"></i>`).join('')}</div>`:'')+(t.vals?`<p class="note" style="margin:4px 0 0">${t.vals}</p>`:'')+`<p class="note ref" style="margin:2px 0 0">${t.ref}</p></div>`});
 h+=`<details class="tips" data-k="${kl}"${AVO[kl]?' open':''}><summary>Pourquoi ces repères ?</summary><p class="note">Les plages de référence viennent de moyennes de population : un seul cycle en dehors est courant. Durée et écart des cycles, durée des règles : FIGO, 2018. Absence de règles de plus de 3 mois : ASRM. Phase lutéale de 10 jours ou moins : ASRM, 2021, qui précise qu’elle existe aussi chez des femmes fertiles aux cycles normaux. Phase lutéale de 17 jours ou plus : seuil de Hovie, d’après Fehring, 2006. Le repère du spotting (3 jours ou plus dans un cycle, hors des règles) est une règle de Hovie.</p></details>`;
