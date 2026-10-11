@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-05-1738">
+<meta name="hovie-version" content="2026-10-10-2229">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -34,7 +34,7 @@ nav button[aria-selected=true]{background:var(--rose2);border-color:var(--rose2)
 .cc i{position:absolute;inset:0;pointer-events:none}
 .cc .dn{position:absolute;top:2px;left:4px;font-size:9px;color:var(--mut)}
 .cc .cd{position:absolute;left:0;right:0;top:24%;font-weight:700;font-size:20px}
-.opts.w button{font-size:13px;padding:6px 10px;border-radius:14px}
+.opts.one{flex-wrap:nowrap;gap:5px}.opts.one button{flex:1 1 0;min-width:0;padding:9px 2px;font-size:12px;text-align:center;line-height:1.15}#rep button[data-k=pg],#rep button[data-k=pg][aria-pressed=true]{background:var(--bp);border-color:var(--bm);color:var(--ink)}#rep button[data-k=pg][aria-pressed=true]{border-color:var(--b);box-shadow:inset 0 0 0 1px var(--b);font-weight:700}#rep{display:grid;grid-template-columns:1fr 1fr;gap:9px}#rep button{padding:10px 8px;font-size:14px;text-align:center;line-height:1.2}#gr button{font-size:13px;padding:10px 2px}.hnt{font-weight:400;font-size:12px;color:var(--mut)}#gtd button{font-size:13px;padding:10px 2px}@media(max-width:370px){#gtd button{font-size:12px}}.opts.w button{font-size:13px;padding:6px 10px;border-radius:14px}
 .cc .hs{position:absolute;bottom:2px;left:0;right:0;font-size:10px;line-height:1;color:var(--red)}
 .cc.today{outline:2px solid var(--temp);outline-offset:-2px}
 .cc.pred{border:3px dashed var(--red)}
@@ -55,8 +55,6 @@ nav button[aria-selected=true]{background:var(--rose2);border-color:var(--rose2)
 .trk{position:relative;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--mm),var(--m));margin:9px 6px 2px}
 .trk i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--m)}
 .trk i:nth-child(1){left:-6px}.trk i:nth-child(2){left:calc(50% - 6px);border-color:var(--ink)}.trk i:nth-child(3){right:-6px}
-.pn2{display:flex;justify-content:space-between;font-size:10px;color:var(--mut);margin-top:6px}
-.cdn{font:600 22px/1.2 var(--serif);color:var(--ink)}
 .sr{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:15px}
 .sr span{color:var(--mut)}
 .sr b{text-align:right;font-weight:600}
@@ -69,6 +67,7 @@ details.more[open]>summary::after{content:' ▴'}
 .xbtn{display:block;margin:10px auto 0;padding:9px 20px;border-radius:999px;border:1.5px solid var(--m);background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:600}
 .leg{margin-top:18px}
 .leg h2{font-size:22px;margin-bottom:6px}
+body.son .lgi[data-m=off],body:not(.son) .lgi[data-m=on]{display:none}
 .lgi{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
 .lgi .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 34px;box-sizing:border-box}
 .lgi b{display:block;font-size:15px;line-height:1.3}
@@ -89,7 +88,7 @@ section[hidden]{display:none}
 .s-t{border-left-color:var(--tq);background:linear-gradient(180deg,var(--tqp),var(--card) 75%)}
 .sec label:first-of-type{margin-top:6px}
 label{display:block;font-size:14px;font-weight:600;color:var(--mut);margin:14px 0 6px}
-input[type=date],input[type=number],select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;font-size:16px}
+input[type=date],input[type=number],input[type=time],#temp,#pov,.dtx,select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;font-size:16px}
 input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 22px}
 .opts{display:flex;flex-wrap:wrap;gap:9px}
 .opts button{padding:11px 16px;min-height:44px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;font:inherit;font-size:15px;text-align:left}
@@ -110,7 +109,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 #wsv{flex:1;min-width:0;border-color:var(--s);background:var(--sp)}
 .wsu{color:var(--mut);font-size:15px}
 .wsw{display:flex;align-items:center;gap:10px;margin:10px 0 0}
-.wsw[hidden]{display:none}
+.wsw[hidden]{display:none}.wsw{flex-wrap:wrap}.butw{display:none;align-items:center;gap:10px;margin-left:auto;font-size:13px}.butw b{font-size:13px}.butw input{width:16px;height:16px;margin:0;padding:0}.butw label{display:flex;align-items:center;gap:4px;white-space:nowrap}body.son .butw{display:flex}
 .wsw b{font-size:14px}
 #wsb{position:relative;width:48px;height:26px;border-radius:13px;border:0;background:#D9CED2;padding:0}
 #wsb::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
@@ -134,6 +133,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 .avf{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;font-size:11.5px;color:var(--mut)}
 .avm{flex:0 0 auto;border:1px solid var(--avs);background:var(--card);color:var(--mut);border-radius:12px;font:inherit;font-size:12px;padding:5px 12px}
 .avmore{margin:0 0 8px;text-align:center}
+.bd .gm{margin-left:auto;font-weight:400}
 .avr{border-top:1px solid var(--line);padding:12px 0 6px}
 .avbig{font-size:20px;font-weight:700;color:var(--avc);margin:2px 0}
 .avs{font-size:13px}
@@ -163,10 +163,29 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 .s-b .chk{padding:4px 0;gap:10px;font-size:14px}
 #temp{border-color:var(--g);background:var(--gp)}
 #cp,#cd2,#co{border-color:var(--m);background:var(--mp)}
+.ptl #sgov{width:100%;padding:8px 10px;font-size:14px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-family:inherit}.huw{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+.huw label{margin:0;font-size:12px;color:var(--mut);font-weight:500}
+.huw input{width:100px;padding:3px 8px;font-size:12.5px;border-radius:8px;min-height:0}
+.ptl{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.ptl .chk{padding:6px 0;font-size:14px;gap:8px;align-items:flex-start}
 .chk{display:flex;align-items:center;gap:12px;margin:2px 0;padding:9px 0;color:var(--ink);font-size:15px;line-height:1.3}
-.row{display:flex;gap:8px}.row>*{flex:1}
+.row{display:flex;gap:8px}.row>*{flex:1}.row>.nb{flex:0 0 auto}.dtw{position:relative;flex:1;min-width:0}#dlab{padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:16px;text-align:center;min-height:48px;box-sizing:border-box;display:flex;align-items:center;justify-content:center}.dtw #date{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
 .row>.nb{flex:0 0 52px;padding:10px;border:1.5px solid var(--line);background:var(--card);color:var(--rose2);border-radius:50%;font:inherit;font-size:24px;line-height:1}
+.aov{position:fixed;inset:0;z-index:60;background:var(--paper);overflow:auto;-webkit-overflow-scrolling:touch}.aov[hidden]{display:none}
+.aoh{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--paper);border-bottom:1px solid var(--line)}.aoh b{font-size:17px}.aoh button{background:var(--card);border:1.5px solid var(--line);border-radius:50%;width:40px;height:40px;font-size:18px;color:var(--ink)}
+.aoc{padding:12px 14px 40px;max-width:900px;margin:0 auto}.aor{display:flex;gap:10px;flex-wrap:wrap}.aof{flex:1 1 200px}.aof label{display:block;font-size:13px;color:var(--mut);margin:0 0 4px;font-weight:600}
+.aov #aodl{padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:16px;text-align:center;min-height:48px;box-sizing:border-box;display:flex;align-items:center;justify-content:center}.aov .dtw #aosd{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+.aod{display:flex;align-items:center;gap:10px;justify-content:center}.aod button{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--rose2);font-size:24px}.aod b{font-size:20px;min-width:34px;text-align:center}
+.aot{display:flex;gap:8px;margin:6px 0}.aot button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;font-size:14px}.aot button.alt{flex:1}
+.aog{overflow-x:auto;border:1.5px solid #8FA21F;border-radius:12px;background:var(--card);-webkit-overflow-scrolling:touch;touch-action:none}.aog.sc{touch-action:pan-x pan-y}
+.aog table{border-collapse:separate;border-spacing:0;table-layout:fixed}.aog td,.aog th{width:34px;min-width:34px;height:38px;border-right:1px solid #C8D95F;border-bottom:1px solid #C8D95F;text-align:center;font-size:12px;font-weight:600;color:var(--ink);padding:0;user-select:none;-webkit-user-select:none}
+.aog .rl{position:sticky;left:0;z-index:2;width:104px;min-width:104px;max-width:104px;background:var(--card);text-align:right;padding:0 8px 0 4px;font-size:11.5px;font-weight:700;border-right:2px solid #8FA21F;cursor:pointer}.aog tr.act .rl{background:#EAF2B8;color:#222}
+.aog tr.act td:not(.rl){background:rgba(200,217,95,.14)}.aog .dn td{background:#C8D95F;color:#222;font-weight:700;height:30px}.aog .dn .rl{background:#C8D95F}.aog .dt td{height:24px;font-size:10.5px;font-weight:500;color:var(--mut)}
+.aog td.cur{outline:2px solid var(--rose2);outline-offset:-2px}.aog .sy{font-size:17px;line-height:1}.aog .lt{font-size:11px;line-height:1.1;font-weight:700}
+.aopal{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.aopal button{min-height:44px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px}.aopal button[aria-pressed=true]{background:var(--muc);border-color:var(--muc);color:#fff}
+.aotw{margin:8px 0}.aotw label{display:block;font-size:13px;font-weight:600;color:var(--mut);margin-bottom:4px}.aotr{display:flex;gap:8px}.aotr input{flex:1;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:18px}
 .btn{padding:12px;border-radius:999px;border:0;background:var(--rose2);color:#fff;font:inherit;font-weight:600;width:100%;margin-top:14px}
+#vw:not([hidden]){display:flex}
 .btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line);margin-top:8px}
 .btn.del{background:transparent;color:var(--red);border:1px solid var(--red)}
 .day{color:var(--mut);font-size:14px;margin-top:2px}
@@ -175,6 +194,21 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none}
 #toast.on{opacity:1}
 :focus-visible{outline:3px solid var(--temp);outline-offset:2px}
+@page{size:landscape;margin:10mm}
+@media print{:root{--ink:#3B2431;--line:#F1D5D8;--mut:#7C6470;--g:#5E9C6E;--b:#5B91BF;--m:#9A7BB8;--red:#C23B3B;--card:#fff;--paper:#fff}
+body.printing *{visibility:hidden!important}
+body.printing #pt,body.printing #pt *,body.printing #chart,body.printing #chart *{visibility:visible!important}
+body.printing #pt{display:block!important;position:absolute;left:0;top:0;font:700 16px system-ui,sans-serif;color:#3B2431}
+body.printing #chart{position:absolute;left:0;top:28px;width:100%}
+body.printing #chart svg{width:100%!important;height:auto!important}
+body.printing .scroll{overflow:visible!important}}
+#pt{display:none}
+#syb{position:relative;width:48px;height:26px;border-radius:13px;border:0;background:#D9CED2;padding:0}#syb::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}#syb[aria-checked=true]{background:var(--m)}#syb[aria-checked=true]::after{left:25px}
+#jour:not([hidden]){display:flex;flex-direction:column}#jour #syw{order:0}#jour #avis{order:1}#jour>.card{order:2}#jour #stmp{order:3}#jour #sglr{order:4}#jour #scol{order:5}#jour #srel{order:6}#jour #slh{order:7}#jour #ssg{order:8}#jour #srep{order:9}#jour #swat{order:9}#jour #snt{order:10}#jour #sanc{order:11}#jour.simple #syw{order:0}#jour.simple #avis{order:1}#jour.simple>.card{order:2}#jour.simple #sglr{order:3}#jour.simple #slh{order:4}#jour.simple #srel{order:5}#jour.simple #ssg{order:6}#jour.simple #swat{order:7}#jour.simple #snt{order:8}#jour.simple #sanc{order:9}
+#jour.simple #stmp,#jour.simple #scol,#jour.simple #srep{display:none}
+#jour:not(.simple) #swat{display:none}
+#jour.simple #gnew,#jour:not(.simple) #gold.x{}
+#gold[hidden],#gnew[hidden],#gjw[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -189,29 +223,36 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 </nav>
 <main>
 <section id="jour">
+<div class="wsw" id="syw" style="margin:0 0 8px"><b>Symptothermie</b><button type="button" id="syb" role="switch" aria-checked="true" aria-label="Activer la symptothermie (température, col, repères)"></button><span id="butw" class="butw"><b>But</b><label><input type="checkbox" class="butc" value="contra"> Contraception</label><label><input type="checkbox" class="butc" value="concep"> Conception</label></span></div>
 <div id="avis"></div>
 <div class="card">
 <label for="date">Date</label>
-<div class="row"><button class="nb" id="prev" aria-label="Jour précédent">‹</button><input type="date" id="date"><button class="nb" id="next" aria-label="Jour suivant">›</button></div>
+<div class="row"><button class="nb" id="prev" aria-label="Jour précédent">‹</button><div class="dtw"><div id="dlab" aria-hidden="true"></div><input type="date" id="date" aria-label="Date"></div><button class="nb" id="next" aria-label="Jour suivant">›</button></div>
 <button class="btn alt" id="today" style="margin-top:8px;padding:8px">Aujourd’hui</button>
 <div class="day" id="cd"></div>
 <div id="pbox"></div>
 <div id="st2"></div>
 </div>
-<div class="sec s-g"><h3>🌡️ Température</h3>
+<div class="sec s-g" id="stmp"><h3>🌡️ Température</h3>
 <label for="temp">Au réveil (°C)</label>
-<input type="number" id="temp" step="0.01" min="34" max="40" inputmode="decimal" placeholder="36.45">
+<input type="text" id="temp" inputmode="decimal" autocomplete="off" maxlength="5" placeholder="36.45">
+<div class="huw"><label for="hu">Heure habituelle de prise</label><input type="time" id="hu"></div>
 <label>Perturbations de la veille</label>
 <details class="tips"><summary>Comment ça marche ?</summary>
-<p class="note" style="margin:4px 0 8px">Coche ce qui s’est passé la veille, par exemple de l’alcool la veille, une nuit courte, du stress ou une maladie. Si tu en coches une, la température de ce jour n’est pas comptée dans la courbe du graphique : elle apparaît comme un cercle vide.</p>
+<p class="note" style="margin:4px 0 8px">Coche ce qui s’est passé la veille, par exemple de l’alcool la veille, une nuit courte, du stress, une maladie, ou autre chose que tu peux préciser. Si tu en coches une, la température de ce jour n’est pas comptée dans la courbe du graphique : elle apparaît comme un X. Si tu coches une heure de prise différente, un cercle vide montre aussi la température corrigée (0,1 °C par heure d’écart).</p>
 </details>
+<div class="ptl">
 <div class="chk"><input type="checkbox" class="pt" id="p1" value="nuit"><label for="p1" style="margin:0;color:var(--ink)">Nuit courte ou agitée</label></div>
 <div class="chk"><input type="checkbox" class="pt" id="p2" value="stress"><label for="p2" style="margin:0;color:var(--ink)">Stress</label></div>
 <div class="chk"><input type="checkbox" class="pt" id="p3" value="alcool"><label for="p3" style="margin:0;color:var(--ink)">Alcool</label></div>
 <div class="chk"><input type="checkbox" class="pt" id="p4" value="maladie"><label for="p4" style="margin:0;color:var(--ink)">Maladie ou fièvre</label></div>
 <div class="chk"><input type="checkbox" class="pt" id="p5" value="heure"><label for="p5" style="margin:0;color:var(--ink)">Heure de lever différente</label></div>
+<div class="chk"><input type="checkbox" class="pt" id="p6" value="autre"><label for="p6" style="margin:0;color:var(--ink)">Autre</label></div>
 </div>
-<div class="sec s-s"><h3>⌚ Montre intelligente</h3>
+<div id="pow" hidden><label for="pov" style="margin-top:6px">Pourquoi ?</label><input type="text" id="pov" maxlength="80" placeholder="Ex. : voyage, décalage horaire" autocomplete="off"></div>
+<div id="phw" hidden><label for="phv" style="margin-top:6px">Heure de la prise</label><input type="time" id="phv"></div>
+</div>
+<div class="sec s-s" id="swat"><h3>⌚ Montre intelligente</h3>
 <label for="wsv">Écart de la nuit donné par ta montre</label>
 <div class="wsrow"><div id="wsg"></div><input type="number" id="wsv" step="0.01" min="0" max="5" inputmode="decimal" placeholder="0,6"><span class="wsu">°C</span></div>
 <details class="tips"><summary>Comment ça marche ?</summary>
@@ -227,11 +268,16 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <p class="note" style="margin:6px 0 0">Sources : Apple ; JMIR, 2021.</p>
 </details>
 </div>
-<div class="sec s-b"><h3>💧 Glaire</h3>
-<div class="opts" id="muc"></div>
-<div class="opts w" id="mw" style="margin-top:6px"></div>
-<div class="chk"><input type="checkbox" id="sp"><label for="sp" style="margin:0;color:var(--ink)">Spotting (saignement léger hors règles)</label></div>
-<div class="chk"><input type="checkbox" id="gj"><label for="gj" style="margin:0;color:var(--ink)">Glaire gélatineuse (claire, compacte, translucide, type jello, qui ne colle pas). Non comptée dans le graphique.</label></div>
+<div class="sec s-b" id="sglr"><h3>💧 Glaire</h3>
+<div id="gold"><div class="opts" id="muc"></div>
+<div class="opts w" id="mw" style="margin-top:6px"></div></div>
+<div id="gnew">
+<label>Sensation <span class="hnt">· jusqu’à deux options</span></label><div class="opts" id="gsn"></div>
+<label style="margin-top:10px">Apparence <span class="hnt">· jusqu’à deux options</span></label><div class="opts" id="gap"></div>
+<label style="margin-top:10px">Par rapport à hier</label><div class="opts one" id="gtd"></div>
+<div class="opts one" id="gr" style="margin-top:10px"></div>
+<p class="note" id="gleg" style="margin:8px 0 0"></p></div>
+<div class="chk" id="gjw"><input type="checkbox" id="gj"><label for="gj" style="margin:0;color:var(--ink)">Glaire gélatineuse (claire, compacte, translucide, type jello, qui ne colle pas). Non comptée dans le graphique.</label></div>
 <details class="tips"><summary>Ce qui peut brouiller la glaire</summary>
 <ul>
 <li><b>Excitation et relations :</b> le liquide d’excitation et le sperme peuvent ressembler à de la glaire fertile, et le sperme peut brouiller l’observation jusqu’au lendemain. Note-le et interprète ce jour-là avec prudence.</li>
@@ -244,17 +290,29 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <p class="note" style="margin:6px 0 0">En cas de doute, note ce que tu observes et parles-en à une professionnelle de la santé. Sources : Mayo Clinic (méthode de la glaire cervicale) ; Institute for Reproductive Health, Georgetown University (TwoDay Method) ; Billings Ovulation Method (foire aux questions).</p>
 </details>
 </div>
-<div class="sec s-t"><h3>🧪 Test d’ovulation</h3>
+<div class="sec s-t" id="slh"><h3>🧪 Test d’ovulation</h3>
 <div class="opts" id="ltest"></div>
 <details class="tips"><summary>Comment lire un test d’ovulation ?</summary>
 <p class="note" style="margin:4px 0 8px">N’hésite pas à faire un test chaque jour : tu verras la ligne du test devenir de plus en plus foncée. Avec une bandelette, le test est positif quand la ligne du test est aussi foncée ou plus foncée que la ligne de contrôle (avec un test numérique, l’écran affiche le résultat). Tester chaque jour réduit aussi le risque de manquer la fenêtre de la LH.</p>
 </details>
 </div>
-<div class="sec s-m"><h3>🌸 Col</h3>
+<div class="sec" id="ssg"><h3>🤍 Signes</h3>
+<div class="ptl">
+<div class="chk"><input type="checkbox" class="sgc" id="sg1" value="D"><label for="sg1" style="margin:0;color:var(--ink)">Douleurs abdominales</label></div>
+<div class="chk"><input type="checkbox" class="sgc" id="sg2" value="S"><label for="sg2" style="margin:0;color:var(--ink)">Sensibilité aux seins</label></div>
+<div class="chk"><input type="checkbox" class="sgc" id="sg3" value="M"><label for="sg3" style="margin:0;color:var(--ink)">Mal de tête</label></div>
+<div class="chk"><input type="checkbox" class="sgc" id="sg4" value="F"><label for="sg4" style="margin:0;color:var(--ink)">Fatigue</label></div>
+<div class="chk"><input type="checkbox" class="sgc" id="sg5" value="L"><label for="sg5" style="margin:0;color:var(--ink)">Forte libido</label></div>
+<div class="chk"><input type="checkbox" class="sgc" id="sg6" value="I"><label for="sg6" style="margin:0;color:var(--ink)">Irritabilité</label></div>
+<div class="chk"><input type="checkbox" class="sgc" id="sg7" value="A"><label for="sg7" style="margin:0;color:var(--ink)">Autre</label></div>
+<div id="sgow" hidden><input type="text" id="sgov" maxlength="80" placeholder="Précise (ex. : nausées)" autocomplete="off" aria-label="Précise l’autre signe"></div>
+</div>
+</div>
+<div class="sec s-m" id="scol"><h3>🌸 Col</h3>
 <div class="row">
 <select id="cp" aria-label="Position du col"><option value="">Position</option><option value="B">Bas</option><option value="M">Moyen</option><option value="H">Haut</option></select>
-<select id="cd2" aria-label="Dureté du col"><option value="">Dureté</option><option value="F">Ferme</option><option value="S">Mou</option></select>
-<select id="co" aria-label="Ouverture du col"><option value="">Ouverture</option><option value="F">Fermé</option><option value="O">Ouvert</option></select>
+<select id="cd2" aria-label="Dureté du col"><option value="">Dureté</option><option value="S">Mou</option><option value="M">Semi-ferme</option><option value="F">Ferme</option></select>
+<select id="co" aria-label="Ouverture du col"><option value="">Ouverture</option><option value="F">Fermé</option><option value="E">Légèrement ouvert</option><option value="O">Ouvert</option></select>
 </div>
 <details class="tips"><summary>Comment observer le col ?</summary>
 <ul>
@@ -265,41 +323,46 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <p class="note" style="margin:6px 0 0">Sources : Sensiplan (Arbeitsgruppe NFP), tel que décrit par la caisse d’assurance maladie KKH et par la revue PTA heute (2024).</p>
 </details>
 </div>
-<div class="sec"><h3>♥ Relations</h3>
+<div class="sec" id="srel"><h3>♥ Relations</h3>
 <div class="opts" id="rel"></div>
 <details class="tips"><summary>Voir plus</summary>
 <p class="note" style="margin:4px 0 6px">Quand un cœur (relation non protégée) tombe dans une zone colorée du calendrier, la relation a eu lieu pendant une période qui peut mener à une grossesse.</p>
 <ul>
-<li><b>Avec le calendrier seul :</b> la zone jaune (période fertile) et la zone orange (ovulation estimée).</li>
+<li><b>Avec le calendrier seul :</b> la zone jaune (période fertile).</li>
 <li><b>Avec les tests LH :</b> l’orange pâle (les 5 jours avant le premier test positif) et l’orange (les 3 jours d’ovulation).</li>
-<li><b>Avec la symptothermie (ovulation notée par toi) :</b> la zone rose (période fertile observée), avec le jour d’ovulation en orange.</li>
 </ul>
 <p class="note" style="margin:6px 0 0">Ce sont des estimations, pas une garantie : en dehors de ces zones, une grossesse reste possible.</p>
 </details>
 </div>
-<div class="sec"><h3>✨ Repères pour le graphique</h3>
+<div class="sec" id="srep"><h3>✨ Repères pour le graphique</h3>
 <div class="opts" id="rep"></div>
 <div id="repinfo"></div>
-<p class="note">Les repères de température et l’ovulation ne se placent que sur un seul jour par cycle ; les lignes horizontale et verticale peuvent être placées sur autant de jours que tu veux. La ligne de température utilise la température de ce jour.</p>
+<p class="note" id="repnote">Les repères de température et l’ovulation ne se placent que sur un seul jour par cycle ; les lignes horizontale et verticale peuvent être placées sur autant de jours que tu veux. La ligne de température utilise la température de ce jour.</p>
 </div>
-<div class="sec"><h3>📝 Notes</h3>
+<div class="sec" id="snt"><h3>📝 Notes</h3>
 <textarea id="nt" rows="2"></textarea>
 </div>
+<div id="sanc"><button type="button" class="btn alt" id="aob2">📋 Remplir un ancien cycle</button></div>
 </section>
+<div id="pt"></div>
 <section id="graph" hidden>
 <label for="cyc">Cycle</label>
 <select id="cyc"></select>
-<button class="btn alt" id="vw" style="margin-top:8px;padding:8px"></button>
+<div id="vw" style="gap:8px;margin-top:8px"><button type="button" class="btn" data-v="comb" style="flex:1;padding:8px;margin-top:0">Graphique Hovie</button><button type="button" class="btn alt" data-v="ser" style="flex:1;padding:8px;margin-top:0">Graphique Seréna</button></div>
 <div class="wsw" id="wsw" hidden><b>Montre intelligente</b><button type="button" id="wsb" role="switch" aria-checked="true" aria-label="Afficher la courbe de la montre intelligente"></button></div>
-<div class="scroll" style="margin-top:10px"><div id="chart"></div></div>
+<div id="gmode" class="note" style="margin:10px 0 0;font-weight:700"></div><div id="gbut" class="note" style="margin:2px 0 0;font-weight:600" hidden></div>
+<p id="sernote" class="note" style="margin:4px 0 0" hidden>Dans le graphique Seréna, « par rapport à hier » (moins fertile, pareille, plus fertile) n’est pas affiché, mais il compte dans le calcul du pic de glaire, encadré dans le graphique.</p>
+<div class="scroll" style="margin-top:6px"><div id="chart"></div></div>
 <h2 style="margin:14px 0 6px">Vue d’ensemble</h2>
 <div class="card" style="padding:8px"><div id="mini"></div></div>
-<div class="leg"><h2>Comment lire le graphique</h2><p class="note" style="margin:0 0 6px">Touche un jour du graphique pour ouvrir sa fiche et le modifier. Voici ce que chaque élément veut dire.</p><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--g)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--g)"/><circle cx="19" cy="17" r="2.6" fill="var(--g)"/></svg></span><div><b>Température</b><p>Ta température au réveil, jour après jour. Les points sont reliés entre eux. S’il manque un jour, le segment qui le traverse est en pointillé.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="6" fill="var(--card)" stroke="var(--g)" stroke-width="2.6"/></svg></span><div><b>Jour perturbé</b><p>Un jour où tu as coché une perturbation de la veille (alcool, nuit courte, stress…). Le cercle vide est à la vraie hauteur de la température, mais la courbe ne passe pas par lui : cette température n’est pas comptée.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--b)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--b)"/><circle cx="19" cy="17" r="2.6" fill="var(--b)"/></svg></span><div><b>Glaire</b><p>Ta glaire, de « Règles » en bas jusqu’à « Blanc d’œuf ». En vue combinée, l’échelle est écrite à droite du graphique et la glaire monte jusqu’à environ 90 % de la hauteur, sans toucher le haut.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--m)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--m)"/><circle cx="19" cy="17" r="2.6" fill="var(--m)"/></svg></span><div><b>Col</b><p>La position, la dureté et l’ouverture du col, combinées : au plus bas quand il est bas, ferme et fermé, au plus haut quand il est haut, mou et ouvert (en vue combinée, son sommet est un peu sous celui de la glaire). Il apparaît seulement les jours où les trois choix sont remplis.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--s)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--s)"/><circle cx="19" cy="17" r="2.6" fill="var(--s)"/></svg></span><div><b>Courbe vert soufre : montre intelligente</b><p>L’écart de ta nuit donné par ta montre, par rapport à ta base. Elle a sa propre échelle tout à droite (+, 0 et −) et une ligne de zéro en petits pointillés. Ce n’est pas une température basale : elle n’entre dans aucun calcul. Tu peux la masquer avec l’interrupteur au-dessus du graphique.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="5" y="19" width="20" height="6" rx="2" fill="var(--red)" opacity=".6"/></svg></span><div><b>Spotting</b><p>Une petite barre rouge au bas du graphique les jours où tu as noté un saignement léger hors règles.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="6" y="11" width="18" height="9" rx="3" fill="none" stroke="var(--b)" stroke-width="2" stroke-dasharray="3 2"/></svg></span><div><b>Glaire gélatineuse</b><p>Un petit rectangle bleu en pointillé marque les jours de glaire claire, compacte et translucide (type jello). Elle n’est pas comptée dans la courbe de glaire.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(242,194,48,.5);"></span><div><b>Bande jaune : période fertile</b><p>Du jour (durée − 22) au jour (durée − 10). Pendant le cycle, elle est anticipée avec la durée moyenne de tes cycles ; une fois le cycle terminé, elle est corrigée avec sa vraie durée. Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes. Elle devient plus discrète quand tu notes ton ovulation ou que tu utilises les tests LH.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(224,86,154,.45);"></span><div><b>Bande rose : période fertile observée</b><p>Du 5e jour avant l’ovulation jusqu’au jour qui suit. Elle apparaît seulement si tu places toi-même le repère « Ovulation ». Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.6);"></span><div><b>Bande orange : ovulation</b><p>Si tu la places toi-même, elle couvre 1 jour. Sinon, elle est estimée sur 5 jours : de durée − 15 à durée − 11 jours (avec la vraie durée du cycle une fois terminé, avec la durée moyenne pour le cycle en cours). Avec un test d’ovulation positif, les 3 jours commencent au premier jour du test.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.2);"></span><div><b>Orange pâle : période fertile LH</b><p>Les 5 jours avant le premier test d’ovulation positif (durée de vie des spermatozoïdes), suivis des 3 jours d’ovulation en orange. Pour les cycles à venir, elle est projetée avec la moyenne de tes cycles avec tests.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="13" y="3" width="4" height="24" rx="2" fill="var(--b)" opacity=".8"/></svg></span><div><b>Ligne bleue : pic de glaire</b><p>Le dernier jour de glaire « Blanc d’œuf » du cycle. L’appli la place automatiquement.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><polygon points="5,26 15,6 25,26" fill="var(--tq)" fill-opacity=".45" stroke="var(--tq)" stroke-width="1.6"/></svg></span><div><b>Pic turquoise : test d’ovulation positif</b><p>Si plusieurs jours de suite sont positifs, ils forment un seul grand pic.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><line x1="3" y1="10" x2="27" y2="10" stroke="var(--g)" stroke-width="2" stroke-dasharray="4 3"/><line x1="3" y1="20" x2="27" y2="20" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="2 4"/></svg></span><div><b>Tes repères</b><p>Les lignes « plus haute des basses » (ligne verte en pointillé, avec une deuxième ligne 0,2 °C plus haut), les gros points numérotés « Température haute 1, 2 et 3 », et tes lignes horizontale et verticale en petits pointillés noirs. Tu les places depuis la fiche du jour.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" fill="var(--red)"/></g></svg></span><div><b>Cœur : relation non protégée</b><p>Un cœur rouge au bas du graphique, au jour de la relation.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><rect x="-9" y="-9" width="18" height="18" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6"/><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" transform="scale(.62)" fill="var(--red)"/></g></svg></span><div><b>Cœur dans un carré : relation protégée</b><p>Un cœur rouge entouré d’un carré. Si les deux ont lieu le même jour, ils s’affichent côte à côte.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><text x="15" y="15" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">12</text><text x="15" y="26" text-anchor="middle" font-size="9" fill="var(--mut)">3</text></svg></span><div><b>Jour du cycle et date</b><p>Sous le graphique, le gros chiffre est le jour du cycle et le petit chiffre est la date.</p></div></div><p class="note" style="margin-top:8px">Les phases infertiles ne sont pas encore calculées : elles viendront avec les règles de la méthode.</p></div>
+<div style="display:flex;gap:8px;margin-top:12px"><button class="btn alt" id="gsv" style="flex:1;padding:8px">Enregistrer en image</button><button class="btn alt" id="gpr" style="flex:1;padding:8px">Imprimer</button></div>
+<div class="leg"><h2>Comment lire le graphique</h2><p class="note" style="margin:0 0 6px">Touche un jour du graphique pour ouvrir sa fiche et le modifier. Voici ce que chaque élément veut dire.</p><div class="lgi" data-m="on"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--g)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--g)"/><circle cx="19" cy="17" r="2.6" fill="var(--g)"/></svg></span><div><b>Température</b><p>Ta température au réveil, jour après jour. Les points sont reliés entre eux. S’il manque un jour, le segment qui le traverse est en pointillé.</p></div></div><div class="lgi" data-m="on"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M9 9l12 12m0-12l-12 12" stroke="var(--g)" stroke-width="3"/></svg></span><div><b>Jour perturbé</b><p>Un jour où tu as coché une perturbation de la veille (alcool, nuit courte, stress…). Le X est à la vraie hauteur de la température mesurée, mais la courbe ne passe pas par lui : cette température n’est pas comptée. Si la perturbation est une heure de prise différente, l’heure est écrite au-dessus du X et un cercle vide montre la température corrigée (0,1 °C par heure d’écart avec ton heure habituelle). La courbe passe par ce cercle. Le cercle sert à comprendre : il n’entre pas dans les lignes de couverture.</p></div></div><div class="lgi" data-m="on"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--b)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--b)"/><circle cx="19" cy="17" r="2.6" fill="var(--b)"/></svg></span><div><b>Glaire</b><p>Ta glaire, de « Règles » en bas jusqu’à « Blanc d’œuf ». Avec la symptothermie, la glaire est un chiffre de 0 à 5 : sensation (0 à 2) + apparence (0 à 2), plus 1 pour un jour plus fertile que la veille, ou 1 de plus à la veille quand le lendemain l’est moins. En vue combinée, l’échelle est écrite à droite du graphique et la glaire monte jusqu’à environ 90 % de la hauteur, sans toucher le haut.</p></div></div><div class="lgi" data-m="off"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--b)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--b)"/><circle cx="19" cy="17" r="2.6" fill="var(--b)"/></svg></span><div><b>Glaire</b><p>Ta glaire, de « Règles » en bas jusqu’à « Blanc d’œuf ».</p></div></div><div class="lgi" data-m="on"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--m)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--m)"/><circle cx="19" cy="17" r="2.6" fill="var(--m)"/></svg></span><div><b>Col</b><p>La position, la dureté et l’ouverture du col, combinées : au plus bas quand il est bas, ferme et fermé, au plus haut quand il est haut, mou et ouvert (son sommet est un peu sous celui de la glaire). Il apparaît seulement les jours où les trois choix sont remplis.</p></div></div><div class="lgi" data-m="off"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 21 L11 11 L19 17 L27 7" fill="none" stroke="var(--s)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.6" fill="var(--s)"/><circle cx="19" cy="17" r="2.6" fill="var(--s)"/></svg></span><div><b>Courbe vert soufre : montre intelligente</b><p>L’écart de ta nuit donné par ta montre, par rapport à ta base. Elle a sa propre échelle tout à droite (+, 0 et −) et une ligne de zéro en petits pointillés. Ce n’est pas une température basale : elle n’entre dans aucun calcul. Tu peux la masquer avec l’interrupteur au-dessus du graphique.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="5" y="19" width="20" height="6" rx="2" fill="var(--red)" opacity=".6"/></svg></span><div><b>Spotting</b><p>Une petite barre rouge au bas du graphique les jours où tu as noté un saignement léger hors règles.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="6" y="11" width="18" height="9" rx="3" fill="none" stroke="var(--b)" stroke-width="2" stroke-dasharray="3 2"/></svg></span><div><b>Glaire gélatineuse</b><p>Un petit rectangle bleu en pointillé marque les jours de glaire claire, compacte et translucide (type jello). Elle n’est pas comptée dans la courbe de glaire.</p></div></div><div class="lgi" data-m="on"><span class="ic" style="background:rgba(154,123,184,.4);"></span><div><b>Bande mauve : phase B (symptothermie)</b><p>Avec la symptothermie, la bande jaune n’est pas affichée. La phase B, entre la ligne de la phase A et ta 3e température haute, apparaît en mauve.</p></div></div><div class="lgi" data-m="off"><span class="ic" style="background:rgba(242,194,48,.5);"></span><div><b>Bande jaune : période fertile</b><p>Du jour (durée − 22) au jour (durée − 10). Pendant le cycle, elle est anticipée avec la durée moyenne de tes cycles ; une fois le cycle terminé, elle est corrigée avec sa vraie durée. Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes. Elle devient plus discrète quand tu notes ton ovulation ou que tu utilises les tests LH.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.6);"></span><div><b>Bande orange : ovulation</b><p>Elle apparaît seulement avec un test d’ovulation positif : 3 jours, à partir du premier jour du test.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.2);"></span><div><b>Orange pâle : période fertile LH</b><p>Les 5 jours avant le premier test d’ovulation positif (durée de vie des spermatozoïdes), suivis des 3 jours d’ovulation en orange. Pour les cycles à venir, elle est projetée avec la moyenne de tes cycles avec tests.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="13" y="3" width="4" height="24" rx="2" fill="var(--b)" opacity=".8"/></svg></span><div><b>Ligne bleue : pic de glaire</b><p>Le dernier jour où ta glaire a eu la plus haute note du cycle. L’appli la place automatiquement, mais tu as le dernier mot : touche « Pic de glaire » dans les repères d’un jour pour la placer toi-même.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M2 26C8 26 10 6 15 6C20 6 22 26 28 26" fill="none" stroke="var(--tq)" stroke-width="2.2" stroke-linejoin="round"/></svg></span><div><b>Triangle turquoise : test d’ovulation positif</b><p>Un triangle vide, qui rappelle la courbe de la LH dans les graphiques d’hormones. Si plusieurs jours de suite sont positifs, ils forment un seul grand triangle.</p></div></div><div class="lgi" data-m="on"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><line x1="3" y1="10" x2="27" y2="10" stroke="var(--g)" stroke-width="2" stroke-dasharray="4 3"/><line x1="3" y1="20" x2="27" y2="20" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="2 4"/></svg></span><div><b>Tes repères</b><p>La ligne « plus haute des 6 basses + 0,05 » (une seule ligne verte en pointillé, 0,05 °C au-dessus de la plus haute des 6 températures qui précèdent ta 1re température haute), les gros points numérotés « Température haute 1, 2 et 3 », et tes lignes horizontale et verticale en petits pointillés noirs. Tu les places depuis la fiche du jour.</p></div></div><div class="lgi" data-m="off"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><line x1="3" y1="10" x2="27" y2="10" stroke="var(--g)" stroke-width="2" stroke-dasharray="4 3"/><line x1="3" y1="20" x2="27" y2="20" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="2 4"/></svg></span><div><b>Tes repères</b><p>Tes lignes horizontale et verticale en petits pointillés noirs. Tu les places de la fiche d’un jour.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" fill="var(--red)"/></g></svg></span><div><b>Cœur : relation non protégée</b><p>Un cœur rouge au bas du graphique, au jour de la relation.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><rect x="-9" y="-9" width="18" height="18" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6"/><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" transform="scale(.62)" fill="var(--red)"/></g></svg></span><div><b>Cœur dans un carré : relation protégée</b><p>Un cœur rouge entouré d’un carré. Si les deux ont lieu le même jour, ils s’affichent côte à côte.</p></div></div><div class="lgi"><span class="ic" style="font-weight:700;font-size:12px">DS</span><div><b>Signes</b><p>Une rangée de lettres sous les relations : D douleurs abdominales, S sensibilité aux seins, M mal de tête, F fatigue, L forte libido, I irritabilité.</p></div></div>
+<div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><text x="15" y="15" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">12</text><text x="15" y="26" text-anchor="middle" font-size="9" fill="var(--mut)">3</text></svg></span><div><b>Jour du cycle et date</b><p>Sous le graphique, le gros chiffre est le jour du cycle et le petit chiffre est la date.</p></div></div></div>
 </section>
 <section id="cal" hidden>
 <div class="row" style="align-items:center;margin-bottom:8px"><button class="nb" id="cpm" aria-label="Mois précédent">‹</button><h2 id="cmt" style="text-align:center;margin:0"></h2><button class="nb" id="cnm" aria-label="Mois suivant">›</button></div>
 <div class="cg" id="cgrid"></div>
-<div class="leg"><h2>Comment lire le calendrier</h2><p class="note" style="margin:0 0 6px">Touche un jour pour ouvrir sa fiche. Voici ce que chaque couleur veut dire.</p><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><text x="15" y="17" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">12</text><text x="6" y="9" font-size="8" fill="var(--mut)">3</text></svg></span><div><b>Gros chiffre et petit chiffre</b><p>Le gros chiffre est le jour du cycle. Le petit chiffre, dans le coin, est la date du mois.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(242,194,48,.5);"></span><div><b>Jaune : période fertile</b><p>Pour un cycle terminé, du jour (durée − 22) au jour (durée − 10). Pour le cycle en cours et les cycles prévus, elle est calculée avec la durée moyenne. Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes. Elle est plus discrète si tu utilises ton ovulation notée ou les tests LH.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(224,86,154,.45);"></span><div><b>Rose : période fertile observée</b><p>Du 5e jour avant l’ovulation jusqu’au jour qui suit, seulement si tu as placé toi-même l’ovulation.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.6);"></span><div><b>Orange : ovulation</b><p>Le jour d’ovulation que tu as placé, avec un petit point orange. Si tu ne l’as pas placée, elle est estimée sur 5 jours (de durée − 15 à durée − 11 jours). Avec un test d’ovulation positif, les 3 jours commencent au premier jour du test.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.2);"></span><div><b>Orange pâle : période fertile LH</b><p>Les 5 jours avant le premier test d’ovulation positif, suivis des 3 jours d’ovulation en orange. Elle est projetée sur les cycles à venir avec la moyenne de tes cycles avec tests.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(215,25,32,.7);"></span><div><b>Rouge : règles</b><p>Les jours où tu as noté « Règles ».</p></div></div><div class="lgi"><span class="ic" style="background:transparent;border:2px dashed var(--red)"></span><div><b>Bordure pointillée : règles prévues</b><p>Les 5 premiers jours du prochain cycle, dont le début est estimé avec la durée moyenne de tes cycles (arrondie). Les cycles futurs sont des estimations.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(60,130,200,.5);"></span><div><b>Bleu : dernier jour de belle glaire</b><p>Le dernier jour de glaire « Blanc d’œuf » du cycle, seulement si tu places toi-même l’ovulation.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" fill="var(--red)"/></g></svg></span><div><b>Cœurs : relations</b><p>Un cœur pour une relation non protégée, un cœur dans un carré pour une relation protégée.</p></div></div><div class="lgi"><span class="ic" style="background:transparent;border:2px solid var(--temp)"></span><div><b>Contour bleu : aujourd’hui</b><p>La date du jour.</p></div></div></div>
+<div class="leg"><h2>Comment lire le calendrier</h2><p class="note" style="margin:0 0 6px">Touche un jour pour ouvrir sa fiche. Voici ce que chaque couleur veut dire.</p><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><text x="15" y="17" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">12</text><text x="6" y="9" font-size="8" fill="var(--mut)">3</text></svg></span><div><b>Gros chiffre et petit chiffre</b><p>Le gros chiffre est le jour du cycle. Le petit chiffre, dans le coin, est la date du mois.</p></div></div><div class="lgi" data-m="on"><span class="ic" style="background:rgba(154,123,184,.4);"></span><div><b>Mauve : phase B (symptothermie)</b><p>Avec la symptothermie, la bande jaune n’est pas affichée. La phase B, entre la ligne de la phase A et ta 3e température haute, apparaît en mauve.</p></div></div><div class="lgi" data-m="off"><span class="ic" style="background:rgba(242,194,48,.5);"></span><div><b>Jaune : période fertile</b><p>Pour un cycle terminé, du jour (durée − 22) au jour (durée − 10). Pour le cycle en cours et les cycles prévus, elle est calculée avec la durée moyenne. Les 5 premiers jours, plus pâles, correspondent à la durée de vie des spermatozoïdes. Elle est plus discrète si tu utilises les tests LH.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.6);"></span><div><b>Orange : ovulation</b><p>Elle apparaît seulement avec un test d’ovulation positif : 3 jours, à partir du premier jour du test.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(240,140,40,.2);"></span><div><b>Orange pâle : période fertile LH</b><p>Les 5 jours avant le premier test d’ovulation positif, suivis des 3 jours d’ovulation en orange. Elle est projetée sur les cycles à venir avec la moyenne de tes cycles avec tests.</p></div></div><div class="lgi"><span class="ic" style="background:rgba(215,25,32,.7);"></span><div><b>Rouge : règles</b><p>Les jours où tu as noté « Règles ».</p></div></div><div class="lgi"><span class="ic" style="background:transparent;border:2px dashed var(--red)"></span><div><b>Bordure pointillée : règles prévues</b><p>Les 5 premiers jours du prochain cycle, dont le début est estimé avec la durée moyenne de tes cycles (arrondie). Les cycles futurs sont des estimations.</p></div></div><div class="lgi"><span class="ic"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><g transform="translate(15 15)"><path d="M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z" fill="var(--red)"/></g></svg></span><div><b>Cœurs : relations</b><p>Un cœur pour une relation non protégée, un cœur dans un carré pour une relation protégée.</p></div></div><div class="lgi"><span class="ic" style="background:transparent;border:2px solid var(--temp)"></span><div><b>Contour bleu : aujourd’hui</b><p>La date du jour.</p></div></div></div>
 </section>
 <section id="stats" hidden>
 <div id="statbody"></div>
@@ -313,13 +376,12 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <div class="card" id="avl"></div>
 <div class="card"><h2>Quand l’ovulation survient-elle ?</h2>
 <p class="note">Même quand la durée du cycle est connue, le jour de l’ovulation varie beaucoup d’une personne et d’un cycle à l’autre. Dans une étude de 75 981 cycles (32 595 femmes qui utilisaient un test d’ovulation), pour les cycles de 28 jours, l’ovulation a eu lieu le plus souvent au jour 15 (27 %), puis au jour 16 (21 %) et au jour 14 (20 %). Les jours d’ovulation observés s’étalaient sur 10 jours.</p>
-<p class="note">Un résumé présenté au congrès ISGE en 2018 rapporte aussi, pour un cycle de 28 jours, une ovulation possible dès le jour 11 et jusqu’au jour 20. C’est pourquoi l’appli estime l’ovulation sur 3 à 5 jours et affiche une période fertile plus large : le calendrier seul ne permet pas de prédire le jour exact.</p>
+<p class="note">Un résumé présenté au congrès ISGE en 2018 rapporte aussi, pour un cycle de 28 jours, une ovulation possible dès le jour 11 et jusqu’au jour 20. C’est pourquoi l’appli affiche une période fertile large : le calendrier seul ne permet pas de prédire le jour exact.</p>
 <p class="note">Ces données viennent de femmes qui essaient de concevoir, et la première étude a été financée par le fabricant du test utilisé. Les pourcentages ne s’appliquent donc pas forcément à toutes les personnes.</p>
 <p class="note"><b>Si tu utilises surtout le calendrier, retiens que ton ovulation peut tomber plusieurs jours avant ou après la date estimée.</b></p>
 <p class="note">Références : I. Soumpasis, B. Grace et S. Johnson, Human Reproduction Open, 2020, hoaa011 (doi 10.1093/hropen/hoaa011) ; résumé du congrès ISGE 2018.</p></div>
 <div class="card"><h2>Pourquoi plusieurs jours pour l’ovulation ?</h2>
-<p class="note">Même avec un test d’ovulation positif, on ne peut pas savoir avec certitude quel jour exact l’ovulation a lieu. Dans les études, elle survient le plus souvent dans les 1 à 2 jours qui suivent le pic de LH, mais le moment varie d’un cycle à l’autre et d’une personne à l’autre. L’appli montre donc 3 jours plutôt qu’un seul. Sans test positif, elle estime l’ovulation avec la durée du cycle, sur 5 jours (de durée − 15 à durée − 11 jours). Ce sont des estimations, pas une certitude.</p>
-<p class="note">Pour l’estimation sans test : l’appli suppose que l’ovulation a lieu de 11 à 15 jours avant la fin du cycle, sur 5 jours (durée − 15 à durée − 11). D’après les chiffres d’une grande étude, où la phase après l’ovulation est de 12,8 jours en moyenne (écart d’environ 1,9 jour), cette fenêtre couvre environ 8 cycles sur 10. Cette durée varie d’une personne et d’un cycle à l’autre, et la plus grande variation vient de la première partie du cycle, avant l’ovulation : l’estimation peut donc être décalée de plusieurs jours.</p>
+<p class="note">Même avec un test d’ovulation positif, on ne peut pas savoir avec certitude quel jour exact l’ovulation a lieu. Dans les études, elle survient le plus souvent dans les 1 à 2 jours qui suivent le pic de LH, mais le moment varie d’un cycle à l’autre et d’une personne à l’autre. L’appli montre donc 3 jours plutôt qu’un seul. Sans test positif, l’appli n’estime pas l’ovulation. Ce sont des estimations, pas une certitude.</p>
 <p class="note">Références : Human Reproduction, 2000, 15(12):2478-2482 (doi 10.1093/humrep/15.12.2478) ; K. S. Moghissi, « Documentation of Ovulation », Global Library of Women’s Medicine ; R. J. Fehring, M. Schneider et K. Raviele, J Obstet Gynecol Neonatal Nurs, 2006, 35(3):376-384 (doi 10.1111/j.1552-6909.2006.00051.x) ; Human Reproduction, 2024, 39(11):2565.</p></div>
 <div class="card"><h2>L’importance de la glaire</h2>
 <p class="note">La glaire est le meilleur indice des jours où une grossesse est possible. Dans une étude de 7 288 cycles, la qualité de la glaire le jour d’une relation prédisait mieux les chances de grossesse que le moment de la relation par rapport à l’ovulation. Les spermatozoïdes peuvent féconder jusqu’à 5 jours après une relation, mais c’est un maximum : les chances passent d’environ 10 % cinq jours avant l’ovulation à 33 % le jour même. La glaire filtre les spermatozoïdes (seule une minorité entre dans le col) et les aide à survivre. Noter ta glaire t’aide à reconnaître ces jours.</p>
@@ -336,6 +398,14 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <p class="note">Référence : A. J. Wilcox, C. R. Weinberg et D. D. Baird, New England Journal of Medicine, 1995, 333(23):1517-1521.</p></div>
 <div class="card"><h2>À savoir</h2>
 <p class="note">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel : ses estimations ne remplacent ni un avis médical ni les règles de ta méthode. En cas de doute, consulte une professionnelle de la santé ou ton instructrice.</p><p class="note">Hovie t’aide à voir comment ton cycle varie. Il ne pose pas de diagnostic et ne propose pas de causes : la même variation peut avoir de nombreuses explications, et seule une professionnelle de la santé peut les explorer avec toi.</p><p class="note" id="gcnote" hidden>Hovie compte seulement le nombre de visites, avec GoatCounter, sans témoins (cookies) et sans données personnelles. Tes données de cycle ne quittent jamais ton téléphone.</p></div>
+<div class="card"><h2>Remplir un ancien cycle</h2>
+<p class="note">Tu as une vieille fiche, par exemple de ton graphique Seréna ? Remplis-la ici en 2 minutes environ : la glaire, le col, la température, les règles et le spotting. Même incomplet, c’est très bien.</p>
+<button class="btn" id="aob">📋 Remplir un ancien cycle</button></div>
+<div class="card"><h2>Numéro des cycles</h2>
+<p class="note">Tu viens d’un autre outil et tu en étais déjà à ton 54e cycle ? Écris 55 : ton premier cycle dans Hovie portera le numéro 55, le suivant le 56, et ainsi de suite. Si tu ajoutes ensuite un ancien cycle avant, il prendra le numéro 54.</p>
+<label for="nocv">Numéro de mon premier cycle dans Hovie</label>
+<input type="number" id="nocv" min="1" max="999" step="1" inputmode="numeric" placeholder="1">
+<button class="btn" id="nocb">Enregistrer le numéro</button></div>
 <div class="card">
 <h2>Sauvegarde</h2>
 <p class="note">Tes données restent sur cet appareil seulement. Exporte-les régulièrement, surtout avant de changer de téléphone.</p>
@@ -353,11 +423,23 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <footer class="note" style="margin:18px 0 6px;text-align:center">Cette appli n’est pas un outil médical ni un moyen de contraception. Elle sert au suivi personnel.</footer>
 </main>
 <div id="upd" role="alert" hidden><b>Nouvelle version disponible</b><p>Mettre à jour maintenant ? Ça prend environ 2 secondes et tes données sont gardées.</p><div class="ub"><button type="button" id="updy">Oui, mettre à jour</button><button type="button" id="updn">Non</button></div></div>
+<div id="aov" class="aov" hidden role="dialog" aria-modal="true" aria-label="Remplir un ancien cycle">
+<div class="aoh"><b>Remplir un ancien cycle</b><button type="button" id="aox" aria-label="Fermer">✕</button></div>
+<div class="aoc">
+<div class="aor"><div class="aof"><label>Premier jour des règles</label><div class="dtw"><div id="aodl"></div><input type="date" id="aosd" aria-label="Premier jour des règles"></div><input type="text" class="dtx" id="aodx" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="Ou écris : 31102026" aria-label="Écrire la date (jour, mois, année)" style="margin-top:6px"></div>
+<div class="aof"><label>Durée du cycle</label><div class="aod"><button type="button" id="aom" aria-label="Moins de jours">−</button><b id="aon">28</b><button type="button" id="aop" aria-label="Plus de jours">+</button></div></div></div>
+<p class="note" style="margin:6px 0">1. Touche le nom d’une rangée. 2. Choisis un symbole. 3. Touche les jours, ou glisse ton doigt sur plusieurs jours. Le jour 1 compte comme premier jour des règles. Tout est facultatif.</p>
+<div class="aot"><button type="button" id="aol" aria-label="Défiler vers la gauche">◀</button><button type="button" id="aor2" aria-label="Défiler vers la droite">▶</button><button type="button" id="aom2" class="alt" aria-pressed="true">🖌 Glisser pour remplir : oui</button></div>
+<div id="aog" class="aog"></div>
+<div id="aopal" class="aopal"></div>
+<div id="aotw" class="aotw" hidden><label for="aoti" id="aotl">Température du jour 1</label><div class="aotr"><input type="text" id="aoti" inputmode="decimal" placeholder="36,45" autocomplete="off"><button type="button" id="aotn" class="btn" style="margin:0;width:auto;padding:12px 18px">Suivant ›</button></div><p class="note" style="margin:4px 0 0">Écris par exemple 36,45 ou 3645. Laisse vide et touche « Suivant » pour passer un jour.</p></div>
+<button type="button" class="btn" id="aosv">Enregistrer ce cycle</button>
+<p class="note" id="aomsg" style="text-align:center;margin:8px 0 0"></p>
+</div></div>
 <div id="toast" role="status"></div>
 <script>
 const KEY='suivi-cycle-v1';
 const MUC=[['🩸 Règles',0],['⚪ Sèche / absente',1],['🟡 Collante / pâteuse',2],['🥛 Crémeuse / laiteuse',3],['💧 Aqueuse / humide',4],['🥚 Blanc d’œuf / très fertile',5]];
-const WORDS=[['Menstruations'],['Glaire absente','Sensation sèche'],['Collante','Pâteuse','Épaisse'],['Crémeuse','Laiteuse','Trouble','Lotionneuse'],['Aqueuse','Fluide','Transparente','Sensation humide'],['Filante','Élastique','Glissante','Lubrifiante','Type blanc d’œuf']];
 const MLAB=['Règles','Sèche','Collante','Crémeuse','Aqueuse','Blanc d’œuf'];
 let D={v:2,e:{}};
 try{const s=localStorage.getItem(KEY);if(s){const o=JSON.parse(s);if(o&&o.e)D=migrate(o)}}catch(_){}
@@ -376,48 +458,68 @@ let curM=null,curW=null,curF={},curR={},CH=null,curT=false,curS=1;
 function drawS(){$('wsg').innerHTML='';[['+',1],['−',-1]].forEach(([l,v])=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.setAttribute('aria-pressed',curS===v);b.setAttribute('aria-label',v>0?'Écart positif':'Écart négatif');b.onclick=()=>{curS=v;drawS();auto()};$('wsg').appendChild(b)})}
 function drawT(){$('ltest').innerHTML='';const b=document.createElement('button');b.textContent='Test d’ovulation positif';b.setAttribute('aria-pressed',curT);b.onclick=()=>{curT=!curT;drawT();auto()};$('ltest').appendChild(b)}
 function drawR(){$('rel').innerHTML='';[['ru','Relation non protégée'],['rp','Relation protégée']].forEach(([k,l])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',!!curR[k]);b.onclick=()=>{curR[k]=!curR[k];drawR();auto()};$('rel').appendChild(b)})}
-const REP=[['hb','Température la plus haute des basses'],['t1','Température haute 1'],['t2','Température haute 2'],['t3','Température haute 3'],['ov','Ovulation']];
-function drawF(){$('rep').innerHTML='';REP.forEach(([k,l])=>{const b=document.createElement('button');b.dataset.k=k;b.textContent=l;b.setAttribute('aria-pressed',!!curF[k]);b.onclick=()=>{curF[k]=!curF[k];drawF();auto()};$('rep').appendChild(b)});
-[['lh','Ligne horizontale'],['lv','Ligne verticale']].forEach(([k,l])=>{const b=document.createElement('button');b.dataset.k=k;b.textContent=l;b.setAttribute('aria-pressed',!!curF[k]);b.onclick=()=>{curF[k]=!curF[k];drawF();auto()};$('rep').appendChild(b)});
+const REP=[['hb','Température la plus haute des basses'],['t1','Température haute 1'],['t2','Température haute 2'],['t3','Température haute 3']];
+const REPS=[['pa','Ligne de la phase A'],['hb','Plus haute des 6 basses'],['pg','Pic de glaire'],['th','Première température haute']];
+function drawF(){$('rep').innerHTML='';(SYM?REPS:REP).forEach(([k,l])=>{const b=document.createElement('button');b.dataset.k=k;b.textContent=l;b.setAttribute('aria-pressed',!!curF[k]);b.onclick=()=>{curF[k]=!curF[k];drawF();auto()};$('rep').appendChild(b)});
+(SYM?[]:[['lh','Ligne horizontale'],['lv','Ligne verticale']]).forEach(([k,l])=>{const b=document.createElement('button');b.dataset.k=k;b.textContent=l;b.setAttribute('aria-pressed',!!curF[k]);b.onclick=()=>{curF[k]=!curF[k];drawF();auto()};$('rep').appendChild(b)});
 const d=$('date').value,cy=cycles().find(c=>c.s<=d&&d<=c.end),I=$('repinfo');I.innerHTML='';
-if(cy)REP.forEach(([k,l])=>{if(curF[k])return;const dk=Object.keys(D.e).find(x=>x>=cy.s&&x<=cy.end&&D.e[x][k]);if(dk){const b=document.createElement('button');b.className='btn alt';b.style.cssText='margin-top:6px;padding:8px;text-align:left';b.textContent=l+' : placée le '+fmt(dk)+'. Aller à ce jour';b.onclick=()=>goto(dk);I.appendChild(b)}})}
+if(cy)(SYM?REPS:REP).forEach(([k,l])=>{if(curF[k])return;const dk=Object.keys(D.e).find(x=>x>=cy.s&&x<=cy.end&&D.e[x][k]);if(dk){const b=document.createElement('button');b.className='btn alt';b.style.cssText='margin-top:6px;padding:8px;text-align:left';b.textContent=l+' : placée le '+fmt(dk)+' · Aller à ce jour';b.onclick=()=>goto(dk);I.appendChild(b)}})}
+let curGs=null,curGa=null,curGt=null,curSL=[],curAL=[];
+const GSL=[['S','Sèche'],['C','Collante'],['H','Humide'],['M','Mouillée'],['L','Lubrifiée']],GAL=[['-','Absente'],['O','Opaque'],['TR','Trouble'],['T','Transparente'],['F','Filante']],GS=[['Sèche',0],['Humide / collante',1],['Mouillée / lubrifiée',2]],GA=[['Absente',0],['Opaque',1],['Trouble / transparente / filante',2]],GT=[['Moins fertile',-1],['Pareille',0],['Plus fertile',1]];
+let LP=new Set();
+function gscore(k){const e=D.e[k];if(!e||e.m===0||(e.gs==null&&e.ga==null))return null;let v=(e.gs||0)+(e.ga||0);if(LP.has(k))v++;return Math.min(5,v)}
+function picOf(c){const ks=Object.keys(D.e).filter(k=>k>=c.s&&k<=c.end).sort(),man=ks.filter(k=>D.e[k].pg).pop();if(man)return man;let best=null,bv=0;ks.forEach(k=>{const e=D.e[k];if(e.m===0)return;const g=gscore(k),v=g!=null?g:(e.m>0?e.m-1:null);if(v!=null&&v>0&&v>=bv){bv=v;best=k}});return best}
+function syncGl(){LP=new Set();cycles().forEach(c=>{const k=Object.keys(D.e).filter(x=>x>=c.s&&x<=c.end&&D.e[x].gt===1).sort().pop();if(k)LP.add(k)});Object.keys(D.e).forEach(k=>{const e=D.e[k];if(e.m===0||(e.gs==null&&e.ga==null))return;const S=gscore(k);e.m=S>=4?5:S+1})}
+let curSp=false,curRl=false;
+function drawG(){const mk=(id,arr,get,set)=>{$(id).innerHTML='';arr.forEach(([l,v])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',get()===v);b.onclick=()=>{set(get()===v?null:v);drawG();auto()};$(id).appendChild(b)})};
+$('gr').innerHTML='';[['🩸 Règles','r',()=>curM===0&&!curRl],['Règles légères','l',()=>curM===0&&curRl],['Spotting','s',()=>curSp]].forEach(([l,k,on])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',on());b.onclick=()=>{const was=on();if(k==='s'){curSp=!was;if(curSp){if(curM===0)curM=null;curRl=false}}else{if(was){curM=null;curRl=false}else{curM=0;curRl=k==='l';curSp=false;curW=null;curGs=curGa=curGt=null;curSL=[];curAL=[]}}drawG();auto()};$('gr').appendChild(b)});
+const clr=()=>{if(curM===0){curM=null;curRl=false}else if(curM!==null&&!(curGs!=null||curGa!=null)){curM=null;curW=null}};
+const lvS={S:0,H:1,C:1,M:2,L:2},lvA={'-':0,O:1,TR:2,T:2,F:3};
+const mkm=(id,arr,getl,ex,lv,setv)=>{$(id).innerHTML='';arr.forEach(([v,l])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',getl().includes(v));b.onclick=()=>{clr();const list=getl(),i=list.indexOf(v);if(i>=0)list.splice(i,1);else{if(v===ex)list.length=0;else{const j=list.indexOf(ex);if(j>=0)list.splice(j,1);while(list.length>=2)list.shift()}list.push(v)}setv(list.length?Math.max(...list.map(x=>lv[x])):null);drawG();auto()};$(id).appendChild(b)})};
+mkm('gsn',GSL,()=>curSL,'S',lvS,v=>{curGs=v});mkm('gap',GAL,()=>curAL,'-',lvA,v=>{curGa=v});
+mk('gtd',GT,()=>curGt,v=>{if(curM===0&&v!==null){curM=null;curRl=false}curGt=v});
+const lg=(curGs!=null&&!curSL.length)||(curGa!=null&&!curAL.length)?'Saisie précédente gardée (sensation et apparence regroupées). Choisis les lettres pour la remplacer.':curM>0&&curGs==null&&curGa==null?'Saisie ancienne gardée telle quelle : '+(curW||MUC.find(x=>x[1]===curM)[0].replace(/^\S+\s/,''))+'. Choisis une sensation ou une apparence pour la remplacer.':'';$('gleg').textContent=lg;$('gleg').hidden=!lg}
+function glApply(){$('gold').hidden=SYM;$('gnew').hidden=!SYM;$('gjw').hidden=false;if(SYM)drawG();else drawMuc()}
 function drawMuc(){$('muc').innerHTML='';MUC.forEach(([l,v])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',curM===v);b.onclick=()=>{curM=curM===v?null:v;curW=null;drawMuc();auto()};$('muc').appendChild(b)});}
-function load(d){const e=D.e[d]||{};$('today').hidden=d===iso(new Date());$('temp').value=e.t??'';curM=e.m??null;curW=e.w||null;drawMuc();curF={hb:!!e.hb,t1:!!e.t1,t2:!!e.t2,t3:!!e.t3,ov:!!e.ov,lh:!!e.lh,lv:!!e.lv};drawF();curR={ru:!!e.ru,rp:!!e.rp};drawR();curT=!!e.tp;drawT();curS=(e.ws!=null&&e.ws<0)?-1:1;drawS();$('wsv').value=e.ws!=null?Math.abs(e.ws):'';
-$('sp').checked=!!e.sp;$('gj').checked=!!e.gj;$('cp').value=e.cp||'';$('cd2').value=e.cd||'';$('co').value=e.co||'';
-document.querySelectorAll('.pt').forEach(c=>c.checked=(e.p||[]).includes(c.value));$('nt').value=e.n||'';
+function load(d){const e=D.e[d]||{};$('today').hidden=d===iso(new Date());$('temp').value=e.t!=null?String(e.t).replace('.',','):'';curM=e.m??null;curW=e.w||null;curGs=e.gs??null;curGa=e.ga??null;curSL=Array.isArray(e.gsl)?e.gsl.slice():[];curAL=Array.isArray(e.gal)?e.gal.slice():[];curGt=e.gt||null;if(SYM)drawG();else drawMuc();curF={pg:!!e.pg,th:!!e.th,pa:!!e.pa,hb:!!e.hb,t1:!!e.t1,t2:!!e.t2,t3:!!e.t3,ov:!!e.ov,lh:!!e.lh,lv:!!e.lv};drawF();curR={ru:!!e.ru,rp:!!e.rp};drawR();curT=!!e.tp;drawT();curS=(e.ws!=null&&e.ws<0)?-1:1;drawS();$('wsv').value=e.ws!=null?Math.abs(e.ws):'';
+curSp=!!e.sp;curRl=!!e.rl&&e.m===0;$('gj').checked=!!e.gj;$('cp').value=e.cp||'';$('cd2').value=e.cd||'';$('co').value=e.co||'';
+document.querySelectorAll('.pt').forEach(c=>c.checked=(e.p||[]).includes(c.value));$('phv').value=e.ph||'';$('pov').value=e.po||'';$('pow').hidden=!$('p6').checked;document.querySelectorAll('.sgc').forEach(c=>c.checked=(e.sg||[]).includes(c.value));$('sgov').value=e.so||'';$('sgow').hidden=!(e.sg||[]).includes('A');$('hu').value=e.hu||huAt(d);$('phw').hidden=!$('p5').checked;$('nt').value=e.n||'';
 status(d)}
+(()=>{const d=$('date'),ds=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value'),up=()=>{const v=ds.get.call(d);$('dlab').textContent=v?new Date(v+'T12:00:00').toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'}):''};Object.defineProperty(d,'value',{get(){return ds.get.call(this)},set(v){ds.set.call(this,v);up()},configurable:true});d.addEventListener('input',up);d.addEventListener('change',up);d.addEventListener('click',()=>{try{d.showPicker&&d.showPicker()}catch(_){}});up()})();
 $('date').onchange=()=>load($('date').value);
 const goto=d=>{$('date').value=d;load(d)};
+function dtxIso(v){const m=/^(\d{2})(\d{2})(\d{4})$/.exec(v);if(!m)return null;const d=+m[1],mo=+m[2],y=+m[3],t=new Date(y,mo-1,d);if(y<2000||y>2100||t.getFullYear()!==y||t.getMonth()!==mo-1||t.getDate()!==d)return null;return y+'-'+String(mo).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
 $('prev').onclick=()=>{if($('date').value)goto(addDays($('date').value,-1))};
 $('next').onclick=()=>{if($('date').value)goto(addDays($('date').value,1))};
 $('today').onclick=()=>goto(iso(new Date()));
+function huAt(d){const k=Object.keys(D.e).filter(x=>x<=d&&D.e[x].hu).sort().pop();return k?D.e[k].hu:''}
 function persist(man){const d=$('date').value;if(!d)return;const e={};
-const t=parseFloat($('temp').value);if(!isNaN(t)){if(t<34||t>40){if(man)alert('La température doit être entre 34 et 40 °C.');return}e.t=Math.round(t*100)/100}
+const t=parseFloat(String($('temp').value).replace(',','.'));if(!isNaN(t)){if(t<34||t>40){if(man)alert('La température doit être entre 34 et 40 °C.');return}e.t=Math.round(t*100)/100}
 const wv=parseFloat($('wsv').value);if(!isNaN(wv)){const v=(wv<0||curS<0?-1:1)*Math.abs(wv);if(Math.abs(v)>5){if(man)alert('L’écart de la montre doit être entre −5 et +5.');else toast('Écart entre −5 et +5 seulement');return}e.ws=Math.round(v*100)/100;if(Math.abs(v)>2)toast('Valeur inhabituelle (hors de −2 à +2)')}
-if(curM!==null){e.m=curM;if(curW)e.w=curW}if($('sp').checked)e.sp=1;if($('gj').checked)e.gj=1;
-['hb','t1','t2','t3','ov','lh','lv'].forEach(f=>{if(curF[f])e[f]=1});
+if(SYM){if(curM===0)e.m=0;else{if(curGs!=null)e.gs=curGs;if(curGa!=null)e.ga=curGa;if(curSL.length)e.gsl=curSL.slice();if(curAL.length)e.gal=curAL.slice();if(curGt!=null)e.gt=curGt;if(e.gs==null&&e.ga==null&&curM!==null){e.m=curM;if(curW)e.w=curW}}}else if(curM!==null){e.m=curM;if(curW)e.w=curW}if(curSp)e.sp=1;if(curRl&&e.m===0)e.rl=1;if($('gj').checked)e.gj=1;
+['pa','th','hb','t1','t2','t3','ov','lh','lv','pg'].forEach(f=>{if(curF[f])e[f]=1});
 ['ru','rp'].forEach(f=>{if(curR[f])e[f]=1});
 if(curT)e.tp=1;
-if((e.hb||e.t1||e.t2||e.t3||e.lh)&&e.t==null){if(man)alert('Entre la température de ce jour pour placer la ligne sur le graphique.');else toast('Entre d’abord la température');return}
+if((e.hb||e.t1||e.t2||e.t3||e.th||e.lh)&&e.t==null){if(man)alert('Entre la température de ce jour pour placer la ligne sur le graphique.');else toast('Entre d’abord la température');return}
 if($('cp').value)e.cp=$('cp').value;if($('cd2').value)e.cd=$('cd2').value;if($('co').value)e.co=$('co').value;
-const p=[...document.querySelectorAll('.pt')].filter(c=>c.checked).map(c=>c.value);if(p.length)e.p=p;
+const p=[...document.querySelectorAll('.pt')].filter(c=>c.checked).map(c=>c.value);if(p.length)e.p=p;{const sg=[...document.querySelectorAll('.sgc')].filter(c=>c.checked).map(c=>c.value);if(sg.length)e.sg=sg;if(sg.includes('A')&&$('sgov').value.trim())e.so=$('sgov').value.trim().slice(0,80)}if(p.includes('heure')&&$('phv').value)e.ph=$('phv').value;if(p.includes('autre')&&$('pov').value.trim())e.po=$('pov').value.trim().slice(0,80);{const hv=$('hu').value;if(hv&&(hv!==huAt(addDays(d,-1))||(D.e[d]&&D.e[d].hu)))e.hu=hv}
 if($('nt').value.trim())e.n=$('nt').value.trim();
 const prevM=(D.e[d]||{}).m,isStart=day=>{for(let i=1;i<=7;i++){const q=D.e[addDays(day,-i)];if(q&&q.m===0)return false}return true};let filled=0,removed=0;
-if(e.m===0&&prevM!==0&&isStart(d)){for(let i=1;i<=4;i++){const x=addDays(d,i),ex=D.e[x];if(ex&&ex.m!=null)continue;D.e[x]=Object.assign({},ex||{},{m:0,au:1});filled++}}
+if(e.m===0&&prevM!==0&&isStart(d)){for(let i=1;i<=4;i++){const x=addDays(d,i),ex=D.e[x];if(ex&&(ex.m!=null||ex.gs!=null||ex.ga!=null))continue;D.e[x]=Object.assign({},ex||{},{m:0,au:1});filled++}}
 else if(prevM===0&&e.m!==0&&isStart(d)){for(let i=1;i<=4;i++){const x=addDays(d,i),ex=D.e[x];if(ex&&ex.au&&ex.m===0){delete ex.m;delete ex.au;if(!Object.keys(ex).length)delete D.e[x];removed++}}}
 if(Object.keys(e).length)D.e[d]=e;else delete D.e[d];
+syncGl();
 const cy=cycles().find(c=>c.s<=d&&d<=c.end);
-if(cy)['hb','t1','t2','t3','ov'].forEach(f=>{if(e[f])Object.keys(D.e).forEach(k=>{if(k!==d&&k>=cy.s&&k<=cy.end&&D.e[k][f]){delete D.e[k][f];if(!Object.keys(D.e[k]).length)delete D.e[k]}})});
-if(save()){toast(filled?'Enregistré. Les 4 jours suivants sont notés « Règles » : modifie-les si tu n’as plus tes règles.':(removed?'Enregistré. Les jours ajoutés automatiquement ont été retirés.':'Enregistré'));if(man)load(d)}}
+if(cy)['pa','th','hb','t1','t2','t3','ov','pg'].forEach(f=>{if(e[f])Object.keys(D.e).forEach(k=>{if(k!==d&&k>=cy.s&&k<=cy.end&&D.e[k][f]){delete D.e[k][f];if(!Object.keys(D.e[k]).length)delete D.e[k]}})});
+if(save()){toast(filled?'Enregistré. Les 4 jours suivants sont notés « Règles » : modifie-les si tu n’as plus tes règles.':(removed?'Enregistré. Les jours ajoutés automatiquement ont été retirés.':'Enregistré'));if(man)load(d);else status(d)}}
 const auto=()=>persist(false);
-['temp','wsv','sp','gj','cp','cd2','co','nt'].forEach(id=>$(id).addEventListener('change',auto));
-document.querySelectorAll('.pt').forEach(c=>c.addEventListener('change',auto));
-function colScore(e){if(!e||!e.cp||!e.cd||!e.co)return null;return {B:0,M:1,H:2}[e.cp]+(e.cd==='S'?1:0)+(e.co==='O'?1:0)}
-const nf=x=>x.toLocaleString('fr-CA',{minimumFractionDigits:1,maximumFractionDigits:1});
+['temp','hu','wsv','gj','cp','cd2','co','nt'].forEach(id=>$(id).addEventListener('change',auto));
+document.querySelectorAll('.pt').forEach(c=>c.addEventListener('change',()=>{$('phw').hidden=!$('p5').checked;$('pow').hidden=!$('p6').checked;auto()}));$('phv').addEventListener('change',auto);$('pov').addEventListener('change',auto);document.querySelectorAll('.sgc').forEach(c=>c.addEventListener('change',()=>{$('sgow').hidden=!$('sg7').checked;auto()}));$('sgov').addEventListener('change',auto);
+function colScore(e){if(!e||!e.cp||!e.cd||!e.co)return null;const h={B:0,M:1,H:2}[e.cp],a={F:0,M:1,S:2}[e.cd],b={F:0,E:1,O:2}[e.co];return h==null||a==null||b==null?null:h+a+b}
 const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
 function stats(){const cs=cycles(),B=$('statbody'),cl=[],ov=[];let bad=0;
 for(let i=0;i<cs.length-1;i++){const L=diff(cs[i].s,cs[i+1].s);if(L>=16)cl.push({s:cs[i].s,L});else bad++}
-cs.forEach((c,i)=>{if(i<cs.length-1&&diff(c.s,cs[i+1].s)<16)return;const k=Object.keys(D.e).find(k=>k>=c.s&&k<=c.end&&D.e[k].ov);if(k)ov.push(diff(c.s,k)+1)});
+cs.forEach((c,i)=>{if(i<cs.length-1&&diff(c.s,cs[i+1].s)<16)return;const k=SYM?null:Object.keys(D.e).find(k=>k>=c.s&&k<=c.end&&D.e[k].ov);if(k)ov.push(diff(c.s,k)+1)});
 const len=cl.map(x=>x.L);
 const card=(t,v,sub)=>`<div class="card"><div class="day">${t}</div><div class="stat">${v}</div>${sub?`<div class="note">${sub}</div>`:''}</div>`;
 let h='';const pl=n=>n>1?'s':'';
@@ -425,43 +527,37 @@ const ign=bad?` ${bad} cycle${pl(bad)} de moins de 16 jours ignoré${pl(bad)}.`:
 if(!len.length)h+=card('Durée moyenne des cycles','—','Il faut au moins un cycle complet de 16 jours ou plus, donc deux débuts de règles.'+ign);
 else{const A=mean(len);
 h+=card('Durée moyenne des cycles',Math.round(A)+' jours',`Sur ${len.length} cycle${pl(len.length)} complet${pl(len.length)}, de ${Math.min(...len)} à ${Math.max(...len)} jours.`+ign);
-{const La=Math.round(A),cur=cs.length?cs[cs.length-1]:null;
-h+=card('Jour d’ovulation selon le calendrier','jours '+(La-15)+' à '+(La-11),'Durée moyenne des cycles − 15 à − 11 jours (on suppose une phase de 11 à 15 jours entre l’ovulation et la fin du cycle).'+(cur?` Pour ton cycle actuel : du ${fmt(addDays(cur.s,La-16))} au ${fmt(addDays(cur.s,La-12))}`:''))}
-if(ov.length){const O=mean(ov);
-h+=card('Jour d’ovulation observé, en moyenne','jour '+Math.round(O),`Sur ${ov.length} cycle${pl(ov.length)} où tu as placé l’ovulation.`);
-h+=card('Début de période fertile moyen (observé)','jour '+(Math.round(O)-5),'Jour d’ovulation moyen − 5 jours.');
-h+=card('Fin de période fertile moyenne (observée)','jour '+(Math.round(O)+1),'Jour d’ovulation moyen + 1 jour, comme la bande rose du graphique.')}
-else h+=card('Jour d’ovulation observé, en moyenne','—','Place le repère « Ovulation » dans au moins un cycle.');
-h+=card('Début de la période fertile','jour '+Math.max(1,(Math.round(A)-22)),'Durée moyenne − 17 jours (première ovulation possible) − 5 jours (survie des spermatozoïdes), calculé avec la durée moyenne arrondie.');
-h+=card('Fin de la période fertile','jour '+(Math.round(A)-10),'Durée moyenne arrondie − 10 jours.');
+if(!SYM){h+=card('Début de la période fertile','jour '+Math.max(1,(Math.round(A)-22)),'Durée moyenne − 17 jours (première ovulation possible) − 5 jours (survie des spermatozoïdes), calculé avec la durée moyenne arrondie.');
+h+=card('Fin de la période fertile','jour '+(Math.round(A)-10),'Durée moyenne arrondie − 10 jours.')}
+else{const M=model(),dn=M.cyc.filter(x=>x.done&&!x.bad).map(x=>({L:x.L,...phaseInfo(M,x)})),pc=(t,a,sub,none)=>{h+=a.length?card(t,Math.round(mean(a))+' jours',`${sub} Sur ${a.length} cycle${pl(a.length)}, de ${Math.min(...a)} à ${Math.max(...a)} jours.`):card(t,'—',none)};
+pc('Phase A',dn.filter(x=>x.N).map(x=>x.N-1),'Du début des règles à la veille de la ligne de la phase A.','Il faut 2 cycles complets (ligne automatique) ou ta ligne placée à la main.');
+pc('Phase B',dn.filter(x=>x.N&&x.T).map(x=>x.T-x.N+1),'De la ligne de la phase A jusqu’à ta 3e température haute.','Il faut une ligne de phase A et une 3e température haute dans un cycle complet.');
+pc('Phase C',dn.filter(x=>x.T).map(x=>x.L-x.T),'Après la 3e température haute, jusqu’aux règles suivantes.','Il faut une 3e température haute dans un cycle complet.')}
 const mn=cl.reduce((m,x)=>x.L<=m.L?x:m),mx=cl.reduce((m,x)=>x.L>=m.L?x:m);
-const fw=x=>{const a=Math.max(1,x.L-22),b=x.L-10;return `Cycle du ${fmt(x.s)} : la période fertile était du jour ${a} au jour ${b} (du ${fmt(addDays(x.s,a-1))} au ${fmt(addDays(x.s,b-1))})`};
+const fw=x=>{if(SYM)return 'Cycle du '+fmt(x.s);const a=Math.max(1,x.L-22),b=x.L-10;return `Cycle du ${fmt(x.s)} : la période fertile était du jour ${a} au jour ${b} (du ${fmt(addDays(x.s,a-1))} au ${fmt(addDays(x.s,b-1))})`};
 h+=card('Cycle le plus court',mn.L+' jours',fw(mn));
 h+=card('Cycle le plus long',mx.L+' jours',fw(mx));
-if(cs.length){const c=cs[cs.length-1],a=Math.max(1,(Math.round(A)-22)),b=(Math.round(A)-10);
+if(cs.length&&!SYM){const c=cs[cs.length-1],a=Math.max(1,(Math.round(A)-22)),b=(Math.round(A)-10);
 h+=card('Ton cycle actuel, commencé le '+fmt(c.s),'du '+fmt(addDays(c.s,a-1))+' au '+fmt(addDays(c.s,b-1)),'Calculé avec la durée moyenne arrondie.')}}
 B.innerHTML=h}
-function summ(){const cs=cycles(),B=$('sumbody');let h='';
+function summ(){const cs=cycles(),B=$('sumbody'),MM=SYM?model():null;let h='';
 const row=(l,v)=>`<div class="sr"><span>${l}</span><b>${v}</b></div>`;
 for(let i=cs.length-2;i>=0;i--){const c=cs[i],L=diff(c.s,cs[i+1].s),end=addDays(cs[i+1].s,-1);
-const title=`<h2>Cycle du ${fmt(c.s)} au ${fmt(end)}</h2>`;
+const title=`<h2>Cycle ${cNo(i)?'no '+cNo(i)+' · ':''}du ${fmt(c.s)} au ${fmt(end)}</h2>`;
 if(L<16){h+=`<div class="card">${title}${row('Durée',L+' jours')}<p class="note">Cycle de moins de 16 jours : non calculé.</p></div>`;continue}
 const ks=Object.keys(D.e).filter(k=>k>=c.s&&k<=end).sort(),dn=k=>diff(c.s,k)+1;
 const jl=a=>a.length?(a.length>1?'jours ':'jour ')+a.map(dn).join(', '):'aucun';
-const fk=f=>ks.find(k=>D.e[k][f]),tpf=ks.find(k=>D.e[k].tp),reg=ks.filter(k=>D.e[k].m===0),pk=ks.filter(k=>D.e[k].m===5).pop(),ov=fk('ov'),hb=fk('hb');
+const fk=f=>ks.find(k=>D.e[k][f]),tpf=ks.find(k=>D.e[k].tp),reg=ks.filter(k=>D.e[k].m===0),pk=picOf({s:c.s,end}),ov=null,hb=fk('hb');
 const rg=(a,b)=>{a=Math.max(1,a);b=Math.min(L,b);return `jours ${a} à ${b} (du ${fmt(addDays(c.s,a-1))} au ${fmt(addDays(c.s,b-1))})`};
 const pt=D.e[ks.find(k=>D.e[k].p&&D.e[k].p.length)||''];
 h+=`<div class="card">${title}`
 +row('Durée',L+' jours')
 +row('Règles',reg.length?`${reg.length} jour${reg.length>1?'s':''} notés, jours ${dn(reg[0])} à ${dn(reg[reg.length-1])}`:'non notées')
-+row('Ovulation observée',ov?`jour ${dn(ov)} (${fmt(ov)})`:'non placée')
-+row('Jours entre l’ovulation et la fin du cycle',(ov||tpf)?(()=>{const f=ov?dn(ov):dn(tpf),N=L-f;return N+' jours'+(N>=17?' (phase lutéale longue)':(N<=10?' (phase lutéale courte)':''))})():'—')
-+row('Ovulation selon le calendrier',`jours ${L-15} à ${L-11} (du ${fmt(addDays(c.s,L-16))} au ${fmt(addDays(c.s,L-12))})`)
-+row('Période fertile',rg(L-22,L-10))
-+row('Période fertile observée',ov?rg(dn(ov)-5,dn(ov)+1):'—')
-+row('Pic de glaire (dernier blanc d’œuf)',pk?`jour ${dn(pk)} (${fmt(pk)})`:'aucun')
++(SYM?(()=>{const kf=ks.find(k=>D.e[k].th)||ks.find(k=>D.e[k].t1);if(!kf)return row('Phase lutéale (depuis la 1re température haute)','—');const N=L-dn(kf)+1;return row('Phase lutéale (depuis la 1re température haute)',N+' jours'+(N>=17?' (longue)':(N<=10?' (courte)':'')))})():row('Jours entre l’ovulation et la fin du cycle',(ov||tpf)?(()=>{const f=ov?dn(ov):dn(tpf),N=L-f;return N+' jours'+(N>=17?' (phase lutéale longue)':(N<=10?' (phase lutéale courte)':''))})():'—'))
++(SYM?(()=>{const P=phaseInfo(MM,MM.cyc.find(x=>x.s===c.s)),N=P.N,T=P.T,a=P.auto?' (ligne automatique)':'';return row('Phase A',N?(N>1?rg(1,N-1):'aucune')+a:'non calculable')+row('Phase B',N&&T?rg(N,T):(N?'débute au jour '+N+', 3e température haute non trouvée':'—'))+row('Phase C',T&&T<L?rg(T+1,L):'—')})():row('Période fertile',rg(L-22,L-10)))
++row('Pic de glaire',pk?`jour ${dn(pk)} (${fmt(pk)})`:'aucun')
 +row('Test d’ovulation positif',jl(ks.filter(k=>D.e[k].tp)))
-+row('Plus haute des basses',hb&&D.e[hb].t!=null?`${D.e[hb].t.toFixed(2)} °C, jour ${dn(hb)}`:'non placée')
++(SYM?(()=>{let t=null,au=false;if(hb&&D.e[hb].t!=null)t=D.e[hb].t;else{const kh=fk('th');if(kh){const pv=ks.filter(k=>k<kh&&D.e[k].t!=null&&!(D.e[k].p&&D.e[k].p.length)).slice(-6).map(k=>D.e[k].t);if(pv.length){t=Math.max(...pv);au=true}}}return row('Plus haute des 6 basses',t!==null?`${t.toFixed(2)} °C, ligne à ${(t+0.05).toFixed(2)} °C`+(au?' (calculée)':''):'—')})():row('Plus haute des basses',hb&&D.e[hb].t!=null?`${D.e[hb].t.toFixed(2)} °C, jour ${dn(hb)}`:'non placée'))
 +row('Spotting',jl(ks.filter(k=>D.e[k].sp)))
 +row('Glaire gélatineuse',jl(ks.filter(k=>D.e[k].gj)))
 +row('Relations non protégées',jl(ks.filter(k=>D.e[k].ru)))
@@ -474,7 +570,7 @@ function model(){const cs=cycles(),n=cs.length,rl=[];
 for(let i=0;i<n-1;i++)rl.push(diff(cs[i].s,cs[i+1].s));
 const vl=rl.filter(x=>x>=16),A=vl.length?mean(vl):null;
 const cyc=cs.map((c,i)=>{const done=i<n-1,bad=done&&rl[i]<16,o=rl.filter((x,j)=>x>=16&&j!==i);
-return{s:c.s,done,bad,L:done?rl[i]:null,ov:bad?null:(Object.keys(D.e).find(k=>k>=c.s&&k<=c.end&&D.e[k].ov)||null),A:o.length?mean(o):null,ml:(()=>{let m=1;for(let i=1;i<10;i++){const e=D.e[addDays(c.s,i)];if(e&&e.m===0)m=i+1}return m})(),pk:Object.keys(D.e).filter(k=>k>=c.s&&k<=c.end&&D.e[k].m===5).sort().pop()||null,tp:Object.keys(D.e).filter(k=>k>=c.s&&k<=c.end&&D.e[k].tp).sort()[0]||null}});
+return{s:c.s,done,bad,L:done?rl[i]:null,ov:null,A:o.length?mean(o):null,ml:(()=>{let m=1;for(let i=1;i<10;i++){const e=D.e[addDays(c.s,i)];if(e&&e.m===0)m=i+1}return m})(),pk:picOf(c),tp:Object.keys(D.e).filter(k=>k>=c.s&&k<=c.end&&D.e[k].tp).sort()[0]||null}});
 const mls=cyc.filter(x=>x.done&&!x.bad).map(x=>x.ml),mlAvg=mls.length?Math.round(mean(mls)):5;
 if(n&&A!==null){const step=Math.round(A),tm=addDays(iso(new Date()),1);let s=addDays(cs[n-1].s,step);if(s<tm)s=tm;
 for(let k=0;k<14;k++){cyc.push({s,done:false,pred:true,L:step,ov:null,A,ml:mlAvg});s=addDays(s,step)}}
@@ -483,12 +579,38 @@ const rec3=cyc.filter(c=>c.done&&!c.bad).slice(-3),lhOff=rec3.length===3&&rec3.e
 const gl=lhOff?[]:cyc.filter(c=>c.done&&!c.bad&&c.tpN),go=obOff?[]:cyc.filter(c=>c.done&&!c.bad&&c.ovN);
 const stt=a=>a.length?{n:a.length,min:Math.min(...a),avg:Math.round(mean(a)),max:Math.max(...a)}:null,lhS=stt(gl.map(c=>c.tpN)),obS=stt(go.map(c=>c.ovN));
 const offLH=gl.length?mean(gl.map(c=>c.L-c.tpN)):null,offObs=go.length?mean(go.map(c=>c.L-c.ovN)):null,Dmax=gl.length?Math.max(...gl.map(c=>c.L-(c.tpN+2))):null,Dobs=go.length?Math.max(...go.map(c=>c.L-c.ovN)):null;
-cyc.forEach(c=>{if(c.bad){c.eo=null;return}if(c.ov){c.eo={d:c.ov,auto:false,lo:0,hi:0};return}if(c.tp){c.eo={d:addDays(c.tp,1),auto:true,lh:true,lo:-1,hi:1};return}if(!c.done&&lhS){c.eo={d:addDays(c.s,lhS.avg),auto:true,lh:true,proj:true,lo:-1,hi:1};return}const Lx=c.L!=null?c.L:(A!==null?Math.round(A):null);c.eo=Lx!=null&&Lx>=16?{d:addDays(c.s,Lx-14),auto:true,lo:-2,hi:2}:null});
-return{cyc,A,lhS,obS,nBad:rl.filter(x=>x<16).length,offLH,offObs,Dmax,Dobs,nLH:gl.length,nObs:go.length,ml:mlAvg,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
+cyc.forEach(c=>{if(c.bad){c.eo=null;return}if(c.tp){c.eo={d:addDays(c.tp,1),auto:true,lh:true,lo:-1,hi:1};return}if(!c.done&&lhS){c.eo={d:addDays(c.s,lhS.avg),auto:true,lh:true,proj:true,lo:-1,hi:1};return}c.eo=null});
+return{cyc,A,lhS,obS,nBad:rl.filter(x=>x<16).length,offLH,offObs,Dmax,Dobs,nLH:gl.length,nObs:go.length,ml:mlAvg,nV:vl.length,Lmin:vl.length?Math.min(...vl):null,Lmax:vl.length?Math.max(...vl):null}}
 function locate(M,d){let r=-1;for(let i=0;i<M.cyc.length;i++){if(M.cyc[i].s<=d)r=i;else break}return r}
 let FRX=false,TIPO=false;
-function frame(M,c,dayN){
-const eoP=c.bad?null:c.eo,nP=eoP?dayN-(diff(c.s,eoP.d)+1):null,postT=eoP&&nP>eoP.hi?'<small>Jour post-ovulation : '+(nP-eoP.hi)+(eoP.auto?' (ovulation estimée)':'')+'</small>':'';
+function phaseInfo(M,c){const i=M.cyc.indexOf(c),nx=M.cyc[i+1],end=nx?addDays(nx.s,-1):'9999-12-31',ks=c.pred?[]:Object.keys(D.e).filter(k=>k>=c.s&&k<=end),kp=ks.find(k=>D.e[k].pa),kh=ks.find(k=>D.e[k].th),k3=ks.find(k=>D.e[k].t3),nV=M.nV||0,off=nV>=12?20:(nV>=6?21:(nV>=2?22:null));let N=null,auto=false;if(kp)N=diff(c.s,kp)+1;else if(off!==null&&M.Lmin!=null){N=Math.max(1,M.Lmin-off);auto=true}return{N,auto,T:kh?diff(c.s,kh)+3:(k3?diff(c.s,k3)+1:null)}}
+function symRows(h,M,c,dayN,rReg,v3){const P=phaseInfo(M,c),N=P.N,T=P.T;
+v3=v3||(v=>`<div class="pv3"><span>${v[0]}</span><span>${v[1]}</span><span>${v[2]}</span></div><div class="trk"><i></i><i></i><i></i></div>`);
+const box=(big,sub,bar)=>`<div class="pr"><div class="pl"><b class="pv">${big}</b><span class="plab">${sub}</span></div><div class="pb">${bar}</div></div>`,msg=t=>'<div class="lgd" style="display:block;text-align:left">'+t+'</div>';
+const done=M.cyc.filter(x=>x.done&&!x.bad),Ts=done.map(x=>({L:x.L,T:phaseInfo(M,x).T})).filter(x=>x.T!=null),tri=a=>a.length?[Math.min(...a),Math.round(mean(a)),Math.max(...a)]:null;
+const cur=T!==null&&dayN>T?'C':(N===null?null:(dayN<N?'A':'B'));
+const ord=['A','B','C'],ci=cur===null?-1:ord.indexOf(cur);
+const mk=(ph,ends,single,note,prev)=>{const idx=ord.indexOf(ph),fut=ci>=0&&idx>ci,past=ci>=0&&idx<ci;
+const lab=prev&&fut?'Phase '+ph+' · début dans':'Phase '+ph+' · fin dans';
+const rng=fut?(prev?prev.map(x=>x+1):null):ends;
+if(past)return box('terminée','Phase '+ph,msg(note));
+if(!rng)return box('—','Phase '+ph,msg(note));
+const left=x=>dayN>x?'passée':(x-dayN>0?(x-dayN)+' j':(fut?'aujourd’hui':'dernier jour')),pre=fut?'jour ':'jour ';
+if(dayN>rng[2])return box('terminée','Phase '+ph,msg(note));
+if(single||rng[0]===rng[2])return box(left(rng[1]),lab+(cur===ph?' (en cours)':''),msg(fut?'Début au jour '+rng[1]+'.':(note||'Fin au jour '+rng[1]+'.')));
+const v=rng.map(left);
+return box(v[1]==='passée'?'plus tard':v[1],lab+(cur===ph?' (en cours)':''),v3(v)+`<div class="lgd"><span>le plus tôt<br>${pre}${rng[0]}</span><span>moyenne<br>${pre}${rng[1]}</span><span>le plus tard<br>${pre}${rng[2]}</span></div>`)};
+const Aend=N===null?null:[N-1,N-1,N-1],Bt=T!==null?[T,T,T]:tri(Ts.map(x=>x.T));
+const A=N===null?mk('A',null,false,'Pas encore de ligne : il faut 2 cycles terminés, ou place la ligne toi-même dans les repères du graphique.',null):mk('A',Aend,true,N<=1?'Aucun jour avant la ligne.':'Jours 1 à '+(N-1)+(P.auto?' (ligne calculée)':' (ligne placée par toi)'),null);
+const B=mk('B',Bt,T!==null,T!==null?'Jusqu’à ta 3e température haute (jour '+T+').':'Pas encore de cycle avec une 3e température haute : place-la dans les repères du graphique.',Aend);
+let Cends=null;
+if(T!==null&&Ts.length){Cends=tri(Ts.map(x=>x.L-x.T)).map(x=>T+x)}else{const Ls=done.map(x=>x.L);if(Ls.length)Cends=tri(Ls)}
+const C=mk('C',Cends,false,Cends?'':'Pas encore assez de cycles terminés.',Bt);
+return h+(rReg||'')+A+B+C+'<details class="tips"'+(TIPO?' open':'')+'><summary>Comment lire ces chiffres ?</summary><p class="note" style="margin:4px 0 0">La phase A va du début du cycle jusqu’à la ligne de la phase A. La phase B va de cette ligne jusqu’à ta 3e température haute (le jour touché et les 2 suivants). La phase C commence le lendemain et dure jusqu’aux prochaines règles. Le curseur montre le plus tôt, la moyenne et le plus tard selon tes cycles précédents ; plus tu entres de données dans le cycle en cours (ligne de la phase A, 3e température haute), plus il s’ajuste à ce cycle-ci. La ligne de la phase A est calculée avec ton cycle le plus court (moins 22, 21 ou 20 jours selon le nombre de cycles terminés) ; si tu la places toi-même, la tienne passe en premier.</p></details></div>'}
+function hiF(M,c){if(c.pred)return null;const i=M.cyc.indexOf(c),nx=M.cyc[i+1],end=nx?addDays(nx.s,-1):'9999-12-31',ks=Object.keys(D.e).filter(k=>k>=c.s&&k<=end).sort(),k=ks.find(k=>D.e[k].th)||ks.find(k=>D.e[k].t1);return k?diff(c.s,k)+1:null}
+function postS(M,c,dayN){if(!SYM||c.done||c.bad)return '';const F=hiF(M,c);return F&&dayN>=F?'<small>Jour post-ovulatoire : '+(dayN-F+1)+' (compté depuis ta 1re température haute, pas depuis l’ovulation réelle)</small>':''}
+function frame(M,c,dayN){if(SYM&&M.A===null&&!c.bad&&!c.done){return symRows('<div class="pbox"><div class="ptitle">Jour '+dayN+' du cycle'+postS(M,c,dayN)+'<small>'+(c.pred?'prévu, début le ':'commencé le ')+fmt(c.s)+'</small></div>',M,c,dayN,'')}
+const eoP=(c.bad||SYM)?null:c.eo,nP=eoP?dayN-(diff(c.s,eoP.d)+1):null,postT=eoP&&nP>eoP.hi?'<small>Jour post-ovulation : '+(nP-eoP.hi)+(eoP.proj?' (ovulation estimée d’après tes tests LH)':' (d’après ton test LH)')+'</small>':postS(M,c,dayN);
 let h='<div class="pbox"><div class="ptitle">Jour '+dayN+' du cycle'+postT+'<small>'+(c.pred?'prévu, début le ':'commencé le ')+fmt(c.s)+'</small></div>';
 if(c.bad)return h+'<p class="note" style="margin:8px 0 0">Ce cycle dure moins de 16 jours : il n’est pas calculé.</p></div>';
 if(c.done)return h+'<p class="note" style="margin:8px 0 0">Ce cycle est terminé : les repères s’affichent seulement pour le cycle en cours.</p></div>';
@@ -506,36 +628,33 @@ const big=late?'plus tard':(st===0?(act?(w[0]-dayN)+' j':v[1]):(st===1?left(w):(
 return box(big,late?'que d’habitude : '+lab.replace(/^avant /,''):(st===0?lab:labIn),v3(v)+(real?(single?LS:(LRf(ev,evl)||LR)):LC))};
 const cl=a=>[Math.max(1,a[0]),a[1]],lS=M.lhS,oS=M.obS,tri=S=>[S.min,S.avg,S.max];
 const rCal=row('avant la période fertile','avant la fin de la période fertile',[cl([sc[0]-22,sc[0]-10]),cl([(Math.round(A)-22),(Math.round(A)-10)]),cl([sc[2]-22,sc[2]-10])],null,false,false,0);
+if(SYM)return symRows(h,M,c,dayN,rReg,v3);
 const lhAct=c.tpN?cl([c.tpN-5,c.tpN+2]):null,lhW=lS?tri(lS).map(f=>cl([f-5,f+2])):null;
 let rLH='';if(lhW||lhAct)rLH=row('avant la période fertile LH','avant la fin de la période fertile LH',lhW,lhAct,false,true,lS?lS.n:1,lS?tri(lS):null,'test au jour ');
-const obAct=c.ovN?cl([c.ovN-5,c.ovN+1]):null,obW=oS?tri(oS).map(o=>cl([o-5,o+1])):null;
-let rObs='';if(obW||obAct)rObs=row('avant la période fertile observée','avant la fin de la période fertile observée',obW,obAct,false,true,oS?oS.n:1,oS?tri(oS):null,'ovulation au jour ');
 const lhOv=lS||c.tpN;
-const rOvCal=row('avant l’ovulation','avant la fin des 5 jours d’ovulation',sc.map(L=>[L-15,L-11]),null,false,false,0);
 let rOvLH='';if(lhOv)rOvLH=row('avant l’ovulation LH','avant la fin des 3 jours d’ovulation LH',lS?tri(lS).map(f=>[f,f+2]):null,c.tpN?[c.tpN,c.tpN+2]:null,false,true,lS?lS.n:1,lS?tri(lS):null,'test au jour ');
-const ooAct=c.ovN?[c.ovN,c.ovN]:null,ooW=oS?tri(oS).map(o=>[o,o]):null;
-let rOO='';if(ooW||ooAct)rOO=row('avant l’ovulation observée','ovulation observée',ooW,ooAct,true,true,oS?oS.n:1,oS?tri(oS):null,'ovulation au jour ');
-const rows=[rReg,rObs,rOO,rLH,rOvLH,rCal,rOvCal].filter(Boolean);
+const rows=((rLH||rOvLH)?[rReg,rLH,rOvLH]:[rReg,rCal]).filter(Boolean);
 h+=rows.slice(0,3).join('');
 if(rows.length>3)h+='<div class="xtra"'+(FRX?'':' hidden')+'>'+rows.slice(3).join('')+'</div><button class="xbtn" type="button">'+(FRX?'Voir moins ▴':'Voir tout ▾')+'</button>';
-h+='<details class="tips"'+(TIPO?' open':'')+'><summary>Comment lire ces chiffres ?</summary><p class="note" style="margin:4px 0 0">La moyenne n’est qu’un repère : ton cycle peut tomber n’importe où entre les deux, ou même en dehors. Pour les lignes LH et observée, « le plus tôt », « la moyenne » et « le plus tard » sont tes vrais jours de test ou d’ovulation des cycles précédents. Quand la date est connue (test positif ou ovulation notée), les trois valeurs sont identiques.</p></details>';
+h+='<details class="tips"'+(TIPO?' open':'')+'><summary>Comment lire ces chiffres ?</summary><p class="note" style="margin:4px 0 0">La moyenne n’est qu’un repère : ton cycle peut tomber n’importe où entre les deux, ou même en dehors. Pour les lignes LH, « le plus tôt », « la moyenne » et « le plus tard » sont tes vrais jours de test ou d’ovulation des cycles précédents. Quand la date est connue (test positif), les trois valeurs sont identiques.</p></details>';
 return h+'</div>'}
 const AVD={
 cl:{why:'Un cycle dure habituellement entre 24 et 38 jours. Ces plages viennent de moyennes de population : un seul cycle plus long ou plus court est courant. Ce bandeau apparaît quand ton cycle actuel dépasse 38 jours, ou quand tes 3 derniers cycles sortent de cette plage.',src:'Source : FIGO, 2018.'},
-va:{why:'L’écart entre ton cycle le plus court et le plus long est habituellement de 7 à 9 jours ou moins. Hovie utilise 10 jours ou plus, parce qu’il ne connaît pas ton âge : le seuil est de 8 jours entre 26 et 41 ans. Le bandeau compare tes 6 derniers cycles.',src:'Source : FIGO, 2018.'},
+va:{why:'L’écart entre ton cycle le plus court et le plus long est habituellement de 7 à 9 jours ou moins. Hovie utilise 8 jours ou plus, parce qu’il ne connaît pas ton âge : le seuil est de 8 jours entre 26 et 41 ans. Le bandeau compare tes 6 derniers cycles.',src:'Source : FIGO, 2018.'},
 rg:{why:'Des règles de 8 jours ou moins sont considérées comme habituelles. Ce bandeau apparaît quand tes règles dépassent 8 jours ce cycle-ci, ou 3 cycles de suite.',src:'Source : FIGO, 2018.'},
 am:{why:'Une absence de règles de plus de 3 mois chez une personne aux cycles habituellement réguliers est un cas qu’on évalue. Pour des cycles habituellement irréguliers, le repère est de 6 mois ; Hovie utilise 3 mois pour tout le monde.',src:'Source : ASRM, évaluation de l’aménorrhée.'},
 sp:{why:'Un petit saignement autour de l’ovulation peut être normal. Ce repère est une règle de Hovie, pas un seuil des lignes directrices : il compte 3 jours ou plus de spotting dans un même cycle, hors de tes règles, pas forcément de suite.',src:'Règle de Hovie ; FIGO, 2018 (saignements entre les règles).'},
-ll:{why:'Une phase lutéale dure en moyenne environ 13 jours (12,8 jours, avec un écart-type de 1,9 jour dans l’étude de Fehring). 17 jours ou plus est nettement au-delà. Elle est comptée du jour d’ovulation noté (ou du premier test positif) à la fin du cycle : un jour d’ovulation placé trop tôt peut donc allonger la mesure.',src:'Source : Fehring et collègues, 2006 ; seuil de 17 jours choisi par Hovie.'},
-lu:{why:'Une phase lutéale de 10 jours ou moins est parfois relevée par les médecins, mais elle existe aussi chez des femmes fertiles aux cycles normaux. Elle est comptée du jour d’ovulation noté (ou du premier test positif) à la fin du cycle.',src:'Source : ASRM, 2021.'}};
+ll:{why:'Une phase lutéale dure en moyenne environ 13 jours (12,8 jours, avec un écart-type de 1,9 jour dans l’étude de Fehring). 17 jours ou plus est nettement au-delà. Elle est comptée du premier test positif à la fin du cycle.',src:'Source : Fehring et collègues, 2006 ; seuil de 17 jours choisi par Hovie.'},
+lu:{why:'Une phase lutéale de 10 jours ou moins est parfois relevée par les médecins, mais elle existe aussi chez des femmes fertiles aux cycles normaux. Elle est comptée du premier test positif à la fin du cycle.',src:'Source : ASRM, 2021.'}};
+const avWhy=id=>{if(!SYM)return AVD[id].why;if(id==='ll'||id==='lu')return AVD[id].why.replace(/ Elle est comptée.*$/,'')+' En mode symptothermie, elle est comptée à partir de ta 1re température haute jusqu’à la fin du cycle, donc pas à partir de l’ovulation réelle, qu’on ne peut pas connaître avec certitude.';return AVD[id].why};
 let AVS={on:true,hid:{}},AVO={};
 try{const t=JSON.parse(localStorage.getItem('suivi-avis')||'null');if(t&&typeof t==='object'){AVS.on=t.on!==false;AVS.hid=(t.hid&&typeof t.hid==='object')?t.hid:{}}}catch(_){}
 const saveAvs=()=>{try{localStorage.setItem('suivi-avis',JSON.stringify(AVS))}catch(_){}};
 function avisUpdate(M){
 const real=M.cyc.filter(c=>!c.pred),n=real.length,td=iso(new Date()),ks=Object.keys(D.e).sort(),last=ks[ks.length-1]||td;
 const info=real.map((c,i)=>{const end=i+1<n?addDays(real[i+1].s,-1):last;let sp=0;ks.forEach(k=>{if(k>=c.s&&k<=end){const e=D.e[k];if(e.sp&&e.m!==0)sp++}});return{c,sp}});
-const cur=n?info[n-1]:null,done=info.filter(x=>x.c.done&&!x.c.bad),r3=done.slice(-3),r6=done.slice(-6),w8=done.slice(-8),N=w8.length;
-const dayN=cur?diff(cur.c.s,td)+1:0,lut=x=>{const f=x.c.ovN||x.c.tpN;return f?x.c.L-f:null};
+const cur=n?info[n-1]:null,done=info.filter(x=>x.c.done&&!x.c.bad),r3=done.slice(-3),r6=done.slice(-6),w8=done.length>=3?done.slice(-10):[],N=w8.length;
+const dayN=cur?diff(cur.c.s,td)+1:0,lut=x=>{if(SYM){const F=hiF(M,x.c);return F?x.c.L-F+1:null}const f=x.c.tpN;return f?x.c.L-f:null};
 const B=[];
 if(cur&&dayN>90)B.push({id:'am',t:'Tes dernières règles datent de plus de 3 mois.'});
 if(cur&&dayN>38)B.push({id:'cl',t:'Ton cycle actuel dure plus de 38 jours (jour '+dayN+').'});
@@ -544,12 +663,13 @@ if(cur&&cur.c.ml>=9){const l0=addDays(cur.c.s,cur.c.ml-1);B.push({id:'rg',t:diff
 if(r3.length===3&&r3.every(x=>x.c.ml>=9))B.push({id:'rg',t:'Tes règles ont duré plus de 8 jours 3 cycles de suite.'});
 if(cur&&cur.sp>=3)B.push({id:'sp',t:'Tu as noté 3 jours de spotting ou plus ce cycle-ci, hors de tes règles.'});
 if(r3.length===3&&r3.every(x=>x.sp>=3))B.push({id:'sp',t:'Tu as noté 3 jours de spotting ou plus, hors de tes règles, 3 cycles de suite.'});
-if(r6.length===6){const L=r6.map(x=>x.c.L),mn=Math.min(...L),mx=Math.max(...L);if(mx-mn>=10)B.push({id:'va',t:'Tes 6 derniers cycles varient de '+mn+' à '+mx+' jours.'})}
+if(r6.length===6){const L=r6.map(x=>x.c.L),mn=Math.min(...L),mx=Math.max(...L);if(mx-mn>=8)B.push({id:'va',t:'Tes 6 derniers cycles varient de '+mn+' à '+mx+' jours.'})}
+if(done.length){const x=done[done.length-1];if(x===info[n-2]&&x.c.L<24)B.push({id:'cl',t:'Ton dernier cycle a duré '+x.c.L+' jours (moins de 24 jours).'})}
 if(done.length){const x=done[done.length-1],v=lut(x);if(x===info[n-2]&&v!==null&&v<=10)B.push({id:'lu',t:'Ta dernière phase lutéale a duré '+v+' jours.'});if(x===info[n-2]&&v!==null&&v>=17)B.push({id:'ll',t:'Ta dernière phase lutéale a duré '+v+' jours.'})}
 if(r3.length===3){const V=r3.map(lut);if(V.every(v=>v!==null&&v<=10))B.push({id:'lu',t:'Tes 3 dernières phases lutéales ont duré 10 jours ou moins.'});if(V.every(v=>v!==null&&v>=17))B.push({id:'ll',t:'Tes 3 dernières phases lutéales ont duré 17 jours ou plus.'})}
 const ord=['am','cl','rg','sp','va','lu','ll'];B.sort((a,b)=>ord.indexOf(a.id)-ord.indexOf(b.id));
 const vis=AVS.on?B.filter(b=>!AVS.hid[b.id]):[],show=vis.slice(0,3),more=vis.length-show.length;
-$('avis').innerHTML=show.map(b=>{const k='b'+b.id+b.t;return `<div class="avb"><span class="avi" aria-hidden="true">i</span><div class="avt"><p class="avp">${b.t}</p><details class="tips" data-k="${k}"${AVO[k]?' open':''}><summary>Pourquoi ce bandeau ?</summary><p class="note">${AVD[b.id].why}</p><p class="note">${AVD[b.id].src}</p></details><div class="avf"><span>Tu pourras le retrouver dans Données.</span><button type="button" class="avm" data-id="${b.id}">Masquer</button></div></div></div>`}).join('')+(more>0?`<p class="note avmore">${more} autre${more>1?'s':''} repère${more>1?'s':''} dans Données.</p>`:'');
+$('avis').innerHTML=show.map(b=>{const k='b'+b.id+b.t;return `<div class="avb"><span class="avi" aria-hidden="true">i</span><div class="avt"><p class="avp">${b.t}</p><details class="tips" data-k="${k}"${AVO[k]?' open':''}><summary>Pourquoi ce bandeau ?</summary><p class="note">${avWhy(b.id)}</p><p class="note">${AVD[b.id].src}</p></details><div class="avf"><span>Tu pourras le retrouver dans Données.</span><button type="button" class="avm" data-id="${b.id}">Masquer</button></div></div></div>`}).join('')+(more>0?`<p class="note avmore">${more} autre${more>1?'s':''} repère${more>1?'s':''} dans Données.</p>`:'');
 // ----- liste « À mentionner à ton médecin » : seulement ce qui appartient à la personne
 const T=[],pl=(x,w)=>x+' '+w+(x>1?'s':''),cyc=(x)=>pl(x,'cycle')+' sur '+N;
 const L8=w8.map(x=>x.c.L),lg=L8.filter(v=>v>38).length,sh=L8.filter(v=>v<24).length;
@@ -557,7 +677,7 @@ const durs='Durées : '+L8.join(', ')+' jours';
 if(lg>=2)T.push({title:'Durée des cycles',big:cyc(lg),sub:'plus longs que 38 jours ('+(N-lg)+' sans)',dots:L8.map(v=>v>38),vals:durs+(dayN>38?' ; cycle actuel : jour '+dayN:''),ref:'Référence : 24 à 38 jours'});
 else if(cur&&dayN>38)T.push({title:'Durée des cycles',big:'Cycle actuel : jour '+dayN,sub:'plus long que 38 jours',vals:N?'Cycles terminés : '+L8.join(', ')+' jours':'',ref:'Référence : 24 à 38 jours'});
 if(sh>=2)T.push({title:'Durée des cycles',big:cyc(sh),sub:'plus courts que 24 jours ('+(N-sh)+' sans)',dots:L8.map(v=>v<24),vals:durs,ref:'Référence : 24 à 38 jours'});
-if(r6.length===6){const L=r6.map(x=>x.c.L),mn=Math.min(...L),mx=Math.max(...L);if(mx-mn>=10)T.push({title:'Écart entre tes cycles',big:(mx-mn)+' jours d’écart',sub:'de '+mn+' à '+mx+' jours (sur tes '+r6.length+' derniers cycles)',vals:'Durées : '+L.join(', ')+' jours',ref:'Référence : 7 à 9 jours d’écart ou moins'})}
+if(r6.length===6){const L=r6.map(x=>x.c.L),mn=Math.min(...L),mx=Math.max(...L);if(mx-mn>=8)T.push({title:'Écart entre tes cycles',big:(mx-mn)+' jours d’écart',sub:'de '+mn+' à '+mx+' jours (sur tes '+r6.length+' derniers cycles)',vals:'Durées : '+L.join(', ')+' jours',ref:'Repère de Hovie : 8 jours d’écart ou plus'})}
 const M8=w8.map(x=>x.c.ml),rgN=M8.filter(v=>v>=9).length,fm=v=>v>=10?'10 ou plus':v;
 if(rgN>=2)T.push({title:'Durée des règles',big:cyc(rgN),sub:'de plus de 8 jours ('+(N-rgN)+' sans)',dots:M8.map(v=>v>=9),vals:'Durées : '+M8.map(fm).join(', ')+' jours',ref:'Référence : 8 jours ou moins'});
 else if(cur&&cur.c.ml>=9)T.push({title:'Durée des règles',big:'Cycle actuel',sub:'règles de plus de 8 jours',vals:N?'Cycles terminés : '+M8.map(fm).join(', ')+' jours':'',ref:'Référence : 8 jours ou moins'});
@@ -565,20 +685,21 @@ const S8=w8.map(x=>x.sp),spN=S8.filter(v=>v>=3).length;
 if(spN>=2)T.push({title:'Spotting hors des règles',big:cyc(spN),sub:'avec 3 jours ou plus ('+(N-spN)+' sans)',dots:S8.map(v=>v>=3),vals:'Jours de spotting : '+S8.join(', '),ref:'Repère de Hovie : 3 jours ou plus'});
 else if(cur&&cur.sp>=3)T.push({title:'Spotting hors des règles',big:'Cycle actuel',sub:cur.sp+' jours de spotting hors des règles',vals:N?'Cycles terminés : '+S8.join(', ')+' jours':'',ref:'Repère de Hovie : 3 jours ou plus'});
 const LU=w8.map(lut).filter(v=>v!==null),luN=LU.filter(v=>v<=10).length;
-if(luN>=2)T.push({title:'Phase lutéale courte',big:pl(luN,'cycle')+' sur '+LU.length,sub:'avec 10 jours ou moins ('+(LU.length-luN)+' sans)',dots:LU.map(v=>v<=10),vals:'Phases lutéales : '+LU.join(', ')+' jours',ref:'Repère : 10 jours ou moins'});
+if(luN>=2)T.push({title:'Phase lutéale courte',big:pl(luN,'cycle')+' sur '+LU.length,sub:'avec 10 jours ou moins ('+(LU.length-luN)+' sans)',dots:LU.map(v=>v<=10),vals:'Phases lutéales : '+LU.join(', ')+' jours',ref:'Repère : 10 jours ou moins'+(SYM?' (comptée depuis ta 1re température haute)':'')});
 const llN=LU.filter(v=>v>=17).length;
-if(llN>=2)T.push({title:'Phase lutéale longue',big:pl(llN,'cycle')+' sur '+LU.length,sub:'avec 17 jours ou plus ('+(LU.length-llN)+' sans)',dots:LU.map(v=>v>=17),vals:'Phases lutéales : '+LU.join(', ')+' jours',ref:'Repère de Hovie : 17 jours ou plus'});
+if(llN>=2)T.push({title:'Phase lutéale longue',big:pl(llN,'cycle')+' sur '+LU.length,sub:'avec 17 jours ou plus ('+(LU.length-llN)+' sans)',dots:LU.map(v=>v>=17),vals:'Phases lutéales : '+LU.join(', ')+' jours',ref:'Repère de Hovie : 17 jours ou plus'+(SYM?' (comptée depuis ta 1re température haute)':'')});
 if(cur&&dayN>90)T.push({title:'Dernières règles',big:'il y a '+(dayN-1)+' jours',sub:'commencées le '+fmt(cur.c.s),ref:'Référence : plus de 3 mois sans règles'});
-const kl='lst';let h='<h2>À mentionner à ton médecin</h2><p class="note">Seulement ce qui apparaît dans tes derniers cycles (8 au plus). Hovie t’aide à voir comment ton cycle varie. Il ne pose pas de diagnostic et ne propose pas de causes : la même variation peut avoir de nombreuses explications, et seule une professionnelle de la santé peut les explorer avec toi.</p>';
+const kl='lst';let h='<h2>À mentionner à ton médecin</h2><p class="note">Dès que tu as 3 cycles terminés, Hovie regarde tes derniers cycles : 3 jusqu’à 10 au plus. Hovie t’aide à voir comment ton cycle varie. Il ne pose pas de diagnostic et ne propose pas de causes : la même variation peut avoir de nombreuses explications, et seule une professionnelle de la santé peut les explorer avec toi.</p>';
 if(!T.length)h+='<p class="note">Aucun de ces repères n’est présent dans tes données pour l’instant.</p>';
 T.forEach(t=>{h+=`<div class="avr"><b>${t.title}</b><div class="avbig">${t.big}</div><div class="avs">${t.sub}</div>`+(t.dots?`<div class="dots">${t.dots.map(d=>`<i class="dot${d?' on':''}"></i>`).join('')}</div>`:'')+(t.vals?`<p class="note" style="margin:4px 0 0">${t.vals}</p>`:'')+`<p class="note ref" style="margin:2px 0 0">${t.ref}</p></div>`});
-h+=`<details class="tips" data-k="${kl}"${AVO[kl]?' open':''}><summary>Pourquoi ces repères ?</summary><p class="note">Les plages de référence viennent de moyennes de population : un seul cycle en dehors est courant. Durée et écart des cycles, durée des règles : FIGO, 2018. Absence de règles de plus de 3 mois : ASRM. Phase lutéale de 10 jours ou moins : ASRM, 2021, qui précise qu’elle existe aussi chez des femmes fertiles aux cycles normaux. Phase lutéale de 17 jours ou plus : seuil de Hovie, d’après Fehring, 2006. Le repère du spotting (3 jours ou plus dans un cycle, hors des règles) est une règle de Hovie.</p></details>`;
+h+=`<details class="tips" data-k="${kl}"${AVO[kl]?' open':''}><summary>Pourquoi ces repères ?</summary><p class="note">Les plages de référence viennent de moyennes de population : un seul cycle en dehors est courant. Durée et écart des cycles, durée des règles : FIGO, 2018. Absence de règles de plus de 3 mois : ASRM. Phase lutéale de 10 jours ou moins : ASRM, 2021, qui précise qu’elle existe aussi chez des femmes fertiles aux cycles normaux. Phase lutéale de 17 jours ou plus : seuil de Hovie, d’après Fehring, 2006. Le repère du spotting (3 jours ou plus dans un cycle, hors des règles) est une règle de Hovie.${SYM?' En mode symptothermie, la phase lutéale est comptée à partir de la 1re température haute, pas de l’ovulation réelle,.':''}</p></details>`;
 h+=`<div class="avsw"><b>Bandeaux d’information</b><button type="button" id="avsw" role="switch" aria-checked="${AVS.on}" aria-label="Afficher les bandeaux d’information"></button></div><p class="note" style="margin:6px 0 0">Même masqués, ces repères restent ici.</p>`+(Object.keys(AVS.hid).length?'<button class="btn alt" id="avreset" style="width:auto;padding:8px 16px;margin-top:10px">Réafficher les bandeaux masqués</button>':'');
 $('avl').innerHTML=h}
+$('st2').addEventListener('click',ev=>{const b=ev.target.closest('.gm');if(b){AVS.hid[b.dataset.g]=true;saveAvs();status($('date').value)}});
 $('avis').addEventListener('click',ev=>{const b=ev.target.closest('.avm');if(b){AVS.hid[b.dataset.id]=true;saveAvs();avisUpdate(model());return}const sm=ev.target.closest('summary');if(sm){const dt=sm.parentNode;AVO[dt.dataset.k]=!dt.open}});
-$('avl').addEventListener('click',ev=>{if(ev.target.closest('#avsw')){AVS.on=!AVS.on;saveAvs();avisUpdate(model());return}if(ev.target.closest('#avreset')){AVS.hid={};saveAvs();avisUpdate(model());return}const sm=ev.target.closest('summary');if(sm){const dt=sm.parentNode;AVO[dt.dataset.k]=!dt.open}});
+$('avl').addEventListener('click',ev=>{if(ev.target.closest('#avsw')){AVS.on=!AVS.on;saveAvs();avisUpdate(model());return}if(ev.target.closest('#avreset')){AVS.hid={};saveAvs();avisUpdate(model());status($('date').value);return}const sm=ev.target.closest('summary');if(sm){const dt=sm.parentNode;AVO[dt.dataset.k]=!dt.open}});
 function status(d){const M=model();avisUpdate(M);let ci=locate(M,d),lr=-1;M.cyc.forEach((x,i)=>{if(!x.pred)lr=i});if(ci>=0&&M.cyc[ci].pred)ci=lr;const c=ci>=0?M.cyc[ci]:null;let b='';
-const bn=(bg,t)=>`<div class="bn" style="background:${bg}">${t}</div>`,bd=(ic,t)=>`<div class="bn bd"><span class="bdi" aria-hidden="true">${ic}</span><span>${t}</span></div>`;$('pbox').innerHTML='';
+const bn=(bg,t)=>`<div class="bn" style="background:${bg}">${t}</div>`,bd=(ic,t,id)=>{const k=id?'g'+id+c.s:null;if(k&&AVS.hid[k])return '';return `<div class="bn bd"><span class="bdi" aria-hidden="true">${ic}</span><span>${t}</span>${k?`<button type="button" class="avm gm" data-g="${k}">Masquer</button>`:''}</div>`};$('pbox').innerHTML='';
 if(!c){$('cd').className='';$('cd').innerHTML='<div class="pbox"><div class="ptitle">Aucun cycle commencé</div><p class="note" style="margin:8px 0 0">Choisis « Règles » le premier jour du cycle.</p></div>';$('st2').innerHTML='';return}
 const dayN=diff(c.s,d)+1;$('cd').className='';$('cd').innerHTML=frame(M,c,dayN);
 const e0=D.e[d]||{},e1=D.e[addDays(d,-1)]||{};
@@ -586,14 +707,14 @@ if(e0.m===5||e1.m===5)b+=bn('rgba(91,145,191,.24)','Holala !!! Belle glaire en v
 if(e0.m===4||e1.m===4)b+=bn('rgba(91,145,191,.16)','Montée de la glaire 💦');
 if(!c.bad){const eo=c.eo,n=eo?diff(eo.d,d):null,es=eo&&eo.auto?' (ovulation estimée)':'';
 const post=eo&&n>eo.hi,a=Math.max(1,Math.floor((c.A||0)-22)),z=Math.ceil((c.A||0)-10),od=eo?diff(c.s,eo.d)+1:0;
-if(eo&&n>=eo.lo&&n<=eo.hi)b+=bn('rgba(240,140,40,.28)','Jour d’ovulation'+(eo.auto?' estimé':''));
+if(eo&&n>=eo.lo&&n<=eo.hi)b+=bn('rgba(240,140,40,.28)','Jour d’ovulation (test LH)');
 let sup=false;
 if(!c.done&&!c.pred){
-if(c.ov&&c.ovN&&M.nObs>=2&&M.Dobs!==null){sup=true;if(dayN-c.ovN>=M.Dobs+1&&dayN-c.ovN>=10)b+=bd('🌸','Fais un test de grossesse : tu dépasses maintenant la plus longue durée observée après l’ovulation dans tes cycles où tu as noté ton ovulation.')}
-else if(!c.ov&&c.tpN&&M.nLH>=2&&M.Dmax!==null){sup=true;if(dayN-(c.tpN+2)>=M.Dmax+1&&dayN-c.tpN>=10)b+=bd('🌸','Fais un test de grossesse : tu dépasses maintenant la plus longue durée observée après l’ovulation dans tes cycles avec tests positifs.')}}
-if(!sup&&eo&&n-eo.hi>=17&&!c.pred)b+=bd('🌸','Pense à faire un test de grossesse : '+(n-eo.hi)+' jours après l’ovulation '+(c.ov?'notée.':(c.tp?'d’après tes tests LH.':'estimée.'))+(M.Lmax!==null&&dayN<=M.Lmax?' Par contre, ton cycle le plus long était de '+M.Lmax+' jours. Donc cela peut rester dans ta norme.':''))}
-if(c.done&&!c.bad){const f=c.ovN||c.tpN;if(f){const N=c.L-f;if(N>=17)b=bd('♡','Phase lutéale longue : '+N+' jours')+b;else if(N<=10)b=bd('♡','Phase lutéale courte : '+N+' jours')+b}}
-if(!c.done&&!c.pred&&M.A!==null&&dayN>M.Lmax+1)b=bd('♡','Règles en retard : ton cycle dure déjà '+dayN+' jours. Ton cycle le plus long était de '+M.Lmax+' jours.')+b;
+if(c.tpN&&M.nLH>=2&&M.Dmax!==null){sup=true;if(dayN-(c.tpN+2)>=M.Dmax+1&&dayN-c.tpN>=10)b+=bd('🌸','Fais un test de grossesse : tu dépasses maintenant la plus longue durée observée après l’ovulation dans tes cycles avec tests positifs.','gt')}}
+if(SYM){const T=phaseInfo(M,c).T;if(!sup&&!c.done&&!c.pred&&T!==null&&dayN-T>=20)b+=bd('🌸','Pense à faire un test de grossesse : la phase C dure depuis '+(dayN-T)+' jours.'+(M.Lmax!==null&&dayN<=M.Lmax?' Par contre, ton cycle le plus long était de '+M.Lmax+' jours. Donc cela peut rester dans ta norme.':''),'gp')}
+else {if(!sup&&eo&&n-eo.hi>=17&&!c.pred)b+=bd('🌸','Pense à faire un test de grossesse : '+(n-eo.hi)+' jours après l’ovulation '+(c.tp?'d’après tes tests LH.':'estimée.')+(M.Lmax!==null&&dayN<=M.Lmax?' Par contre, ton cycle le plus long était de '+M.Lmax+' jours. Donc cela peut rester dans ta norme.':''),'gp')}}
+if(c.done&&!c.bad){let N=null;if(SYM){const F=hiF(M,c);if(F)N=c.L-F+1}else if(c.tpN)N=c.L-c.tpN;if(N!==null){const sf=SYM?' (depuis ta 1re température haute)':'';if(N>=17)b=bd('♡','Phase lutéale longue : '+N+' jours'+sf)+b;else if(N<=10)b=bd('♡','Phase lutéale courte : '+N+' jours'+sf)+b}}
+if(!c.done&&!c.pred&&M.A!==null&&dayN>M.Lmax+1)b=bd('♡','Règles en retard : ton cycle dure déjà '+dayN+' jours. Ton cycle le plus long était de '+M.Lmax+' jours.','gr')+b;
 $('st2').innerHTML=b}
 let CM=null;
 function cal(){if(!CM){const t=new Date();CM={y:t.getFullYear(),m:t.getMonth()}}
@@ -605,9 +726,9 @@ for(let n=1;n<=dim;n++){const d=iso(new Date(CM.y,CM.m,n)),e=D.e[d]||{},ci=locat
 if(c){const dayN=diff(c.s,d)+1;cdv=dayN;let w=null;
 if(c.bad)w=null;else if(c.done)w=[c.L-22,c.L-10,c.L-18];else if(M.A!==null){const a0=(Math.round(M.A)-22);w=[a0,(Math.round(M.A)-10),a0+4]}
 const dsc=c.ov||c.tp||(!c.done&&(M.offLH!==null||M.offObs!==null));
-if(w&&dayN>=w[0]&&dayN<=w[1])ov+='<i style="background:rgba(242,194,48,'+(dsc?(dayN<=w[2]?.05:.13):(dayN<=w[2]?.16:.36))+')"></i>';
-if(c.eo){const od=diff(c.s,c.eo.d)+1;if(c.eo.auto){if(dayN>=od+c.eo.lo&&dayN<=od+c.eo.hi)ov+='<i style="background:rgba(240,140,40,.45)"></i>';if(c.eo.lh&&dayN>=od-6&&dayN<=od-2)ov+='<i style="background:rgba(240,140,40,.16)"></i>'}else{if(dayN>=od-5&&dayN<=od+1)ov+='<i style="background:rgba(224,86,154,'+(dayN<od?.14:.32)+')"></i>';if(dayN===od){dot='<span class="od"></span>';ov+='<i style="background:rgba(240,140,40,.45)"></i>'}}}
-if(c.pk===d&&c.ov)ov+='<i style="background:rgba(60,130,200,.5)"></i>';
+if(SYM&&!c.bad&&!c.pred){const P=phaseInfo(M,c),e2=P.T!==null?P.T:(!c.done?diff(c.s,today)+1:null);if(P.N&&e2!==null&&dayN>=P.N&&dayN<=e2)ov+='<i style="background:rgba(154,123,184,.32)"></i>'}
+if(!SYM&&w&&dayN>=w[0]&&dayN<=w[1])ov+='<i style="background:rgba(242,194,48,'+(dsc?(dayN<=w[2]?.05:.13):(dayN<=w[2]?.16:.36))+')"></i>';
+if(c.eo){const od=diff(c.s,c.eo.d)+1;if(c.eo.auto){if(dayN>=od+c.eo.lo&&dayN<=od+c.eo.hi)ov+='<i style="background:rgba(240,140,40,.45)"></i>';if(c.eo.lh&&dayN>=od-6&&dayN<=od-2)ov+='<i style="background:rgba(240,140,40,.16)"></i>'}}
 if(e.m===0)ov+='<i style="background:rgba(215,25,32,.7)"></i>';
 if(c.pred&&dayN<=5)cls+=' pred'}
 if(d===today)cls+=' today';
@@ -619,27 +740,119 @@ $('cgrid').addEventListener('click',ev=>{const b=ev.target.closest('.cc');if(!b)
 const HP='M0 6 C-9 0 -6 -8 0 -3.5 C6 -8 9 0 0 6Z';
 const heart=(x,y,sc,sq)=>`<g transform="translate(${x} ${y}) scale(${sc})">${sq?`<rect x="-9" y="-9" width="18" height="18" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6"/><path d="${HP}" transform="scale(.62)" fill="var(--red)"/>`:`<path d="${HP}" fill="var(--red)"/>`}</g>`;
 let WSON=true;try{WSON=localStorage.getItem('suivi-montre')!=='0'}catch(_){}
-let VIEW='comb';try{VIEW=localStorage.getItem('suivi-vue')||'comb'}catch(_){}
-function chart(){const cs=cycles(),sel=$('cyc');
+let VIEW='comb';try{VIEW=localStorage.getItem('suivi-vue')||'comb'}catch(_){}if(VIEW!=='ser')VIEW='comb';
+const PLAB={nuit:'nuit courte ou agitée',stress:'stress',alcool:'alcool',maladie:'maladie ou fièvre',heure:'heure de prise différente',autre:'autre'},SLAB={D:'douleurs abdominales',S:'seins sensibles',M:'mal de tête',F:'fatigue',L:'forte libido',I:'irritabilité',A:'autre'};
+function dayNotes(days){const o=[];days.forEach(x=>{const e=x.e;if(!e)return;const p=[],n=e.n&&String(e.n).trim().replace(/\s+/g,' ');if(n)p.push(n);
+if(e.p&&e.p.length)p.push('perturbation : '+e.p.map(v=>{let t=PLAB[v]||v;if(v==='heure'&&/^(\d{1,2}):(\d{2})$/.test(e.ph||'')){const m=/^(\d{1,2}):(\d{2})$/.exec(e.ph);t+=' ('+(+m[1])+' h'+(m[2]!=='00'?' '+m[2]:'')+')'}if(v==='autre'&&e.po)t+=' ('+e.po+')';return t}).join(', '));
+if(e.sg&&e.sg.length)p.push('signes : '+['D','S','M','F','L','I','A'].filter(v=>e.sg.includes(v)).map(v=>SLAB[v]+(v==='A'&&e.so?' ('+e.so+')':'')).join(', '));
+if(p.length)o.push(['J'+(x.i+1)+' : ',p.join(' ; ')])});return o}
+function wrapN(notes,w){const nl=[];notes.forEach(([a,b])=>{let t=a+b;while(t.length>w){let k=t.lastIndexOf(' ',w);if(k<8)k=w;nl.push(t.slice(0,k));t='   '+t.slice(k).trim()}nl.push(t)});return nl}
+function serSvg(c,M,mc,ci,cs){
+const G='#7F9B1E',GL='#B9CB55',BD='#C8D95F',TR='#9DB52E',K='#222',cw=26,x0=170,N0=Math.max(diff(c.s,c.end)+1,28),nc=Math.max(40,N0),x1=x0+nc*cw,px=x1+66,pw=300,W=px+pw+12;
+const hh=t=>{const m=/^(\d{1,2}):(\d{2})$/.exec(t||'');return m?(+m[1])+' h'+(m[2]!=='00'?' '+m[2]:''):''},hab=hh(huAt(c.end));
+const esc=t=>String(t).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+const days=[];for(let i=0;i<nc;i++){const d=addDays(c.s,i);days.push({i,d,e:d<=c.end?D.e[d]:undefined})}
+const fl=f=>days.find(x=>x.e&&x.e[f]),X=i=>x0+i*cw+cw/2;
+const ts=days.filter(x=>x.e&&x.e.t!=null).map(x=>x.e.t);
+let lo=36,hi=37.2;if(ts.length){lo=Math.min(lo,Math.floor(Math.min(...ts)*10+1e-6)/10);hi=Math.max(hi,Math.ceil(Math.max(...ts)*10-1e-6)/10)}
+lo=Math.round(lo*10)/10;hi=Math.round(hi*10)/10;
+const nr=Math.max(1,Math.round((hi-lo)*10)),rh=nr<=13?24:Math.max(12,Math.floor(312/nr));
+const yS=44,hS=22,yG=yS+hS+4,hG=48,yC=yG+2*hG+6,hC=20,yJ=yC+3*hC+6,yT0=yJ+30,yT1=yT0+nr*rh,yJ2=yT1+10,yDt=yJ2+20,yE=yDt+20,hR=22,yEnd=yE+5*hR,H=yEnd+30;
+const yT=v=>yT1-(v-lo)/(hi-lo)*(yT1-yT0),fm=v=>v.toFixed(1).replace('.',',');
+let s=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Graphique de symptothermie" font-family="system-ui,sans-serif" font-size="10"><defs><pattern id="srA" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 0L5 5" stroke="${K}" stroke-width="1.2"/></pattern><pattern id="srB" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 5L5 0" stroke="${K}" stroke-width="1"/></pattern></defs><rect width="${W}" height="${H}" fill="#fff"/>`;
+const lab=(t,y,h)=>`<text x="${x0-8}" y="${y+h/2+3.5}" text-anchor="end" font-weight="700" fill="${K}">${t}</text>`;
+const blk=(y,h)=>`<rect x="4" y="${y}" width="${x1-4}" height="${h}" rx="6" fill="none" stroke="${K}" stroke-width="1.3"/>`;
+const vgrid=(y,h)=>{let o='';for(let i=0;i<=nc;i++)o+=`<line x1="${x0+i*cw}" x2="${x0+i*cw}" y1="${y}" y2="${y+h}" stroke="${GL}"/>`;return o};
+const hl=(y)=>`<line x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" stroke="${GL}"/>`;
+s+=`<text x="8" y="22" font-size="14" font-weight="700" fill="${K}">GRAPHIQUE SYMPTOTHERMIQUE</text><text x="${x0+190}" y="22" font-weight="700" fill="${G}">NOM :</text><line x1="${x0+232}" x2="${x0+520}" y1="23" y2="23" stroke="${K}"/>`;
+// saignements, glaire, col
+s+=vgrid(yS,hS)+blk(yS,hS)+lab('SAIGNEMENTS',yS,hS)+vgrid(yG,2*hG)+hl(yG+hG)+blk(yG,2*hG)+`<text x="8" y="${yG+14}" font-weight="700" fill="${K}">GLAIRE</text>`+lab('SENSATION',yG,hG)+lab('APPARENCE',yG+hG,hG)+vgrid(yC,3*hC)+hl(yC+hC)+hl(yC+2*hC)+blk(yC,3*hC)+`<text x="8" y="${yC+14}" font-weight="700" fill="${K}">COL</text>`+lab('HAUTEUR',yC,hC)+lab('OUVERTURE',yC+hC,hC)+lab('FERMETÉ',yC+2*hC,hC);
+const bleed=(cx,cy,t)=>t==='a'?`<path d="M${cx-6} ${cy-6}L${cx+6} ${cy+6}M${cx+6} ${cy-6}L${cx-6} ${cy+6}" stroke="${K}" stroke-width="1.5" fill="none"/>`:t==='l'?`<path d="M${cx-6} ${cy-6}L${cx+6} ${cy+6}" stroke="${K}" stroke-width="1.5" fill="none"/>`:`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`;
+const sens=e=>{if(!e||e.m===0)return null;if(Array.isArray(e.gsl)&&e.gsl.length)return ['S','H','C','M','L'].filter(v=>e.gsl.includes(v));if(e.gs!=null)return [['S'],['H','C'],['M','L']][e.gs];if(e.ga==null&&e.m>=1&&e.m<=5)return [['S'],['C'],['H'],['M'],['M','L']][e.m-1];return null};
+const app=e=>{if(!e||e.m===0)return null;if(Array.isArray(e.gal)&&e.gal.length)return ['-','O','TR','T','F'].filter(v=>e.gal.includes(v)).map(v=>v==='-'?'−':v);if(e.ga!=null)return [['−'],['O'],['TR','T','F']][e.ga];if(e.gs==null&&e.m===1)return ['−'];if(e.gs==null&&e.m===2)return ['O'];return null};
+const stack=(L,cx,y,h)=>{if(!L)return '';const g=L.length>3?11:(L.length>2?12:14),y0=y+h/2-(L.length-1)*g/2+4;return L.map((t,k)=>`<text x="${cx}" y="${y0+k*g}" text-anchor="middle" font-size="12" fill="${K}">${t}</text>`).join('')};
+days.forEach(x=>{const e=x.e;if(!e)return;const cx=X(x.i);
+if(e.m===0)s+=bleed(cx,yS+hS/2,e.rl?'l':'a');else if(e.sp)s+=bleed(cx,yS+hS/2,'t');
+s+=stack(sens(e),cx,yG,hG)+stack(app(e),cx,yG+hG,hG);
+if(e.cp){const cy=yC+hC/2,by={B:cy+3,M:cy-1,H:cy-5}[e.cp];s+=`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}" stroke-width="1.1"/><rect x="${cx-7}" y="${by}" width="14" height="3" fill="${K}"/>`}
+if(e.co){const cy=yC+hC+hC/2;s+=e.co==='F'?`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`:e.co==='E'?`<circle cx="${cx}" cy="${cy}" r="3.6" fill="none" stroke="${K}" stroke-width="1.2"/>`:`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="${K}" stroke-width="1.3"/>`}
+if(e.cd){const y=yC+2*hC;s+=e.cd==='F'?`<rect x="${cx-cw/2}" y="${y+3}" width="${cw}" height="${hC-6}" fill="${K}"/>`:e.cd==='M'?`<rect x="${cx-cw/2+1}" y="${y+3}" width="${cw-2}" height="${hC-6}" fill="url(#srA)" stroke="${K}" stroke-width=".8"/>`:`<path d="M${cx-8} ${y+3}L${cx-1} ${y+hC-3}M${cx+1} ${y+3}L${cx+8} ${y+hC-3}" stroke="${K}" stroke-width="1.4" fill="none"/>`}});
+const pkk=picOf(c),pk=pkk?days.find(x=>x.d===pkk):null;
+if(pk)s+=`<rect x="${x0+pk.i*cw}" y="${yG}" width="${cw}" height="${3*hC+2*hG+6}" fill="none" stroke="${K}" stroke-width="2.6"/><text transform="translate(${X(pk.i)-6} ${yG-6}) rotate(-18)" font-size="11" font-style="italic" fill="${K}">Pic de glaire</text>`;
+// numéros de jours (haut)
+const band=(y,up)=>{let o=`<rect x="${x0}" y="${y}" width="${nc*cw}" height="20" fill="${BD}"/>`;for(let i=0;i<nc;i++){const cx=X(i);o+=`<text x="${cx}" y="${y+14}" text-anchor="middle" font-size="11" font-weight="700" fill="#333">${i+1}</text>`;o+=up?`<polygon points="${x0+i*cw},${y} ${x0+(i+1)*cw},${y} ${cx},${y-10}" fill="${TR}"/>`:`<polygon points="${x0+i*cw},${y+20} ${x0+(i+1)*cw},${y+20} ${cx},${y+30}" fill="${TR}"/>`}return o};
+s+=band(yJ,false)+`<text x="${x0-8}" y="${yJ+14}" text-anchor="end" font-weight="700" fill="${K}">JOURS DU CYCLE</text>`;
+// grille température
+s+=vgrid(yT0,yT1-yT0);for(let k=0;k<=nr;k++){const y=yT1-k*rh,v=lo+k/10;s+=hl(y)+`<text x="${x0-8}" y="${y+3.5}" text-anchor="end" fill="${K}">${fm(v)}</text><text x="${x1+8}" y="${y+3.5}" fill="${K}">${fm(v)}</text>`;if(k<nr)s+=`<line x1="${x0}" x2="${x1}" y1="${y-rh/2}" y2="${y-rh/2}" stroke="${GL}" stroke-width=".5"/>`}
+s+=`<rect x="${x0}" y="${yT0}" width="${nc*cw}" height="${yT1-yT0}" fill="none" stroke="${K}" stroke-width="1.3"/><text x="${x1+8}" y="${yT0-9}" fill="${K}">°C</text><text x="8" y="${yT0+14}" font-weight="700" fill="${K}">TEMPÉRATURE BASALE °C</text><text x="8" y="${yT0+54}" font-size="9" fill="${K}">HEURE HABITUELLE</text><text x="8" y="${yT0+66}" font-size="9" fill="${K}">DE PRISE : ${hab?`<tspan font-size="11" font-style="italic" font-weight="700">${hab}</tspan>`:'______'}</text>`;
+s+=band(yJ2,true)+`<text x="${x0-8}" y="${yJ2+14}" text-anchor="end" font-weight="700" fill="${K}">JOURS DU CYCLE</text>`;
+s+=vgrid(yDt,20)+blk(yDt,20)+lab('JOURS DU CALENDRIER',yDt,20);
+days.forEach(x=>{if(x.d<=c.end)s+=`<text x="${X(x.i)}" y="${yDt+14}" text-anchor="middle" fill="${K}">${+x.d.slice(8)}</text>`});
+const rows=['DÉRANGEMENTS','RELATIONS SEXUELLES','DOULEURS ABDOMINALES','SENSIBILITÉ AUX SEINS','AUTRES SIGNES'];
+rows.forEach((t,k)=>{const y=yE+k*hR;s+=vgrid(y,hR)+blk(y,hR)+lab(t,y,hR)});
+const xx=(cx,cy)=>`<path d="M${cx-5} ${cy-5}L${cx+5} ${cy+5}M${cx+5} ${cy-5}L${cx-5} ${cy+5}" stroke="${K}" stroke-width="1.6"/>`;
+days.forEach(x=>{const e=x.e;if(!e)return;const cx=X(x.i);
+if(e.p&&e.p.length)s+=xx(cx,yE+hR/2);
+if(e.ru||e.rp)s+=xx(cx,yE+hR+hR/2)+(e.rp?`<circle cx="${cx}" cy="${yE+hR+hR/2}" r="8" fill="none" stroke="${K}" stroke-width="1.2"/>`:'');
+const sg=e.sg||[];if(sg.includes('D'))s+=`<text x="${cx}" y="${yE+2*hR+15}" text-anchor="middle" font-size="11" font-weight="700" fill="${K}">D</text>`;if(sg.includes('S'))s+=`<text x="${cx}" y="${yE+3*hR+15}" text-anchor="middle" font-size="11" font-weight="700" fill="${K}">S</text>`;
+const o=[e.tp?'LH':'',e.gj?'G':'',...['M','F','L','I','A'].filter(v=>sg.includes(v))].filter(Boolean);if(o.length){const per=o.length<=4?2:3,fs=per===2?9:7.5,r1=o.slice(0,per).join(' '),r2=o.slice(per).join(' ');s+=r2?`<text x="${cx}" y="${yE+4*hR+9}" text-anchor="middle" font-size="${fs}" font-weight="700" fill="${K}">${r1}</text><text x="${cx}" y="${yE+4*hR+19}" text-anchor="middle" font-size="${fs}" font-weight="700" fill="${K}">${r2}</text>`:`<text x="${cx}" y="${yE+4*hR+15}" text-anchor="middle" font-size="9" font-weight="700" fill="${K}">${r1}</text>`}});
+// phases et lignes
+const P=mc?phaseInfo(M,mc):{N:null,T:null},nA=P.N,nT=P.T&&P.T<=nc?P.T:null,yTop=yJ,yBot=yEnd;
+const vl=(x,dash)=>`<line x1="${x}" x2="${x}" y1="${yTop}" y2="${yBot}" stroke="${K}" stroke-width="${dash?1.4:1.8}"${dash?' stroke-dasharray="5 3"':''}/>`;
+if(pk)s+=vl(X(pk.i),true);
+const bigL=(a,b,t,xb)=>{if(b>=a)s+=`<text x="${(x0+(a-1)*cw+(xb!=null?xb:x0+b*cw))/2}" y="${yT0+36}" text-anchor="middle" font-size="28" font-weight="700" fill="${K}">${t}</text>`};
+if(nA&&nA>1&&nA<=nc){s+=vl(x0+(nA-1)*cw);bigL(1,nA-1,'A')}
+if(nT)s+=vl(X(nT-1));
+if(nA||nT){const b0=nA||1,b1=nT||Math.min(nc,b0+5);bigL(b0,b1,'B',nT?X(nT-1):null)}
+if(nT&&nT<nc){const e2=Math.min(nc,Math.max(nT+8,N0));s+=`<text x="${(X(nT-1)+x0+e2*cw)/2}" y="${yT0+36}" text-anchor="middle" font-size="28" font-weight="700" fill="${K}">C</text>`}
+// ligne horizontale
+const hb=fl('hb'),h0=fl('th');let HBt=null;if(hb&&hb.e.t!=null)HBt=hb.e.t;else if(h0){const pv=[];for(let q=h0.i-1;q>=0&&pv.length<6;q--){const e=days[q].e;if(e&&e.t!=null&&!(e.p&&e.p.length))pv.push(e.t)}if(pv.length)HBt=Math.max(...pv)}
+if(HBt!==null){const y=yT(HBt+0.05);s+=`<line x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" stroke="${K}" stroke-width="1.4"/>`}
+days.forEach(x=>{const e=x.e;if(!e)return;if(e.lv)s+=`<line x1="${X(x.i)}" x2="${X(x.i)}" y1="${yT0}" y2="${yT1}" stroke="${K}" stroke-opacity=".7" stroke-dasharray="2 4"/>`;if(e.lh&&e.t!=null){const y=yT(e.t);s+=`<line x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" stroke="${K}" stroke-opacity=".7" stroke-dasharray="2 4"/>`}});
+const tp=days.filter(x=>x.e&&x.e.t!=null).map(x=>({i:x.i,y:yT(x.e.t),e:x.e})),ok=tp.filter(q=>!(q.e.p&&q.e.p.length));
+for(let k=1;k<ok.length;k++){const a=ok[k-1],b=ok[k];s+=`<path d="M${X(a.i)} ${a.y}L${X(b.i)} ${b.y}" fill="none" stroke="${K}" stroke-width="1.5"${b.i-a.i>1?' stroke-dasharray="4 4"':''}/>`}
+const big={};['t1','t2','t3'].forEach((f,k)=>{const x=fl(f);if(x&&x.e.t!=null)big[x.i]=k+1});if(h0)for(let k=0;k<3;k++){const y=days[h0.i+k];if(y&&y.e&&y.e.t!=null)big[y.i]=k+1}
+tp.forEach(q=>{const pert=q.e.p&&q.e.p.length,n=big[q.i];if(pert&&q.e.p.includes('heure')&&hh(q.e.ph))s+=`<text x="${X(q.i)}" y="${q.y-9}" text-anchor="middle" font-size="10" font-style="italic" fill="${K}">${hh(q.e.ph)}</text>`;s+=pert?xx(X(q.i),q.y):`<circle cx="${X(q.i)}" cy="${q.y}" r="3.6" fill="${K}"/>`;if(n)s+=`<text x="${X(q.i)-9}" y="${q.y-6}" text-anchor="middle" font-size="11" font-weight="700" font-style="italic" fill="${K}">${n}</text>`});
+// panneau de droite
+const pb=(y,h)=>`<rect x="${px}" y="${y}" width="${pw}" height="${h}" rx="7" fill="none" stroke="${K}" stroke-width="1.2"/>`,L=(x,y,t,w)=>`<text x="${x}" y="${y}" fill="${K}"${w?` font-weight="${w}"`:''}>${t}</text>`,ll=(x,y,a,b)=>`<text x="${x}" y="${y}" fill="${K}"><tspan font-weight="700">${a}</tspan>${b}</text>`;
+s+=pb(yS,hS)+bleed(px+16,yS+hS/2,'a')+L(px+30,yS+15,'règles')+bleed(px+86,yS+hS/2,'l')+L(px+100,yS+15,'règles légères')+bleed(px+204,yS+hS/2,'t')+L(px+218,yS+15,'spotting');
+s+=pb(yG,2*hG)+ll(px+10,yG+34,'S','èche')+ll(px+10,yG+82,'−',' absente')+L(px+100,yG+14,'Transitionnelle',700)+ll(px+100,yG+34,'H','umide')+ll(px+100,yG+52,'C','ollante')+ll(px+100,yG+80,'O','paque')+L(px+200,yG+14,'Culminante',700)+ll(px+200,yG+30,'M','ouillée')+ll(px+200,yG+44,'L','ubrifiée')+ll(px+200,yG+60,'TR','ouble')+ll(px+200,yG+74,'T','ransparente')+ll(px+200,yG+88,'F','ilante');
+s+=pb(yC,3*hC+4);
+const cg=(cx,cy,k)=>k==='b'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy+3}" width="14" height="3" fill="${K}"/>`:k==='m'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-1}" width="14" height="3" fill="${K}"/>`:k==='h'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-6}" width="14" height="3" fill="${K}"/>`:k==='f'?`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`:k==='e'?`<circle cx="${cx}" cy="${cy}" r="3.6" fill="none" stroke="${K}"/>`:k==='o'?`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="${K}" stroke-width="1.3"/>`:k==='F'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="${K}"/>`:k==='s'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="url(#srA)" stroke="${K}" stroke-width=".8"/>`:`<path d="M${cx-7} ${cy-6}L${cx-1} ${cy+6}M${cx+1} ${cy-6}L${cx+7} ${cy+6}" stroke="${K}" stroke-width="1.4" fill="none"/>`;
+[[['b','bas'],['m','moyen'],['h','haut']],[['f','fermé'],['e','entr’ouvert'],['o','ouvert']],[['F','ferme'],['s','semi-ferme'],['u','mou']]].forEach((r,ri)=>r.forEach((q,k)=>{const cx=px+16+k*98,cy=yC+2+ri*hC+hC/2;s+=cg(cx,cy,q[0])+L(cx+14,cy+3.5,q[1])}));
+s+=pb(yT0,34)+L(px+10,yT0+21,'BUT :',700)+(BUT?`<text x="${px+58}" y="${yT0+21}" font-size="12" font-style="italic" fill="${K}">${BUT==='contra'?'contraception':'conception'}</text>`:'');
+const notes=dayNotes(days);
+const nl=[];notes.forEach(([a,b])=>{let t=a+b;while(t.length>34){let k=t.lastIndexOf(' ',34);if(k<8)k=34;nl.push(t.slice(0,k));t='   '+t.slice(k).trim()}nl.push(t)});
+s+=pb(yT0+44,226)+L(px+10,yT0+62,'NOTES :',700);nl.slice(0,11).forEach((t,k)=>{s+=`<text x="${px+10}" y="${yT0+82+k*15}" font-size="11" font-style="italic" fill="${K}">${esc(t)}</text>`});if(nl.length>11)s+=`<text x="${px+10}" y="${yT0+82+11*15}" font-size="11" fill="${K}">…</text>`;
+s+=`<text x="${px+10}" y="${yT0+250}" font-size="9" fill="${K}">LH : test d’ovulation positif · G : glaire gélatineuse</text><text x="${px+10}" y="${yT0+262}" font-size="8.2" fill="${K}">M : mal de tête · F : fatigue · L : forte libido · I : irritabilité · A : autre</text>`;
+const mn=n=>{const t=new Date(n+'T12:00:00').toLocaleDateString('fr-CA',{month:'long'});return t.charAt(0).toUpperCase()+t.slice(1)},lastD=days[Math.min(nc-1,N0-1)].d<c.end?days[Math.min(nc-1,N0-1)].d:c.end,m1=mn(c.s),m2=mn(lastD);
+s+=pb(yT0+280,70)+L(px+10,yT0+299,'CYCLE LE PLUS COURT :',700)+`<text x="${px+170}" y="${yT0+299}" font-size="13" font-style="italic" fill="${K}">${M.Lmin!=null?M.Lmin:''}</text>`+L(px+10,yT0+322,M.nV?`parmi les ${M.nV} derniers cycles`:'parmi les ____ derniers')+`<rect x="${px+10}" y="${yT0+328}" width="0" height="0"/>`;
+s+=pb(yT0+360,76)+L(px+10,yT0+380,'ANNÉE :',700)+`<text x="${px+70}" y="${yT0+380}" font-size="12" font-style="italic" fill="${K}">${c.s.slice(0,4)}</text>`+L(px+10,yT0+400,'MOIS :',700)+`<text x="${px+60}" y="${yT0+400}" font-size="12" font-style="italic" fill="${K}">${m1===m2?m1:m1+' / '+m2}</text>`+L(px+10,yT0+420,'NO. :',700)+`<text x="${px+50}" y="${yT0+420}" font-size="12" font-style="italic" fill="${K}">${cNo(ci)||''}</text>`;
+s+=`<text x="${px+pw}" y="${H-10}" text-anchor="end" font-size="12" font-weight="700" fill="${G}">Hovie</text></svg>`;
+return {svg:s,nc,x0,cw}}
+function chart(){try{syncGl()}catch(_){}const cs=cycles(),sel=$('cyc');
 if(!cs.length){sel.innerHTML='';$('chart').innerHTML='<p class="note" style="padding:14px">Aucun cycle à afficher. Entre « Règles » le premier jour de ton cycle.</p>';$('mini').innerHTML='';return}
-if(!sel.options.length||sel.dataset.n!=cs.length){sel.dataset.n=cs.length;sel.innerHTML=cs.map((c,i)=>`<option value="${i}">Cycle du ${fmt(c.s)}</option>`).join('');sel.value=cs.length-1}
-const comb=VIEW==='comb',ci=+sel.value,c=cs[ci],hasWs=Object.values(D.e).some(e=>e.ws!=null),useWs=hasWs&&WSON&&Object.keys(D.e).some(k=>k>=c.s&&k<=c.end&&D.e[k].ws!=null),N=Math.max(diff(c.s,c.end)+1,28),L=84,RM=(comb?80:10)+(useWs?50:0),cw=24,W=L+N*cw+RM;
-$('wsw').hidden=!hasWs;$('wsb').setAttribute('aria-checked',WSON);
-CH={c,N,L,cw};$('vw').textContent=comb?'Passer à la vue en 3 graphiques':'Passer à la vue combinée';
+if(!sel.options.length||sel.dataset.n!=cs.length){sel.dataset.n=cs.length;sel.innerHTML=cs.map((c,i)=>`<option value="${i}">${cNo(i)?'No '+cNo(i)+' · ':''}Cycle du ${fmt(c.s)}</option>`).join('');sel.value=cs.length-1}
+$('gmode').textContent=gTitle();$('gbut').textContent=gBut();$('gbut').hidden=!gBut();$('sernote').hidden=!(SYM&&VIEW==='ser');const comb=true,ci=+sel.value,c=cs[ci],hasWs=Object.values(D.e).some(e=>e.ws!=null),useWs=!SYM&&hasWs&&WSON&&Object.keys(D.e).some(k=>k>=c.s&&k<=c.end&&D.e[k].ws!=null),N=Math.max(diff(c.s,c.end)+1,28),L=84,RM=(comb?80:10)+(useWs?50:0),cw=24,PW=190,W=L+N*cw+RM;
+$('wsw').hidden=!hasWs||SYM;$('wsb').setAttribute('aria-checked',WSON);
+CH={c,N,L,cw};$('vw').hidden=!SYM;[...$('vw').children].forEach(b=>{b.className='btn'+(b.dataset.v===VIEW?'':' alt');b.setAttribute('aria-pressed',b.dataset.v===VIEW)});
 const M=model(),mc=M.cyc.find(x=>x.s===c.s),eo=mc&&mc.eo,od=eo?diff(c.s,eo.d)+1:null;
 const days=[];for(let i=0;i<N;i++){const d=addDays(c.s,i);days.push({i,d,e:d<=c.end?D.e[d]:undefined})}
 const fl=f=>days.find(x=>x.e&&x.e[f]),hb=fl('hb');
 const ts=days.filter(x=>x.e&&x.e.t!=null).map(x=>x.e.t);
 let lo=ts.length?Math.floor(Math.min(...ts)*10)/10-0.1:36,hi=ts.length?Math.ceil(Math.max(...ts)*10)/10+0.1:37.2;
-if(hb&&hb.e.t!=null)hi=Math.max(hi,hb.e.t+0.25);if(hi-lo<0.8)hi=lo+0.8;
+let HBt=null;if(SYM){const h0=fl('th');if(hb&&hb.e.t!=null)HBt=hb.e.t;else if(h0){const pv=[];for(let q=h0.i-1;q>=0&&pv.length<6;q--){const e=days[q].e;if(e&&e.t!=null&&!(e.p&&e.p.length))pv.push(e.t)}if(pv.length)HBt=Math.max(...pv)}}
+if(HBt!==null)hi=Math.max(hi,HBt+0.1);if(hi-lo<0.8)hi=lo+0.8;
 const T0=14,T1=comb?234:194,M0=comb?T0:236,M1=comb?T1:376,C0=comb?T0:418,C1=comb?T1:518,X=i=>L+i*cw+cw/2;
-const R=C1+20,D1=C1+46,D2=C1+62,D3=C1+75,H=C1+90;
-const yT=v=>T1-(v-lo)/(hi-lo)*(T1-T0),yM=comb?(v=>M1-v/5*(M1-M0)*.90):(v=>M1-v/5*(M1-M0)),yC=comb?(v=>C1-v/4*(C1-C0)*.76):(v=>C1-v/4*(C1-C0));
-let s=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Graphique du cycle : température, glaire et col" font-family="system-ui,sans-serif" font-size="10">`;
-const step=(hi-lo)>1.2?0.2:0.1,gl=y=>`<line x1="${L}" x2="${W-RM}" y1="${y}" y2="${y}" stroke="var(--line)"/>`;
-for(let v=Math.ceil(lo*10)/10;v<=hi+1e-9;v+=step){const y=yT(v);s+=gl(y)+`<text x="${L-6}" y="${y+3}" text-anchor="end" fill="var(--g)">${v.toFixed(1)}</text>`}
-if(comb){for(let v=0;v<=5;v++)s+=`<text x="${W-RM+6}" y="${yM(v)+3}" fill="var(--b)" font-size="9">${MLAB[v]}</text>`}
-else{for(let v=0;v<=5;v++){const y=yM(v);s+=gl(y)+`<text x="${L-6}" y="${y+3}" text-anchor="end" fill="var(--b)">${MLAB[v]}</text>`}
+const dz=28,R=C1+20,SG=C1+44,D1=C1+46+dz,D2=C1+62+dz,D3=C1+75+dz,H0=C1+90+dz;
+const yT=v=>T1-(v-lo)/(hi-lo)*(T1-T0),yM=comb?(v=>M1-v/5*(M1-M0)*.90):(v=>M1-v/5*(M1-M0)),yC=comb?(v=>C1-v/6*(C1-C0)*.76):(v=>C1-v/6*(C1-C0));
+const NL=wrapN(dayNotes(days),30),NLs=NL.slice(0,16),nbH=Math.max(44,30+NLs.length*13+(NL.length>16?13:0)),lgY=8+nbH+14,H=Math.max(H0,lgY+8*14+12);
+const ML=days.some(x=>x.e&&(x.e.gs!=null||x.e.ga!=null))?['0','1','2','3','4','5']:MLAB;
+let s=`<svg width="${W+PW}" height="${H}" viewBox="0 0 ${W+PW} ${H}" role="img" aria-label="Graphique du cycle : température, glaire et col" font-family="system-ui,sans-serif" font-size="10">`;
+const step=SYM?((hi-lo)>1.2?0.2:0.1):0.4,gl=y=>`<line x1="${L}" x2="${W-RM}" y1="${y}" y2="${y}" stroke="var(--line)"/>`;
+for(let v=Math.ceil(lo*10)/10;v<=hi+1e-9;v+=step){const y=yT(v);s+=gl(y)+`<text x="${L-6}" y="${y+3}" text-anchor="end" fill="var(--g)">${SYM?v.toFixed(1):''}</text>`}
+if(comb){s+=`<text x="${W-RM+6}" y="${T0-4}" font-size="10" font-weight="700" fill="var(--b)">Glaire</text><text x="${W-RM+44}" y="${T0-4}" font-size="10" font-weight="700" fill="var(--m)">Col</text>`;for(let v=0;v<=5;v++)s+=`<text x="${W-RM+6}" y="${yM(v)+3}" fill="var(--b)" font-size="9">${ML[v]}</text>`}
+else{for(let v=0;v<=5;v++){const y=yM(v);s+=gl(y)+`<text x="${L-6}" y="${y+3}" text-anchor="end" fill="var(--b)">${ML[v]}</text>`}
 [[0,'Col bas, ferme, fermé'],[4,'Col haut, mou, ouvert']].forEach(([v,l])=>{const y=yC(v),w=l.split(' ');s+=gl(y)+`<text x="${L-6}" y="${y+(v?9:-3)}" text-anchor="end" fill="var(--m)">${w[0]} ${w[1].replace(',','')}</text><text x="${L-6}" y="${y+(v?21:9)}" text-anchor="end" fill="var(--m)">${w.slice(2).join(' ')}</text>`});s+=gl(yC(2))}
 days.forEach(x=>{const cx=X(x.i),dn=+x.d.slice(8);
 if(x.e&&x.e.gj)s+=`<rect x="${cx-cw/2+4}" y="${T1-19}" width="${cw-8}" height="9" rx="3" fill="none" stroke="var(--b)" stroke-width="2" stroke-dasharray="3 2"/>`;
@@ -647,36 +860,67 @@ if(x.e&&x.e.sp)s+=`<rect x="${cx-cw/2+2}" y="${T1-6}" width="${cw-4}" height="6"
 if(x.e&&(x.e.ru||x.e.rp)){const both=x.e.ru&&x.e.rp,sc=both?.75:.95;
 if(x.e.ru)s+=heart(cx+(both?-6.5:0),R,sc,false);
 if(x.e.rp)s+=heart(cx+(both?6.5:0),R,sc,true)}
+if(x.e&&x.e.sg&&x.e.sg.length){const g=['D','S','M','F','L','I','A'].filter(v=>x.e.sg.includes(v)),a=g.length>3?[g.slice(0,3).join(''),g.slice(3).join('')]:[g.join('')];a.forEach((t,k)=>{s+=`<text x="${cx}" y="${SG+(a.length>1?(k?9:-3):4)}" text-anchor="middle" font-size="${a.length>1?9:10}" font-weight="600" fill="var(--mut)">${t}</text>`})}
 s+=`<text x="${cx}" y="${D1}" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="700">${x.i+1}</text><text x="${cx}" y="${D2}" text-anchor="middle" fill="var(--mut)" font-size="9">${dn}</text>`;
 if(x.i===0||dn===1)s+=`<text x="${cx}" y="${D3}" text-anchor="middle" fill="var(--mut)" font-size="9">${new Date(x.d+'T12:00:00').toLocaleDateString('fr-CA',{month:'short'})}</text>`});
-s+=`<text x="${L-6}" y="${D1}" text-anchor="end" fill="var(--ink)" font-weight="700">Jour du cycle</text><text x="${L-6}" y="${D2}" text-anchor="end" fill="var(--mut)" font-size="9">Date</text><text x="${L-6}" y="${R+4}" text-anchor="end" fill="var(--mut)">Relations</text>`;
+s+=`<text x="${L-6}" y="${D1}" text-anchor="end" fill="var(--ink)" font-weight="700">Jour du cycle</text><text x="${L-6}" y="${D2}" text-anchor="end" fill="var(--mut)" font-size="9">Date</text><text x="${L-6}" y="${R+4}" text-anchor="end" fill="var(--mut)">Relations</text>`+`<text x="${L-6}" y="${SG+4}" text-anchor="end" fill="var(--mut)">Signes</text>`;
 const line=(pts,col)=>{let o='';for(let k=1;k<pts.length;k++){const a=pts[k-1],b=pts[k];o+=`<path d="M${X(a.i)} ${a.y}L${X(b.i)} ${b.y}" fill="none" stroke="${col}" stroke-width="2" stroke-linecap="round"${b.i-a.i>1?' stroke-dasharray="4 5"':''}/>`}return o};
-const tp=days.filter(x=>x.e&&x.e.t!=null).map(x=>({i:x.i,y:yT(x.e.t),e:x.e}));
-const mp=days.filter(x=>x.e&&x.e.m!=null).map(x=>({i:x.i,y:yM(x.e.m)}));
-const cp=days.map(x=>({i:x.i,v:colScore(x.e)})).filter(q=>q.v!==null).map(q=>({i:q.i,y:yC(q.v)}));
+const tp=SYM?days.filter(x=>x.e&&x.e.t!=null).map(x=>({i:x.i,y:yT(x.e.t),e:x.e})):[];
+const hmn=t=>{const m=/^(\d{1,2}):(\d{2})$/.exec(t||'');return m?+m[1]*60+ +m[2]:null},hhf=t=>{const m=/^(\d{1,2}):(\d{2})$/.exec(t||'');return m?(+m[1])+' h'+(m[2]!=='00'?' '+m[2]:''):''};
+const cr=SYM?days.map(x=>{const e=x.e;if(!e||e.t==null||!e.p||!e.p.includes('heure'))return null;const a=hmn(e.ph),b=hmn(huAt(x.d));if(a==null||b==null)return null;const v=Math.round((e.t-0.1*(a-b)/60)*100)/100;return {i:x.i,y:yT(v),v,e}}).filter(Boolean):[];
+const mp=days.filter(x=>x.e&&(x.e.m!=null||x.e.gs!=null||x.e.ga!=null)).map(x=>{const g=x.e.gs!=null||x.e.ga!=null?gscore(x.d):null;return{i:x.i,y:yM(g!=null?g:x.e.m)}});
+const cp=SYM?days.map(x=>({i:x.i,v:colScore(x.e)})).filter(q=>q.v!==null).map(q=>({i:q.i,y:yC(q.v)})):[];
 const disc=!!(mc&&(mc.ov||mc.tp))||(ci===cs.length-1&&(M.offLH!==null||M.offObs!==null));
 const band=(col,a,b,pale,op,pop=.14)=>{for(let d=Math.max(1,a);d<=Math.min(N,b);d++)s+=`<rect x="${X(d-1)-cw/2}" y="${T0}" width="${cw}" height="${C1-T0}" fill="${col}" fill-opacity="${d<=pale?pop:op}"/>`};
-if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16)band('#F2C230',Lc-22,Lc-10,Lc-18,disc?.1:.32,disc?.04:.14)}else if(M.A!==null){const a0=(Math.round(M.A)-22);band('#F2C230',a0,(Math.round(M.A)-10),a0+4,disc?.1:.32,disc?.04:.14)}
-if(od){if(eo.auto){band('#F08C28',od+eo.lo,od+eo.hi,0,.4);if(eo.lh)band('#F08C28',od-6,od-2,od-2,.4)}else{band('#E0569A',od-5,od+1,od-1,.3);band('#F08C28',od,od,0,.4)}}
-{const td=days.filter(x=>x.e&&x.e.tp).map(x=>x.i);let k=0;while(k<td.length){let m=k;while(m+1<td.length&&td[m+1]===td[m]+1)m++;const x0=X(td[k])-9,x1=X(td[m])+9,cx=(x0+x1)/2,ay=C1-(C1-T0)*.6;s+=`<polygon points="${x0},${C1} ${cx},${ay} ${x1},${C1}" fill="var(--tq)" fill-opacity=".4" stroke="var(--tq)" stroke-width="1.5"/><text x="${cx}" y="${ay-4}" text-anchor="middle" fill="var(--tq)" font-weight="600">Test +</text>`;k=m+1}}
-const pk=days.filter(x=>x.e&&x.e.m===5).pop();
+if(SYM){}else if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16)band('#F2C230',Lc-22,Lc-10,Lc-18,disc?.1:.32,disc?.04:.14)}else if(M.A!==null){const a0=(Math.round(M.A)-22);band('#F2C230',a0,(Math.round(M.A)-10),a0+4,disc?.1:.32,disc?.04:.14)}
+if(od){if(eo.auto){band('#F08C28',od+eo.lo,od+eo.hi,0,.4);if(eo.lh)band('#F08C28',od-6,od-2,od-2,.4)}}
+{const td=days.filter(x=>x.e&&x.e.tp).map(x=>x.i);let k=0;while(k<td.length){let m=k;while(m+1<td.length&&td[m+1]===td[m]+1)m++;const x0=X(td[k])-cw*1.1,x1=X(td[m])+cw*1.7,cx=(x0+x1)/2,ay=C1-(C1-T0)*.6;s+=`<path d="M${x0} ${C1}C${x0+(cx-x0)*.55} ${C1} ${cx-(cx-x0)*.35} ${ay} ${cx} ${ay}C${cx+(x1-cx)*.35} ${ay} ${cx+(x1-cx)*.5} ${C1} ${x1} ${C1}" fill="none" stroke="var(--tq)" stroke-width="2.2" stroke-linejoin="round"/><text x="${cx}" y="${ay-4}" text-anchor="middle" fill="var(--tq)" font-weight="600">Test +</text>`;k=m+1}}
+const pkk=picOf(c),pk=pkk?days.find(x=>x.d===pkk):null;
 if(pk){const x=X(pk.i);s+=`<line x1="${x}" x2="${x}" y1="${T0}" y2="${C1}" stroke="var(--b)" stroke-width="3" stroke-opacity=".75"/><text x="${x}" y="${T0-4}" text-anchor="middle" fill="var(--b)" font-weight="600">Pic de glaire</text>`}
-if(hb&&hb.e.t!=null){const t=hb.e.t,y=yT(t),y2=yT(t+0.2);s+=`<line x1="${L}" x2="${W-RM}" y1="${y}" y2="${y}" stroke="var(--g)" stroke-width="1.5" stroke-dasharray="3 4"/><text x="${L+4}" y="${y+12}" fill="var(--g)">Plus haute des basses ${t.toFixed(2)}</text><line x1="${L}" x2="${W-RM}" y1="${y2}" y2="${y2}" stroke="var(--g)" stroke-width="1.5" stroke-dasharray="7 4"/><text x="${W-RM-4}" y="${y2-4}" text-anchor="end" fill="var(--g)">+0,2 : ${(t+0.2).toFixed(2)}</text>`}
-if(useWs){const wsd=days.filter(x=>x.e&&x.e.ws!=null),R=Math.max(1,Math.ceil(Math.max(...wsd.map(x=>Math.abs(x.e.ws)))*2)/2),yW=v=>T1-(v+R)/(2*R)*(T1-T0),wp=wsd.map(x=>({i:x.i,y:yW(x.e.ws)})),fR=(''+R).replace('.',',');
-s+=`<line x1="${L}" x2="${W-RM}" y1="${yW(0)}" y2="${yW(0)}" stroke="var(--s)" stroke-width="1.6" stroke-dasharray="2 5"/>`+line(wp,'var(--s)')+wp.map(q=>`<circle cx="${X(q.i)}" cy="${q.y}" r="4.5" fill="var(--s)"/>`).join('');
-[[R,'+'+fR],[0,'0'],[-R,'−'+fR]].forEach(([v,l])=>{s+=`<text x="${W-RM+(comb?92:6)}" y="${yW(v)+4}" font-size="10" font-weight="700" fill="var(--s)">${l}</text>`});
-s+=`<text x="${W-RM+(comb?92:6)}" y="${T0-4}" font-size="9" fill="var(--s)">montre</text>`}
+if(SYM&&mc){const P=phaseInfo(M,mc),pl=(i,half)=>{const x=X(i)+(half||0);s+=`<line x1="${x}" x2="${x}" y1="${T0}" y2="${C1}" stroke="var(--m)" stroke-width="2.5" stroke-dasharray="7 4" stroke-opacity=".85"/>`},lb=(a,b,t)=>{if(b>=a)s+=`<text x="${(X(a-1)+X(b-1))/2}" y="${T0-4}" text-anchor="middle" fill="var(--m)" font-weight="700" font-size="11">${t}</text>`};
+const nA=P.N,nT=P.T&&P.T<=N?P.T:null;{const e2=P.T!=null?Math.min(P.T,N):(ci===cs.length-1?Math.min(N,diff(c.s,iso(new Date()))+1):null);if(nA&&e2!=null&&e2>=nA)band('#9A7BB8',nA,e2,0,.22)}if(nA&&nA>1&&nA<=N)pl(nA-1,-cw/2);if(nT)pl(nT-1);
+if(nA&&nA>1)lb(1,Math.min(nA-1,N),'A');if(nA||nT){const b0=nA||1,b1=nT||N;lb(Math.max(1,b0),Math.min(b1,N),'B')}if(nT&&nT<N)lb(nT+1,N,'C')}
+if(SYM&&HBt!==null){const t=HBt+0.05,y=yT(t);s+=`<line x1="${L}" x2="${W-RM}" y1="${y}" y2="${y}" stroke="var(--g)" stroke-width="1.5" stroke-dasharray="7 4"/><text x="${W-RM-4}" y="${y-4}" text-anchor="end" fill="var(--g)">Plus haute des 6 basses + 0,05 : ${t.toFixed(2)}</text>`}
+if(useWs){const WC=SYM?'var(--s)':'var(--g)',wsd=days.filter(x=>x.e&&x.e.ws!=null),R=Math.max(1,Math.ceil(Math.max(...wsd.map(x=>Math.abs(x.e.ws)))*2)/2),yW=v=>T1-(v+R)/(2*R)*(T1-T0),wp=wsd.map(x=>({i:x.i,y:yW(x.e.ws)})),fR=(''+R).replace('.',',');
+s+=`<line x1="${L}" x2="${W-RM}" y1="${yW(0)}" y2="${yW(0)}" stroke="${WC}" stroke-width="1.6" stroke-dasharray="2 5"/>`+line(wp,WC)+wp.map(q=>`<circle cx="${X(q.i)}" cy="${q.y}" r="4.5" fill="${WC}"/>`).join('');
+[[R,'+'+fR],[0,'0'],[-R,'−'+fR]].forEach(([v,l])=>{s+=`<text x="${W-RM+(comb?92:6)}" y="${yW(v)+4}" font-size="10" font-weight="700" fill="${WC}">${l}</text>`});
+s+=`<text x="${W-RM+(comb?92:6)}" y="${T0-4}" font-size="9" fill="${WC}">montre</text>`}
 days.forEach(x=>{if(!x.e)return;if(x.e.lv)s+=`<line x1="${X(x.i)}" x2="${X(x.i)}" y1="${T0}" y2="${C1}" stroke="var(--ink)" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="2 4"/>`;if(x.e.lh&&x.e.t!=null){const y=yT(x.e.t);s+=`<line x1="${L}" x2="${W-RM}" y1="${y}" y2="${y}" stroke="var(--ink)" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="2 4"/>`}});
-s+=line(tp.filter(q=>!(q.e.p&&q.e.p.length)),'var(--g)')+line(mp,'var(--b)')+line(cp,'var(--m)');
-const big={};['t1','t2','t3'].forEach((f,k)=>{const x=fl(f);if(x&&x.e.t!=null)big[x.i]=k+1});
-tp.forEach(q=>{const pert=q.e.p&&q.e.p.length,n=big[q.i];s+=`<circle cx="${X(q.i)}" cy="${q.y}" r="${n?8:4.5}" fill="${pert?'var(--card)':'var(--g)'}" stroke="var(--g)" stroke-width="2"/>`+(n?`<text x="${X(q.i)}" y="${q.y+3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">${n}</text>`:'')});
+s+=line(tp.filter(q=>!(q.e.p&&q.e.p.length)).concat(cr).sort((a,b)=>a.i-b.i),'var(--g)')+line(cp,'var(--m)')+line(mp,'var(--b)');
+const big={};['t1','t2','t3'].forEach((f,k)=>{const x=fl(f);if(x&&x.e.t!=null)big[x.i]=k+1});if(SYM){const h0=fl('th');if(h0)for(let k=0;k<3;k++){const y=days[h0.i+k];if(y&&y.e&&y.e.t!=null)big[y.i]=k+1}}
+tp.forEach(q=>{const pert=q.e.p&&q.e.p.length,n=big[q.i],c2=cr.find(z=>z.i===q.i);if(pert){const cx=X(q.i);s+=`<path d="M${cx-5} ${q.y-5}l10 10m0-10l-10 10" stroke="var(--g)" stroke-width="2.2"/>`;if(c2&&hhf(q.e.ph))s+=`<text x="${cx}" y="${Math.min(q.y,c2.y)-11}" text-anchor="middle" font-size="10" font-style="italic" fill="var(--g)">${hhf(q.e.ph)}</text>`}else s+=`<circle cx="${X(q.i)}" cy="${q.y}" r="${n?8:4.5}" fill="var(--g)" stroke="var(--g)" stroke-width="2"/>`;if(n)s+=`<text x="${X(q.i)}" y="${q.y+3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="${pert?'var(--g)':'var(--ink)'}">${n}</text>`});
+cr.forEach(q=>{s+=`<circle cx="${X(q.i)}" cy="${q.y}" r="4.5" fill="var(--card)" stroke="var(--g)" stroke-width="2"><title>Température corrigée : ${String(q.v.toFixed(2)).replace('.',',')}</title></circle>`});
+cp.forEach(q=>{s+=`<circle cx="${X(q.i)}" cy="${q.y}" r="6.5" fill="var(--m)" fill-opacity=".4"/>`});
 mp.forEach(q=>{s+=`<circle cx="${X(q.i)}" cy="${q.y}" r="4" fill="var(--b)"/>`});
-cp.forEach(q=>{s+=`<circle cx="${X(q.i)}" cy="${q.y}" r="4" fill="var(--m)"/>`});
-const full=s+'</svg>';$('chart').innerHTML=full;
+{const px=W+8,pw=PW-14;s+=`<rect x="${px}" y="8" width="${pw}" height="${nbH}" rx="8" fill="#FBE9EE" stroke="#EBC6D2"/><text x="${px+10}" y="24" font-weight="700" font-size="11" fill="var(--ink)">Notes</text>`;NLs.forEach((t,k)=>{s+=`<text x="${px+10}" y="${40+k*13}" font-size="10" fill="var(--ink)">${t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</text>`});if(NL.length>16)s+=`<text x="${px+10}" y="${40+16*13}" font-size="10" fill="var(--ink)">…</text>`;
+s+=`<text x="${px}" y="${lgY}" font-weight="700" font-size="11" fill="var(--ink)">Signes</text>`;[['D','douleurs abdominales'],['S','sensibilité aux seins'],['M','mal de tête'],['F','fatigue'],['L','forte libido'],['I','irritabilité'],['A','autre']].forEach(([a,b],k)=>{s+=`<text x="${px}" y="${lgY+16+k*14}" font-size="10" fill="var(--ink)"><tspan font-weight="700">${a}</tspan> : ${b}</text>`})}
+const full=s+'</svg>';if(SYM&&VIEW==='ser'){const q=serSvg(c,M,mc,ci,cs);$('chart').innerHTML=q.svg;CH={c,N:q.nc,L:q.x0,cw:q.cw}}else $('chart').innerHTML=full;
 $('mini').innerHTML=full.replace(/<text[^>]*>[^<]*<\/text>/g,'').replace(/<svg [^>]*>/,`<svg viewBox="${L} ${T0-8} ${W-RM-L} ${R+12-T0+8}" width="100%" style="display:block;pointer-events:none" aria-hidden="true">`)}
 $('cyc').onchange=chart;
+let SYM=true;try{SYM=localStorage.getItem('suivi-sympto')!=='0'}catch(_){}
+let REPN=null;
+function symApply(){document.body.classList.toggle("son",SYM);try{chart()}catch(_){}if(REPN===null)REPN=$('repnote').textContent;$('repnote').textContent=SYM?'La ligne de la phase A que tu places remplace la ligne calculée automatiquement. Elle se place entre deux jours : le jour que tu touches est le premier jour de la phase B, et la veille est le dernier jour de la phase A. Touche « Plus haute des 6 basses » sur le jour de ta température la plus haute avant la montée si tu veux choisir toi-même la ligne (elle passe avant le calcul automatique). Touche « Première température haute » sur le jour de ta première température haute : ce jour et les 2 suivants grossissent (1, 2, 3), et la ligne qui termine la phase B se place sur la 3e. Touche « Pic de glaire » sur le jour de ton choix si tu veux placer toi-même la ligne bleue (elle passe avant le calcul automatique). Une seule de chaque par cycle. L’ovulation s’entre seulement par les tests d’ovulation, et elle est entrée sur 3 jours.':REPN;drawF();glApply();$('jour').classList.toggle('simple',!SYM);$('syb').setAttribute('aria-checked',SYM)}
+$('syb').onclick=()=>{SYM=!SYM;try{localStorage.setItem('suivi-sympto',SYM?'1':'0')}catch(_){}symApply()};try{syncGl()}catch(_){}symApply();
+
+let NOC=null;try{NOC=JSON.parse(localStorage.getItem('suivi-noc')||'null')}catch(_){}
+function cNo(ci){if(!NOC||!NOC.n)return ci+1;const cs=cycles();if(!cs.length)return NOC.n;if(!NOC.d){NOC.d=cs[0].s;try{localStorage.setItem('suivi-noc',JSON.stringify(NOC))}catch(_){}}let ix=cs.findIndex(c=>c.s===NOC.d);if(ix<0){ix=cs.findIndex(c=>c.s>=NOC.d);if(ix<0)ix=0}const v=NOC.n+(ci-ix);return v>=1?v:null}
+let BUT='';try{BUT=localStorage.getItem('suivi-but')||''}catch(_){}
+function gBut(){return SYM&&BUT?'But : '+(BUT==='contra'?'contraception':'conception'):''}
+document.querySelectorAll('.butc').forEach(c=>{c.checked=c.value===BUT;c.onchange=()=>{BUT=c.checked?c.value:'';document.querySelectorAll('.butc').forEach(o=>o.checked=o.value===BUT);try{localStorage.setItem('suivi-but',BUT)}catch(_){}try{chart()}catch(_){}}});
+function gTitle(){const cs=cycles(),ci=+$('cyc').value,c=cs[ci];if(!c)return 'Graphique Hovie';const mn=d=>{const t=new Date(d+'T12:00:00').toLocaleDateString('fr-CA',{month:'long'});return t.charAt(0).toUpperCase()+t.slice(1)},m1=mn(c.s),m2=mn(c.end>c.s?c.end:c.s);
+return (SYM&&VIEW==='ser'?'Graphique Seréna':'Graphique Hovie')+' · '+(m1===m2?m1:m1+' / '+m2)+' '+c.s.slice(0,4)+(cNo(ci)?' · Graphique no '+cNo(ci):' · Graphique')+' · '+(SYM?'Symptothermie':'Méthode du calendrier')}
+function lightVars(t){const m=(document.querySelector('style').textContent.match(/:root\{([^}]*)\}/)||[])[1]||'',o={};m.split(';').forEach(p=>{const k=p.match(/^\s*(--[\w-]+):(.+)$/);if(k)o[k[1]]=k[2].trim()});return t.replace(/var\((--[\w-]+)\)/g,(x,n)=>o[n]||'#000')}
+function saveImg(){const sv=$('chart').querySelector('svg');if(!sv){toast('Aucun graphique à enregistrer');return}
+const W=+sv.getAttribute('width'),H=+sv.getAttribute('height'),src=lightVars(new XMLSerializer().serializeToString(sv)),im=new Image(),k=2,gb=gBut(),top=gb?58:40,title=gTitle();
+im.onload=()=>{const cv=document.createElement('canvas');cv.width=(W+20)*k;cv.height=(H+top+10)*k;const x=cv.getContext('2d');x.scale(k,k);x.fillStyle='#fff';x.fillRect(0,0,W+20,H+top+10);x.fillStyle='#3B2431';x.font='700 18px system-ui,sans-serif';x.fillText(title,10,26);if(gb){x.font='600 14px system-ui,sans-serif';x.fillText(gb,10,46)}x.drawImage(im,10,top);
+cv.toBlob(async b=>{if(!b){toast('Impossible de créer l’image');return}const f=new File([b],'hovie-graphique.png',{type:'image/png'});
+try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title})}else{const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='hovie-graphique.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);toast('Image enregistrée')}}catch(e){if(e&&e.name!=='AbortError')toast('Enregistrement impossible')}},'image/png')};
+im.onerror=()=>toast('Impossible de créer l’image');im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(src)}
+$('gsv').onclick=saveImg;
+$('gpr').onclick=()=>{if(!$('chart').querySelector('svg')){toast('Aucun graphique à imprimer');return}$('pt').textContent=gTitle()+(gBut()?' · '+gBut():'');document.body.classList.add('printing');setTimeout(()=>{try{window.print()}finally{setTimeout(()=>document.body.classList.remove('printing'),500)}},50)};
+
 $('wsb').onclick=()=>{WSON=!WSON;try{localStorage.setItem('suivi-montre',WSON?'1':'0')}catch(_){}chart()};
-$('vw').onclick=()=>{VIEW=VIEW==='comb'?'sep':'comb';try{localStorage.setItem('suivi-vue',VIEW)}catch(_){}chart()};
+$('vw').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;VIEW=b.dataset.v==='ser'?'ser':'comb';try{localStorage.setItem('suivi-vue',VIEW)}catch(_){}chart()};
 $('chart').addEventListener('click',ev=>{const sv=ev.target.closest('svg');if(!sv||!CH)return;const x=ev.clientX-sv.getBoundingClientRect().left,i=Math.floor((x-CH.L)/CH.cw);if(i<0||i>=CH.N)return;const d=addDays(CH.c.s,i);if(d>CH.c.end)return;goto(d);document.querySelector('nav button[data-t=jour]').click();window.scrollTo(0,0)});
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));['jour','graph','cal','stats','sum','data'].forEach(id=>$(id).hidden=id!==b.dataset.t);if(b.dataset.t==='graph')chart();if(b.dataset.t==='stats')stats();if(b.dataset.t==='cal')cal();if(b.dataset.t==='sum')summ()});
 $('exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(D)],{type:'application/json'}));a.download='suivi-cycle-'+iso(new Date())+'.json';a.click();toast('Export prêt')};
@@ -707,6 +951,87 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpd()
 window.addEventListener('pageshow',()=>checkUpd());window.addEventListener('focus',()=>checkUpd());window.addEventListener('online',()=>checkUpd());
 setInterval(()=>{if(!document.hidden)checkUpd()},300000);setTimeout(checkUpd,3000);
 (()=>{const m=VER.match(/^(\d{4})-(\d{2})-(\d{2})(?:-(\d{2})(\d{2}))?/);$('vers').textContent=m?'Version du '+new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'})+(m[4]?', '+m[4]+' h '+m[5]:''):''})();
+
+/* ===== Remplir un ancien cycle ===== */
+(()=>{
+const AR=[
+{k:'bl',l:'Saignements',br:[['a','✕ Règles'],['l','╲ Règles légères'],['t','• Spotting']]},
+{k:'se',l:'Sensation',m:'S',br:[['S','Sèche'],['C','Collante'],['H','Humide'],['M','Mouillée'],['L','Lubrifiée']],hint:'Jusqu’à deux choix par jour.'},
+{k:'ap',l:'Apparence',m:'-',br:[['-','Absente'],['O','Opaque'],['TR','Trouble'],['T','Transparente'],['F','Filante']],hint:'Jusqu’à deux choix par jour.'},
+{k:'cp',l:'Col : hauteur',br:[['B','Bas'],['M','Moyen'],['H','Haut']]},
+{k:'co',l:'Col : ouverture',br:[['F','Fermé'],['E','Entr’ouvert'],['O','Ouvert']]},
+{k:'cd',l:'Col : fermeté',br:[['S','Mou'],['M','Semi-ferme'],['F','Ferme']]},
+{k:'t',l:'Température'}];
+const SYMB={a:'✕',l:'╲',t:'•'},CO={F:'●',E:'○',O:'◯'},CD={F:'■',M:'▤',S:'╲╲'};
+const lvS={S:0,H:1,C:1,M:2,L:2},lvA={'-':0,O:1,TR:2,T:2,F:3};
+let st=null,ACT='bl',BR='a',PAINT=true,drag=false,lastI=-1,TI=0;
+const $a=id=>document.getElementById(id);
+const lng=d=>new Date(d+'T12:00:00').toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'});
+function fresh(){const cs=cycles();let s0;if(cs.length)s0=addDays(cs[0].s,-28);else s0=addDays(iso(new Date()),-60);st={s:s0,n:28,c:{bl:[],se:[],ap:[],cp:[],co:[],cd:[],t:[]}};ACT='bl';BR='a';TI=0}
+function cellTxt(k,i){const v=st.c[k][i];if(v==null||v===''||(Array.isArray(v)&&!v.length))return '';
+if(k==='bl')return `<span class="sy">${SYMB[v]}</span>`;if(k==='se')return `<span class="lt">${v.join(' ')}</span>`;if(k==='ap')return `<span class="lt">${v.map(x=>x==='-'?'−':x).join(' ')}</span>`;
+if(k==='cp')return `<span class="lt">${v}</span>`;if(k==='co')return `<span class="sy">${CO[v]}</span>`;if(k==='cd')return `<span class="lt">${CD[v]}</span>`;if(k==='t')return `<span class="lt">${String(v.toFixed(2)).replace('.',',')}</span>`;return ''}
+function grid(){let h='<table><tbody><tr class="dn"><td class="rl">Jour du cycle</td>';for(let i=0;i<st.n;i++)h+=`<td>${i+1}</td>`;h+='</tr><tr class="dt"><td class="rl" style="font-weight:500;cursor:default">Date</td>';
+for(let i=0;i<st.n;i++){const d=addDays(st.s,i),dd=+d.slice(8);h+=`<td>${dd===1||i===0?dd+'<br>'+new Date(d+'T12:00:00').toLocaleDateString('fr-CA',{month:'short'}).replace('.',''):dd}</td>`}h+='</tr>';
+AR.forEach(r=>{h+=`<tr data-r="${r.k}"${r.k===ACT?' class="act"':''}><td class="rl" data-lab="${r.k}">${r.l}</td>`;for(let i=0;i<st.n;i++)h+=`<td data-r="${r.k}" data-i="${i}"${r.k==='t'&&i===TI&&ACT==='t'?' class="cur"':''}>${cellTxt(r.k,i)}</td>`;h+='</tr>'});
+$a('aog').innerHTML=h+'</tbody></table>';$a('aodl').textContent=lng(st.s);$a('aon').textContent=st.n;pal()}
+function pal(){const r=AR.find(x=>x.k===ACT),P=$a('aopal'),T=$a('aotw');document.querySelectorAll('#aog tr[data-r]').forEach(tr=>tr.classList.toggle('act',tr.dataset.r===ACT));
+if(ACT==='t'){P.innerHTML='';T.hidden=false;ttl();return}T.hidden=true;P.innerHTML='';
+r.br.forEach(([v,l])=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.setAttribute('aria-pressed',BR===v);b.onclick=()=>{BR=v;pal()};P.appendChild(b)});
+const g=document.createElement('button');g.type='button';g.textContent='⌫ Effacer';g.setAttribute('aria-pressed',BR==='');g.onclick=()=>{BR='';pal()};P.appendChild(g);
+if(r.hint){const q=document.createElement('p');q.className='note';q.style.cssText='width:100%;margin:2px 0 0';q.textContent=r.hint;P.appendChild(q)}}
+function setCell(i){const td=document.querySelector(`#aog td[data-r="${ACT}"][data-i="${i}"]`);if(td)td.innerHTML=cellTxt(ACT,i)}
+function apply(i,isDrag){const r=AR.find(x=>x.k===ACT),k=ACT,c=st.c[k];
+if(BR===''){c[i]=(k==='se'||k==='ap')?[]:null;setCell(i);return}
+if(k==='se'||k==='ap'){let l=Array.isArray(c[i])?c[i].slice():[];const ix=l.indexOf(BR);
+if(ix>=0){if(!isDrag)l.splice(ix,1)}else{if(BR===r.m)l=[];else{const j=l.indexOf(r.m);if(j>=0)l.splice(j,1);while(l.length>=2)l.shift()}l.push(BR)}c[i]=l}
+else{if(c[i]===BR){if(!isDrag)c[i]=null}else c[i]=BR}setCell(i)}
+function ttl(){$a('aotl').textContent='Température du jour '+(TI+1)+' · '+lng(addDays(st.s,TI));const v=st.c.t[TI];$a('aoti').value=v!=null?String(v).replace('.',','):'';document.querySelectorAll('#aog td.cur').forEach(x=>x.classList.remove('cur'));const td=document.querySelector(`#aog td[data-r="t"][data-i="${TI}"]`);if(td){td.classList.add('cur');const g=$a('aog'),x=td.offsetLeft;if(x<g.scrollLeft+110||x>g.scrollLeft+g.clientWidth-40)g.scrollLeft=Math.max(0,x-130)}}
+function parseT(x){x=String(x).trim().replace(',','.');if(!x)return null;if(!/^\d+(\.\d+)?$/.test(x))return NaN;let v=parseFloat(x);if(x.indexOf('.')<0){if(x.length===4)v=v/100;else if(x.length===3)v=v/10}
+return v>=34&&v<=40?Math.round(v*100)/100:NaN}
+function saveT(){const v=parseT($a('aoti').value);if(Number.isNaN(v)){toast('Température entre 34 et 40');return false}st.c.t[TI]=v;const td=document.querySelector(`#aog td[data-r="t"][data-i="${TI}"]`);if(td)td.innerHTML=cellTxt('t',TI);return true}
+function nextT(){if(!saveT())return;if(TI<st.n-1)TI++;ttl();$a('aoti').focus()}
+function open(){fresh();$a('aov').hidden=false;document.body.style.overflow='hidden';$a('aosd').value=st.s;grid()}
+function close(){$a('aov').hidden=true;document.body.style.overflow=''}
+$a('aob').onclick=open;$a('aob2').onclick=open;$a('aox').onclick=()=>{if(confirm('Fermer sans enregistrer ?'))close()};
+const sd=$a('aosd'),ds=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value');
+const dx=$a('aodx');dx.addEventListener('input',()=>{dx.value=dx.value.replace(/\D/g,'').slice(0,8);const i=dtxIso(dx.value);if(i){st.s=i;sd.value=i;dx.value='';grid()}});
+sd.addEventListener('change',()=>{const v=ds.get.call(sd);if(v){st.s=v;grid()}});
+$a('aom').onclick=()=>{if(st.n>14){st.n--;grid()}};$a('aop').onclick=()=>{if(st.n<70){st.n++;grid()}};
+$a('aol').onclick=()=>{$a('aog').scrollLeft-=34*7};$a('aor2').onclick=()=>{$a('aog').scrollLeft+=34*7};
+$a('aom2').onclick=()=>{PAINT=!PAINT;$a('aom2').setAttribute('aria-pressed',PAINT);$a('aom2').textContent='🖌 Glisser pour remplir : '+(PAINT?'oui':'non (je fais défiler)');$a('aog').classList.toggle('sc',!PAINT)};
+const G=$a('aog');
+function cellAt(x,y){const e=document.elementFromPoint(x,y);return e&&e.closest?e.closest('td[data-i]'):null}
+G.addEventListener('pointerdown',ev=>{const lab=ev.target.closest('td[data-lab]');if(lab){ACT=lab.dataset.lab;const r=AR.find(x=>x.k===ACT);BR=r.br?r.br[0][0]:'';pal();if(ACT==='t')setTimeout(()=>$a('aoti').focus(),0);return}
+const td=ev.target.closest('td[data-i]');if(!td)return;const k=td.dataset.r,i=+td.dataset.i;
+if(k!==ACT){ACT=k;const r=AR.find(x=>x.k===k);BR=r.br?r.br[0][0]:'';if(k==='t')TI=i;pal();return}
+if(ACT==='t'){TI=i;ttl();$a('aoti').focus();return}
+apply(i,false);if(PAINT){drag=true;lastI=i}});
+G.addEventListener('pointermove',ev=>{if(!drag||!PAINT)return;const td=cellAt(ev.clientX,ev.clientY);if(!td||td.dataset.r!==ACT)return;const i=+td.dataset.i;if(i!==lastI){lastI=i;apply(i,true)}});
+['pointerup','pointercancel','pointerleave'].forEach(n=>G.addEventListener(n,()=>{drag=false}));
+$a('aotn').onclick=nextT;$a('aoti').addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();nextT()}});
+$a('aosv').onclick=()=>{
+if(ACT==='t'&&$a('aoti').value.trim()){if(!saveT())return}
+let any=false,over=0;const days=[];
+for(let i=0;i<st.n;i++){const d=addDays(st.s,i),f={};const bl=st.c.bl[i];
+if(bl==='a')f.m=0;else if(bl==='l'){f.m=0;f.rl=1}else if(bl==='t')f.sp=1;
+if(i===0&&f.m!==0)f.m=0;
+const se=st.c.se[i],ap=st.c.ap[i];if(se&&se.length){f.gsl=se.slice();f.gs=Math.max(...se.map(x=>lvS[x]))}if(ap&&ap.length){f.gal=ap.slice();f.ga=Math.max(...ap.map(x=>lvA[x]))}
+['cp','co','cd'].forEach(k=>{if(st.c[k][i])f[k]=st.c[k][i]});if(st.c.t[i]!=null)f.t=st.c.t[i];
+if(Object.keys(f).length){days.push([d,f]);any=true;const ex=D.e[d];if(ex&&Object.keys(ex).some(k=>k in f&&JSON.stringify(ex[k])!==JSON.stringify(f[k])))over++}}
+if(!any){toast('Rien à enregistrer');return}
+if(over&&!confirm(over+' jour'+(over>1?'s ont':' a')+' déjà des données différentes. Les remplacer par ce que tu viens d’écrire ?'))return;
+days.forEach(([d,f])=>{const e=D.e[d]=D.e[d]||{};if(f.m===0){delete e.sp}Object.assign(e,f);if(f.m===0&&!f.rl)delete e.rl});
+try{syncGl()}catch(_){}
+if(!save())return;close();load($('date').value);try{chart()}catch(_){}toast('Cycle ajouté : '+days.length+' jours');
+const g2=document.querySelector('nav button[data-t=graph]');if(g2)g2.click()}
+})();
+const fmtT=el=>el.addEventListener('input',()=>{let v=el.value.replace(/\D/g,'').slice(0,4);if(v.length>=3)v=v.slice(0,2)+','+v.slice(2);if(el.value!==v)el.value=v});
+fmtT($('temp'));fmtT(document.getElementById('aoti'));
+(()=>{const v=document.getElementById('nocv');if(NOC&&NOC.n)v.value=NOC.n;
+document.getElementById('nocb').onclick=()=>{const n=parseInt(v.value,10);if(!(n>=1&&n<=999)){toast('Écris un numéro entre 1 et 999');return}
+const cs=cycles();NOC={n,d:cs.length?cs[0].s:null};if(n===1&&!cs.length)NOC=null;try{if(NOC)localStorage.setItem('suivi-noc',JSON.stringify(NOC));else localStorage.removeItem('suivi-noc')}catch(_){}
+const sel=document.getElementById('cyc');if(sel)sel.dataset.n='';try{chart()}catch(_){}try{summ()}catch(_){}toast('Numéro enregistré')}})();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
