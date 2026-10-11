@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-10-2229">
+<meta name="hovie-version" content="2026-10-10-2233">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -897,7 +897,7 @@ s+=`<text x="${px}" y="${lgY}" font-weight="700" font-size="11" fill="var(--ink)
 const full=s+'</svg>';if(SYM&&VIEW==='ser'){const q=serSvg(c,M,mc,ci,cs);$('chart').innerHTML=q.svg;CH={c,N:q.nc,L:q.x0,cw:q.cw}}else $('chart').innerHTML=full;
 $('mini').innerHTML=full.replace(/<text[^>]*>[^<]*<\/text>/g,'').replace(/<svg [^>]*>/,`<svg viewBox="${L} ${T0-8} ${W-RM-L} ${R+12-T0+8}" width="100%" style="display:block;pointer-events:none" aria-hidden="true">`)}
 $('cyc').onchange=chart;
-let SYM=true;try{SYM=localStorage.getItem('suivi-sympto')!=='0'}catch(_){}
+let SYM=false;try{SYM=localStorage.getItem('suivi-sympto')==='1'}catch(_){}
 let REPN=null;
 function symApply(){document.body.classList.toggle("son",SYM);try{chart()}catch(_){}if(REPN===null)REPN=$('repnote').textContent;$('repnote').textContent=SYM?'La ligne de la phase A que tu places remplace la ligne calculée automatiquement. Elle se place entre deux jours : le jour que tu touches est le premier jour de la phase B, et la veille est le dernier jour de la phase A. Touche « Plus haute des 6 basses » sur le jour de ta température la plus haute avant la montée si tu veux choisir toi-même la ligne (elle passe avant le calcul automatique). Touche « Première température haute » sur le jour de ta première température haute : ce jour et les 2 suivants grossissent (1, 2, 3), et la ligne qui termine la phase B se place sur la 3e. Touche « Pic de glaire » sur le jour de ton choix si tu veux placer toi-même la ligne bleue (elle passe avant le calcul automatique). Une seule de chaque par cycle. L’ovulation s’entre seulement par les tests d’ovulation, et elle est entrée sur 3 jours.':REPN;drawF();glApply();$('jour').classList.toggle('simple',!SYM);$('syb').setAttribute('aria-checked',SYM)}
 $('syb').onclick=()=>{SYM=!SYM;try{localStorage.setItem('suivi-sympto',SYM?'1':'0')}catch(_){}symApply()};try{syncGl()}catch(_){}symApply();
