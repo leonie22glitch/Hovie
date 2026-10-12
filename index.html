@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-12-1330">
+<meta name="hovie-version" content="2026-10-12-1605">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -220,8 +220,8 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 .trk i{width:10px;height:10px;border-width:2.5px;top:-2.5px}.trk i:nth-child(1){left:-5px}.trk i:nth-child(2){left:calc(50% - 5px)}.trk i:nth-child(3){right:-5px}
 .pbox .tips{margin:2px 0 0}.pbox .tips summary{font-size:13px;padding:6px 0}
 
-.hd #hdt{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none}#hdt[hidden]{display:none}
-#hdt .dtw{flex:none}#hdt #dlab{border:0;background:none;padding:0;min-height:0;font:600 17px/1.1 var(--serif);display:block;text-align:right;white-space:nowrap}
+.hd #hdt{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex:none}#hdt[hidden]{display:none}
+#hdt .dtw{flex:none}#hdt .dtw #date{inset:-2px -4px}#hdt #today{position:relative;z-index:2;padding:7px 12px;margin-top:-4px}#hdt #dlab{border:0;background:none;padding:0;min-height:0;font:600 17px/1.1 var(--serif);display:block;text-align:right;white-space:nowrap}
 #hdt #today{padding:4px 10px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:600 12px system-ui,sans-serif}#hdt #today[hidden]{display:none}
 #jour>.card{background:transparent;border:0;box-shadow:none;padding:0}#st2:not(:empty){margin-top:10px}
 #cd .pbox{margin:6px -16px 0;border-radius:0 0 34px 34px;padding:6px 20px 8px;background:linear-gradient(160deg,#F3E6F4 0%,#FBDDE4 100%);box-shadow:0 20px 34px -24px rgba(154,123,184,.9)}
@@ -231,9 +231,20 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 #cd .pr .pv{font-size:18px}#cd .pr .plab{font-size:12px;color:var(--ink)}
 #cd .ptitle+.pr .pv{font-size:25px}#cd .ptitle+.pr .plab{font-size:13px}
 #cd .lgd{font-size:9px}#cd .lgd[style*="display:block"]{font-size:11px}#cd .pv3{font-size:11px}
+#intro{position:fixed;inset:0;z-index:80;background:linear-gradient(170deg,#FDE3E8,#F3E6F4);display:flex;flex-direction:column;align-items:center;padding:16px 20px calc(22px + env(safe-area-inset-bottom))}#intro[hidden]{display:none}
+.ins{align-self:flex-end;background:none;border:0;color:var(--mut);font:inherit;font-size:15px;padding:8px}
+.itr{flex:1;width:100%;max-width:520px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.itr::-webkit-scrollbar{display:none}
+.isl{flex:0 0 100%;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6px;box-sizing:border-box}
+.iem{width:120px;height:120px;border-radius:32px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:60px;box-shadow:0 10px 18px -10px rgba(217,102,122,.6)}
+.imn{width:100%;max-width:300px;border-radius:22px;background:linear-gradient(160deg,#F3E6F4,#FBDDE4);padding:14px 18px;box-sizing:border-box;text-align:left;box-shadow:0 10px 18px -10px rgba(154,123,184,.8)}.imn b{font:600 28px var(--serif);color:var(--ink);display:block}.imn span{font-size:13px;color:var(--ink)}
+.imt{position:relative;height:5px;background:linear-gradient(90deg,#cdb8de,#9a7bb8);border-radius:3px;margin:16px 4px 6px}.imt i{position:absolute;top:-3px;left:-5px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid #9a7bb8}.imt i.m{left:calc(50% - 5px);border-color:var(--ink)}.imt i:last-child{left:auto;right:-5px}.iml{display:flex;justify-content:space-between;font-size:10px;color:var(--mut)}.iml u{text-decoration:none}
+.isl h2{font:600 26px/1.1 var(--serif);color:var(--ink);margin:28px 0 12px}.isl p{font-size:16px;line-height:1.4;color:var(--ink);margin:0;max-width:340px}
+.idt{display:flex;gap:7px;margin:12px 0}.idt i{width:8px;height:8px;border-radius:5px;background:#e2c6d0;transition:width .2s}.idt i.on{background:#D9667A;width:22px}
+.inx{width:100%;max-width:520px;padding:14px;border-radius:999px;border:0;background:linear-gradient(160deg,#E57F92,#D9667A);color:#fff;font:inherit;font-weight:600;font-size:16px}
 </style>
 </head>
 <body>
+<div id="intro" role="dialog" aria-modal="true" aria-label="Présentation de Hovie" hidden><button type="button" id="ins" class="ins">Passer</button><div id="itr" class="itr"><div class="isl"><div class="iem">🌸</div><h2>Bienvenue dans Hovie</h2><p>Une application gratuite pour suivre ton cycle à ta façon. Pas de compte : tes données restent sur ton téléphone. Et surtout, elle s’adapte à ton cycle.</p></div><div class="isl"><div class="imn"><b>12 j</b><span>avant les règles</span><div class="imt"><i></i><i class="m"></i><i></i></div><div class="iml"><u>27 j</u><u>28 j</u><u>30 j</u></div></div><h2>Elle s’adapte à ton cycle</h2><p>L’encadré mauve te montre dans combien de temps arriveront tes règles. Le curseur te situe parmi tes propres cycles : ta norme à toi, pas juste une moyenne.</p></div><div class="isl"><div class="iem">📈</div><h2>Ton graphique</h2><p>Tout ce que tu notes se retrouve dans le graphique. Tu peux enregistrer l’image.</p></div><div class="isl"><div class="iem">🤍</div><h2>Tu as le dernier mot</h2><p>Chaque repère des graphiques est ajustable si tu crois que le calcul n’est pas juste. Il t’aide, sans rien garantir.</p></div><div class="isl"><div class="iem">💡</div><h2>Important à savoir</h2><p>Tu peux noter des cycles passés rapidement, tout en bas de la page Saisie ou dans Données. Et chaque page d’accueil est ajustable : enlève ce que tu n’utilises pas, pour moins de pollution visuelle.</p></div></div><div id="idt" class="idt"><i></i><i></i><i></i><i></i><i></i></div><button type="button" id="inx" class="inx">Suivant</button></div>
 <header class="hd"><img src="icon-192.png" alt="" width="50" height="50"><div><h1>Hovie</h1><div class="tag">suivi du cycle</div></div><div id="sub" hidden></div><div id="hdt"><div class="dtw"><div id="dlab" aria-hidden="true"></div><input type="date" id="date" aria-label="Date"></div><button type="button" id="today">Aujourd’hui</button></div></header>
 <nav role="tablist">
 <button role="tab" aria-selected="true" data-t="jour" aria-label="Saisie"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 25l1-5L21 7l4 4L12 24z"/><path d="M18 10l4 4"/><path d="M7 25l5-1"/></svg></button>
@@ -244,6 +255,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 <button role="tab" aria-selected="false" data-t="stats">Moyennes</button>
 <button role="tab" aria-selected="false" data-t="sum">Résumés</button>
 <button role="tab" aria-selected="false" data-t="data">Données</button>
+<button type="button" id="mnr">Revoir la présentation</button>
 </div>
 </nav>
 <main>
@@ -1062,6 +1074,14 @@ fmtT($('temp'));fmtT(document.getElementById('aoti'));
 document.getElementById('nocb').onclick=()=>{const n=parseInt(v.value,10);if(!(n>=1&&n<=999)){toast('Écris un numéro entre 1 et 999');return}
 const cs=cycles();NOC={n,d:cs.length?cs[0].s:null};if(n===1&&!cs.length)NOC=null;try{if(NOC)localStorage.setItem('suivi-noc',JSON.stringify(NOC));else localStorage.removeItem('suivi-noc')}catch(_){}
 const sel=document.getElementById('cyc');if(sel)sel.dataset.n='';try{chart()}catch(_){}try{summ()}catch(_){}toast('Numéro enregistré')}})();
+(()=>{const I=$('intro'),T=$('itr'),dots=[...$('idt').children],N=dots.length,V='1';let k=0;
+const set=i=>{k=i;dots.forEach((d,j)=>d.classList.toggle('on',j===i));$('inx').textContent=i===N-1?'Commencer':'Suivant'};
+const open=()=>{I.hidden=false;document.body.style.overflow='hidden';T.scrollLeft=0;set(0)};
+const close=()=>{I.hidden=true;document.body.style.overflow='';try{localStorage.setItem('suivi-intro',V)}catch(_){}};
+T.addEventListener('scroll',()=>{const i=Math.round(T.scrollLeft/T.clientWidth);if(i!==k)set(Math.max(0,Math.min(N-1,i)))},{passive:true});
+$('inx').onclick=()=>{if(k>=N-1)close();else T.scrollTo({left:(k+1)*T.clientWidth,behavior:'smooth'})};$('ins').onclick=close;
+const rv=$('mnr');if(rv)rv.onclick=()=>{$('mnd').hidden=true;$('mnb').setAttribute('aria-expanded','false');open()};
+let seen=null;try{seen=localStorage.getItem('suivi-intro')}catch(_){}if(seen!==V)open()})();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
