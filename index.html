@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-12-2150">
+<meta name="hovie-version" content="2026-10-13-2140">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -252,9 +252,29 @@ html,body{overflow-x:hidden;overscroll-behavior-x:none;max-width:100%}.hd,nav,#j
 .tlg{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mut);margin:0 4px}.tlg button{background:none;border:0;color:var(--rose2);font:inherit;font-size:12px;font-weight:600;padding:2px 8px}.tlg button[hidden]{display:none}
 .trw{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;border-bottom:0;font:inherit;color:var(--ink);text-align:left}.trw b{font-size:14px;display:block}.trw span{font-size:11px;color:var(--mut);display:block}.trw .tsl{margin:0}.trw .tk{height:12px;top:9px}.trw .tsl i{position:absolute;top:5px;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid #B83A64;box-shadow:0 3px 8px -2px rgba(0,0,0,.35);box-sizing:border-box}.trw em{font-style:normal;font-size:11px;color:#B83A64;font-weight:700}
 .card>.trw:first-child{border-top:0}
+#jour #catd,#jour.simple #catd{order:2;margin:0 0 12px}
+#inst{order:1;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:12px 14px;margin-bottom:10px;box-shadow:0 8px 18px -12px rgba(217,102,122,.5)}#inst[hidden]{display:none}.inr{display:flex;gap:10px;align-items:center}.inr .em{font-size:24px}.inr b{font-size:15px;color:var(--ink)}.inr div div{font-size:12.5px;color:var(--mut);margin-top:2px}.inb{display:flex;gap:8px;margin-top:10px}.inb button{padding:10px;border-radius:999px;font:inherit;font-size:14px}.inb .go{flex:1;border:0;background:linear-gradient(160deg,#E57F92,#D9667A);color:#fff;font-weight:600}.inb .lt{padding:10px 14px;border:1.5px solid var(--line);background:#fff;color:var(--mut)}
+#gd{position:fixed;inset:0;z-index:85;background:linear-gradient(170deg,#FDE3E8,#F3E6F4);display:flex;flex-direction:column;align-items:center;padding:14px 20px calc(20px + env(safe-area-inset-bottom));overflow:auto;text-align:center;color:var(--ink)}#gd[hidden]{display:none}
+.gdt{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:420px;font-size:14px;color:var(--mut)}.gdt button{background:none;border:0;color:var(--mut);font:inherit;padding:8px}
+.gdp{display:flex;gap:8px;width:100%;max-width:420px;margin:6px 0 4px}.gdp button{flex:1;padding:9px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-weight:600;font-size:14px}.gdp button[aria-pressed=true]{background:linear-gradient(160deg,#E57F92,#D9667A);border-color:#D9667A;color:#fff}
+.gscr{position:relative;width:190px;height:270px;margin:12px 0;flex:none;border-radius:24px;background:#fff;border:5px solid #3b2431;box-sizing:border-box;text-align:left}.gscr.dim{background:#8a8a92}.gscr.home{background:linear-gradient(160deg,#9bd0e8,#c9b6ea)}
+.gpg{padding:14px 12px}.gpt{font:600 18px var(--serif)}.gpl{height:10px;border-radius:5px;background:#F3E6F4;margin-top:10px}.gpl.s{width:60%}
+.gtb{position:absolute;left:0;right:0;bottom:0;height:38px;border-top:1px solid #ddd;display:flex;justify-content:space-around;align-items:center;font-size:16px;color:#2b7de9;background:#f8f8fa;border-radius:0 0 18px 18px}
+.gtt{position:absolute;left:0;right:0;top:0;height:34px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;padding:0 10px;font-size:11px;color:#555;background:#f8f8fa;border-radius:18px 18px 0 0}
+.ghi{position:relative;display:flex;padding:3px 5px;border-radius:8px;background:#E6F0FD;outline:2px solid #D9667A}
+.gsh{position:absolute;left:6px;right:6px;bottom:6px;background:#f2f2f7;border-radius:14px;padding:8px;font-size:10px}.gshh{display:flex;gap:8px;align-items:center;padding-bottom:6px;border-bottom:1px solid #ddd;margin-bottom:6px}.gshh small{display:block;color:#2b7de9}
+.grow{background:#fff;padding:7px 8px;margin-bottom:3px;border-radius:7px;display:flex;justify-content:space-between;position:relative;color:#222}.grow.h{outline:2px solid #D9667A}
+.gdl{position:absolute;left:6px;right:6px;top:34px;background:#f2f2f7;border-radius:14px;font-size:9px}.gdh{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #ddd;align-items:center}.gdh span{color:#2b7de9}.gh3{position:relative;font-weight:700;outline:2px solid #D9667A;border-radius:6px;padding:2px 4px}
+.gdb{padding:12px;display:flex;gap:10px;align-items:center;background:#fff;border-radius:0 0 14px 14px;color:#222;font-size:13px}
+.gig{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:18px 10px}.gap{height:34px;border-radius:9px;background:rgba(255,255,255,.55)}.gap.me{background:none;height:auto;display:flex;flex-direction:column;align-items:center;font-size:8px;color:#fff;position:relative;grid-column:2}
+.gar{position:absolute;color:#D9667A;font-size:26px;font-weight:700;line-height:1}.gar.dn{left:50%;margin-left:-11px;top:-34px}.gar.up{left:50%;margin-left:-11px;bottom:-32px}.gar.lf{left:-30px;top:-2px}
+.gdd{margin:0 0 10px}.gdd h2{font:600 22px/1.1 var(--serif);margin:0 0 8px}.gdd p{font-size:14.5px;line-height:1.4;color:var(--mut);margin:0;max-width:320px}
+.gdots{display:flex;gap:7px;margin:auto 0 12px;padding-top:10px}.gdots i{width:8px;height:8px;border-radius:5px;background:#e2c6d0}.gdots i.on{background:#D9667A;width:22px}
+.gnx{width:100%;max-width:420px;padding:14px;border-radius:999px;border:0;background:linear-gradient(160deg,#E57F92,#D9667A);color:#fff;font:inherit;font-weight:600;font-size:16px}
 </style>
 </head>
 <body>
+<div id="gd" role="dialog" aria-modal="true" aria-label="Ajouter Hovie à l’écran d’accueil" hidden><div class="gdt"><span id="gdn"></span><button type="button" id="gdx">Fermer</button></div><div class="gdp"><button type="button" id="gdi" aria-pressed="true">iPhone</button><button type="button" id="gda" aria-pressed="false">Android</button></div><div id="gdv" style="display:flex;flex-direction:column;align-items:center;flex:1;width:100%"></div></div>
 <div id="intro" role="dialog" aria-modal="true" aria-label="Présentation de Hovie" hidden><button type="button" id="ins" class="ins">Passer</button><div id="itr" class="itr"><div class="isl"><div class="iem">🌸</div><h2>Bienvenue dans Hovie</h2><p>Une application gratuite pour suivre ton cycle à ta façon. Pas de compte : tes données restent sur ton téléphone. Et surtout, elle s’adapte à ton cycle.</p></div><div class="isl"><div class="imn"><b>12 j</b><span>avant les règles</span><div class="imt"><i></i><i class="m"></i><i></i></div><div class="iml"><u>27 j</u><u>28 j</u><u>30 j</u></div></div><h2>Elle s’adapte à ton cycle</h2><p>L’encadré mauve te montre dans combien de temps arriveront tes règles. Le curseur te situe parmi tes propres cycles : ta norme à toi, pas juste une moyenne.</p></div><div class="isl"><div class="iem">📈</div><h2>Ton graphique</h2><p>Tout ce que tu notes se retrouve dans le graphique. Tu peux enregistrer l’image.</p></div><div class="isl"><div class="iem">🤍</div><h2>Tu as le dernier mot</h2><p>Chaque repère des graphiques est ajustable si tu crois que le calcul n’est pas juste. Il t’aide, sans rien garantir.</p></div><div class="isl"><div class="iem">💡</div><h2>Important à savoir</h2><p>Tu peux noter des cycles passés rapidement, tout en bas de la page Saisie ou dans Données. Et chaque page d’accueil est ajustable : enlève ce que tu n’utilises pas, pour moins de pollution visuelle.</p></div></div><div id="idt" class="idt"><i></i><i></i><i></i><i></i><i></i></div><button type="button" id="inx" class="inx">Suivant</button></div>
 <header class="hd"><img src="icon-192.png" alt="" width="50" height="50"><div><h1>Hovie</h1><div class="tag">suivi du cycle</div></div><div id="sub" hidden></div><div id="hdt"><div class="dtw"><div id="dlab" aria-hidden="true"></div><input type="date" id="date" aria-label="Date"></div><button type="button" id="today">Aujourd’hui</button></div></header>
 <nav role="tablist">
@@ -267,18 +287,21 @@ html,body{overflow-x:hidden;overscroll-behavior-x:none;max-width:100%}.hd,nav,#j
 <button role="tab" aria-selected="false" data-t="sum">Résumés</button>
 <button role="tab" aria-selected="false" data-t="data">Données</button>
 <button role="tab" aria-selected="false" data-t="ti">Test d’ovulation</button>
+<button type="button" id="mni" hidden>Ajouter à l’écran d’accueil</button>
 <button type="button" id="mnr">Revoir la présentation</button>
 </div>
 </nav>
 <main>
 <section id="jour">
 <div class="wsw" id="syw" style="margin:0 0 8px"><b>Symptothermie</b><button type="button" id="syb" role="switch" aria-checked="true" aria-label="Activer la symptothermie (température, col, repères)"></button><span id="butw" class="butw"><b>But</b><label><input type="checkbox" class="butc" value="contra"> Contraception</label><label><input type="checkbox" class="butc" value="concep"> Conception</label></span></div>
+<div id="inst" hidden><div class="inr"><div class="em">📲</div><div><b>Ajoute Hovie à ton écran d’accueil</b><div>Pour garder tes données plus longtemps et ouvrir Hovie comme une vraie appli.</div></div></div><div class="inb"><button type="button" class="go" id="instgo">Voir comment</button><button type="button" class="lt" id="instlt">Plus tard</button></div></div>
 <div id="avis"></div>
 <div class="card">
 <div class="day" id="cd"></div>
 <div id="pbox"></div>
 <div id="st2"></div>
 </div>
+<details class="tips" id="catd"><summary>Choisir les catégories affichées</summary><p class="note" style="margin:4px 0 0">Masque ce que tu n’utilises pas. Les catégories marquées 🔒 sont obligatoires pour la méthode choisie. Tes données masquées restent gardées.</p><div id="catl"></div></details>
 <div class="sec s-g" id="stmp"><h3>🌡️ Température</h3>
 <label for="temp">Au réveil (°C)</label>
 <input type="text" id="temp" inputmode="decimal" autocomplete="off" maxlength="5" placeholder="36.45">
@@ -390,7 +413,7 @@ html,body{overflow-x:hidden;overscroll-behavior-x:none;max-width:100%}.hd,nav,#j
 <textarea id="nt" rows="2"></textarea>
 </div>
 <div id="sanc"><button type="button" class="btn alt" id="aob2">📋 Remplir un ancien cycle</button>
-<details class="tips" id="catd"><summary>Choisir les catégories affichées</summary><p class="note" style="margin:4px 0 0">Masque ce que tu n’utilises pas. Les catégories marquées 🔒 sont obligatoires pour la méthode choisie. Tes données masquées restent gardées.</p><div id="catl"></div></details></div>
+</div>
 </section>
 <section id="graph" hidden>
 <label for="cyc">Cycle</label>
@@ -1118,6 +1141,34 @@ T.addEventListener('scroll',()=>{const i=Math.round(T.scrollLeft/T.clientWidth);
 $('inx').onclick=()=>{if(k>=N-1)close();else T.scrollTo({left:(k+1)*T.clientWidth,behavior:'smooth'})};$('ins').onclick=close;
 const rv=$('mnr');if(rv)rv.onclick=()=>{$('mnd').hidden=true;$('mnb').setAttribute('aria-expanded','false');open()};
 let seen=null;try{seen=localStorage.getItem('suivi-intro')}catch(_){}if(seen!==V)open()})();
+(()=>{const SA=(()=>{try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true}catch(_){return false}})();
+const ua=navigator.userAgent||'',IOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1),AND=/Android/.test(ua),MOB=IOS||AND;
+const G=$('gd'),IC='icon-192.png';let pf=IOS||!AND?'i':'a',k=0;
+const sh='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#2b7de9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
+const ic=(n,r)=>`<img src="${IC}" width="${n}" height="${n}" alt="" style="border-radius:${r}px">`;
+const home=`<div class="gscr home"><div class="gig"><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap me">${ic(46,11)}<span>Hovie</span><div class="gar up">⬆</div></div><div class="gap"></div><div class="gap"></div></div></div>`;
+const ST={i:[["Ouvre Hovie dans Safari","Ça ne marche pas depuis une autre appli ou un autre navigateur sur iPhone.",`<div class="gscr"><div class="gpg"><div class="gpt">Hovie</div><div class="gpl"></div><div class="gpl s"></div></div><div class="gtb"><span>‹</span><span>›</span><span>${sh}</span><span>▢</span><span>⧉</span></div></div>`],
+["Touche Partager","Le carré avec une flèche, en bas de l’écran.",`<div class="gscr"><div class="gpg"><div class="gpt">Hovie</div><div class="gpl"></div><div class="gpl s"></div></div><div class="gtb"><span>‹</span><span>›</span><span class="ghi">${sh}<div class="gar dn">⬇</div></span><span>▢</span><span>⧉</span></div></div>`],
+["Choisis « Sur l’écran d’accueil »","Fais défiler la liste vers le bas si tu ne la vois pas.",`<div class="gscr dim"><div class="gsh"><div class="gshh">${ic(34,8)}<div><b>Hovie</b><small>Options ›</small></div></div><div class="grow">Copier</div><div class="grow">Ajouter aux favoris</div><div class="grow h">Sur l’écran d’accueil <span>⊞</span><div class="gar lf">➜</div></div><div class="grow">Imprimer</div></div></div>`],
+["Touche Ajouter","En haut à droite de la fenêtre.",`<div class="gscr dim"><div class="gdl"><div class="gdh"><span>Annuler</span><b>Sur l’écran d’accueil</b><span class="gh3">Ajouter<div class="gar up">⬆</div></span></div><div class="gdb">${ic(48,11)}<div>Hovie</div></div></div></div>`],
+["C’est fait !","Hovie est sur ton écran d’accueil. Ouvre-la toujours par cette icône.",home]],
+a:[["Ouvre Hovie dans Chrome","Sur Android, c’est Chrome qui marche le mieux.",`<div class="gscr"><div class="gtt"><span>hovie</span><span>⋮</span></div><div class="gpg" style="padding-top:44px"><div class="gpt">Hovie</div><div class="gpl"></div><div class="gpl s"></div></div></div>`],
+["Touche le menu ⋮","Les trois points, en haut à droite.",`<div class="gscr"><div class="gtt"><span>hovie</span><span class="ghi" style="position:relative;color:#222">⋮<div class="gar up" style="bottom:-30px">⬆</div></span></div><div class="gpg" style="padding-top:44px"><div class="gpt">Hovie</div><div class="gpl"></div><div class="gpl s"></div></div></div>`],
+["Choisis « Ajouter à l’écran d’accueil »","Ou « Installer l’application », selon ton téléphone.",`<div class="gscr dim"><div class="gdl" style="top:30px;font-size:10px"><div class="grow">Nouvel onglet</div><div class="grow">Favoris</div><div class="grow h">Ajouter à l’écran d’accueil<div class="gar lf">➜</div></div><div class="grow">Partager…</div></div></div>`],
+["Touche Ajouter","Puis confirme si Chrome le demande.",`<div class="gscr dim"><div class="gdl" style="top:60px"><div class="gdb" style="border-radius:14px 14px 0 0">${ic(40,10)}<div>Hovie</div></div><div class="gdh" style="justify-content:flex-end;gap:14px;border:0;border-top:1px solid #ddd"><span>Annuler</span><span class="gh3">Ajouter<div class="gar up">⬆</div></span></div></div></div>`],
+["C’est fait !","Hovie est sur ton écran d’accueil. Ouvre-la toujours par cette icône.",home]]};
+function render(){const L=ST[pf];k=Math.max(0,Math.min(L.length-1,k));const[t,d,ill]=L[k];$('gdn').textContent='Étape '+(k+1)+' sur '+L.length;$('gdi').setAttribute('aria-pressed',pf==='i');$('gda').setAttribute('aria-pressed',pf==='a');
+$('gdv').innerHTML=ill+'<div class="gdd"><h2>'+t+'</h2><p>'+d+'</p></div><div class="gdots">'+L.map((_,j)=>'<i class="'+(j===k?'on':'')+'"></i>').join('')+'</div><button type="button" class="gnx" id="gnx">'+(k===L.length-1?'Terminé':'Suivant')+'</button>';
+$('gnx').onclick=()=>{if(k>=L.length-1){try{localStorage.setItem('suivi-inst','done')}catch(_){}close()}else{k++;render()}}}
+function open(){k=0;G.hidden=false;document.body.style.overflow='hidden';render()}
+function close(){G.hidden=true;document.body.style.overflow='';upd()}
+$('gdi').onclick=()=>{pf='i';k=0;render()};$('gda').onclick=()=>{pf='a';k=0;render()};$('gdx').onclick=close;
+let v=null;try{v=localStorage.getItem('suivi-inst')}catch(_){}
+function upd(){let v=null;try{v=localStorage.getItem('suivi-inst')}catch(_){}const later=v&&v!=='done'&&Date.now()<+v;$('inst').hidden=SA||!MOB||v==='done'||!!later;$('mni').hidden=SA}
+$('instgo').onclick=open;$('instlt').onclick=()=>{try{localStorage.setItem('suivi-inst',String(Date.now()+7*864e5))}catch(_){}upd()};
+$('mni').onclick=()=>{$('mnd').hidden=true;$('mnb').setAttribute('aria-expanded','false');open()};
+upd()})();
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{})}catch(_){}
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
