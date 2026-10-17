@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-16-1005">
+<meta name="hovie-version" content="2026-10-16-2250">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -167,7 +167,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 .sec.s-b h3{margin-bottom:8px}
 .s-b .chk{padding:4px 0;gap:10px;font-size:14px}
 #temp{border-color:var(--g);background:var(--gp)}
-#cp,#cd2,#co{border-color:var(--m);background:var(--mp)}
+#scol .opts button[aria-pressed=true]{background:var(--m);border-color:var(--m);color:#fff}#scol label{display:block}
 .ptl #sgov{width:100%;padding:8px 10px;font-size:14px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-family:inherit}.huw{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
 .swr{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;margin:8px 0;font-size:13.5px;line-height:1.3;color:var(--ink)}.swr span{flex:1}.tgl{position:relative;flex:none;width:46px;height:26px;border-radius:13px;border:0;background:#D9CED2;padding:0}.tgl::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}.tgl[aria-checked=true]{background:linear-gradient(160deg,#7DB58A,#5E9C6E)}.tgl[aria-checked=true]::after{left:23px}.pnf{width:100%;padding:12px 14px;font:inherit;font-size:16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
 .huw label{margin:0;font-size:12px;color:var(--mut);font-weight:500}
@@ -397,7 +397,7 @@ body.pgn #jour>*:not(.card):not(#snt):not(#pgf):not(#pgf2):not(#pgfin){display:n
 <div id="gnew">
 <label>Sensation <span class="hnt">· jusqu’à deux options</span></label><div class="opts" id="gsn"></div>
 <label style="margin-top:10px">Apparence <span class="hnt">· jusqu’à deux options</span></label><div class="opts" id="gap"></div>
-<label style="margin-top:10px">Par rapport à hier</label><div class="opts one" id="gtd"></div>
+<label style="margin-top:10px" id="gtl">Par rapport à hier</label><div class="opts one" id="gtd"></div>
 <div class="opts one" id="gr" style="margin-top:10px"></div>
 <p class="note" id="gleg" style="margin:8px 0 0"></p></div>
 <div class="chk" id="gjw"><input type="checkbox" id="gj"><label for="gj" style="margin:0;color:var(--ink)">Glaire gélatineuse (claire, compacte, translucide, type jello, qui ne colle pas). Non comptée dans le graphique.</label></div>
@@ -433,15 +433,13 @@ body.pgn #jour>*:not(.card):not(#snt):not(#pgf):not(#pgf2):not(#pgfin){display:n
 </div>
 </div>
 <div class="sec s-m" id="scol"><h3>🌸 Col</h3>
-<div class="row">
-<select id="cp" aria-label="Position du col"><option value="">Position</option><option value="B">Bas</option><option value="M">Moyen</option><option value="H">Haut</option></select>
-<select id="cd2" aria-label="Dureté du col"><option value="">Dureté</option><option value="S">Mou</option><option value="M">Semi-ferme</option><option value="F">Ferme</option></select>
-<select id="co" aria-label="Ouverture du col"><option value="">Ouverture</option><option value="F">Fermé</option><option value="E">Légèrement ouvert</option><option value="O">Ouvert</option></select>
-</div>
+<div id="cgx"></div>
 <details class="tips"><summary>Comment observer le col ?</summary>
 <ul>
-<li><b>Un signe secondaire :</b> le col seul ne permet pas de confirmer l’ovulation. Dans la méthode symptothermique (Sensiplan), on le combine avec la température. On peut le suivre en complément de la glaire, ou à sa place quand il y en a très peu.</li>
+<li><b>Un signe secondaire :</b> le col seul ne permet pas de confirmer l’ovulation. Dans la méthode symptothermique (Sensiplan), on le combine avec la température. On peut le suivre en complément de la glaire.</li>
+<li><b>Ce que tu notes :</b> la position (bas, moyen, haut), la dureté (ferme, semi-ferme, mou), l’ouverture (fermé, légèrement ouvert, ouvert) et l’inclinaison (incliné ou droit). Autour de l’ovulation, le col a tendance à être plus haut, plus mou et plus ouvert.</li>
 <li><b>Même heure, même posture :</b> vérifie-le chaque jour à la même heure et dans la même posture, parce que sa position peut varier au cours de la journée et selon la posture. C’est un conseil courant des enseignantes de ces méthodes, pas le résultat d’une étude.</li>
+<li><b>Par rapport à hier :</b> note si le col est plus ou moins fertile qu’hier. Si tu n’as rien noté hier, Hovie compare avec ta dernière journée notée.</li>
 <li><b>Ça demande de la pratique :</b> une conseillère en méthodes naturelles peut te l’apprendre.</li>
 </ul>
 <p class="note" style="margin:6px 0 0">Sources : Sensiplan (Arbeitsgruppe NFP), tel que décrit par la caisse d’assurance maladie KKH et par la revue PTA heute (2024).</p>
@@ -604,23 +602,24 @@ const d=$('date').value,cy=cycles().find(c=>c.s<=d&&d<=c.end),I=$('repinfo');I.i
 if(cy)(SYM?REPS:REP).forEach(([k,l])=>{if(curF[k])return;const dk=Object.keys(D.e).find(x=>x>=cy.s&&x<=cy.end&&D.e[x][k]);if(dk){const b=document.createElement('button');b.className='btn alt';b.style.cssText='margin-top:6px;padding:8px;text-align:left';b.textContent=l+' : placée le '+fmt(dk)+' · Aller à ce jour';b.onclick=()=>goto(dk);I.appendChild(b)}})}
 let curGs=null,curGa=null,curGt=null,curSL=[],curAL=[];
 const GSL=[['S','Sèche'],['C','Collante'],['H','Humide'],['M','Mouillée'],['L','Lubrifiée']],GAL=[['-','Absente'],['O','Opaque'],['TR','Trouble'],['T','Transparente'],['F','Filante']],GS=[['Sèche',0],['Humide / collante',1],['Mouillée / lubrifiée',2]],GA=[['Absente',0],['Opaque',1],['Trouble / transparente / filante',2]],GT=[['Moins fertile',-1],['Pareille',0],['Plus fertile',1]];
-let LP=new Set();
-function gscore(k){const e=D.e[k];if(!e||e.m===0||(e.gs==null&&e.ga==null))return null;let v=(e.gs||0)+(e.ga||0);if(LP.has(k))v++;return Math.min(5,v)}
+let LP=new Set(),LPc=new Set(),curC={},GT2=[];
+const lvS={S:0,C:1,H:2,M:3,L:3},lvA={'-':0,O:1,TR:2,T:3,F:4};
+function gscore(k){const e=D.e[k];if(!e||e.m===0||(e.gs==null&&e.ga==null))return null;const hs=Array.isArray(e.gsl)&&e.gsl.length,ha=Array.isArray(e.gal)&&e.gal.length,gs=hs?Math.max(...e.gsl.map(x=>lvS[x]||0)):e.gs,ga=ha?Math.max(...e.gal.map(x=>lvA[x]||0)):e.ga;let v=(gs||0)+(ga||0);if(LP.has(k))v++;return Math.min(5,v)}
 function picOf(c){const ks=Object.keys(D.e).filter(k=>k>=c.s&&k<=c.end).sort(),man=ks.filter(k=>D.e[k].pg).pop();if(man)return man;let best=null,bv=0;ks.forEach(k=>{const e=D.e[k];if(e.m===0)return;const g=gscore(k),v=g!=null?g:(e.m>0?e.m-1:null);if(v!=null&&v>0&&v>=bv){bv=v;best=k}});return best}
-function syncGl(){LP=new Set();cycles().forEach(c=>{const k=Object.keys(D.e).filter(x=>x>=c.s&&x<=c.end&&D.e[x].gt===1).sort().pop();if(k)LP.add(k)});Object.keys(D.e).forEach(k=>{const e=D.e[k];if(e.m===0||(e.gs==null&&e.ga==null))return;const S=gscore(k);e.m=S>=4?5:S+1})}
+function syncGl(){LPc=new Set();cycles().forEach(c=>{const k=Object.keys(D.e).filter(x=>x>=c.s&&x<=c.end&&D.e[x].ct===1).sort().pop();if(k)LPc.add(k)});LP=new Set();cycles().forEach(c=>{const k=Object.keys(D.e).filter(x=>x>=c.s&&x<=c.end&&D.e[x].gt===1).sort().pop();if(k)LP.add(k)});Object.keys(D.e).forEach(k=>{const e=D.e[k];if(e.m===0||(e.gs==null&&e.ga==null))return;const S=gscore(k);e.m=S>=4?5:S+1})}
 let curSp=false,curRl=false;
 function drawG(){const mk=(id,arr,get,set)=>{$(id).innerHTML='';arr.forEach(([l,v])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',get()===v);b.onclick=()=>{set(get()===v?null:v);drawG();auto()};$(id).appendChild(b)})};
 $('gr').innerHTML='';[['🩸 Règles','r',()=>curM===0&&!curRl],['Règles légères','l',()=>curM===0&&curRl],['Spotting','s',()=>curSp]].forEach(([l,k,on])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',on());b.onclick=()=>{const was=on();if(k==='s'){curSp=!was;if(curSp){if(curM===0)curM=null;curRl=false}}else{if(was){curM=null;curRl=false}else{curM=0;curRl=k==='l';curSp=false;curW=null;curGs=curGa=curGt=null;curSL=[];curAL=[]}}drawG();auto()};$('gr').appendChild(b)});
 const clr=()=>{if(curM===0){curM=null;curRl=false}else if(curM!==null&&!(curGs!=null||curGa!=null)){curM=null;curW=null}};
-const lvS={S:0,H:1,C:1,M:2,L:2},lvA={'-':0,O:1,TR:2,T:2,F:3};
+
 const mkm=(id,arr,getl,ex,lv,setv)=>{$(id).innerHTML='';arr.forEach(([v,l])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',getl().includes(v));b.onclick=()=>{clr();const list=getl(),i=list.indexOf(v);if(i>=0)list.splice(i,1);else{if(v===ex)list.length=0;else{const j=list.indexOf(ex);if(j>=0)list.splice(j,1);while(list.length>=2)list.shift()}list.push(v)}setv(list.length?Math.max(...list.map(x=>lv[x])):null);drawG();auto()};$(id).appendChild(b)})};
 mkm('gsn',GSL,()=>curSL,'S',lvS,v=>{curGs=v});mkm('gap',GAL,()=>curAL,'-',lvA,v=>{curGa=v});
-mk('gtd',GT,()=>curGt,v=>{if(curM===0&&v!==null){curM=null;curRl=false}curGt=v});
+{const r=refLab($('date').value,hasG);$('gtl').textContent=r.t;GT2=refT(r)}mk('gtd',GT2,()=>curGt,v=>{if(curM===0&&v!==null){curM=null;curRl=false}curGt=v});
 const lg=(curGs!=null&&!curSL.length)||(curGa!=null&&!curAL.length)?'Saisie précédente gardée (sensation et apparence regroupées). Choisis les lettres pour la remplacer.':curM>0&&curGs==null&&curGa==null?'Saisie ancienne gardée telle quelle : '+(curW||MUC.find(x=>x[1]===curM)[0].replace(/^\S+\s/,''))+'. Choisis une sensation ou une apparence pour la remplacer.':'';$('gleg').textContent=lg;$('gleg').hidden=!lg}
 function glApply(){$('gold').hidden=SYM;$('gnew').hidden=!SYM;$('gjw').hidden=false;if(SYM)drawG();else drawMuc()}
 function drawMuc(){$('muc').innerHTML='';MUC.forEach(([l,v])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',curM===v);b.onclick=()=>{curM=curM===v?null:v;curW=null;drawMuc();auto()};$('muc').appendChild(b)});}
 function load(d){const e=D.e[d]||{};$('today').hidden=d===iso(new Date());$('temp').value=e.t!=null?String(e.t).replace('.',','):'';curM=e.m??null;curW=e.w||null;curGs=e.gs??null;curGa=e.ga??null;curSL=Array.isArray(e.gsl)?e.gsl.slice():[];curAL=Array.isArray(e.gal)?e.gal.slice():[];curGt=e.gt||null;if(SYM)drawG();else drawMuc();curF={pg:!!e.pg,th:!!e.th,pa:!!e.pa,hb:!!e.hb,t1:!!e.t1,t2:!!e.t2,t3:!!e.t3,ov:!!e.ov,lh:!!e.lh,lv:!!e.lv};drawF();curR={ru:!!e.ru,rp:!!e.rp};drawR();curT=!!e.tp;curTN=!!e.tn&&!e.tp;drawT();curTi=e.ti!=null?e.ti:null;drawTi();curS=(e.ws!=null&&e.ws<0)?-1:1;drawS();$('wsv').value=e.ws!=null?Math.abs(e.ws):'';
-curSp=!!e.sp;curRl=!!e.rl&&e.m===0;$('gj').checked=!!e.gj;$('cp').value=e.cp||'';$('cd2').value=e.cd||'';$('co').value=e.co||'';
+curSp=!!e.sp;curRl=!!e.rl&&e.m===0;$('gj').checked=!!e.gj;curC={p:e.cp||null,d:e.cd||null,o:e.co||null,n:e.cn||null,t:e.ct??null};drawC();
 document.querySelectorAll('.pt').forEach(c=>c.checked=(e.p||[]).includes(c.value));$('phv').value=e.ph||'';$('pov').value=e.po||'';$('pow').hidden=!$('p6').checked;document.querySelectorAll('.sgc').forEach(c=>c.checked=(e.sg||[]).includes(c.value));$('sgov').value=e.so||'';$('sgow').hidden=!(e.sg||[]).includes('A');$('hu').value=e.hu||huAt(d);$('psv').value=e.pns!=null?String(e.pns).replace('.',','):'';$('pav').value=e.pal!=null?String(e.pal):'';curPl=!!e.pl;curPk=e.pk!==0;pertUI();mmDraw();$('nt').value=e.n||'';
 status(d)}
 (()=>{const d=$('date'),ds=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value'),up=()=>{const v=ds.get.call(d);$('dlab').textContent=v?new Date(v+'T12:00:00').toLocaleDateString('fr-CA',{weekday:'short',day:'numeric',month:'short'}).concat(new Date(v+'T12:00:00').getFullYear()===new Date().getFullYear()?'':' '+v.slice(0,4)):''};Object.defineProperty(d,'value',{get(){return ds.get.call(this)},set(v){ds.set.call(this,v);up()},configurable:true});d.addEventListener('input',up);d.addEventListener('change',up);d.addEventListener('click',()=>{try{d.showPicker&&d.showPicker()}catch(_){}});up()})();
@@ -656,7 +655,7 @@ if(SYM){if(curM===0)e.m=0;else{if(curGs!=null)e.gs=curGs;if(curGa!=null)e.ga=cur
 ['ru','rp'].forEach(f=>{if(curR[f])e[f]=1});
 if(curT)e.tp=1;else if(curTN)e.tn=1;if(curTi!=null)e.ti=curTi;
 if((e.hb||e.t1||e.t2||e.t3||e.th||e.lh)&&e.t==null){if(man)alert('Entre la température de ce jour pour placer la ligne sur le graphique.');else toast('Entre d’abord la température');return}
-if($('cp').value)e.cp=$('cp').value;if($('cd2').value)e.cd=$('cd2').value;if($('co').value)e.co=$('co').value;
+if(curC.p)e.cp=curC.p;if(curC.d)e.cd=curC.d;if(curC.o)e.co=curC.o;if(curC.n)e.cn=curC.n;if(curC.t!=null)e.ct=curC.t;
 const p=[...document.querySelectorAll('.pt')].filter(c=>c.checked).map(c=>c.value);if(p.length)e.p=p;{const sg=[...document.querySelectorAll('.sgc')].filter(c=>c.checked).map(c=>c.value);if(sg.length)e.sg=sg;if(sg.includes('A')&&$('sgov').value.trim())e.so=$('sgov').value.trim().slice(0,80)}if(p.includes('heure')&&$('phv').value)e.ph=$('phv').value;if(p.includes('nuit')){const v=parseFloat(String($('psv').value).replace(',','.'));if(!isNaN(v)&&v>=0&&v<=24)e.pns=Math.round(v*10)/10}if(p.includes('alcool')){const v=parseInt($('pav').value,10);if(!isNaN(v)&&v>=0&&v<=99)e.pal=v}if(p.length&&curPl)e.pl=1;if(p.includes('heure')&&!curPk)e.pk=0;if(p.includes('autre')&&$('pov').value.trim())e.po=$('pov').value.trim().slice(0,80);{const hv=$('hu').value;if(hv&&(hv!==huAt(addDays(d,-1))||(D.e[d]&&D.e[d].hu)))e.hu=hv}
 if($('nt').value.trim())e.n=$('nt').value.trim();
 const prevM=(D.e[d]||{}).m,isStart=day=>{for(let i=1;i<=7;i++){const q=D.e[addDays(day,-i)];if(q&&q.m===0)return false}return true};let filled=0,removed=0;
@@ -677,9 +676,13 @@ const ks=Object.keys(D.e).filter(k=>k>=c.s&&k<=c.end&&D.e[k].ti!=null).sort();
 B.innerHTML=ks.length?'<div class="card" style="padding:6px 16px">'+ks.map(k=>{const e=D.e[k],tag=e.tp?'TO positif':(e.tn?'TO négatif':'');return '<button type="button" class="trw" data-d="'+k+'"><div><b>Jour '+(diff(c.s,k)+1)+'</b><span>'+fmt(k)+'</span>'+(tag?'<em>'+tag+'</em>':'')+'</div><div class="tsl"><div class="tk"></div><i style="left:calc('+e.ti+'% - '+(e.ti/100*20)+'px)"></i></div></button>'}).join('')+'</div>':'<div class="card"><p class="note" style="margin:0">Aucune teinte notée pour ce cycle. Dans la saisie, sous « Test d’ovulation », glisse le curseur pour noter la teinte de la ligne du jour.</p></div>'}
 $('tcy').addEventListener('change',tiPage);
 $('tibody').addEventListener('click',ev=>{const b=ev.target.closest('.trw');if(!b)return;goto(b.dataset.d);openDay();window.scrollTo(0,0)});
-['temp','hu','wsv','gj','cp','cd2','co','nt','psv','pav'].forEach(id=>$(id).addEventListener('change',auto));
+['temp','hu','wsv','gj','nt','psv','pav'].forEach(id=>$(id).addEventListener('change',auto));
 document.querySelectorAll('.pt').forEach(c=>c.addEventListener('change',()=>{pertUI();auto()}));$('phv').addEventListener('change',auto);$('mmc').addEventListener('change',ev=>{const t=ev.target.closest('input[data-k]');if(!t||!t.value)return;const m=D.mm.find(x=>x.k===t.dataset.k);if(m){m.d=t.value;save();mmDraw();try{avisUpdate(model())}catch(_){}}});$('pls').onclick=()=>{curPl=!curPl;pertUI();auto()};$('pks').onclick=()=>{curPk=!curPk;pertUI();auto()};$('pov').addEventListener('change',auto);document.querySelectorAll('.sgc').forEach(c=>c.addEventListener('change',()=>{$('sgow').hidden=!$('sg7').checked;auto()}));$('sgov').addEventListener('change',auto);
-function colScore(e){if(!e||!e.cp||!e.cd||!e.co)return null;const h={B:0,M:1,H:2}[e.cp],a={F:0,M:1,S:2}[e.cd],b={F:0,E:1,O:2}[e.co];return h==null||a==null||b==null?null:h+a+b}
+function refLab(d,has){if(!d)return{t:'Par rapport à hier',s:'hier'};if(has(D.e[addDays(d,-1)]))return{t:'Par rapport à hier',s:'hier'};const l=Object.keys(D.e).filter(x=>x<d&&has(D.e[x])).sort().pop();return l?{t:'Par rapport à ta dernière journée notée',s:'le '+fmt(l)}:{t:'Par rapport à hier',s:'hier'}}
+const hasG=e=>!!e&&e.m!==0&&(e.gs!=null||e.ga!=null||e.m>0),hasC=e=>!!e&&!!(e.cp||e.cd||e.co||e.cn),refT=r=>[['Moins fertile que '+r.s,-1],['Pareil',0],['Plus fertile que '+r.s,1]];
+const CG=[['Position','p',[['Bas','B'],['Moyen','M'],['Haut','H']]],['Dureté','d',[['Ferme','F'],['Semi-ferme','M'],['Mou','S']]],['Ouverture','o',[['Fermé','F'],['Légèrement ouvert','E'],['Ouvert','O']]],['Inclinaison','n',[['Incliné','I'],['Droit','D']]],['Par rapport à hier','t',[['Moins fertile',-1],['Pareil',0],['Plus fertile',1]]]];
+function drawC(){const o=$('cgx');if(!o)return;o.innerHTML='';CG.forEach(([t,k,arr],i)=>{if(k==='t'){const r=refLab($('date').value,hasC);t=r.t;arr=refT(r)}const l=document.createElement('label');l.textContent=t;if(i)l.style.marginTop='10px';o.appendChild(l);const w=document.createElement('div');w.className='opts one';arr.forEach(([n,v])=>{const b=document.createElement('button');b.type='button';b.textContent=n;b.setAttribute('aria-pressed',curC[k]===v);b.onclick=()=>{curC[k]=curC[k]===v?null:v;drawC();auto()};w.appendChild(b)});o.appendChild(w)})}
+function colScore(e,d){if(!e||!e.cp||!e.cd||!e.co)return null;const h={B:0,M:1,H:2}[e.cp],a={F:0,M:1,S:2}[e.cd],b={F:0,E:1,O:2}[e.co];return h==null||a==null||b==null?null:h+a+b+(e.cn==='D'?1:0)+(d&&LPc.has(d)?1:0)}
 const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
 function stats(){const cs=cycles(),B=$('statbody'),cl=[],ov=[];let bad=0;
 let exN=0;for(let i=0;i<cs.length-1;i++){const L=diff(cs[i].s,cs[i+1].s);if(L>=16){if(D.ex[cs[i].s])exN++;else cl.push({s:cs[i].s,L})}else bad++}
@@ -945,7 +948,7 @@ const ts=days.filter(x=>x.e&&x.e.t!=null).map(x=>x.e.t);
 let lo=36,hi=37.2;if(ts.length){lo=Math.min(lo,Math.floor(Math.min(...ts)*10+1e-6)/10);hi=Math.max(hi,Math.ceil(Math.max(...ts)*10-1e-6)/10)}
 lo=Math.round(lo*10)/10;hi=Math.round(hi*10)/10;
 const nr=Math.max(1,Math.round((hi-lo)*10)),rh0=nr<=13?24:Math.max(12,Math.floor(312/nr)),rh=PRT?rh0+Math.max(0,(W/1.5-458-nr*rh0)/nr):rh0;
-const yS=44,hS=22,yG=yS+hS+4,hG=48,yC=yG+2*hG+6,hC=20,yJ=yC+3*hC+6,yT0=yJ+30,yT1=yT0+nr*rh,yJ2=yT1+10,yDt=yJ2+20,yE=yDt+20,hR=22,yEnd=yE+5*hR,H=yEnd+30;
+const yS=44,hS=22,yG=yS+hS+4,hG=48,yC=yG+2*hG+6,hC=20,yJ=yC+4*hC+6,yT0=yJ+30,yT1=yT0+nr*rh,yJ2=yT1+10,yDt=yJ2+20,yE=yDt+20,hR=22,yEnd=yE+5*hR,H=yEnd+30;
 const yT=v=>yT1-(v-lo)/(hi-lo)*(yT1-yT0),fm=v=>v.toFixed(1).replace('.',',');
 let s=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Graphique de symptothermie" font-family="system-ui,sans-serif" font-size="10"><defs><pattern id="srA" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 0L5 5" stroke="${K}" stroke-width="1.2"/></pattern><pattern id="srB" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 5L5 0" stroke="${K}" stroke-width="1"/></pattern></defs><rect width="${W}" height="${H}" fill="#fff"/>`;
 const lab=(t,y,h)=>`<text x="${x0-8}" y="${y+h/2+3.5}" text-anchor="end" font-weight="700" fill="${K}">${t}</text>`;
@@ -954,7 +957,7 @@ const vgrid=(y,h)=>{let o='';for(let i=0;i<=nc;i++)o+=`<line x1="${x0+i*cw}" x2=
 const hl=(y)=>`<line x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" stroke="${GL}"/>`;
 s+=`<text x="8" y="22" font-size="14" font-weight="700" fill="${K}">GRAPHIQUE SYMPTOTHERMIQUE</text><text x="${x0+190}" y="22" font-weight="700" fill="${G}">NOM :</text><line x1="${x0+232}" x2="${x0+520}" y1="23" y2="23" stroke="${K}"/>`;
 // saignements, glaire, col
-s+=vgrid(yS,hS)+blk(yS,hS)+lab('SAIGNEMENTS',yS,hS)+vgrid(yG,2*hG)+hl(yG+hG)+blk(yG,2*hG)+`<text x="8" y="${yG+14}" font-weight="700" fill="${K}">GLAIRE</text>`+lab('SENSATION',yG,hG)+lab('APPARENCE',yG+hG,hG)+vgrid(yC,3*hC)+hl(yC+hC)+hl(yC+2*hC)+blk(yC,3*hC)+`<text x="8" y="${yC+14}" font-weight="700" fill="${K}">COL</text>`+lab('HAUTEUR',yC,hC)+lab('OUVERTURE',yC+hC,hC)+lab('FERMETÉ',yC+2*hC,hC);
+s+=vgrid(yS,hS)+blk(yS,hS)+lab('SAIGNEMENTS',yS,hS)+vgrid(yG,2*hG)+hl(yG+hG)+blk(yG,2*hG)+`<text x="8" y="${yG+14}" font-weight="700" fill="${K}">GLAIRE</text>`+lab('SENSATION',yG,hG)+lab('APPARENCE',yG+hG,hG)+vgrid(yC,4*hC)+hl(yC+hC)+hl(yC+2*hC)+hl(yC+3*hC)+blk(yC,4*hC)+`<text x="8" y="${yC+14}" font-weight="700" fill="${K}">COL</text>`+lab('HAUTEUR',yC,hC)+lab('OUVERTURE',yC+hC,hC)+lab('FERMETÉ',yC+2*hC,hC)+lab('INCLINAISON',yC+3*hC,hC);
 const bleed=(cx,cy,t)=>t==='a'?`<path d="M${cx-6} ${cy-6}L${cx+6} ${cy+6}M${cx+6} ${cy-6}L${cx-6} ${cy+6}" stroke="${K}" stroke-width="1.5" fill="none"/>`:t==='l'?`<path d="M${cx-6} ${cy-6}L${cx+6} ${cy+6}" stroke="${K}" stroke-width="1.5" fill="none"/>`:`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`;
 const sens=e=>{if(!e||e.m===0)return null;if(Array.isArray(e.gsl)&&e.gsl.length)return ['S','H','C','M','L'].filter(v=>e.gsl.includes(v));if(e.gs!=null)return [['S'],['H','C'],['M','L']][e.gs];if(e.ga==null&&e.m>=1&&e.m<=5)return [['S'],['C'],['H'],['M'],['M','L']][e.m-1];return null};
 const app=e=>{if(!e||e.m===0)return null;if(Array.isArray(e.gal)&&e.gal.length)return ['-','O','TR','T','F'].filter(v=>e.gal.includes(v)).map(v=>v==='-'?'−':v);if(e.ga!=null)return [['−'],['O'],['TR','T','F']][e.ga];if(e.gs==null&&e.m===1)return ['−'];if(e.gs==null&&e.m===2)return ['O'];return null};
@@ -964,9 +967,9 @@ if(e.m===0)s+=bleed(cx,yS+hS/2,e.rl?'l':'a');else if(e.sp)s+=bleed(cx,yS+hS/2,'t
 s+=stack(sens(e),cx,yG,hG)+stack(app(e),cx,yG+hG,hG);
 if(e.cp){const cy=yC+hC/2,by={B:cy+3,M:cy-1,H:cy-5}[e.cp];s+=`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}" stroke-width="1.1"/><rect x="${cx-7}" y="${by}" width="14" height="3" fill="${K}"/>`}
 if(e.co){const cy=yC+hC+hC/2;s+=e.co==='F'?`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`:e.co==='E'?`<circle cx="${cx}" cy="${cy}" r="3.6" fill="none" stroke="${K}" stroke-width="1.2"/>`:`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="${K}" stroke-width="1.3"/>`}
-if(e.cd){const y=yC+2*hC;s+=e.cd==='F'?`<rect x="${cx-cw/2}" y="${y+3}" width="${cw}" height="${hC-6}" fill="${K}"/>`:e.cd==='M'?`<rect x="${cx-cw/2+1}" y="${y+3}" width="${cw-2}" height="${hC-6}" fill="url(#srA)" stroke="${K}" stroke-width=".8"/>`:`<path d="M${cx-8} ${y+3}L${cx-1} ${y+hC-3}M${cx+1} ${y+3}L${cx+8} ${y+hC-3}" stroke="${K}" stroke-width="1.4" fill="none"/>`}});
+if(e.cn){const y=yC+3*hC;s+=e.cn==='D'?`<path d="M${cx} ${y+3}L${cx} ${y+hC-3}" stroke="${K}" stroke-width="2.2" stroke-linecap="round" fill="none"/>`:`<path d="M${cx+6} ${y+3}L${cx-6} ${y+hC-3}" stroke="${K}" stroke-width="2.2" stroke-linecap="round" fill="none"/>`}if(e.cd){const y=yC+2*hC;s+=e.cd==='F'?`<rect x="${cx-cw/2}" y="${y+3}" width="${cw}" height="${hC-6}" fill="${K}"/>`:e.cd==='M'?`<rect x="${cx-cw/2+1}" y="${y+3}" width="${cw-2}" height="${hC-6}" fill="url(#srA)" stroke="${K}" stroke-width=".8"/>`:`<path d="M${cx-8} ${y+3}L${cx-1} ${y+hC-3}M${cx+1} ${y+3}L${cx+8} ${y+hC-3}" stroke="${K}" stroke-width="1.4" fill="none"/>`}});
 const pkk=picOf(c),pk=pkk?days.find(x=>x.d===pkk):null;
-if(pk)s+=`<rect x="${x0+pk.i*cw}" y="${yG}" width="${cw}" height="${3*hC+2*hG+6}" fill="none" stroke="${K}" stroke-width="2.6"/><text transform="translate(${X(pk.i)-6} ${yG-6}) rotate(-18)" font-size="11" font-style="italic" fill="${K}">Pic de glaire</text>`;
+if(pk)s+=`<rect x="${x0+pk.i*cw}" y="${yG}" width="${cw}" height="${4*hC+2*hG+6}" fill="none" stroke="${K}" stroke-width="2.6"/><text transform="translate(${X(pk.i)-6} ${yG-6}) rotate(-18)" font-size="11" font-style="italic" fill="${K}">Pic de glaire</text>`;
 // numéros de jours (haut)
 const band=(y,up)=>{let o=`<rect x="${x0}" y="${y}" width="${nc*cw}" height="20" fill="${BD}"/>`;for(let i=0;i<nc;i++){const cx=X(i);o+=`<text x="${cx}" y="${y+14}" text-anchor="middle" font-size="11" font-weight="700" fill="#333">${i+1}</text>`;o+=up?`<polygon points="${x0+i*cw},${y} ${x0+(i+1)*cw},${y} ${cx},${y-10}" fill="${TR}"/>`:`<polygon points="${x0+i*cw},${y+20} ${x0+(i+1)*cw},${y+20} ${cx},${y+30}" fill="${TR}"/>`}return o};
 s+=band(yJ,false)+`<text x="${x0-8}" y="${yJ+14}" text-anchor="end" font-weight="700" fill="${K}">JOURS DU CYCLE</text>`;
@@ -1008,10 +1011,10 @@ const pb=(y,h)=>`<rect x="${px}" y="${y}" width="${pw}" height="${h}" rx="7" fil
 s+=pb(yS,hS)+bleed(px+16,yS+hS/2,'a')+L(px+30,yS+15,'règles')+bleed(px+86,yS+hS/2,'l')+L(px+100,yS+15,'règles légères')+bleed(px+204,yS+hS/2,'t')+L(px+218,yS+15,'spotting');
 s+=`<clipPath id="srCg"><rect x="${px}" y="${yG}" width="${pw}" height="${2*hG}" rx="7"/></clipPath><g clip-path="url(#srCg)"><rect x="${px}" y="${yG}" width="96" height="${2*hG}" fill="#E9E3D0"/><rect x="${px+96}" y="${yG}" width="100" height="${2*hG}" fill="#FADCE2"/><rect x="${px+196}" y="${yG}" width="${pw-196}" height="${2*hG}" fill="#E57F92"/></g>`;
 s+=pb(yG,2*hG)+ll(px+10,yG+34,'S','èche')+ll(px+10,yG+82,'−',' absente')+`<rect x="${px+99}" y="${yG+3}" width="94" height="16" rx="8" fill="#fff" stroke="${K}" stroke-width=".8"/><text x="${px+146}" y="${yG+14.5}" text-anchor="middle" font-weight="700" font-size="10" fill="${K}">Transitionnelle</text>`+ll(px+100,yG+34,'H','umide')+ll(px+100,yG+52,'C','ollante')+ll(px+100,yG+80,'O','paque')+`<rect x="${px+199}" y="${yG+3}" width="94" height="16" rx="8" fill="#fff" stroke="${K}" stroke-width=".8"/><text x="${px+246}" y="${yG+14.5}" text-anchor="middle" font-weight="700" font-size="10" fill="${K}">Culminante</text>`+ll(px+200,yG+30,'M','ouillée')+ll(px+200,yG+44,'L','ubrifiée')+ll(px+200,yG+60,'TR','ouble')+ll(px+200,yG+74,'T','ransparente')+ll(px+200,yG+88,'F','ilante');
-s+=`<clipPath id="srCc"><rect x="${px}" y="${yC}" width="${pw}" height="${3*hC+4}" rx="7"/></clipPath><g clip-path="url(#srCc)"><rect x="${px}" y="${yC}" width="96" height="${3*hC+4}" fill="#E9E3D0"/><rect x="${px+96}" y="${yC}" width="100" height="${3*hC+4}" fill="#FADCE2"/><rect x="${px+196}" y="${yC}" width="${pw-196}" height="${3*hC+4}" fill="#E57F92"/></g>`;
-s+=pb(yC,3*hC+4);
-const cg=(cx,cy,k)=>k==='b'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy+3}" width="14" height="3" fill="${K}"/>`:k==='m'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-1}" width="14" height="3" fill="${K}"/>`:k==='h'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-6}" width="14" height="3" fill="${K}"/>`:k==='f'?`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`:k==='e'?`<circle cx="${cx}" cy="${cy}" r="3.6" fill="none" stroke="${K}"/>`:k==='o'?`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="${K}" stroke-width="1.3"/>`:k==='F'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="${K}"/>`:k==='s'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="url(#srA)" stroke="${K}" stroke-width=".8"/>`:`<path d="M${cx-7} ${cy-6}L${cx-1} ${cy+6}M${cx+1} ${cy-6}L${cx+7} ${cy+6}" stroke="${K}" stroke-width="1.4" fill="none"/>`;
-[[['b','bas'],['m','moyen'],['h','haut']],[['f','fermé'],['e','entr’ouvert'],['o','ouvert']],[['F','ferme'],['s','semi-ferme'],['u','mou']]].forEach((r,ri)=>r.forEach((q,k)=>{const cx=px+16+k*98,cy=yC+2+ri*hC+hC/2;s+=cg(cx,cy,q[0])+L(cx+14,cy+3.5,q[1])}));
+s+=`<clipPath id="srCc"><rect x="${px}" y="${yC}" width="${pw}" height="${4*hC+4}" rx="7"/></clipPath><g clip-path="url(#srCc)"><rect x="${px}" y="${yC}" width="96" height="${4*hC+4}" fill="#E9E3D0"/><rect x="${px+96}" y="${yC}" width="100" height="${4*hC+4}" fill="#FADCE2"/><rect x="${px+196}" y="${yC}" width="${pw-196}" height="${4*hC+4}" fill="#E57F92"/></g>`;
+s+=pb(yC,4*hC+4);
+const cg=(cx,cy,k)=>k==='i'?`<path d="M${cx+6} ${cy-7}L${cx-6} ${cy+7}" stroke="${K}" stroke-width="2.2" stroke-linecap="round"/>`:k==='d'?`<path d="M${cx} ${cy-7}L${cx} ${cy+7}" stroke="${K}" stroke-width="2.2" stroke-linecap="round"/>`:k==='b'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy+3}" width="14" height="3" fill="${K}"/>`:k==='m'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-1}" width="14" height="3" fill="${K}"/>`:k==='h'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-6}" width="14" height="3" fill="${K}"/>`:k==='f'?`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`:k==='e'?`<circle cx="${cx}" cy="${cy}" r="3.6" fill="none" stroke="${K}"/>`:k==='o'?`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="${K}" stroke-width="1.3"/>`:k==='F'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="${K}"/>`:k==='s'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="url(#srA)" stroke="${K}" stroke-width=".8"/>`:`<path d="M${cx-7} ${cy-6}L${cx-1} ${cy+6}M${cx+1} ${cy-6}L${cx+7} ${cy+6}" stroke="${K}" stroke-width="1.4" fill="none"/>`;
+[[['b','bas'],['m','moyen'],['h','haut']],[['f','fermé'],['e','entr’ouvert'],['o','ouvert']],[['F','ferme'],['s','semi-ferme'],['u','mou']],[['i','incliné'],['d','droit']]].forEach((r,ri)=>r.forEach((q,k)=>{const cx=px+16+k*98,cy=yC+2+ri*hC+hC/2;s+=cg(cx,cy,q[0])+L(cx+14,cy+3.5,q[1])}));
 s+=pb(yT0,34)+L(px+10,yT0+21,'BUT :',700)+(BUT?`<text x="${px+58}" y="${yT0+21}" font-size="12" font-style="italic" fill="${K}">${BUT==='contra'?'contraception':'conception'}</text>`:'');
 const notes=dayNotes(days);
 const nl=[];notes.forEach(([a,b])=>{let t=a+b;while(t.length>34){let k=t.lastIndexOf(' ',34);if(k<8)k=34;nl.push(t.slice(0,k));t='   '+t.slice(k).trim()}nl.push(t)});
@@ -1037,7 +1040,7 @@ let HBt=null;if(SYM){const h0=fl('th');if(hb&&hb.e.t!=null)HBt=hb.e.t;else if(h0
 if(HBt!==null)hi=Math.max(hi,HBt+0.1);if(hi-lo<0.8)hi=lo+0.8;
 const T0=14,T1=comb?234+(PRT?Math.max(0,Math.round((W+PW)/1.5-352)):0):194,M0=comb?T0:236,M1=comb?T1:376,C0=comb?T0:418,C1=comb?T1:518,X=i=>L+i*cw+cw/2;
 const dz=28,R=C1+20,SG=C1+44,D1=C1+46+dz,D2=C1+62+dz,D3=C1+75+dz,H0=C1+90+dz;
-const yT=v=>T1-(v-lo)/(hi-lo)*(T1-T0),yM=comb?(v=>M1-v/5*(M1-M0)*.90):(v=>M1-v/5*(M1-M0)),yC=comb?(v=>C1-v/6*(C1-C0)*.76):(v=>C1-v/6*(C1-C0));
+const yT=v=>T1-(v-lo)/(hi-lo)*(T1-T0),yM=comb?(v=>M1-v/5*(M1-M0)*.90):(v=>M1-v/5*(M1-M0)),yC=comb?(v=>C1-v/8*(C1-C0)*.76):(v=>C1-v/8*(C1-C0));
 const NL=wrapN(dayNotes(days),30),NLs=NL.slice(0,16),nbH=Math.max(44,30+NLs.length*13+(NL.length>16?13:0)),lgY=8+nbH+14,H=Math.max(H0,lgY+8*14+12);
 const ML=days.some(x=>x.e&&(x.e.gs!=null||x.e.ga!=null))?['0','1','2','3','4','5']:MLAB;
 let s=`<svg width="${W+PW}" height="${H}" viewBox="0 0 ${W+PW} ${H}" role="img" aria-label="Graphique du cycle : température, glaire et col" font-family="system-ui,sans-serif" font-size="10">`;
@@ -1045,7 +1048,7 @@ const step=SYM?((hi-lo)>1.2?0.2:0.1):0.4,gl=y=>`<line x1="${L}" x2="${W-RM}" y1=
 for(let v=Math.ceil(lo*10)/10;v<=hi+1e-9;v+=step){const y=yT(v);s+=gl(y)+`<text x="${L-6}" y="${y+3}" text-anchor="end" fill="var(--g)">${SYM?v.toFixed(1):''}</text>`}
 if(comb){s+=`<text x="${W-RM+6}" y="${T0-4}" font-size="10" font-weight="700" fill="var(--b)">Glaire</text><text x="${W-RM+44}" y="${T0-4}" font-size="10" font-weight="700" fill="var(--m)">Col</text>`;for(let v=0;v<=5;v++)s+=`<text x="${W-RM+6}" y="${yM(v)+3}" fill="var(--b)" font-size="9">${ML[v]}</text>`}
 else{for(let v=0;v<=5;v++){const y=yM(v);s+=gl(y)+`<text x="${L-6}" y="${y+3}" text-anchor="end" fill="var(--b)">${ML[v]}</text>`}
-[[0,'Col bas, ferme, fermé'],[4,'Col haut, mou, ouvert']].forEach(([v,l])=>{const y=yC(v),w=l.split(' ');s+=gl(y)+`<text x="${L-6}" y="${y+(v?9:-3)}" text-anchor="end" fill="var(--m)">${w[0]} ${w[1].replace(',','')}</text><text x="${L-6}" y="${y+(v?21:9)}" text-anchor="end" fill="var(--m)">${w.slice(2).join(' ')}</text>`});s+=gl(yC(2))}
+[[0,'Col bas, ferme, fermé'],[6,'Col haut, mou, ouvert']].forEach(([v,l])=>{const y=yC(v),w=l.split(' ');s+=gl(y)+`<text x="${L-6}" y="${y+(v?9:-3)}" text-anchor="end" fill="var(--m)">${w[0]} ${w[1].replace(',','')}</text><text x="${L-6}" y="${y+(v?21:9)}" text-anchor="end" fill="var(--m)">${w.slice(2).join(' ')}</text>`});s+=gl(yC(3))}
 days.forEach(x=>{const cx=X(x.i),dn=+x.d.slice(8);
 if(x.e&&x.e.gj)s+=`<rect x="${cx-cw/2+4}" y="${T1-19}" width="${cw-8}" height="9" rx="3" fill="none" stroke="var(--b)" stroke-width="2" stroke-dasharray="3 2"/>`;
 if(x.e&&x.e.sp)s+=`<rect x="${cx-cw/2+2}" y="${T1-6}" width="${cw-4}" height="6" rx="2" fill="var(--red)" opacity=".5"/>`;
@@ -1061,7 +1064,7 @@ const tp=SYM?days.filter(x=>x.e&&x.e.t!=null).map(x=>({i:x.i,y:yT(x.e.t),e:x.e})
 const hmn=t=>{const m=/^(\d{1,2}):(\d{2})$/.exec(t||'');return m?+m[1]*60+ +m[2]:null},hhf=t=>{const m=/^(\d{1,2}):(\d{2})$/.exec(t||'');return m?(+m[1])+' h'+(m[2]!=='00'?' '+m[2]:''):''};
 const cr=SYM?days.map(x=>{const v=pCorr(x.d,x.e);return v==null?null:{i:x.i,y:yT(v),v,e:x.e}}).filter(Boolean):[];
 const mp=days.filter(x=>x.e&&(x.e.m!=null||x.e.gs!=null||x.e.ga!=null)).map(x=>{const g=x.e.gs!=null||x.e.ga!=null?gscore(x.d):null;return{i:x.i,y:yM(g!=null?g:x.e.m),r:x.e.m===0}});
-const cp=days.map(x=>({i:x.i,v:colScore(x.e)})).filter(q=>q.v!==null).map(q=>({i:q.i,y:yC(q.v)}));
+const cp=days.map(x=>({i:x.i,v:colScore(x.e,x.d)})).filter(q=>q.v!==null).map(q=>({i:q.i,y:yC(q.v)}));
 const disc=!!(mc&&(mc.ov||mc.tp))||(ci===cs.length-1&&(M.offLH!==null||M.offObs!==null));
 const band=(col,a,b,pale,op,pop=.14)=>{for(let d=Math.max(1,a);d<=Math.min(N,b);d++)s+=`<rect x="${X(d-1)-cw/2}" y="${T0}" width="${cw}" height="${C1-T0}" fill="${col}" fill-opacity="${d<=pale?pop:op}"/>`};
 if(SYM){}else if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16)band('#F2C230',Lc-22,Lc-10,Lc-18,disc?.1:.32,disc?.04:.14)}else if(M.A!==null){const a0=(Math.round(M.A)-22);band('#F2C230',a0,(Math.round(M.A)-10),a0+4,disc?.1:.32,disc?.04:.14)}
@@ -1160,16 +1163,17 @@ const AR=[
 {k:'cp',l:'Col : hauteur',br:[['B','Bas'],['M','Moyen'],['H','Haut']]},
 {k:'co',l:'Col : ouverture',br:[['F','Fermé'],['E','Entr’ouvert'],['O','Ouvert']]},
 {k:'cd',l:'Col : fermeté',br:[['S','Mou'],['M','Semi-ferme'],['F','Ferme']]},
+{k:'cn',l:'Col : inclinaison',br:[['I','Incliné'],['D','Droit']]},
 {k:'t',l:'Température'}];
 const SYMB={a:'✕',l:'╲',t:'•'},CO={F:'●',E:'○',O:'◯'},CD={F:'■',M:'▤',S:'╲╲'};
-const lvS={S:0,H:1,C:1,M:2,L:2},lvA={'-':0,O:1,TR:2,T:2,F:3};
+const lvS={S:0,C:1,H:2,M:3,L:3},lvA={'-':0,O:1,TR:2,T:3,F:4};
 let st=null,ACT='bl',BR='a',PAINT=true,drag=false,lastI=-1,TI=0;
 const $a=id=>document.getElementById(id);
 const lng=d=>new Date(d+'T12:00:00').toLocaleDateString('fr-CA',{day:'numeric',month:'long',year:'numeric'});
-function fresh(){const cs=cycles();let s0;if(cs.length)s0=addDays(cs[0].s,-28);else s0=addDays(iso(new Date()),-60);st={s:s0,n:28,c:{bl:[],se:[],ap:[],cp:[],co:[],cd:[],t:[]}};ACT='bl';BR='a';TI=0}
+function fresh(){const cs=cycles();let s0;if(cs.length)s0=addDays(cs[0].s,-28);else s0=addDays(iso(new Date()),-60);st={s:s0,n:28,c:{bl:[],se:[],ap:[],cp:[],co:[],cd:[],cn:[],t:[]}};ACT='bl';BR='a';TI=0}
 function cellTxt(k,i){const v=st.c[k][i];if(v==null||v===''||(Array.isArray(v)&&!v.length))return '';
 if(k==='bl')return `<span class="sy">${SYMB[v]}</span>`;if(k==='se')return `<span class="lt">${v.join(' ')}</span>`;if(k==='ap')return `<span class="lt">${v.map(x=>x==='-'?'−':x).join(' ')}</span>`;
-if(k==='cp')return `<span class="lt">${v}</span>`;if(k==='co')return `<span class="sy">${CO[v]}</span>`;if(k==='cd')return `<span class="lt">${CD[v]}</span>`;if(k==='t')return `<span class="lt">${String(v.toFixed(2)).replace('.',',')}</span>`;return ''}
+if(k==='cp')return `<span class="lt">${v}</span>`;if(k==='co')return `<span class="sy">${CO[v]}</span>`;if(k==='cd')return `<span class="lt">${CD[v]}</span>`;if(k==='cn')return `<span class="sy">${v==='D'?'│':'╱'}</span>`;if(k==='t')return `<span class="lt">${String(v.toFixed(2)).replace('.',',')}</span>`;return ''}
 function grid(){let h='<table><tbody><tr class="dn"><td class="rl">Jour du cycle</td>';for(let i=0;i<st.n;i++)h+=`<td>${i+1}</td>`;h+='</tr><tr class="dt"><td class="rl" style="font-weight:500;cursor:default">Date</td>';
 for(let i=0;i<st.n;i++){const d=addDays(st.s,i),dd=+d.slice(8);h+=`<td>${dd===1||i===0?dd+'<br>'+new Date(d+'T12:00:00').toLocaleDateString('fr-CA',{month:'short'}).replace('.',''):dd}</td>`}h+='</tr>';
 AR.forEach(r=>{h+=`<tr data-r="${r.k}"${r.k===ACT?' class="act"':''}><td class="rl" data-lab="${r.k}">${r.l}</td>`;for(let i=0;i<st.n;i++)h+=`<td data-r="${r.k}" data-i="${i}"${r.k==='t'&&i===TI&&ACT==='t'?' class="cur"':''}>${cellTxt(r.k,i)}</td>`;h+='</tr>'});
@@ -1216,7 +1220,7 @@ for(let i=0;i<st.n;i++){const d=addDays(st.s,i),f={};const bl=st.c.bl[i];
 if(bl==='a')f.m=0;else if(bl==='l'){f.m=0;f.rl=1}else if(bl==='t')f.sp=1;
 if(i===0&&f.m!==0)f.m=0;
 const se=st.c.se[i],ap=st.c.ap[i];if(se&&se.length){f.gsl=se.slice();f.gs=Math.max(...se.map(x=>lvS[x]))}if(ap&&ap.length){f.gal=ap.slice();f.ga=Math.max(...ap.map(x=>lvA[x]))}
-['cp','co','cd'].forEach(k=>{if(st.c[k][i])f[k]=st.c[k][i]});if(st.c.t[i]!=null)f.t=st.c.t[i];
+['cp','co','cd','cn'].forEach(k=>{if(st.c[k][i])f[k]=st.c[k][i]});if(st.c.t[i]!=null)f.t=st.c.t[i];
 if(Object.keys(f).length){days.push([d,f]);any=true;const ex=D.e[d];if(ex&&Object.keys(ex).some(k=>k in f&&JSON.stringify(ex[k])!==JSON.stringify(f[k])))over++}}
 if(!any){toast('Rien à enregistrer');return}
 if(over&&!confirm(over+' jour'+(over>1?'s ont':' a')+' déjà des données différentes. Les remplacer par ce que tu viens d’écrire ?'))return;
