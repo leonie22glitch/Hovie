@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Hovie</title>
-<meta name="hovie-version" content="2026-10-16-2250">
+<meta name="hovie-version" content="2026-10-17-0950">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -112,7 +112,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--rose2);flex:0 0 2
 #wsv{flex:1;min-width:0;border-color:var(--s);background:var(--sp)}
 .wsu{color:var(--mut);font-size:15px}
 .wsw{display:flex;align-items:center;gap:10px;margin:10px 0 0}
-.wsw[hidden]{display:none}.wsw{flex-wrap:wrap}.butw{display:none;align-items:center;gap:10px;margin-left:auto;font-size:13px}.butw b{font-size:13px}.butw input{width:16px;height:16px;margin:0;padding:0}.butw label{display:flex;align-items:center;gap:4px;white-space:nowrap}body.son .butw{display:flex}
+.wsw[hidden]{display:none}.wsw{flex-wrap:wrap}.butw{display:none;align-items:center;gap:10px;margin-left:auto;font-size:13px}.butw b{font-size:13px}.butw input{width:16px;height:16px;margin:0;padding:0}.butw label{display:flex;align-items:center;gap:4px;white-space:nowrap}body.son #butw{display:flex}body:not(.son) #butw2{display:flex;margin:0 0 8px;gap:10px;font-size:11px}body:not(.son) #butw2 b,#butw2 label{font-size:11px;margin:0}
 .wsw b{font-size:14px}
 #wsb{position:relative;width:48px;height:26px;border-radius:13px;border:0;background:#D9CED2;padding:0}
 #wsb::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
@@ -339,6 +339,7 @@ body.pgn #jour>*:not(.card):not(#snt):not(#pgf):not(#pgf2):not(#pgfin){display:n
 <main>
 <section id="jour">
 <div class="wsw" id="syw" style="margin:0 0 8px"><b>Symptothermie</b><button type="button" id="syb" role="switch" aria-checked="true" aria-label="Activer la symptothermie (température, col, repères)"></button><span id="butw" class="butw"><b>But</b><label><input type="checkbox" class="butc" value="contra"> Contraception</label><label><input type="checkbox" class="butc" value="concep"> Conception</label></span></div>
+<div id="butw2" class="butw"><b>But</b><label><input type="checkbox" class="butc" value="obs"> Observation</label><label><input type="checkbox" class="butc" value="concep"> Conception</label></div>
 <div class="pgsi" id="pgsw"><span class="pgt1"><b>Test de grossesse positif</b><span class="pgt2"><br><small>Active le mode grossesse.</small></span></span><button type="button" class="tgl" id="pgb" role="switch" aria-checked="false" aria-label="Test de grossesse positif : activer le mode grossesse"></button></div>
 <div class="pgask" id="pgask"><b>Quelle est la date de tes dernières règles ?</b><small>Hovie compte les semaines de grossesse à partir de ce jour.</small><input type="date" id="pgaskd" aria-label="Date de tes dernières règles"><div class="pgaskb"><button type="button" id="pgaskgo">Continuer</button><button type="button" id="pgaskno">Annuler</button></div></div>
 <div id="inst" hidden><div class="inr"><div class="em">📲</div><div><b>Ajoute Hovie à ton écran d’accueil</b><div>Pour garder tes données plus longtemps et ouvrir Hovie comme une vraie appli.</div></div></div><div class="inb"><button type="button" class="go" id="instgo">Voir comment</button><button type="button" class="lt" id="instlt">Plus tard</button></div></div>
@@ -478,7 +479,7 @@ body.pgn #jour>*:not(.card):not(#snt):not(#pgf):not(#pgf2):not(#pgfin){display:n
 <select id="cyc"></select>
 <div id="vw" style="gap:8px;margin-top:8px"><button type="button" class="btn" data-v="comb" style="flex:1;padding:8px;margin-top:0">Graphique Hovie</button><button type="button" class="btn alt" data-v="ser" style="flex:1;padding:8px;margin-top:0">Graphique symptothermie</button></div>
 <div class="wsw" id="wsw" hidden><b>Montre intelligente</b><button type="button" id="wsb" role="switch" aria-checked="true" aria-label="Afficher la courbe de la montre intelligente"></button></div>
-<div id="gmode" class="note" style="margin:10px 0 0;font-weight:700"></div><div id="gbut" class="note" style="margin:2px 0 0;font-weight:600" hidden></div><div id="gmm" class="note" style="margin:2px 0 0;font-weight:600;color:var(--rose2)" hidden></div>
+<div id="gmode" class="note" style="margin:10px 0 0;font-weight:700"></div><div id="gbut" class="note" style="margin:2px 0 0;font-weight:600" hidden></div><div id="gmm" class="note" style="margin:2px 0 0;font-weight:600;color:var(--rose2)" hidden></div><div id="grel" class="note" style="margin:2px 0 0;font-weight:600" hidden></div>
 <div class="scroll" style="margin-top:6px"><div id="chart"></div></div>
 <h2 style="margin:14px 0 6px">Vue d’ensemble</h2>
 <div class="card" style="padding:8px"><div id="mini"></div></div>
@@ -891,6 +892,8 @@ $('pgt').innerHTML='';{const pw=pgWait();if(pw&&d>=pw.x){$('cd').className='';$(
 if(!c){$('cd').className='';$('cd').innerHTML='<div class="pbox"><div class="ptitle">Aucun cycle commencé</div><p class="note" style="margin:8px 0 0">Choisis « Règles » le premier jour du cycle.</p></div>';$('st2').innerHTML='';return}
 const dayN=diff(c.s,d)+1;$('cd').className='';$('cd').innerHTML=frame(M,c,dayN);
 const e0=D.e[d]||{},e1=D.e[addDays(d,-1)]||{};
+if(SYM&&butEff()==='contra'&&e0.ru&&!c.pred){const P=phaseInfo(M,c),inL=!!c.tpN&&dayN>=c.tpN-5&&dayN<=c.tpN+2,inB=P.N!=null&&dayN>=P.N&&(P.T==null||dayN<=P.T);if(inL||inB)b+=bn('rgba(240,140,40,.24)','⚠️ Attention : relation non protégée '+(inL?'dans la période fertile de ton test LH (5 jours avant et 2 jours après le test positif).':'en phase B, ta période fertile.'))}
+if(butEff()==='concep'&&!c.pred){if(!c.done&&dayN>=5&&dayN<=14&&!Object.keys(D.e).some(k=>{if(k<c.s||k>c.end)return false;const x=D.e[k];return x.m>0||x.gs!=null||x.ga!=null||x.tp||x.tn||x.ti!=null}))b+=bd('🌸','Petit rappel doux : noter ta glaire ou faire des tests d’ovulation (LH) est un bon moyen d’essayer de cibler ton ovulation.','rm')}
 if(!SYM&&(e0.m===5||e1.m===5))b+=bn('rgba(91,145,191,.24)','Holala !!! Belle glaire en vue 👶🍼');
 if(!SYM&&(e0.m===4||e1.m===4))b+=bn('rgba(91,145,191,.16)','Montée de la glaire 💦');
 if(!c.bad){const eo=c.eo,n=eo?diff(eo.d,d):null,es=eo&&eo.auto?' (ovulation estimée)':'';
@@ -1015,7 +1018,7 @@ s+=`<clipPath id="srCc"><rect x="${px}" y="${yC}" width="${pw}" height="${4*hC+4
 s+=pb(yC,4*hC+4);
 const cg=(cx,cy,k)=>k==='i'?`<path d="M${cx+6} ${cy-7}L${cx-6} ${cy+7}" stroke="${K}" stroke-width="2.2" stroke-linecap="round"/>`:k==='d'?`<path d="M${cx} ${cy-7}L${cx} ${cy+7}" stroke="${K}" stroke-width="2.2" stroke-linecap="round"/>`:k==='b'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy+3}" width="14" height="3" fill="${K}"/>`:k==='m'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-1}" width="14" height="3" fill="${K}"/>`:k==='h'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="none" stroke="${K}"/><rect x="${cx-7}" y="${cy-6}" width="14" height="3" fill="${K}"/>`:k==='f'?`<circle cx="${cx}" cy="${cy}" r="2.6" fill="${K}"/>`:k==='e'?`<circle cx="${cx}" cy="${cy}" r="3.6" fill="none" stroke="${K}"/>`:k==='o'?`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="${K}" stroke-width="1.3"/>`:k==='F'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="${K}"/>`:k==='s'?`<rect x="${cx-7}" y="${cy-6}" width="14" height="12" fill="url(#srA)" stroke="${K}" stroke-width=".8"/>`:`<path d="M${cx-7} ${cy-6}L${cx-1} ${cy+6}M${cx+1} ${cy-6}L${cx+7} ${cy+6}" stroke="${K}" stroke-width="1.4" fill="none"/>`;
 [[['b','bas'],['m','moyen'],['h','haut']],[['f','fermé'],['e','entr’ouvert'],['o','ouvert']],[['F','ferme'],['s','semi-ferme'],['u','mou']],[['i','incliné'],['d','droit']]].forEach((r,ri)=>r.forEach((q,k)=>{const cx=px+16+k*98,cy=yC+2+ri*hC+hC/2;s+=cg(cx,cy,q[0])+L(cx+14,cy+3.5,q[1])}));
-s+=pb(yT0,34)+L(px+10,yT0+21,'BUT :',700)+(BUT?`<text x="${px+58}" y="${yT0+21}" font-size="12" font-style="italic" fill="${K}">${BUT==='contra'?'contraception':'conception'}</text>`:'');
+s+=pb(yT0,34)+L(px+10,yT0+21,'BUT :',700)+(butEff()?`<text x="${px+58}" y="${yT0+21}" font-size="12" font-style="italic" fill="${K}">${butEff()==='contra'?'contraception':'conception'}</text>`:'');
 const notes=dayNotes(days);
 const nl=[];notes.forEach(([a,b])=>{let t=a+b;while(t.length>34){let k=t.lastIndexOf(' ',34);if(k<8)k=34;nl.push(t.slice(0,k));t='   '+t.slice(k).trim()}nl.push(t)});
 s+=pb(yT0+44,226)+L(px+10,yT0+62,'NOTES :',700);nl.slice(0,11).forEach((t,k)=>{s+=`<text x="${px+10}" y="${yT0+82+k*15}" font-size="11" font-style="italic" fill="${K}">${esc(t)}</text>`});if(nl.length>11)s+=`<text x="${px+10}" y="${yT0+82+11*15}" font-size="11" fill="${K}">…</text>`;
@@ -1028,7 +1031,7 @@ return {svg:s,nc,x0,cw,x1,yS,yEnd,yE,yJ,hR,W,H}}
 function chart(){try{syncGl()}catch(_){}const cs=cycles(),sel=$('cyc');
 if(!cs.length){sel.innerHTML='';$('chart').innerHTML='<p class="note" style="padding:14px">Aucun cycle à afficher. Entre « Règles » le premier jour de ton cycle.</p>';$('mini').innerHTML='';return}
 if(!sel.options.length||sel.dataset.n!=cs.length){sel.dataset.n=cs.length;sel.innerHTML=cs.map((c,i)=>`<option value="${i}">${cNo(i)?'No '+cNo(i)+' · ':''}Cycle du ${fmt(c.s)}</option>`).join('');sel.value=cs.length-1}
-$('gmode').textContent=gTitle();$('gbut').textContent=gBut();$('gbut').hidden=!gBut();{const t=gMM();$('gmm').textContent=t?'🦋 '+t:'';$('gmm').hidden=!t}const comb=true,ci=+sel.value,c=cs[ci],hasWs=Object.values(D.e).some(e=>e.ws!=null),useWs=hasWs&&WSON&&Object.keys(D.e).some(k=>k>=c.s&&k<=c.end&&D.e[k].ws!=null),N=Math.max(diff(c.s,c.end)+1,28),L=84,RM=(comb?80:10)+(useWs?50:0),cw=24,PW=190,W=L+N*cw+RM;
+$('gmode').textContent=gTitle();$('gbut').textContent=gBut();$('gbut').hidden=!gBut();{const t=gMM();$('gmm').textContent=t?'🦋 '+t:'';$('gmm').hidden=!t}{const t=gRel();$('grel').textContent=t;$('grel').hidden=!t}const comb=true,ci=+sel.value,c=cs[ci],hasWs=Object.values(D.e).some(e=>e.ws!=null),useWs=hasWs&&WSON&&Object.keys(D.e).some(k=>k>=c.s&&k<=c.end&&D.e[k].ws!=null),N=Math.max(diff(c.s,c.end)+1,28),L=84,RM=(comb?80:10)+(useWs?50:0),cw=24,PW=190,W=L+N*cw+RM;
 $('wsw').hidden=!hasWs;$('wsb').setAttribute('aria-checked',WSON);
 CH={c,N,L,cw};$('vw').hidden=!SYM;[...$('vw').children].forEach(b=>{b.className='btn'+(b.dataset.v===VIEW?'':' alt');b.setAttribute('aria-pressed',b.dataset.v===VIEW)});
 const M=model(),mc=M.cyc.find(x=>x.s===c.s),eo=mc&&mc.eo,od=eo?diff(c.s,eo.d)+1:null;
@@ -1106,9 +1109,16 @@ $('syb').onclick=()=>{SYM=!SYM;try{localStorage.setItem('suivi-sympto',SYM?'1':'
 let NOC=null;try{NOC=JSON.parse(localStorage.getItem('suivi-noc')||'null')}catch(_){}
 function cNo(ci){if(!NOC||!NOC.n)return ci+1;const cs=cycles();if(!cs.length)return NOC.n;if(!NOC.d){NOC.d=cs[0].s;try{localStorage.setItem('suivi-noc',JSON.stringify(NOC))}catch(_){}}let ix=cs.findIndex(c=>c.s===NOC.d);if(ix<0){ix=cs.findIndex(c=>c.s>=NOC.d);if(ix<0)ix=0}const v=NOC.n+(ci-ix);return v>=1?v:null}
 let BUT='';try{BUT=localStorage.getItem('suivi-but')||''}catch(_){}
-function gBut(){return SYM&&BUT?'But : '+(BUT==='contra'?'contraception':'conception'):''}
+function butEff(){return SYM?(BUT==='contra'||BUT==='concep'?BUT:''):(BUT==='obs'||BUT==='concep'?BUT:'')}
+function gBut(){const b=butEff();return b?'But : '+({contra:'contraception',obs:'observation',concep:'conception'})[b]:''}
 document.querySelectorAll('.butc').forEach(c=>{c.checked=c.value===BUT;c.onchange=()=>{BUT=c.checked?c.value:'';document.querySelectorAll('.butc').forEach(o=>o.checked=o.value===BUT);try{localStorage.setItem('suivi-but',BUT)}catch(_){}try{chart()}catch(_){}}});
 function gMM(){const c=cycles()[+$('cyc').value];if(!c)return '';const h=mmHit(c.s,c.end).map(m=>MML[m.k].charAt(0).toLowerCase()+MML[m.k].slice(1));if(!h.length)return '';const l=h.join(', ');return h.length>1?'Ce cycle traverse les moments marquants : '+l+'.':'Ce cycle traverse le moment marquant : '+l+'.'}
+function gRel(){const cs=cycles(),ci=+$('cyc').value,c=cs[ci];if(!c||c.bad)return '';if(!SYM&&!butEff())return '';const ks=Object.keys(D.e).filter(k=>k>=c.s&&k<=c.end),tp=ks.filter(k=>D.e[k].tp).sort()[0],td=iso(new Date());let a,z,lab;
+if(tp){a=addDays(tp,-5);z=addDays(tp,2);lab='5 jours avant et 2 jours après ton test LH positif'}
+else if(SYM){const P=phaseInfo(model(),c);if(P.N==null)return '';a=addDays(c.s,P.N-1);z=P.T!=null?addDays(c.s,P.T-1):td;lab='phase B'}
+else{let da,db;if(ci<cs.length-1){const Lc=diff(c.s,cs[ci+1].s);if(Lc>=16){da=Lc-22;db=Lc-10}}else{const A=model().A;if(A!=null){da=Math.round(A)-22;db=Math.round(A)-10}}if(da===undefined)return '';a=addDays(c.s,Math.max(1,da)-1);z=addDays(c.s,db-1);lab='fenêtre fertile du calendrier'}
+if(a<c.s)a=c.s;if(z>c.end)z=c.end;if(z>td)z=td;if(z<a)return '';const tot=diff(a,z)+1;let n=0,nu=0;for(let i=0;i<tot;i++){const e=D.e[addDays(a,i)];if(e&&(e.ru||e.rp)){n++;if(e.ru)nu++}}
+return '💗 Relations : '+n+' jour'+(n>1?'s':'')+' sur '+tot+' ('+lab+')'+(n?' · dont '+nu+' non protégée'+(nu>1?'s':''):'')}
 function gTitle(){const cs=cycles(),ci=+$('cyc').value,c=cs[ci];if(!c)return 'Graphique Hovie';const mn=d=>{const t=new Date(d+'T12:00:00').toLocaleDateString('fr-CA',{month:'long'});return t.charAt(0).toUpperCase()+t.slice(1)},m1=mn(c.s),m2=mn(c.end>c.s?c.end:c.s);
 return (SYM&&VIEW==='ser'?'Graphique symptothermie':'Graphique Hovie')+' · '+(m1===m2?m1:m1+' / '+m2)+' '+c.s.slice(0,4)+(cNo(ci)?' · Graphique no '+cNo(ci):' · Graphique')+(SYM&&VIEW==='ser'?'':' · '+(SYM?'Symptothermie':'Méthode du calendrier'))}
 function lightVars(t){const m=(document.querySelector('style').textContent.match(/:root\{([^}]*)\}/)||[])[1]||'',o={};m.split(';').forEach(p=>{const k=p.match(/^\s*(--[\w-]+):(.+)$/);if(k)o[k[1]]=k[2].trim()});return t.replace(/var\((--[\w-]+)\)/g,(x,n)=>o[n]||'#000')}
